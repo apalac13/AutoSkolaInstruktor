@@ -13,7 +13,7 @@ export default function Navigacija() {
 
   return (
     <div>
-      <nav>
+      <nav className="">
         {navItems.map((item) => (
           <Link href={item.href}>{item.name}</Link>
         ))}
