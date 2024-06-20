@@ -15,6 +15,25 @@ module.exports = {
       fontFamily: {
         sourceSans3: ["Source Sans 3", "sans-serif"],
       },
+      colors: {
+        black: {
+          40: "#231F20",
+        },
+        gray: {
+          50: "#969696",
+          51: "#181818",
+        },
+        white: {
+          60: "#FFFFFF",
+        },
+        red: {
+          70: "#BE1E2D",
+          71: "#DA291C",
+        },
+        green: {
+          80: "#0A5C36",
+        },
+      },
     },
   },
   plugins: [],
