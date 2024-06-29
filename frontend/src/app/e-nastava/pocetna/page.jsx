@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { jwtDecode } from "jwt-decode";
 
 export default function Pocetna() {
   const router = useRouter();
@@ -8,6 +9,20 @@ export default function Pocetna() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
+      router.push("/e-nastava");
+    }
+    try {
+      const decodedToken = jwtDecode(token);
+      const currentTime = Date.now() / 1000;
+
+      if (decodedToken.exp < currentTime) {
+        // Token has expired
+        localStorage.removeItem("token");
+        localStorage.removeItem("role");
+        router.push("/e-nastava");
+      }
+    } catch (error) {
+      console.error("Invalid token", error);
       router.push("/e-nastava");
     }
   }, [router]);
