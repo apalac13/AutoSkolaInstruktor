@@ -1,8 +1,13 @@
 import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Navigacija from "@/components/Navigacija";
+import axios from "axios";
 
 const sourceSans3 = Source_Sans_3({ subsets: ["latin"] });
+axios.defaults.baseURL = "http://localhost:3003";
+axios.defaults.headers = {
+  "Content-Type": "application/json",
+};
 
 export const metadata = {
   title: "Autoškola Instruktor",
