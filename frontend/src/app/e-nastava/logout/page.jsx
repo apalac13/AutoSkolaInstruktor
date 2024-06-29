@@ -7,6 +7,11 @@ export default function Logout() {
   const router = useRouter();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/e-nastava");
+    }
+
     localStorage.removeItem("token");
     localStorage.removeItem("role");
     setLoggedOut(true);
