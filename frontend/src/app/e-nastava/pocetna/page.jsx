@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
+import SubNavigacija from "@/components/eNastavaComponents/SubNavigacija";
 
 export default function Pocetna() {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function Pocetna() {
 
   return (
     <div>
+      <SubNavigacija />
       <h1>Welcome to Pocetna</h1>
       {/* Content for pocetna */}
     </div>
