@@ -10,7 +10,7 @@ export default function SubNavigacija() {
 
   return (
     <div>
-      <nav className="flex items-center gap-[34px] text-lg text-black-40 ">
+      <nav className="flex items-center gap-[34px] text-lg text-black-40 mt-12 mb-16 ">
         {navItems.map((item) => (
           <Link href={item.href} key={item.name}>
             {item.name}
