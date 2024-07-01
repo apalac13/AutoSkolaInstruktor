@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
+import SubNavigacija from "@/components/eNastavaComponents/SubNavigacija";
 
 export default function NapraviKviz() {
   const router = useRouter();
@@ -30,6 +31,7 @@ export default function NapraviKviz() {
 
   return (
     <div>
+      <SubNavigacija />
       <h1>Welcome to Napravi Kviz</h1>
       {/* Content for pocetna */}
     </div>
