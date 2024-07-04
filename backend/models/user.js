@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const userSchema = mongoose.Schema(
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema(
   {
     name: {
       type: String,
@@ -28,9 +30,10 @@ const userSchema = mongoose.Schema(
       default: false,
     },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
+// Uncomment these methods if needed
 // userSchema.statics.hashPassword = function hashPassword(password) {
 //   return bcrypt.hashSync(password, 10);
 // };
@@ -39,4 +42,4 @@ const userSchema = mongoose.Schema(
 //   return bcrypt.compareSync(hashedpassword, this.password);
 // };
 
-module.exports = mongoose.model("user", userSchema);
+module.exports = mongoose.model("User", userSchema);

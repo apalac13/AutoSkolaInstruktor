@@ -9,14 +9,12 @@ export default function SubNavigacija() {
   ];
 
   return (
-    <div>
-      <nav className="flex items-center gap-[34px] text-lg text-black-40 mt-12 mb-16 ">
-        {navItems.map((item) => (
-          <Link href={item.href} key={item.name}>
-            {item.name}
-          </Link>
-        ))}
-      </nav>
-    </div>
+    <nav className=" w-[600px] flex items-center justify-between  text-lg text-black-40 mt-12 mb-16 border-b-[1px] border-black-40 ">
+      {navItems.map((item) => (
+        <Link href={item.href} key={item.name}>
+          {item.name}
+        </Link>
+      ))}
+    </nav>
   );
 }

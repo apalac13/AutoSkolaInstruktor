@@ -29,10 +29,9 @@ export default function Pocetna() {
   }, [router]);
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
       <SubNavigacija />
       <h1>Welcome to Pocetna</h1>
-      {/* Content for pocetna */}
     </div>
   );
 }
