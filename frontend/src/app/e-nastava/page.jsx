@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
@@ -27,8 +27,6 @@ export default function ENastava() {
       });
 
       const { token } = response.data;
-      console.log("Token received from server:", token); // Debugging log
-
       localStorage.setItem("token", token);
       const decodedToken = jwtDecode(token);
       localStorage.setItem("role", decodedToken.role);
