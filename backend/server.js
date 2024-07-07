@@ -1,4 +1,6 @@
 const express = require("express");
+const http = require("http");
+const socketIo = require("socket.io");
 const app = express();
 const cors = require("cors");
 const PORT = 3003;
@@ -14,20 +16,25 @@ const connectDb = require("./database/db");
 connectDb();
 
 // Socket
-const server = require("http").Server(app);
-const io = require("socket.io")(server, {
+const server = http.createServer(app);
+const io = socketIo(server, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    allowedHeaders: ["my-custom-header"],
-    credentials: true,
+    origin: "http://localhost:3000", // Adjust to your frontend URL
+    methods: ["GET", "POST"],
   },
 });
 
-app.set("io", io);
 io.on("connection", (socket) => {
-  console.log("new socket connection...");
-  socket.emit("test event", "hey Ana");
+  console.log("New client connected");
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
+  });
+});
+
+app.use((req, res, next) => {
+  req.io = io;
+  next();
 });
 
 app.use("/e-nastava", eNastavaRoutes);
@@ -36,6 +43,6 @@ app.get("/", (req, res) => {
   res.send("Pozdrav od Express poslužitelja!");
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server sluša zahtjeve na portu ${PORT}`);
 });

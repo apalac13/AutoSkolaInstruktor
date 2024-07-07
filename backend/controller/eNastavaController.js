@@ -1,6 +1,10 @@
 const User = require("../models/user");
+const Quiz = require("../models/quiz");
+const Question = require("../models/question");
+const Result = require("../models/result");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const quiz = require("../models/quiz");
 // const Otp = require('../models/otp');
 // const sendMail = require('../mail/mail');
 
@@ -102,6 +106,46 @@ exports.logIn = async (req, res) => {
     }
   } catch (error) {
     res.status(500).send(error.message);
+  }
+};
+
+exports.getHomeQuiz = async (req, res) => {
+  try {
+    const quizzes = await Quiz.find({ upload: true });
+    res.status(200).json(quizzes);
+  } catch (error) {
+    console.error("Error fetching quizzes:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getAllQuestions = async (req, res) => {
+  const quizId = req.params.id;
+  try {
+    const quiz = await Quiz.findById(quizId).populate("questions");
+    res.json(quiz);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
+exports.saveResult = async (req, res) => {
+  const result = new Result({
+    quiz: req.body.quiz,
+    user: req.body.user,
+    answers: req.body.answers,
+    result: req.body.result,
+  });
+
+  try {
+    const savedResult = await result.save();
+    console.log("Result saved successfully:", savedResult);
+    req.io.emit("resultsUpdated", savedResult); // Emit event
+    res.status(200).json({ message: "Result added successfully!" });
+  } catch (error) {
+    console.log("Error saving quiz:", error);
+    res.status(500).json({ msg: "Error saving quiz." });
   }
 };
 
