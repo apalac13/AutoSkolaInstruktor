@@ -55,7 +55,7 @@ export default function NapraviKviz() {
           },
         }
       );
-    } catch {
+    } catch (error) {
       console.error("Error uploading quiz", error);
       alert("There was an error uploading the quiz.");
     }

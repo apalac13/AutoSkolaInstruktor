@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const Quiz = require("../models/quiz");
 const Question = require("../models/question");
+const Result = require("../models/result");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const quiz = require("../models/quiz");
@@ -58,6 +59,16 @@ exports.getAllQuizes = async (req, res) => {
   }
 };
 
+exports.getResults = async (req, res) => {
+  try {
+    const results = await Result.find().populate("quiz");
+    res.status(200).json(results);
+  } catch (error) {
+    console.error("Error fetching results:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
 exports.addQuestion = async (req, res) => {
   const quizId = req.params.id;
   const newQuestion = new Question({
@@ -82,17 +93,6 @@ exports.addQuestion = async (req, res) => {
       message: "Question added successfully!",
       question: savedQuestion,
     });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error" });
-  }
-};
-
-exports.getAllQuestions = async (req, res) => {
-  const quizId = req.params.id;
-  try {
-    const quiz = await Quiz.findById(quizId).populate("questions");
-    res.json(quiz);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });
@@ -134,6 +134,11 @@ exports.uploadQuiz = async (req, res) => {
     if (!quiz) {
       return res.status(404).send("Quiz doesnt exist");
     }
+    if (req.body.upload === false) {
+      req.io.emit("quizRemoved", quizId);
+    } else {
+      req.io.emit("quizUpdated", quiz);
+    }
     res.json(quiz);
   } catch (error) {
     console.error(err);
@@ -146,7 +151,6 @@ exports.deleteQuiz = async (req, res) => {
   try {
     // Delete quiz
     await Quiz.deleteOne({ _id: quizId });
-
     // Delete associated questions
     await Question.deleteMany({ quiz: quizId });
 

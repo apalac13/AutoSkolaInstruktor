@@ -66,9 +66,10 @@ export default function DodajPitanje() {
     setOptionText(event.target.value);
   };
 
-  const handleAddOption = () => {
+  const handleAddOption = (event) => {
+    event.preventDefault();
     const newOption = {
-      optionValue: question.options.length + 1,
+      optionValue: `${question.options.length + 1}`,
       optionText: optionText,
     };
     setQuestion({

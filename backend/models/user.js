@@ -13,10 +13,6 @@ const userSchema = new Schema(
       required: true,
       unique: true,
     },
-    score: {
-      type: Number,
-      default: 0,
-    },
     password: {
       type: String,
       required: true,
@@ -32,14 +28,5 @@ const userSchema = new Schema(
   },
   { timestamps: true }
 );
-
-// Uncomment these methods if needed
-// userSchema.statics.hashPassword = function hashPassword(password) {
-//   return bcrypt.hashSync(password, 10);
-// };
-
-// userSchema.methods.isValid = function (hashedpassword) {
-//   return bcrypt.compareSync(hashedpassword, this.password);
-// };
 
 module.exports = mongoose.model("User", userSchema);

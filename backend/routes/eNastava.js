@@ -5,6 +5,31 @@ const adminController = require("../controller/adminController");
 
 router.post("/register", eNastavaController.register);
 router.post("/", eNastavaController.logIn);
+router.get(
+  "/pocetna/kvizovi",
+  eNastavaController.verifyToken,
+  eNastavaController.getHomeQuiz
+);
+router.get(
+  "/pocetna/rezultati",
+  adminController.verifyToken,
+  adminController.getResults
+);
+router.get(
+  "/pocetna/:id",
+  eNastavaController.verifyToken,
+  eNastavaController.getAllQuestions
+);
+router.post(
+  "/pocetna/:id",
+  eNastavaController.verifyToken,
+  eNastavaController.saveResult
+);
+router.put(
+  "/pocetna/:id",
+  adminController.verifyToken,
+  adminController.uploadQuiz
+);
 router.post(
   "/napravi-kviz",
   adminController.verifyToken,
@@ -24,7 +49,7 @@ router.post(
 router.get(
   "/kvizovi/:id",
   adminController.verifyToken,
-  adminController.getAllQuestions
+  eNastavaController.getAllQuestions
 );
 
 router.delete(
