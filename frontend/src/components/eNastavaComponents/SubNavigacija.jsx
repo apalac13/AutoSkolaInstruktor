@@ -3,6 +3,7 @@ import Link from "next/link";
 export default function SubNavigacija() {
   const navItems = [
     { name: "POČETNA", href: "/e-nastava/pocetna" },
+    { name: "CHAT", href: "/e-nastava/chat" },
     { name: "KVIZOVI", href: "/e-nastava/kvizovi" },
     { name: "NAPRAVI KVIZ", href: "/e-nastava/napravi-kviz" },
     { name: "LOGOUT", href: "/e-nastava/logout" },

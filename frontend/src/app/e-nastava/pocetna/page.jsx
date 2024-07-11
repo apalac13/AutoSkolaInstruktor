@@ -17,7 +17,7 @@ export default function Pocetna() {
     const token = localStorage.getItem("token");
     if (!token) {
       router.push("/e-nastava");
-      return; // Exit early if no token is present
+      return;
     }
 
     try {
@@ -28,12 +28,12 @@ export default function Pocetna() {
         localStorage.removeItem("token");
         localStorage.removeItem("role");
         router.push("/e-nastava");
-        return; // Exit early if token is expired
+        return;
       }
     } catch (error) {
       console.error("Invalid token", error);
       router.push("/e-nastava");
-      return; // Exit early if token is invalid
+      return;
     }
 
     // Initialize socket connection
