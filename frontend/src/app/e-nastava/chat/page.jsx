@@ -88,7 +88,7 @@ export default function Chat() {
           <input
             type="text"
             value={message}
-            className="w-full h-10 border-b border-black-40"
+            className="w-full h-10 border-b border-black-40 p-1 "
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Poruka..."
           />
