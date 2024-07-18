@@ -74,8 +74,9 @@ exports.addQuestion = async (req, res) => {
   const newQuestion = new Question({
     quiz: quizId,
     questionText: req.body.questionText,
+    image: req.file ? req.file.originalname : null, // Ensure image is optional
     answer: req.body.answer,
-    options: req.body.options,
+    options: JSON.parse(req.body.options),
   });
 
   try {
@@ -157,6 +158,18 @@ exports.deleteQuiz = async (req, res) => {
     res
       .status(200)
       .json({ msg: "Quiz and associated questions deleted successfully!" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Something went wrong!" });
+  }
+};
+
+exports.deleteResult = async (req, res) => {
+  const resultId = req.params.id;
+  try {
+    await Result.findByIdAndDelete(resultId);
+
+    res.status(200).json({ msg: "Result deleted successfully!" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: "Something went wrong!" });

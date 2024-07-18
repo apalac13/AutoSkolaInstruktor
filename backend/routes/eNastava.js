@@ -1,7 +1,19 @@
 const express = require("express");
+const multer = require("multer");
 const router = express.Router();
 const eNastavaController = require("../controller/eNastavaController");
 const adminController = require("../controller/adminController");
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, "../frontend/public/uploads");
+  },
+  filename: (req, file, callback) => {
+    callback(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
 
 router.post("/register", eNastavaController.register);
 router.post("/", eNastavaController.logIn);
@@ -14,6 +26,12 @@ router.get(
   "/pocetna/rezultati",
   adminController.verifyToken,
   adminController.getResults
+);
+
+router.delete(
+  "/pocetna/rezultati/:id",
+  adminController.verifyToken,
+  adminController.deleteResult
 );
 router.get(
   "/pocetna/:id",
@@ -43,6 +61,7 @@ router.get(
 router.post(
   "/kvizovi/:id/dodaj-pitanje",
   adminController.verifyToken,
+  upload.single("image"),
   adminController.addQuestion
 );
 
@@ -69,9 +88,5 @@ router.put(
   adminController.verifyToken,
   adminController.uploadQuiz
 );
-// router.post('/reset', apiController.Reset)
-// router.post('/reset-password-done', apiController.resestPasswordDone)
-
-// router.get('/check', apiController.verifyToken, apiController.getCheck)
 
 module.exports = router;

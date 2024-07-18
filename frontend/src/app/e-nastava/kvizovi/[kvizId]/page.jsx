@@ -5,8 +5,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import Link from "next/link";
+import Image from "next/image";
 
-export default function Kviz() {
+export default function KvizPage() {
   const router = useRouter();
   const { kvizId } = useParams();
   const [quiz, setQuiz] = useState({ questions: [] });
@@ -79,9 +80,7 @@ export default function Kviz() {
         <div className="w-full flex flex-col gap-6 ">
           <p className=" text-xl text-black-40 uppercase ">{quiz.quizname}</p>
           <Link href={"/e-nastava/kvizovi"} className="w-[120px]">
-            <button
-              className="w-[120px] h-12  border border-black-40 bg-black-40 "
-            >
+            <button className="w-[120px] h-12  border border-black-40 bg-black-40 ">
               <p className=" text-white-60 text-sm font-light  text-center ">
                 ZAVRŠI PREGLED
               </p>
@@ -99,17 +98,27 @@ export default function Kviz() {
                   <p>{index + 1}.</p>
                   <p> {question.questionText}</p>
                 </div>
-                <div className="flex flex-col gap-3">
-                  {question.options.map((option, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <div className=" w-10 h-10 flex items-center justify-center  border border-black-40">
-                        <p className=" text-xl ">{index + 1}</p>
+                <div className="flex justify-between">
+                  <div className="flex flex-col gap-3">
+                    {question.options.map((option, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <div className=" w-10 h-10 flex items-center justify-center  border border-black-40">
+                          <p className=" text-xl ">{index + 1}</p>
+                        </div>
+                        <p key={option.optionValue} className=" text-base">
+                          {option.optionText}
+                        </p>
                       </div>
-                      <p key={option.optionValue} className=" text-base">
-                        {option.optionText}
-                      </p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                  {question.image && (
+                    <Image
+                      src={`/uploads/${question.image}`}
+                      alt="..."
+                      width={200}
+                      height={200}
+                    />
+                  )}
                 </div>
                 <button
                   onClick={() => deleteQuestion(question._id)}
