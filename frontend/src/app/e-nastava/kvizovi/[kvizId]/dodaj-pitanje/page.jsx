@@ -9,6 +9,7 @@ export default function DodajPitanje() {
   const router = useRouter();
   const { kvizId } = useParams();
   const [type, setType] = useState("multiple");
+  const [fileName, setFileName] = useState(null);
   const [question, setQuestion] = useState({
     questionText: "",
     answer: "",
@@ -86,25 +87,40 @@ export default function DodajPitanje() {
     });
   };
 
+  const onchangeFile = (e) => {
+    setFileName(e.target.files[0]);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("questionText", question.questionText);
+    formData.append("answer", question.answer);
+    formData.append("type", type);
+    if (fileName) {
+      formData.append("image", fileName);
+    }
+    if (type === "true/false") {
+      formData.append(
+        "options",
+        JSON.stringify([
+          { optionValue: "true", optionText: "TOČNO" },
+          { optionValue: "false", optionText: "NETOČNO" },
+        ])
+      );
+    } else {
+      formData.append("options", JSON.stringify(question.options));
+    }
+
     try {
       await axios.post(
         `http://localhost:3003/e-nastava/kvizovi/${kvizId}/dodaj-pitanje`,
-        {
-          questionText: question.questionText,
-          answer: question.answer,
-          options:
-            type === "true/false"
-              ? [
-                  { optionValue: "true", optionText: "TOČNO" },
-                  { optionValue: "false", optionText: "NETOČNO" },
-                ]
-              : question.options,
-        },
+        formData,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -121,6 +137,7 @@ export default function DodajPitanje() {
       <SubNavigacija />
       <form
         onSubmit={handleSubmit}
+        encType="multipart/form-data"
         className="flex flex-col gap-6 items-center"
       >
         <label htmlFor="" className="flex flex-col gap-[6px] items-start">
@@ -133,6 +150,10 @@ export default function DodajPitanje() {
             className="w-[500px] h-10 p-1 border border-black-40"
             required
           />
+        </label>
+        <label htmlFor="file">
+          + DODAJ SLIKU
+          <input type="file" filename="image" onChange={onchangeFile} />
         </label>
         <label htmlFor="" className="flex flex-col gap-[6px] items-start ">
           <p className="text-base">TIP PITANJA</p>

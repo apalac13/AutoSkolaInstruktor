@@ -7,9 +7,13 @@ const questionSchema = new Schema({
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+    default: null,
+  },
   answer: {
     type: String,
-    required: true,
+    default: "",
   },
   options: {
     type: Array,

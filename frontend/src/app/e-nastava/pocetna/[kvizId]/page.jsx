@@ -4,8 +4,9 @@ import SubNavigacija from "@/components/eNastavaComponents/SubNavigacija";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import Image from "next/image";
 
-export default function Kviz() {
+export default function KvizPage() {
   const router = useRouter();
   const { kvizId } = useParams();
   const [quiz, setQuiz] = useState({ questions: [] });
@@ -53,6 +54,23 @@ export default function Kviz() {
         (answer) => answer.questionId !== questionId
       );
       updatedAnswers.push({ questionId, selectedOption, correctAnswer });
+      return {
+        ...prevResult,
+        answers: updatedAnswers,
+      };
+    });
+  };
+
+  const handleTextAnswerChange = (questionId, answerValue, correctAnswer) => {
+    setResult((prevResult) => {
+      const updatedAnswers = prevResult.answers.filter(
+        (answer) => answer.questionId !== questionId
+      );
+      updatedAnswers.push({
+        questionId,
+        selectedOption: answerValue,
+        correctAnswer,
+      });
       return {
         ...prevResult,
         answers: updatedAnswers,
@@ -114,26 +132,56 @@ export default function Kviz() {
                   <p> {question.questionText}</p>
                 </div>
                 <div className="flex flex-col gap-3">
-                  {question.options.map((option, optionIndex) => (
-                    <div key={optionIndex} className="flex items-center gap-3">
+                  {question.options && question.options.length > 0 ? (
+                    question.options.map((option, optionIndex) => (
+                      <div
+                        key={optionIndex}
+                        className="flex items-center gap-3"
+                      >
+                        <label>
+                          <input
+                            type="radio"
+                            name={`question-${question._id}`}
+                            value={option.optionValue}
+                            onChange={() =>
+                              handleAnswerChange(
+                                question._id,
+                                option.optionValue,
+                                question.answer
+                              )
+                            }
+                          />
+                          {option.optionText}
+                        </label>
+                      </div>
+                    ))
+                  ) : (
+                    <div className="mb-1">
                       <label>
                         <input
-                          type="radio"
+                          type="text"
                           name={`question-${question._id}`}
-                          value={option.optionValue}
-                          onChange={() =>
-                            handleAnswerChange(
+                          className="w-full h-10 border border-black-40 "
+                          onChange={(e) =>
+                            handleTextAnswerChange(
                               question._id,
-                              option.optionValue,
+                              e.target.value,
                               question.answer
                             )
                           }
                         />
-                        {option.optionText}
                       </label>
                     </div>
-                  ))}
+                  )}
                 </div>
+                {question.image && (
+                  <Image
+                    src={`/uploads/${question.image}`}
+                    alt="..."
+                    width={200}
+                    height={200}
+                  />
+                )}
               </div>
             ))
           ) : (
