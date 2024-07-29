@@ -6,6 +6,7 @@ const cors = require("cors");
 const PORT = 3003;
 
 const eNastavaRoutes = require("./routes/eNastava");
+const guestRoutes = require("./routes/guest");
 
 app.use(cors());
 app.use(express.json());
@@ -43,6 +44,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/e-nastava", eNastavaRoutes);
+app.use("/online-testovi", guestRoutes);
 
 app.get("/", (req, res) => {
   res.send("Pozdrav od Express poslužitelja!");
