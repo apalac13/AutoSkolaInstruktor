@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import clsx from "clsx";
 import Questions from "./allQuestionComponents/Questions";
 import Result from "./allQuestionComponents/Result";
 
@@ -12,6 +11,8 @@ export default function AllQuestionView({ test }) {
   const [replayWrongAnswers, setReplayWrongAnswers] = useState(false);
   const [replay, setReplay] = useState(false);
   const [viewAnswers, setViewAnswers] = useState(false);
+
+  const correctAnswers = test.questions.length - wrongAnswers.length;
 
   useEffect(() => {
     if (replay) {
@@ -123,11 +124,11 @@ export default function AllQuestionView({ test }) {
   };
 
   return (
-    <div className="flex flex-col gap-8 items-start text-black-40">
+    <div className="text-black-40">
       {testOver ? (
         <Result
-          testName={test.testName}
           score={score}
+          correctAnswers={correctAnswers}
           wrongAnswers={wrongAnswers}
           setReplay={setReplay}
           setReplayWrongAnswers={setReplayWrongAnswers}
@@ -135,7 +136,11 @@ export default function AllQuestionView({ test }) {
           viewAnswers={viewAnswers}
         />
       ) : (
-        <div>
+        <div className="flex flex-col gap-11">
+          <div className="flex gap-11 text-lg ">
+            <p>Pitanja: {questions.length}</p>
+            <p>Vrijeme: 50 minuta</p>
+          </div>
           {questions.map((question) => (
             <Questions
               key={question.questionNumber}
