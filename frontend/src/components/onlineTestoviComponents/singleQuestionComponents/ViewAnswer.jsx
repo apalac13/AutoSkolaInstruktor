@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import Image from "next/image";
 
 export default function ViewAnswer({
   answerOption,
@@ -11,16 +11,27 @@ export default function ViewAnswer({
   const userAnswerList = userAnswer ? userAnswer.answers : [];
 
   return (
-    <div className={clsx(answerOption.answer ? "bg-green-80" : "bg-red-71")}>
-      <label className="cursor-pointer">
+    <div className="flex gap-3 ">
+      <label className="flex items-center gap-3 cursor-pointer ">
         <input
           type="checkbox"
+          className=" w-10 h-10"
           checked={userAnswerList.includes(answerOption.option)}
           value={answerOption.option}
           disabled
         />
-        {answerOption.option}
+        <p className="text-base">{answerOption.option}</p>
       </label>
+      {answerOption.answer ? (
+        <Image
+          src="/accept_check_black.svg"
+          alt="Correct icon"
+          width={32}
+          height={32}
+        />
+      ) : (
+        <Image src="/wrong.svg" alt="Wrong icon" width={32} height={32} />
+      )}
     </div>
   );
 }

@@ -25,14 +25,10 @@ export default function Ispit() {
     <div className="m-5">
       {instruction ? (
         <Instruction setOption={setOption} setInstruction={setInstruction} />
+      ) : option === "single" ? (
+        <SingleQuestionView test={test} />
       ) : (
-        <div>
-          {option === "single" ? (
-            <SingleQuestionView test={test} />
-          ) : (
-            <AllQuestionView test={test} />
-          )}
-        </div>
+        <AllQuestionView test={test} />
       )}
     </div>
   );

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Option from "./singleQuestionComponents/Option";
 import ViewAnswer from "./singleQuestionComponents/viewAnswer";
 import Result from "./allQuestionComponents/Result";
+import Image from "next/image";
 
 export default function SingleQuestionView({ test }) {
   const [userAnswer, setUserAnswer] = useState([]);
@@ -15,6 +16,8 @@ export default function SingleQuestionView({ test }) {
   const [replay, setReplay] = useState(false);
   const [viewAnswers, setViewAnswers] = useState(false);
   const [questions, setQuestions] = useState(test.questions);
+
+  const correctAnswers = test.questions.length - wrongAnswers.length;
 
   useEffect(() => {
     if (replay) {
@@ -134,40 +137,83 @@ export default function SingleQuestionView({ test }) {
   return (
     <div className="text-black-40">
       {currentQuestion < questions.length ? (
-        <>
-          <p>{questions[currentQuestion].questionText}</p>
-          {questions[currentQuestion].answerOptions.map((answerOption, index) =>
-            viewAnswers ? (
-              <ViewAnswer
-                key={index}
-                answerOption={answerOption}
-                questionNumber={questions[currentQuestion].questionNumber}
-                userAnswers={userAnswers}
-              />
-            ) : (
-              <Option
-                key={index}
-                showAnswer={showAnswer}
-                answerOption={answerOption}
-                userAnswer={userAnswer}
-                handleChange={handleChange}
-              />
-            )
-          )}
-          {viewAnswers ? (
-            <button onClick={() => setCurrentQuestion(currentQuestion + 1)}>
-              NEXT QUESTION
-            </button>
-          ) : nextQuestion === false ? (
-            <button onClick={checkAnswer}>CONFIRM ANSWERS</button>
-          ) : (
-            <button onClick={handleNextQuestion}>NEXT QUESTION</button>
-          )}
-        </>
+        <div className="flex flex-col gap-11">
+          <div className="flex gap-11 text-lg ">
+            <p>Pitanje: {questions[currentQuestion].questionNumber}/40</p>
+            <p>Vrijeme: 50 minuta</p>
+          </div>
+          <div className="flex flex-col ">
+            <div className="flex gap-2 text-xl font-semibold">
+              <p>{questions[currentQuestion].questionNumber}.</p>
+              <p>{questions[currentQuestion].questionText}</p>
+            </div>
+            <div className="flex flex-col gap-3 items-start border-y border-black-40 pt-10">
+              {questions[currentQuestion].answerOptions.map(
+                (answerOption, index) =>
+                  viewAnswers ? (
+                    <ViewAnswer
+                      key={index}
+                      answerOption={answerOption}
+                      questionNumber={questions[currentQuestion].questionNumber}
+                      userAnswers={userAnswers}
+                    />
+                  ) : (
+                    <Option
+                      key={index}
+                      showAnswer={showAnswer}
+                      answerOption={answerOption}
+                      userAnswer={userAnswer}
+                      handleChange={handleChange}
+                    />
+                  )
+              )}
+              {viewAnswers ? (
+                <div
+                  className="self-start pt-10 flex gap-3 items-end text-xl cursor-pointer"
+                  onClick={() => setCurrentQuestion(currentQuestion + 1)}
+                >
+                  <p>Sljedeće pitanje</p>
+                  <Image
+                    src="/right.svg"
+                    alt="Right icon"
+                    width={32}
+                    height={32}
+                  />
+                </div>
+              ) : nextQuestion === false ? (
+                <div
+                  className="self-start pt-10 flex gap-3 items-end text-xl cursor-pointer"
+                  onClick={checkAnswer}
+                >
+                  <p>Potvrdi pitanje</p>
+                  <Image
+                    src="/accept_check.svg"
+                    alt="Accept icon"
+                    width={32}
+                    height={32}
+                  />
+                </div>
+              ) : (
+                <div
+                  className="self-start pt-10 flex gap-3 items-end text-xl cursor-pointer"
+                  onClick={handleNextQuestion}
+                >
+                  <p>Sljedeće pitanje</p>
+                  <Image
+                    src="/right.svg"
+                    alt="Right icon"
+                    width={32}
+                    height={32}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       ) : (
         <Result
-          testName={test.testName}
           score={score}
+          correctAnswers={correctAnswers}
           wrongAnswers={wrongAnswers}
           setReplay={setReplay}
           setReplayWrongAnswers={setReplayWrongAnswers}

@@ -1,26 +1,54 @@
 export default function Result({
-  testName,
   score,
+  correctAnswers,
   wrongAnswers,
   setReplay,
   setReplayWrongAnswers,
   setViewAnswers,
   viewAnswers,
 }) {
+  const result = ((score / 120) * 100).toFixed(2);
+
   return (
-    <div>
-      <h1>{testName}</h1>
-      <h2>Your Score: {score}/120</h2>
-      <h3>Wrong Answers: {wrongAnswers.length}</h3>
-      <button className="border" onClick={() => setReplay(true)}>
-        REPLAY WHOLE TEST
-      </button>
-      <button className="border" onClick={() => setReplayWrongAnswers(true)}>
-        REPLAY WRONG ANSWERS
-      </button>
-      <button className="border" onClick={() => setViewAnswers(!viewAnswers)}>
-        VIEW
-      </button>
+    <div className="flex flex-col gap-[86px] items-center justify-center">
+      <div className="flex gap-3 text-xl">
+        <p className="font-semibold  ">REZULTAT:</p>
+        <p>{result}%</p>
+        {result >= 90 ? (
+          <p className=" text-green-80">PROLAZ</p>
+        ) : (
+          <p className="text-red-71">PAD</p>
+        )}
+      </div>
+      <div className="flex flex-col gap-10 text-lg">
+        <div className="flex justify-between">
+          <h2>bodovi: {score}/120</h2>
+          <h3>broj točnih odgovora: {correctAnswers}</h3>
+        </div>
+        <div className="flex gap-11">
+          <div
+            className="flex gap-2 items-end cursor-pointer"
+            onClick={() => setReplay(true)}
+          >
+            <div className="w-8 h-8 border border-black-40 rounded-full  "></div>
+            <p>ponovi</p>
+          </div>
+          <div
+            className="flex gap-2 items-end cursor-pointer"
+            onClick={() => setReplayWrongAnswers(true)}
+          >
+            <div className="w-8 h-8 border border-black-40 rounded-full  "></div>
+            <p>ponovi pogrešna pitanja</p>
+          </div>
+          <div
+            className="flex gap-2 items-end cursor-pointer"
+            onClick={() => setViewAnswers(!viewAnswers)}
+          >
+            <div className="w-8 h-8 border border-black-40 rounded-full  "></div>
+            <p>pogledaj</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

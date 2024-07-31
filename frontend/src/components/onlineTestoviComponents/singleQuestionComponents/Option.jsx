@@ -1,5 +1,4 @@
-import { useState } from "react";
-import clsx from "clsx";
+import Image from "next/image";
 
 export default function Option({
   showAnswer,
@@ -8,20 +7,31 @@ export default function Option({
   handleChange,
 }) {
   return (
-    <div
-      className={clsx(
-        showAnswer ? (answerOption.answer ? "bg-green-80" : "bg-red-71") : ""
-      )}
-    >
-      <label className=" cursor-pointer ">
+    <div className="flex gap-3 ">
+      <label className="flex items-center gap-3 cursor-pointer ">
         <input
           type="checkbox"
+          className=" w-10 h-10"
           checked={userAnswer.includes(answerOption.option)}
           value={answerOption.option}
           onChange={handleChange}
         />
-        {answerOption.option}
+        <p className="text-base">{answerOption.option}</p>
       </label>
+      {showAnswer ? (
+        answerOption.answer ? (
+          <Image
+            src="/accept_check_black.svg"
+            alt="Correct icon"
+            width={32}
+            height={32}
+          />
+        ) : (
+          <Image src="/wrong.svg" alt="Wrong icon" width={32} height={32} />
+        )
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
