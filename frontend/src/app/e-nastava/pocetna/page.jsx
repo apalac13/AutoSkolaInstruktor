@@ -38,8 +38,10 @@ export default function Pocetna() {
   return (
     <div className="flex flex-col items-center justify-center">
       <SubNavigacija />
-      <Kvizovi />
-      <Rezultati />
+      <div className="flex flex-col gap-20">
+        <Kvizovi />
+        <Rezultati />
+      </div>
     </div>
   );
 }

@@ -151,8 +151,7 @@ export default function DodajPitanje() {
             required
           />
         </label>
-        <label htmlFor="file">
-          + DODAJ SLIKU
+        <label htmlFor="file" className="self-start">
           <input type="file" filename="image" onChange={onchangeFile} />
         </label>
         <label htmlFor="" className="flex flex-col gap-[6px] items-start ">

@@ -20,10 +20,6 @@ const userSchema = new Schema(
       type: String,
       default: "user",
     },
-    blocked: {
-      type: Boolean,
-      default: false,
-    },
   },
   { timestamps: true }
 );
