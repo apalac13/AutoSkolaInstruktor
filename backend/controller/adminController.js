@@ -2,6 +2,7 @@ const User = require("../models/user");
 const Quiz = require("../models/quiz");
 const Question = require("../models/question");
 const Result = require("../models/result");
+const Message = require("../models/message");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const quiz = require("../models/quiz");
@@ -168,8 +169,18 @@ exports.deleteResult = async (req, res) => {
   const resultId = req.params.id;
   try {
     await Result.findByIdAndDelete(resultId);
-
     res.status(200).json({ msg: "Result deleted successfully!" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Something went wrong!" });
+  }
+};
+
+exports.deleteMessages = async (req, res) => {
+  try {
+    await Message.deleteMany();
+    req.io.emit("messagesDeleted");
+    res.status(200).json({ msg: "Messages deleted successfully!" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ msg: "Something went wrong!" });

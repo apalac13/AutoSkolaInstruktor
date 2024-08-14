@@ -2,6 +2,7 @@ const User = require("../models/user");
 const Quiz = require("../models/quiz");
 const Question = require("../models/question");
 const Result = require("../models/result");
+const Message = require("../models/message");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const quiz = require("../models/quiz");
@@ -57,35 +58,6 @@ exports.register = async (req, res) => {
     res.status(500).json({ msg: "An error occurred during registration!" });
   }
 };
-// exports.registerTeacher = async (req, res) => {
-//   const user = new User({
-//     contact: req.body.phone,
-//     email: req.body.email,
-//     role: "teacher",
-//     password: User.hashPassword(req.body.p1),
-//   });
-//   User.find({ email: req.body.email }, (err, users) => {
-//     if (err) {
-//       console.log("err in finding email ");
-//       res.json({ msg: "some error!" });
-//     }
-//     if (users.length !== 0) {
-//       console.log("already user with this email");
-//       res.json({ msg: "already user exist with this email!" });
-//     } else {
-//       user.save((error, registeredUser) => {
-//         if (error) {
-//           console.log(error);
-//           res.json({ msg: "some error!" });
-//         } else {
-//           const payload = { subject: registeredUser._id };
-//           const token = jwt.sign(payload, "secretkey");
-//           res.status(200).json({ token: token });
-//         }
-//       });
-//     }
-//   });
-// };
 
 exports.logIn = async (req, res) => {
   try {
@@ -146,6 +118,33 @@ exports.saveResult = async (req, res) => {
   } catch (error) {
     console.log("Error saving quiz:", error);
     res.status(500).json({ msg: "Error saving quiz." });
+  }
+};
+
+exports.saveMessage = async (req, res) => {
+  const message = new Message({
+    user: req.body.user,
+    message: req.body.message,
+    // No need to manually add timestamp here, it will be automatically added
+  });
+  try {
+    const savedMessage = await message.save();
+    console.log("Message saved successfully:", savedMessage);
+    req.io.emit("messageSaved", savedMessage); // The savedMessage includes the timestamp
+    res.status(200).json(savedMessage); // Return the entire savedMessage, including timestamp
+  } catch (error) {
+    console.log("Error saving message:", error);
+    res.status(500).json({ msg: "Error saving message." });
+  }
+};
+
+exports.getAllMessages = async (req, res) => {
+  try {
+    const messages = await Message.find(); // Retrieve all messages from the collection
+    res.status(200).json(messages); // Send the retrieved messages as a JSON response
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Something went wrong!" }); // Send error response if something goes wrong
   }
 };
 

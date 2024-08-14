@@ -89,4 +89,20 @@ router.put(
   adminController.uploadQuiz
 );
 
+router.get(
+  "/chat",
+  eNastavaController.verifyToken,
+  eNastavaController.getAllMessages
+);
+router.post(
+  "/chat",
+  eNastavaController.verifyToken,
+  eNastavaController.saveMessage
+);
+router.delete(
+  "/chat",
+  adminController.verifyToken,
+  adminController.deleteMessages
+);
+
 module.exports = router;

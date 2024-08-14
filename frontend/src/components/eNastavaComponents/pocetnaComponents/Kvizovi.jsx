@@ -78,38 +78,48 @@ export default function Kvizovi() {
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="flex justify-around border-b-[1px] border-black-40 text-base font-semibold ">
-        <p>IME KVIZA</p>
-        <p>OPIS</p>
-        <p>OPCIJE</p>
+    <div className="flex flex-col  gap-10">
+      <div className="flex gap-1 text-base items-end text-red-71">
+        <p>01</p>
+        <div className="w-20 h-[1px] bg-red-71 mb-[5px] "></div>
+        <p>AKTUALNI KVIZOVI</p>
       </div>
-      {quizes.map((quiz) => (
-        <div
-          key={quiz._id}
-          className="grid grid-cols-3 gap-4 p-6  border-b-[1px] border-black-40 text-base"
-        >
-          <p>{quiz.quizname}</p>
-          <p>{quiz.quizdescription}</p>
-          <div className="flex gap-3">
-            <Link href={`/e-nastava/pocetna/${quiz._id}`} className="w-[100px]">
-              <button className="w-[100px] h-10  border border-black-40 bg-black-40 ">
-                <p className=" text-white-60 text-sm font-light  text-center ">
-                  IGRAJ
+      <div>
+        <div className="flex justify-around border-b-[1px] border-black-40 text-base font-semibold ">
+          <p>IME KVIZA</p>
+          <p>OPIS</p>
+          <p>OPCIJE</p>
+        </div>
+        {quizes.map((quiz) => (
+          <div
+            key={quiz._id}
+            className="grid grid-cols-3 gap-4 p-6  border-b-[1px] border-black-40 text-base"
+          >
+            <p>{quiz.quizname}</p>
+            <p>{quiz.quizdescription}</p>
+            <div className="flex gap-3">
+              <Link
+                href={`/e-nastava/pocetna/${quiz._id}`}
+                className="w-[100px]"
+              >
+                <button className="w-[100px] h-10  border border-black-40 bg-black-40 ">
+                  <p className=" text-white-60 text-sm font-light  text-center ">
+                    IGRAJ
+                  </p>
+                </button>
+              </Link>
+              <button
+                onClick={() => uploadQuiz(quiz._id)}
+                className="w-[100px] h-10 border border-red-70 bg-red-70 "
+              >
+                <p className=" text-white-60 text-xs font-light text-center ">
+                  UKLONI
                 </p>
               </button>
-            </Link>
-            <button
-              onClick={() => uploadQuiz(quiz._id)}
-              className="w-[100px] h-10 border border-red-70 bg-red-70 "
-            >
-              <p className=" text-white-60 text-xs font-light text-center ">
-                UKLONI
-              </p>
-            </button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
