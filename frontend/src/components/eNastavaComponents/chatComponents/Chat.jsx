@@ -12,7 +12,6 @@ export default function Chat({ user }) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    // Initialize socket connection
     const newSocket = io("http://localhost:3003");
     setSocket(newSocket);
 
@@ -40,7 +39,6 @@ export default function Chat({ user }) {
       setMessages([]);
     });
 
-    // Clean up function
     return () => {
       if (newSocket) {
         newSocket.disconnect();

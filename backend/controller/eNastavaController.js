@@ -34,23 +34,19 @@ exports.verifyToken = (req, res, next) => {
 
 exports.register = async (req, res) => {
   try {
-    // Check if the user already exists
     const existingUser = await User.findOne({ email: req.body.email });
     if (existingUser) {
       return res
         .status(400)
         .json({ msg: "User already exists with this email!" });
     }
-
-    // Create a new user instance
     const hashPassword = await bcrypt.hash(req.body.password, saltRunde);
     const user = new User({
       name: req.body.name,
       email: req.body.email,
-      password: hashPassword, // Ensure hashPassword is an async function
+      password: hashPassword,
       role: req.body.email === "jure@gmail.com" ? "admin" : "user",
     });
-    // Save the new user to the database
     await user.save();
     res.status(201).json({ msg: "User registered successfully" });
   } catch (error) {
@@ -113,7 +109,7 @@ exports.saveResult = async (req, res) => {
   try {
     const savedResult = await result.save();
     console.log("Result saved successfully:", savedResult);
-    req.io.emit("resultsUpdated", savedResult); // Emit event
+    req.io.emit("resultsUpdated", savedResult);
     res.status(200).json({ message: "Result added successfully!" });
   } catch (error) {
     console.log("Error saving quiz:", error);
@@ -125,13 +121,12 @@ exports.saveMessage = async (req, res) => {
   const message = new Message({
     user: req.body.user,
     message: req.body.message,
-    // No need to manually add timestamp here, it will be automatically added
   });
   try {
     const savedMessage = await message.save();
     console.log("Message saved successfully:", savedMessage);
-    req.io.emit("messageSaved", savedMessage); // The savedMessage includes the timestamp
-    res.status(200).json(savedMessage); // Return the entire savedMessage, including timestamp
+    req.io.emit("messageSaved", savedMessage);
+    res.status(200).json(savedMessage);
   } catch (error) {
     console.log("Error saving message:", error);
     res.status(500).json({ msg: "Error saving message." });
@@ -140,11 +135,11 @@ exports.saveMessage = async (req, res) => {
 
 exports.getAllMessages = async (req, res) => {
   try {
-    const messages = await Message.find(); // Retrieve all messages from the collection
-    res.status(200).json(messages); // Send the retrieved messages as a JSON response
+    const messages = await Message.find();
+    res.status(200).json(messages);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ msg: "Something went wrong!" }); // Send error response if something goes wrong
+    res.status(500).json({ msg: "Something went wrong!" });
   }
 };
 

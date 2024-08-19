@@ -21,15 +21,11 @@ export default function Registracija() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3003/e-nastava/register",
-        {
-          name: data.name,
-          email: data.email,
-          password: data.password,
-        }
-      );
-
+      await axios.post("http://localhost:3003/e-nastava/register", {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
       router.push("/e-nastava");
     } catch (error) {
       console.error("Error registering", error);

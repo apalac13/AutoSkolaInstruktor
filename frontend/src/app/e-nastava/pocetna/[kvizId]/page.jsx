@@ -82,13 +82,12 @@ export default function KvizPage() {
     const token = localStorage.getItem("token");
     const user = jwtDecode(token).name;
 
-    // Calculate the quiz result
     const calculatedResult = result.answers.reduce((acc, answer) => {
       if (answer.selectedOption === answer.correctAnswer) {
-        return acc + 1; // Increment the count if answer is correct
+        return acc + 1;
       }
-      return acc; // Otherwise, return the accumulator unchanged
-    }, 0); // Initialize accumulator with 0
+      return acc;
+    }, 0);
 
     const submissionData = {
       quiz: kvizId,

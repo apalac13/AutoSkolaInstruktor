@@ -75,7 +75,7 @@ exports.addQuestion = async (req, res) => {
   const newQuestion = new Question({
     quiz: quizId,
     questionText: req.body.questionText,
-    image: req.file ? req.file.originalname : null, // Ensure image is optional
+    image: req.file ? req.file.originalname : null,
     answer: req.body.answer,
     options: JSON.parse(req.body.options),
   });
@@ -151,9 +151,7 @@ exports.uploadQuiz = async (req, res) => {
 exports.deleteQuiz = async (req, res) => {
   const quizId = req.params.id;
   try {
-    // Delete quiz
     await Quiz.deleteOne({ _id: quizId });
-    // Delete associated questions
     await Question.deleteMany({ quiz: quizId });
 
     res

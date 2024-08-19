@@ -12,11 +12,9 @@ export default function Rezultati() {
     const token = localStorage.getItem("token");
     const storedRole = localStorage.getItem("role");
     setRole(storedRole);
-    // Initialize socket connection
     const newSocket = io("http://localhost:3003");
     setSocket(newSocket);
 
-    // Fetch initial data
     const fetchInitialData = async () => {
       try {
         const rez = await axios.get(
@@ -36,10 +34,8 @@ export default function Rezultati() {
     fetchInitialData();
 
     newSocket.on("resultsUpdated", (updatedResult) => {
-      // Update quizzes state by filtering out the removed quiz
       setResults((prevResults) => [...prevResults, updatedResult]);
     });
-    // Clean up function
     return () => {
       if (newSocket) {
         newSocket.disconnect();

@@ -9,11 +9,9 @@ export default function Kvizovi() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    // Initialize socket connection
     const newSocket = io("http://localhost:3003");
     setSocket(newSocket);
 
-    // Fetch initial data
     const fetchInitialData = async () => {
       try {
         const rez = await axios.get(
@@ -32,18 +30,14 @@ export default function Kvizovi() {
 
     fetchInitialData();
 
-    // Listen for socket events
     newSocket.on("quizRemoved", (removedQuizId) => {
-      // Update quizzes state by filtering out the removed quiz
       setQuizes((prevQuizes) =>
         prevQuizes.filter((quiz) => quiz._id !== removedQuizId)
       );
     });
     newSocket.on("quizUpdated", (updatedQuiz) => {
-      // Update quizzes state by replacing the updated quiz
       setQuizes((prevQuizes) => [...prevQuizes, updatedQuiz]);
     });
-    // Clean up function
     return () => {
       if (newSocket) {
         newSocket.disconnect();
