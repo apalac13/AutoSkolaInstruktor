@@ -187,7 +187,14 @@ export default function KvizPage() {
             <p>No questions available.</p>
           )}
         </div>
-        <button onClick={handleSubmit}>Submit Quiz</button>
+        <button
+          onClick={handleSubmit}
+          className="w-full h-10 border border-black-40 bg-black-40 mb-1"
+        >
+          <p className=" text-white-60 text-base   font-light text-center ">
+            ZAVRŠI I PREDAJ
+          </p>
+        </button>
       </div>
     </div>
   );
