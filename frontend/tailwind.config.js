@@ -8,9 +8,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "home-page": "url('/home.jpg')",
+        "service-1": "url('/bmw_old.jpg')",
+        "service-2": "url('/ride.jpg')",
+        "service-3": "url('/split.jpg')",
       },
       fontFamily: {
         sourceSans3: ["Source Sans 3", "sans-serif"],
