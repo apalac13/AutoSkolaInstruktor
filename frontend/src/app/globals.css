@@ -26,3 +26,32 @@ body {
     text-wrap: balance;
   }
 }
+
+.slick-slide > div {
+  margin-left: 36px;
+}
+
+.slick-dots {
+  display: none;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black !important;
+  font-size: 30px !important;
+}
+.slick-prev:before {
+  content: url("/left.png") !important;
+}
+
+.slick-next:before {
+  content: url("/right.png") !important;
+}
+
+.slick-dots li {
+  margin: 0 36px !important;
+}
+
+.slick-dots li button:before {
+  content: url("/icons/Line.svg") !important;
+}
