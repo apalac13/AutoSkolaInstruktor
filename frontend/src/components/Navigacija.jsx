@@ -21,7 +21,9 @@ export default function Navigacija() {
     <div
       className={clsx(
         "flex items-center justify-between border-b-[1px] border-black-40",
-        { "border-white-60": pathname === "/" }
+        {
+          "border-white-60": pathname === "/",
+        }
       )}
     >
       {pathname === "/" ? (
