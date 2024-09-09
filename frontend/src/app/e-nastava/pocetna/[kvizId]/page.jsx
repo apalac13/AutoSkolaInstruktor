@@ -4,11 +4,13 @@ import SubNavigacija from "@/components/eNastavaComponents/SubNavigacija";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import Image from "next/image";
+import Kviz from "@/components/eNastavaComponents/pocetnaComponents/kvizComponents/Kviz";
+import Rezultat from "@/components/eNastavaComponents/pocetnaComponents/kvizComponents/Rezultat";
 
 export default function KvizPage() {
   const router = useRouter();
   const { kvizId } = useParams();
+  const [finish, setFinish] = useState(false);
   const [quiz, setQuiz] = useState({ questions: [] });
   const [result, setResult] = useState({
     answers: [],
@@ -96,6 +98,8 @@ export default function KvizPage() {
       result: calculatedResult,
     };
 
+    setResult((prevResult) => ({ ...prevResult, result: calculatedResult }));
+
     try {
       await axios.post(
         `http://localhost:3003/e-nastava/pocetna/${kvizId}`,
@@ -107,7 +111,7 @@ export default function KvizPage() {
         }
       );
       alert("Quiz submitted successfully!");
-      router.push("/e-nastava/pocetna");
+      setFinish(true);
     } catch (error) {
       console.error("Error submitting quiz", error);
       alert("There was an error submitting the quiz.");
@@ -117,85 +121,16 @@ export default function KvizPage() {
   return (
     <div className="flex flex-col items-center justify-center">
       <SubNavigacija />
-      <div className="w-[600px] flex flex-col items-start justify-center gap-6 ">
-        <p className=" text-xl text-black-40 uppercase ">{quiz.quizname}</p>
-        <div className="w-full flex flex-col  gap-6">
-          {quiz.questions && quiz.questions.length > 0 ? (
-            quiz.questions.map((question, index) => (
-              <div
-                key={question._id}
-                className="flex flex-col gap-6 border-b-[1px] border-black-40 "
-              >
-                <div className="flex  gap-3 text-lg font-semibold border-b-[1px] border-black-40 ">
-                  <p>{index + 1}.</p>
-                  <p> {question.questionText}</p>
-                </div>
-                <div className="flex flex-col gap-3">
-                  {question.options && question.options.length > 0 ? (
-                    question.options.map((option, optionIndex) => (
-                      <div
-                        key={optionIndex}
-                        className="flex items-center gap-3"
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            name={`question-${question._id}`}
-                            value={option.optionValue}
-                            onChange={() =>
-                              handleAnswerChange(
-                                question._id,
-                                option.optionValue,
-                                question.answer
-                              )
-                            }
-                          />
-                          {option.optionText}
-                        </label>
-                      </div>
-                    ))
-                  ) : (
-                    <div className="mb-1">
-                      <label>
-                        <input
-                          type="text"
-                          name={`question-${question._id}`}
-                          className="w-full h-10 border border-black-40 "
-                          onChange={(e) =>
-                            handleTextAnswerChange(
-                              question._id,
-                              e.target.value,
-                              question.answer
-                            )
-                          }
-                        />
-                      </label>
-                    </div>
-                  )}
-                </div>
-                {question.image && (
-                  <Image
-                    src={`/uploads/${question.image}`}
-                    alt="..."
-                    width={200}
-                    height={200}
-                  />
-                )}
-              </div>
-            ))
-          ) : (
-            <p>No questions available.</p>
-          )}
-        </div>
-        <button
-          onClick={handleSubmit}
-          className="w-full h-10 border border-black-40 bg-black-40 mb-1"
-        >
-          <p className=" text-white-60 text-base   font-light text-center ">
-            ZAVRŠI I PREDAJ
-          </p>
-        </button>
-      </div>
+      {!finish ? (
+        <Kviz
+          quiz={quiz}
+          handleAnswerChange={handleAnswerChange}
+          handleTextAnswerChange={handleTextAnswerChange}
+          handleSubmit={handleSubmit}
+        />
+      ) : (
+        <Rezultat result={result} setFinish={setFinish} kvizId={kvizId} />
+      )}
     </div>
   );
 }
