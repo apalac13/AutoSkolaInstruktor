@@ -22,18 +22,18 @@ export default function Navigacija() {
       className={clsx(
         "flex items-center justify-between border-b-[1px] border-black-40",
         {
-          "border-white-60": pathname === "/",
+          "border-white-60": pathname === "/" || pathname === "/kategorije",
         }
       )}
     >
-      {pathname === "/" ? (
+      {pathname === "/" || pathname === "/kategorije" ? (
         <Image src="/logo_white.png" alt="Logo" width={180} height={100} />
       ) : (
         <Image src="/asi_logo.png" alt="Logo" width={180} height={100} />
       )}
       <nav
         className={clsx("flex items-center gap-[34px] text-2xl text-black-40", {
-          "text-white-60": pathname === "/",
+          "text-white-60": pathname === "/" || pathname === "/kategorije",
         })}
       >
         {navItems.map((item) => (

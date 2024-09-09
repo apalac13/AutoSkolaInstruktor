@@ -12,6 +12,7 @@ module.exports = {
         "service-1": "url('/bmw_old.jpg')",
         "service-2": "url('/ride.jpg')",
         "service-3": "url('/split.jpg')",
+        "category-title": "url('/parking-lot.jpg')",
       },
       fontFamily: {
         sourceSans3: ["Source Sans 3", "sans-serif"],
