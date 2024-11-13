@@ -174,7 +174,7 @@ export default function SingleQuestionView({ test }) {
                 >
                   <p>Sljedeće pitanje</p>
                   <Image
-                    src="icons/right.svg"
+                    src="/icons/right.svg"
                     alt="Right icon"
                     width={32}
                     height={32}
@@ -187,7 +187,7 @@ export default function SingleQuestionView({ test }) {
                 >
                   <p>Potvrdi pitanje</p>
                   <Image
-                    src="icons/accept_check.svg"
+                    src="/icons/accept_check.svg"
                     alt="Accept icon"
                     width={32}
                     height={32}
@@ -200,7 +200,7 @@ export default function SingleQuestionView({ test }) {
                 >
                   <p>Sljedeće pitanje</p>
                   <Image
-                    src="icons/right.svg"
+                    src="/icons/right.svg"
                     alt="Right icon"
                     width={32}
                     height={32}

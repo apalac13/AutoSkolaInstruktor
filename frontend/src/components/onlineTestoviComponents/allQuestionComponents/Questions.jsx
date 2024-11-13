@@ -41,14 +41,14 @@ export default function Questions({
             {viewAnswers ? (
               answerOption.answer ? (
                 <Image
-                  src="icons/accept_check_black.svg"
+                  src="/icons/accept_check_black.svg"
                   alt="Correct icon"
                   width={32}
                   height={32}
                 />
               ) : (
                 <Image
-                  src="icons/wrong.svg"
+                  src="/icons/wrong.svg"
                   alt="Wrong icon"
                   width={32}
                   height={32}

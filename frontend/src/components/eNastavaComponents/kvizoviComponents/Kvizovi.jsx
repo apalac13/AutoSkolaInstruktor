@@ -69,7 +69,7 @@ export default function Kvizovi() {
         >
           <p>{quiz.quizname}</p>
           <p>{quiz.quizdescription}</p>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Link href={`/e-nastava/kvizovi/${quiz._id}`}>
               <button className="w-[100px] h-10 border border-black-40 bg-black-40 ">
                 <p className=" text-white-60 text-xs font-light text-center ">

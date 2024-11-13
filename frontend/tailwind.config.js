@@ -1,3 +1,8 @@
+const { transform } = require("next/dist/build/swc");
+const {
+  ErrorBoundaryHandler,
+} = require("next/dist/client/components/error-boundary");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -13,6 +18,10 @@ module.exports = {
         "service-2": "url('/ride.jpg')",
         "service-3": "url('/split.jpg')",
         "category-title": "url('/parking-lot.jpg')",
+        "category-A": "url('/A-kat.jpg')",
+        "category-B": "url('/B-kat.jpg')",
+        "category-BE": "url('/BE-kat.jpg')",
+        "category-C": "url('/C-kat.jpg')",
       },
       fontFamily: {
         sourceSans3: ["Source Sans 3", "sans-serif"],
@@ -37,6 +46,28 @@ module.exports = {
           80: "#0A5C36",
           81: "#475841",
           82: "#9D9C62",
+        },
+      },
+      animation: {
+        appear: "appear 3s linear",
+        appearLine: "appearLine 3s forwards ",
+      },
+      keyframes: {
+        appear: {
+          "0%": {
+            "border-color": "#181818",
+          },
+          "100%": {
+            "border-color": "#DA291C",
+          },
+        },
+        appearLine: {
+          "0%": {
+            background: "#181818",
+          },
+          "100%": {
+            background: "#DA291C",
+          },
         },
       },
     },

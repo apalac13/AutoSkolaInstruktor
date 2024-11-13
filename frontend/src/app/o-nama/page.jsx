@@ -171,7 +171,7 @@ export default function ONama() {
         <Section number={"03"} text={"KATEGORIJE"} />
         <div className="grid grid-cols-3  gap-y-3 py-10">
           {categories.map((category, index) => (
-            <Category category={category} />
+            <Category key={index} category={category} />
           ))}
         </div>
       </section>
