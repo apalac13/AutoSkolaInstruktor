@@ -32,9 +32,9 @@ export default function Footer() {
       </div>
       <div>
         <div className="w-full h-[1px] bg-gray-50 "></div>
-        <p className="text-white-60 text-sm font-light ">
-          ©Copyright 2024 Autoškola Instruktor. All Rights Reserved. Powered by
-          AP.
+        <p className="text-gray-50 text-sm font-light ">
+          ©Copyright 2024 Autoškola Instruktor. All Rights Reserved. Powered by{" "}
+          <strong>ACode</strong>
         </p>
       </div>
     </div>

@@ -27,9 +27,9 @@ exports.verifyToken = (req, res, next) => {
     const dekodiraniToken = jwt.verify(token, "tajniKljuc");
     req.user = dekodiraniToken;
   } catch (error) {
-    res.status(401).send("Neispravni Token");
+    return res.status(401).send("Neispravni Token");
   }
-  return next();
+  next(); // only executed if the token is valid
 };
 
 exports.register = async (req, res) => {
@@ -60,20 +60,16 @@ exports.logIn = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (user && (await bcrypt.compare(req.body.password, user.password))) {
       const token = jwt.sign(
-        {
-          name: user.name,
-          email: user.email,
-          role: user.role,
-        },
+        { name: user.name, email: user.email, role: user.role },
         "tajniKljuc",
         { expiresIn: "1h" }
       );
-      res.json({ token });
+      return res.json({ token }); // Use return to stop further execution
     } else {
-      res.status(401).send("Neispravni podaci za prijavu");
+      return res.status(401).send("Neispravni podaci za prijavu"); // Return here as well
     }
   } catch (error) {
-    res.status(500).send(error.message);
+    return res.status(500).send(error.message); // Make sure to return in case of an error
   }
 };
 

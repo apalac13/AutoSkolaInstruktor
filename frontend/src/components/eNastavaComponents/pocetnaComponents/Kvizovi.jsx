@@ -6,9 +6,12 @@ import Link from "next/link";
 export default function Kvizovi() {
   const [quizes, setQuizes] = useState([]);
   const [socket, setSocket] = useState(null);
+  const [role, setRole] = useState("");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const storedRole = localStorage.getItem("role");
+    setRole(storedRole);
     const newSocket = io("http://localhost:3003");
     setSocket(newSocket);
 
@@ -91,7 +94,7 @@ export default function Kvizovi() {
           >
             <p>{quiz.quizname}</p>
             <p>{quiz.quizdescription}</p>
-            <div className="flex gap-3">
+            <div className="flex justify-center gap-3">
               <Link
                 href={`/e-nastava/pocetna/${quiz._id}`}
                 className="w-[100px]"
@@ -102,14 +105,16 @@ export default function Kvizovi() {
                   </p>
                 </button>
               </Link>
-              <button
-                onClick={() => uploadQuiz(quiz._id)}
-                className="w-[100px] h-10 border border-red-70 bg-red-70 "
-              >
-                <p className=" text-white-60 text-xs font-light text-center ">
-                  UKLONI
-                </p>
-              </button>
+              {role === "admin" && (
+                <button
+                  onClick={() => uploadQuiz(quiz._id)}
+                  className="w-[100px] h-10 border border-red-70 bg-red-70 "
+                >
+                  <p className=" text-white-60 text-xs font-light text-center ">
+                    UKLONI
+                  </p>
+                </button>
+              )}
             </div>
           </div>
         ))}

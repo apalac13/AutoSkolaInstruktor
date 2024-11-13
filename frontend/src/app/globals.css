@@ -55,3 +55,7 @@ body {
 .slick-dots li button:before {
   content: url("/icons/Line.svg") !important;
 }
+
+#steps {
+  animation-timeline: view();
+}

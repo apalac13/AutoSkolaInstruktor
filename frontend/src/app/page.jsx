@@ -153,10 +153,10 @@ export default function Pocetna() {
       </section>
       <section className="flex flex-col gap-20 h-[650px] p-10 bg-gray-51">
         <Section number={"02"} text={"ZAŠTO IZABRATI NAS"} />
-        <div className="grid grid-cols-4  gap-y-14 gap-x gap-x-12 text-white-60 p-10 ">
+        <div className="grid grid-cols-4 gap-y-14 gap-x gap-x-12 text-white-60 p-10 ">
           {items.map((item, index) => (
             <div key={index} className="flex flex-col gap-2">
-              <div className="flex gap-1 items-end ">
+              <div className="flex gap-1 items-end">
                 <Image
                   src={item.link}
                   alt="belt icon"
@@ -164,7 +164,9 @@ export default function Pocetna() {
                   height={55}
                   className="leading-none"
                 />
-                <p className="text-xl text-red-71 leading-none">{item.name}</p>
+                <p className="text-[22px] text-red-71 leading-none">
+                  {item.name}
+                </p>
               </div>
               <p className=" text-base font-extralight text-start leading-tight  ">
                 {item.text}

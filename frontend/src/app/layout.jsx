@@ -3,11 +3,12 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import axios from "axios";
 
-const sourceSans3 = Source_Sans_3({ subsets: ["latin"] });
+const sourceSans3 = Source_Sans_3({
+  subsets: ["latin"],
+  display: "swap",
+});
 axios.defaults.baseURL = "http://localhost:3003";
-axios.defaults.headers = {
-  "Content-Type": "application/json",
-};
+axios.defaults.headers["Content-Type"] = "application/json";
 
 export const metadata = {
   title: "Autoškola Instruktor",

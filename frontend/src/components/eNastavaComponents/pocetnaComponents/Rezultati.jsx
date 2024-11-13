@@ -80,13 +80,14 @@ export default function Rezultati() {
           <p>IME</p>
           <p>KVIZ</p>
           <p>REZULTATI</p>
+          <p>OPCIJE</p>
         </div>
         {results.map((result) => (
           <div
             key={result._id}
             className="flex justify-between  p-6  border-b-[1px] border-black-40 text-base"
           >
-            <div className="w-full flex justify-between ">
+            <div className="w-full flex justify-between">
               <p>{result.user}</p>
               <p>{result.quiz.quizname}</p>
               {result.answers.map((answer, index) => (
