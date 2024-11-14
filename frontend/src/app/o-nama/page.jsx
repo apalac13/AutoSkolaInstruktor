@@ -82,10 +82,20 @@ export default function ONama() {
 
   return (
     <div>
-      <Navigacija />
-      <div className="w-full h-[400px] flex flex-col items-center justify-center  border-b border-black-40">
-        <Image src={"/asi_web.png"} alt="asi logo" width={800} height={211} />
+      <div className=" bg-gradient-to-r  from-white-60 to-gray-52 w-lvh h-[500px]  border-b border-black-40   ">
+        <div className="flex flex-col w-lvh h-[500px] ">
+          <Navigacija />
+          <div className=" self-center pt-12">
+            <Image
+              src={"icons/logo-horizontal.svg"}
+              alt="asi logo horizontal"
+              width={800}
+              height={211}
+            />
+          </div>
+        </div>
       </div>
+
       <section className="w-full flex border-b border-black-40 ">
         <div className="w-1/2 flex flex-col gap-20 p-10">
           <Section number={"01"} text={"O NAMA"} />
@@ -142,9 +152,9 @@ export default function ONama() {
             ))}
           </Slider>
         </div>
-        <div className="w-1/2 flex flex-col gap-20 p-10">
+        <div className="w-1/2 flex flex-col gap-20 p-10 bg-red-72">
           <Section number={"02"} text={"POVIJEST"} />
-          <div className="flex flex-col gap-5 text-black-40 ">
+          <div className="flex flex-col gap-5 text-white-60 ">
             <h1 className="text-4xl font-semibold text-start ">
               1990. - DANAS
             </h1>

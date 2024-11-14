@@ -20,19 +20,29 @@ export default function Navigacija() {
   return (
     <div
       className={clsx(
-        "w-full bg-blur-2xl  flex items-center justify-between border-b-[1px] border-black-40  ",
+        "w-full bg-blur-2xl  flex items-center justify-between border-b-[1px] border-black-40 px-8 py-2  ",
         {
           "border-white-60": pathname === "/" || pathname === "/kategorije",
         }
       )}
     >
       {pathname === "/" || pathname === "/kategorije" ? (
-        <Image src="/logo_white.png" alt="Logo" width={180} height={100} />
+        <Image
+          src="/icons/asi-logo-bw.svg"
+          alt="Logo"
+          width={112}
+          height={112}
+        />
       ) : (
-        <Image src="/asi_logo.png" alt="Logo" width={180} height={100} />
+        <Image
+          src="/icons/asi-logo-orginal.svg"
+          alt="Logo"
+          width={112}
+          height={112}
+        />
       )}
       <nav
-        className={clsx("flex items-center gap-[34px] text-2xl text-black-40", {
+        className={clsx("flex items-center gap-8 text-2xl text-black-40 ", {
           "text-white-60": pathname === "/" || pathname === "/kategorije",
         })}
       >
@@ -42,7 +52,10 @@ export default function Navigacija() {
           </Link>
         ))}
       </nav>
-      <div className="flex items-center "></div>
+      <div className="flex gap-2 items-center ">
+        <Image src="/icons/instagram.svg" alt="Logo" width={48} height={48} />
+        <Image src="/icons/whatsapp.svg" alt="Logo" width={46} height={46} />
+      </div>
     </div>
   );
 }
