@@ -13,8 +13,13 @@ export default function Footer() {
   ];
   return (
     <div className="w-full flex flex-col justify-between h-96 bg-gray-51 pt-5 mt-24 ">
-      <div className="flex items-center justify-between pr-20">
-        <Image src="/logo_white.png" alt="Logo" width={400} height={400} />
+      <div className="flex h-full items-center justify-around">
+        <Image
+          src="/icons/asi-logo-bw.svg"
+          alt="Logo"
+          width={250}
+          height={250}
+        />
         <div className="flex flex-col gap-11">
           <p className="text-2xl text-red-71 ">SADRŽAJ</p>
           <div className="grid grid-cols-2 gap-x-8 gap-y-2">

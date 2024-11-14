@@ -20,7 +20,7 @@ export default function Pocetna() {
       text: "Naši instruktori posvećeni su sigurnosti svakog učenika, koristeći najnovije metode i tehnologije za sigurno upravljanje vozilom.",
     },
     {
-      link: "/icons/knowledge_learning.svg",
+      link: "/icons/creative-head.svg",
       name: "ISKUSNI INSTRUKTORI",
       text: "Naš tim instruktora ima dugogodišnje iskustvo u obuci vozača i posjeduje sve potrebne certifikate kako bi vam pružili najbolje obrazovanje.",
     },
@@ -108,15 +108,13 @@ export default function Pocetna() {
       <div className="bg-home-page bg-cover bg-no-repeat bg-center w-lvh h-lvh  ">
         <div className="flex flex-col  w-lvh h-lvh bg-[#000]/80 ">
           <Navigacija />
-          <div className="absolute top-1/3 left-[28%] flex flex-col items-center gap-4 ">
-            <div>
-              <p className=" text-[64px] font-bold italic text-white-60  ">
-                AUTOŠKOLA INSTRUKTOR
-              </p>
-              <p className="text-[32px] text-red-71">
-                Najsigurniji put do vozačke!
-              </p>
-            </div>
+          <div className="absolute top-1/3 left-[25%] flex flex-col gap-9 items-center ">
+            <Image
+              src="/icons/text-logo.svg"
+              alt="text logo"
+              width={800}
+              height={108}
+            />
             <div className="flex gap-16">
               <button className="w-[164px] h-16 border-red-71 bg-red-71 hover:bg-red-71/70  ">
                 <p className="text-base text-white-60 font-light ">
@@ -153,16 +151,16 @@ export default function Pocetna() {
       </section>
       <section className="flex flex-col gap-20 h-[650px] p-10 bg-gray-51">
         <Section number={"02"} text={"ZAŠTO IZABRATI NAS"} />
-        <div className="grid grid-cols-4 gap-y-14 gap-x gap-x-12 text-white-60 p-10 ">
+        <div className="grid grid-cols-4 gap-y-14 gap-x gap-x-12 text-gray-50 p-10 ">
           {items.map((item, index) => (
-            <div key={index} className="flex flex-col gap-2">
+            <div key={index} className="flex flex-col gap-2 ">
               <div className="flex gap-1 items-end">
                 <Image
                   src={item.link}
-                  alt="belt icon"
+                  alt="icons"
                   width={55}
                   height={55}
-                  className="leading-none"
+                  className="leading-none "
                 />
                 <p className="text-[22px] text-red-71 leading-none">
                   {item.name}
