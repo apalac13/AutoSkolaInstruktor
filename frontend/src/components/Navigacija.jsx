@@ -22,11 +22,16 @@ export default function Navigacija() {
       className={clsx(
         "w-full bg-blur-2xl  flex items-center justify-between border-b-[1px] border-black-40 px-8 py-2  ",
         {
-          "border-white-60": pathname === "/" || pathname === "/kategorije",
+          "border-white-60":
+            pathname === "/" ||
+            pathname === "/kategorije" ||
+            pathname === "/online-prijava",
         }
       )}
     >
-      {pathname === "/" || pathname === "/kategorije" ? (
+      {pathname === "/" ||
+      pathname === "/kategorije" ||
+      pathname === "/online-prijava" ? (
         <Image
           src="/icons/asi-logo-bw.svg"
           alt="Logo"
@@ -43,7 +48,10 @@ export default function Navigacija() {
       )}
       <nav
         className={clsx("flex items-center gap-8 text-2xl text-black-40 ", {
-          "text-white-60": pathname === "/" || pathname === "/kategorije",
+          "text-white-60":
+            pathname === "/" ||
+            pathname === "/kategorije" ||
+            pathname === "/online-prijava",
         })}
       >
         {navItems.map((item) => (

@@ -104,7 +104,7 @@ export default function Pocetna() {
   };
 
   return (
-    <div>
+    <div className="mb-24">
       <div className="bg-home-page bg-cover bg-no-repeat bg-center w-lvh h-lvh  ">
         <div className="flex flex-col  w-lvh h-lvh bg-[#000]/80 ">
           <Navigacija />

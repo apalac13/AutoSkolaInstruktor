@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/e-nastava", eNastavaRoutes);
-app.use("/online-testovi", guestRoutes);
+app.use("/", guestRoutes);
 
 app.get("/", (req, res) => {
   res.send("Pozdrav od Express poslužitelja!");

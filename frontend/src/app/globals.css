@@ -20,6 +20,20 @@ body {
   max-width: 100%;
   height: 100vh;
 }
+/* 
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+} */
+
+input[type="checkbox"].online-prijava-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+}
 
 @layer utilities {
   .text-balance {
@@ -58,4 +72,9 @@ body {
 
 #steps {
   animation-timeline: view();
+}
+
+#date {
+  background-color: #ffffff !important;
+  box-shadow: none !important;
 }
