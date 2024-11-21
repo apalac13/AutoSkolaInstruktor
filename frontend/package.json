@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/date-picker": "^2.1.8",
+    "@nextui-org/system": "^2.2.6",
+    "@nextui-org/theme": "^2.2.11",
     "axios": "^1.7.2",
     "clsx": "^2.1.1",
+    "framer-motion": "^11.11.16",
     "jwt-decode": "^4.0.0",
     "moment": "^2.30.1",
     "next": "^14.2.4",

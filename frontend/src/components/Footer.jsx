@@ -12,7 +12,7 @@ export default function Footer() {
     { name: "KONTAKT", href: "/kontakt" },
   ];
   return (
-    <div className="w-full flex flex-col justify-between h-96 bg-gray-51 pt-5 mt-24 ">
+    <div className="w-full flex flex-col justify-between h-96 bg-gray-51 pt-5  ">
       <div className="flex h-full items-center justify-around">
         <Image
           src="/icons/asi-logo-bw.svg"
