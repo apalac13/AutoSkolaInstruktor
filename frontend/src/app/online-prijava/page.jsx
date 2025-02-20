@@ -84,7 +84,7 @@ export default function OnlinePrijava() {
                 {moreInformation ? (
                   <p
                     onClick={() => setMoreInformation(!moreInformation)}
-                    className="text-base cursor-pointer "
+                    className="text-base  cursor-pointer "
                   >
                     -SAKRIJ
                   </p>

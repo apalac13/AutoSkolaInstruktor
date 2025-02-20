@@ -1,4 +1,4 @@
-const {nextui} = require('@nextui-org/theme');
+const { nextui } = require("@nextui-org/theme");
 const { transform } = require("next/dist/build/swc");
 const {
   ErrorBoundaryHandler,
@@ -10,7 +10,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/components/(date-picker|button|ripple|spinner|calendar|date-input|popover).js"
+    "./node_modules/@nextui-org/theme/dist/components/(date-picker|button|ripple|spinner|calendar|date-input|popover).js",
   ],
   theme: {
     extend: {
@@ -25,6 +25,7 @@ module.exports = {
         "category-BE": "url('/BE-kat.jpg')",
         "category-C": "url('/C-kat.jpg')",
         "online-prijava": "url('/online-prijava.jpg')",
+        kontakt: "url('/kontakt.jpg')",
       },
       fontFamily: {
         sourceSans3: ["Source Sans 3", "sans-serif"],

@@ -30,16 +30,18 @@ exports.sendOnlineApplication = async (req, res) => {
     // Continue with email sending process
     const transporter = nodemailer.createTransport({
       service: "gmail",
+      port: 587,
+      secure: false,
       auth: {
-        user: "jure@gmail.com", // Sender's email
-        pass: "", // App password for Gmail (if 2FA is enabled)
+        user: email, // Sender's email
+        pass: "khsq stoy lrfc rdhr", // App password for Gmail (if 2FA is enabled)
       },
     });
 
     const mailOptions = {
-      from: `"Online Prijava" <${email}>`, // Sender
-      to: "jure@gmail.com", // Receiver (fixed email)
-      subject: "Nova prijava putem online forme", // Email subject
+      from: `<${person}>`, // Sender
+      to: "anapalac@gmail.com", // Receiver (fixed email)
+      subject: "Online prijava", // Email subject
       html: `
         <h3>Detalji prijave:</h3>
         <p><strong>Ime i prezime:</strong> ${person}</p>
@@ -50,6 +52,49 @@ exports.sendOnlineApplication = async (req, res) => {
         <p><strong>Mjesto rođenja:</strong> ${placeOfBirth}</p>
         <p><strong>Kontakt broj:</strong> ${phoneNumber}</p>
         <p><strong>Kategorije:</strong> ${categories.join(", ")}</p>
+        <p><strong>Napomena:</strong> ${message}</p>
+      `,
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+      res.status(200).json({ message: "Email je uspješno poslan!" });
+    } catch (error) {
+      // Log the error to understand what went wrong with sending the email
+      console.error("Error while sending email:", error);
+      res.status(500).json({ message: "Greška pri slanju e-maila." });
+    }
+  } else {
+    res.status(405).json({ message: "Metoda nije podržana." });
+  }
+};
+
+exports.sendInquiry = async (req, res) => {
+  if (req.method === "POST") {
+    const { person, email, phoneNumber, message } = req.body;
+
+    // Log the request body to check if it's coming correctly
+    console.log("Received data:", req.body);
+
+    // Continue with email sending process
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      port: 587,
+      secure: false,
+      auth: {
+        user: email, // Sender's email
+        pass: "khsq stoy lrfc rdhr", // App password for Gmail (if 2FA is enabled)
+      },
+    });
+
+    const mailOptions = {
+      from: `<${person}>`, // Sender
+      to: "anapalac999@gmail.com", // Receiver (fixed email)
+      subject: "Upit za autoškolu", // Email subject
+      html: `
+        <p><strong>Ime i prezime:</strong> ${person}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Kontakt broj:</strong> ${phoneNumber}</p>
         <p><strong>Poruka:</strong> ${message}</p>
       `,
     };

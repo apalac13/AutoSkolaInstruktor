@@ -25,13 +25,15 @@ export default function Navigacija() {
           "border-white-60":
             pathname === "/" ||
             pathname === "/kategorije" ||
-            pathname === "/online-prijava",
+            pathname === "/online-prijava" ||
+            pathname === "/kontakt",
         }
       )}
     >
       {pathname === "/" ||
       pathname === "/kategorije" ||
-      pathname === "/online-prijava" ? (
+      pathname === "/online-prijava" ||
+      pathname === "/kontakt" ? (
         <Image
           src="/icons/asi-logo-bw.svg"
           alt="Logo"
@@ -51,7 +53,8 @@ export default function Navigacija() {
           "text-white-60":
             pathname === "/" ||
             pathname === "/kategorije" ||
-            pathname === "/online-prijava",
+            pathname === "/online-prijava" ||
+            pathname === "/kontakt",
         })}
       >
         {navItems.map((item) => (
