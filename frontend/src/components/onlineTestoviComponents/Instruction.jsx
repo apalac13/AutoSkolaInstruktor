@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BlackButton from "../buttons/blackButton";
 
 export default function Instruction({ setOption, setInstruction }) {
   const changeView = (viewValue) => {
@@ -37,7 +38,7 @@ export default function Instruction({ setOption, setInstruction }) {
       </div>
       <div className="flex flex-col gap-4 items-start ">
         <p className=" text-xl">IZABERITE OPCIJU:</p>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 mb-7">
           <div className="flex gap-2 ">
             <p>*</p>
             <p>
@@ -53,23 +54,13 @@ export default function Instruction({ setOption, setInstruction }) {
             </p>
           </div>
         </div>
-        <div className="flex gap-4">
-          <button
-            onClick={() => changeView("single")}
-            className="w-[200px] h-14  border border-black-40 bg-black-40 "
-          >
-            <p className=" text-white-60 text-base font-light  text-center ">
-              OPCIJA 1
-            </p>
-          </button>
-          <button
-            onClick={() => changeView("all")}
-            className="w-[200px] h-14  border border-black-40 bg-black-40 "
-          >
-            <p className=" text-white-60 text-base font-light  text-center ">
-              OPCIJA 2
-            </p>
-          </button>
+        <div className="flex gap-4 ">
+          <span onClick={() => changeView("single")}>
+            <BlackButton text={"OPCIJA 1"} />
+          </span>
+          <span onClick={() => changeView("all")}>
+            <BlackButton text={"OPCIJA 2"} />
+          </span>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import axios from "axios";
 import Instruction from "@/components/onlineTestoviComponents/Instruction";
 import SingleQuestionView from "@/components/onlineTestoviComponents/SingleQuestionView";
 import AllQuestionView from "@/components/onlineTestoviComponents/AllQuestionView";
+import Section from "@/components/Section";
 
 export default function Ispit() {
   const { ispitId } = useParams();
@@ -23,6 +24,9 @@ export default function Ispit() {
 
   return (
     <div className="m-5">
+      <div className="mb-11">
+        <Section number={"ISPIT"} text={"1"} />
+      </div>
       {instruction ? (
         <Instruction setOption={setOption} setInstruction={setInstruction} />
       ) : option === "single" ? (

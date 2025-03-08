@@ -1,5 +1,6 @@
 export default function Result({
   score,
+  totalPoints,
   correctAnswers,
   wrongAnswers,
   setReplay,
@@ -7,7 +8,7 @@ export default function Result({
   setViewAnswers,
   viewAnswers,
 }) {
-  const result = ((score / 120) * 100).toFixed(2);
+  const result = ((score / totalPoints) * 100).toFixed(2);
 
   return (
     <div className="flex flex-col gap-[86px] items-center justify-center">
@@ -22,7 +23,9 @@ export default function Result({
       </div>
       <div className="flex flex-col gap-10 text-lg">
         <div className="flex justify-between">
-          <h2>bodovi: {score}/120</h2>
+          <h2>
+            bodovi: {score}/ {totalPoints}
+          </h2>
           <h3>broj točnih odgovora: {correctAnswers}</h3>
         </div>
         <div className="flex gap-11">

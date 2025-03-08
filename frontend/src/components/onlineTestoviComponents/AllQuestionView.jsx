@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Questions from "./allQuestionComponents/Questions";
-import Result from "./allQuestionComponents/Result";
+import Result from "./Result";
+import { motion } from "framer-motion";
 
 export default function AllQuestionView({ test }) {
   const [questions, setQuestions] = useState(test.questions);
@@ -11,7 +12,7 @@ export default function AllQuestionView({ test }) {
   const [replayWrongAnswers, setReplayWrongAnswers] = useState(false);
   const [replay, setReplay] = useState(false);
   const [viewAnswers, setViewAnswers] = useState(false);
-
+  const [timeLeft, setTimeLeft] = useState(50 * 60);
   const correctAnswers = test.questions.length - wrongAnswers.length;
 
   useEffect(() => {
@@ -23,6 +24,7 @@ export default function AllQuestionView({ test }) {
       setViewAnswers(false);
       setQuestions(test.questions);
       setTestOver(false);
+      setTimeLeft(3000);
     }
   }, [replay]);
 
@@ -38,6 +40,7 @@ export default function AllQuestionView({ test }) {
       setQuestions(wrongQuestions);
       setWrongAnswers([]);
       setTestOver(false);
+      setTimeLeft(3000);
     }
   }, [replayWrongAnswers]);
 
@@ -48,8 +51,28 @@ export default function AllQuestionView({ test }) {
       setUserAnswers(userAnswers);
       setQuestions(test.questions);
       setTestOver(false);
+      setTimeLeft(3000);
     }
   }, [viewAnswers]);
+
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      handleTestOver();
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLeft]);
+
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+  };
 
   const handleChange = (questionNumber, answerOption) => {
     setUserAnswers((prevAnswers) => {
@@ -126,31 +149,50 @@ export default function AllQuestionView({ test }) {
   return (
     <div className="text-black-40">
       {testOver ? (
-        <Result
-          score={score}
-          correctAnswers={correctAnswers}
-          wrongAnswers={wrongAnswers}
-          setReplay={setReplay}
-          setReplayWrongAnswers={setReplayWrongAnswers}
-          setViewAnswers={setViewAnswers}
-          viewAnswers={viewAnswers}
-        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <Result
+            score={score}
+            totalPoints={test.totalPoints}
+            correctAnswers={correctAnswers}
+            wrongAnswers={wrongAnswers}
+            setReplay={setReplay}
+            setReplayWrongAnswers={setReplayWrongAnswers}
+            setViewAnswers={setViewAnswers}
+            viewAnswers={viewAnswers}
+          />
+        </motion.div>
       ) : (
         <div className="flex flex-col gap-11">
           <div className="flex gap-11 text-lg ">
-            <p>Pitanja: {questions.length}</p>
-            <p>Vrijeme: 50 minuta</p>
+            <p>Pitanja: 40 </p>
+            <p>Vrijeme: {formatTime(timeLeft)}</p>
           </div>
-          {questions.map((question) => (
-            <Questions
+          {questions.map((question, index) => (
+            <motion.div
               key={question.questionNumber}
-              question={question}
-              viewAnswers={viewAnswers}
-              handleChange={handleChange}
-              userAnswers={userAnswers}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Questions
+                question={question}
+                viewAnswers={viewAnswers}
+                handleChange={handleChange}
+                userAnswers={userAnswers}
+              />
+            </motion.div>
           ))}
-          <button onClick={handleTestOver}>ZAVRŠI TEST</button>
+          <button
+            className="w-full h-16  border border-red-71 bg-red-71 transition-background delay-150 duration-500  hover:bg-red-71/90 "
+            onClick={handleTestOver}
+          >
+            <p className="text-base text-white-60 ">ZAVRŠI TEST</p>
+          </button>
         </div>
       )}
     </div>

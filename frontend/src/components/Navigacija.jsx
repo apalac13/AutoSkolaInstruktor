@@ -20,52 +20,44 @@ export default function Navigacija() {
   return (
     <div
       className={clsx(
-        "w-full bg-blur-2xl  flex items-center justify-between border-b-[1px] border-black-40 px-8 py-2  ",
-        {
-          "border-white-60":
-            pathname === "/" ||
-            pathname === "/kategorije" ||
-            pathname === "/online-prijava" ||
-            pathname === "/kontakt",
-        }
+        "w-full bg-blur-2xl flex items-center justify-between border-b-[1px] px-8 py-2",
+        pathname !== "/o-nama" ? "border-white-60" : "border-black-40"
       )}
     >
-      {pathname === "/" ||
-      pathname === "/kategorije" ||
-      pathname === "/online-prijava" ||
-      pathname === "/kontakt" ? (
-        <Image
-          src="/icons/asi-logo-bw.svg"
-          alt="Logo"
-          width={112}
-          height={112}
-        />
-      ) : (
-        <Image
-          src="/icons/asi-logo-orginal.svg"
-          alt="Logo"
-          width={112}
-          height={112}
-        />
-      )}
+      <Image
+        src={
+          pathname !== "/o-nama"
+            ? "/icons/asi-logo-bw.svg"
+            : "/icons/asi-logo-orginal.svg"
+        }
+        alt="Logo"
+        width={112}
+        height={112}
+      />
+
       <nav
-        className={clsx("flex items-center gap-8 text-2xl text-black-40 ", {
-          "text-white-60":
-            pathname === "/" ||
-            pathname === "/kategorije" ||
-            pathname === "/online-prijava" ||
-            pathname === "/kontakt",
-        })}
+        className={clsx(
+          "flex items-center gap-8 text-2xl  ",
+          pathname !== "/o-nama" ? "text-white-60" : "text-black-40"
+        )}
       >
-        {navItems.map((item) => (
-          <Link href={item.href} key={item.name}>
-            {item.name}
+        {navItems.map(({ name, href }) => (
+          <Link href={href} key={name} className="hover:text-gray-50 ">
+            {name}
           </Link>
         ))}
       </nav>
-      <div className="flex gap-2 items-center ">
-        <Image src="/icons/instagram.svg" alt="Logo" width={48} height={48} />
-        <Image src="/icons/whatsapp.svg" alt="Logo" width={46} height={46} />
+
+      <div className="flex gap-2 items-center">
+        {["instagram", "whatsapp"].map((icon) => (
+          <Image
+            key={icon}
+            src={`/icons/${icon}.svg`}
+            alt={icon}
+            width={48}
+            height={48}
+          />
+        ))}
       </div>
     </div>
   );

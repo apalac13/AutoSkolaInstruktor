@@ -75,7 +75,7 @@ export default function Kategorije() {
 
   return (
     <div className="mb-24">
-      <div className=" bg-category-titleq bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
+      <div className=" bg-category-title bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
         <div className="flex flex-col w-lvh h-[500px] bg-[#000]/80 ">
           <Navigacija />
           <p className="justify-self-center self-center absolute top-[33%]  text-4xl font-bold italic  text-white-60">

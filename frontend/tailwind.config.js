@@ -25,6 +25,7 @@ module.exports = {
         "category-BE": "url('/BE-kat.jpg')",
         "category-C": "url('/C-kat.jpg')",
         "online-prijava": "url('/online-prijava.jpg')",
+        "online-testovi": "url('/online-testovi.jpg')",
         kontakt: "url('/kontakt.jpg')",
       },
       fontFamily: {
