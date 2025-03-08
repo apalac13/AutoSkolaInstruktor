@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Section from "@/components/Section";
+import BlackButton from "@/components/buttons/BlackButton";
 
 export default function KategorijaB() {
   const buttons = Array.from(
@@ -7,22 +9,29 @@ export default function KategorijaB() {
   );
 
   return (
-    <div className="flex justify-center items-center  flex-wrap gap-8">
-      {buttons.map((description, index) => (
-        <Link
-          key={index}
-          href={`/online-testovi/kategorija-b/${description
-            .toLowerCase()
-            .replace(" ", "-")}`}
-          className="w-[200px]"
-        >
-          <button className="w-[200px] h-16  border border-black-40 bg-black-40 ">
-            <p className=" text-white-60 text-base font-light  text-center ">
-              {description}
-            </p>
-          </button>
-        </Link>
-      ))}
+    <div className="flex flex-col gap-16">
+      <div className="flex flex-col items-start gap-6">
+        <Section number={"B"} text={"kategorija"} />
+        <p>
+          Ovdje se nalazi<strong> 12 testova</strong> za polaganje vozačkog
+          ispita iz propisa o sigurnosti prometa na cestama. Svaki test sadrži{" "}
+          <strong>40 pitanja</strong>. Svako pitanje može imati jedan ili više
+          točnih odgovora.
+        </p>
+      </div>
+      <div className="grid grid-cols-6 gap-x-6 gap-y-10    ml-4">
+        {buttons.map((description, index) => (
+          <Link
+            key={index}
+            href={`/online-testovi/kategorija-b/${description
+              .toLowerCase()
+              .replace(" ", "-")}`}
+            className="w-[200px]"
+          >
+            <BlackButton text={description} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }

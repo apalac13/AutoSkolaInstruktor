@@ -3,7 +3,7 @@ export default function Section({ number, text }) {
     <div className=" flex gap-1 text-base items-end text-red-71">
       <p>{number}</p>
       <div className=" w-24 h-[1px] bg-red-71 mb-[7px]  "></div>
-      <p>{text}</p>
+      <p className="uppercase ">{text}</p>
     </div>
   );
 }
