@@ -1,7 +1,10 @@
+"use client";
 import Navigacija from "@/components/Navigacija";
-import PageTransition from "@/components/PageTransition";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 export default function OnlineTestvoviLayout({ children }) {
+  const pathname = usePathname();
   return (
     <div className="mb-24">
       <div className=" bg-online-testovi bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
@@ -17,9 +20,32 @@ export default function OnlineTestvoviLayout({ children }) {
           </div>
         </div>
       </div>
-      <PageTransition>
-        <div className="p-10">{children}</div>
-      </PageTransition>
+      <motion.div
+        className="p-10"
+        key={pathname}
+        initial="initialState"
+        animate="animateState"
+        exit="exitState"
+        transition={{
+          duration: 0.7,
+        }}
+        variants={{
+          initialState: {
+            opacity: 0,
+            x: 50,
+          },
+          animateState: {
+            opacity: 1,
+            x: 0,
+          },
+          exitState: {
+            opacity: 0,
+            x: -50,
+          },
+        }}
+      >
+        {children}
+      </motion.div>
     </div>
   );
 }
