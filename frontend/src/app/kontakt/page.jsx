@@ -3,6 +3,7 @@ import Navigacija from "@/components/Navigacija";
 import Image from "next/image";
 import { useState } from "react";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 export default function Kontakt() {
   const contactItems = [
@@ -74,9 +75,14 @@ export default function Kontakt() {
       <div className=" bg-kontakt bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
         <div className="flex flex-col w-lvh h-[500px] bg-[#000]/70 ">
           <Navigacija />
-          <p className="justify-self-center self-center absolute top-[33%]  text-4xl font-bold italic  text-white-60">
+          <motion.p
+            initial={{ x: -50 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1 }}
+            className="justify-self-center self-center absolute top-[33%]  text-4xl font-bold italic  text-white-60"
+          >
             KONTAKT
-          </p>
+          </motion.p>
         </div>
       </div>
       <section className="flex justify-center items-center gap-44 py-14 text-black-40  ">

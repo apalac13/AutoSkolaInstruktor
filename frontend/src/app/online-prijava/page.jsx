@@ -4,6 +4,7 @@ import { DatePicker } from "@nextui-org/date-picker";
 import { useState } from "react";
 import axios from "axios";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 
 export default function OnlinePrijava() {
   const [formData, setFormData] = useState({
@@ -64,7 +65,12 @@ export default function OnlinePrijava() {
       <div className=" bg-online-prijava bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
         <div className="flex flex-col w-lvh h-[500px] bg-[#000]/80 ">
           <Navigacija />
-          <div className="absolute top-[30%] justify-self-center self-center">
+          <motion.div
+            initial={{ x: -50 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute top-[30%] justify-self-center self-center"
+          >
             <p className=" text-4xl font-bold italic  text-white-60">
               ONLINE PRIJAVA
             </p>
@@ -72,7 +78,7 @@ export default function OnlinePrijava() {
               Ostavite nam podatke, a mi ćemo vam se javiti u najkraćem mogućem
               roku
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
       <section className="flex justify-center items-center py-14  ">
