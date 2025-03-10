@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Category from "@/components/aboutUsComponents/Category";
+import { motion } from "framer-motion";
 
 export default function ONama() {
   const settings = {
@@ -85,14 +86,19 @@ export default function ONama() {
       <div className=" bg-gradient-to-r  from-white-60 to-gray-52 w-lvh h-[500px]  border-b border-black-40   ">
         <div className="flex flex-col w-lvh h-[500px] ">
           <Navigacija />
-          <div className=" absolute top-[25%] justify-self-center self-center">
+          <motion.div
+            initial={{ x: -50 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1 }}
+            className=" absolute top-[25%] justify-self-center self-center"
+          >
             <Image
               src={"icons/logo-horizontal.svg"}
               alt="asi logo horizontal"
               width={800}
               height={211}
             />
-          </div>
+          </motion.div>
         </div>
       </div>
       <section className="w-full flex border-b border-black-40 ">

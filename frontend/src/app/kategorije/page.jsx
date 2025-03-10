@@ -1,9 +1,10 @@
 "use client";
-import Category from "@/components/aboutUsComponents/Category";
+import Category from "@/components/categoriesComponents/Category";
 import Navigacija from "@/components/Navigacija";
 import Section from "@/components/Section";
-import { useState, useEffect, useRef } from "react";
+import Step from "@/components/categoriesComponents/Step";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Kategorije() {
   const categories = [
@@ -73,153 +74,106 @@ export default function Kategorije() {
     },
   ];
 
+  const drivingLicenceSteps = [
+    {
+      icon: "/icons/stethoscope.svg",
+      number: "1. KORAK",
+      title: "OBAVITI LJEČNIČKI PREGLED",
+      description:
+        "Prvi korak je posjetiti liječnika radi procjene zdravstvenog stanja i utvrđivanja jeste li sposobni za vožnju.",
+    },
+    {
+      icon: "/icons/school.svg",
+      number: "2. KORAK",
+      title: "SLUŠATI PREDAVANJA O PROMETNIM PRAVILIMA I SIGURNOSNIM PROPISIMA",
+      description:
+        "Prvi korak je posjetiti liječnika radi procjene zdravstvenog stanja i utvrđivanja jeste li sposobni za vožnju.",
+    },
+    {
+      icon: "/icons/health-cross.svg",
+      number: "3. KORAK",
+      title: "POHAĐATI PREDAVANJA PRVE POMOĆI",
+      description:
+        "Dio obuke uključuje i tečaj prve pomoći, gdje ćete naučiti osnovne postupke za pružanje pomoći u slučaju prometne nesreće ili hitne situacije. Ove vještine mogu biti ključne u kritičnim situacijama, a poznavanje prve pomoći zakon je i obaveza svakog vozača.",
+    },
+    {
+      icon: "/icons/exam-check.svg",
+      number: "4. KORAK",
+      title: "PRIJAVITI I POLOŽITI ISPIT IZ PROPISA I PRVE POMOĆI",
+      description:
+        "Nakon završetka predavanja, potrebno je prijaviti ispit iz prometnih propisa i prve pomoći. Ovaj ispit sastoji se od teorijskog dijela koji obuhvaća prometne propise i pitanja iz prve pomoći. Polaganjem ovog ispita stječete pravo na početak praktične obuke vožnje.",
+    },
+    {
+      icon: "/icons/car-ds.svg",
+      number: "5. KORAK",
+      title: "POHAĐATI SATE VOŽNJE, PRIJAVITI I POLOŽITI ISPIT",
+      description:
+        "Kada ste položili ispit iz propisa i prve pomoći, krećete s vozačkim satima uz instruktora. Tijekom vožnje instruktor će vas obučavati kako upravljati vozilom, pravilno se ponašati u različitim situacijama u prometu i savladati manevarske vještine. Kad prikupite potreban broj sati i instruktor procijeni da ste spremni, prijavit ćete se za završni vozački ispit.",
+    },
+  ];
+
   return (
     <div className="mb-24">
       <div className=" bg-category-title bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
         <div className="flex flex-col w-lvh h-[500px] bg-[#000]/80 ">
           <Navigacija />
-          <p className="justify-self-center self-center absolute top-[33%]  text-4xl font-bold italic  text-white-60">
+          <motion.p
+            initial={{ x: -50 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1 }}
+            className="justify-self-center self-center absolute top-[33%]  text-4xl font-bold italic  text-white-60"
+          >
             KATEGORIJE
-          </p>
+          </motion.p>
         </div>
       </div>
       <section className="p-10 bg-gray-51">
         <Section number={"01"} text={"KATEGORIJE"} />
         <div className="grid grid-cols-3 gap-x-4 gap-y-[74px] justify-items-center p-10">
           {categories.map((category, index) => (
-            <div key={index} className="flex flex-col gap-5 w-[450px] ">
-              <div
-                style={{
-                  backgroundImage: `url(/${category.image})`,
-                }}
-                className=" bg-cover bg-no-repeat bg-center w-full h-[400px]  "
-              >
-                <div className="flex items-center justify-center w-full h-[400px] bg-[#000]/85 ">
-                  <div className="flex gap-2 ">
-                    <div className="w-1 h-8 bg-red-71 mb-[5px]"></div>
-                    <p className="text-white-60 text-xl font-semibold">
-                      {category.imageText}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col gap-2 text-start">
-                <div className="flex gap-1 ">
-                  <p className="text-lg text-red-71">OZNAKA:</p>
-                  <p className="text-lg text-white-60  ">{category.category}</p>
-                </div>
-                <div className="flex flex-col  ">
-                  <p className="text-lg text-red-71 leading-none">
-                    TIPOVI VOZILA:
-                  </p>
-
-                  <p className="text-base text-gray-50 font-light">
-                    {category.type}
-                  </p>
-                </div>
-                <div className="flex flex-col ">
-                  <p className="text-lg text-red-71 leading-none">
-                    UVJETI ZA UPIS:
-                  </p>
-
-                  <p className="text-base text-gray-50 font-light">
-                    {category.conditions}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <Category key={index} category={category} />
           ))}
         </div>
       </section>
       <section className="p-10 ">
         <Section number={"02"} text={"KAKO DO VOZAČKE"} />
-        <div className="flex flex-col items-center justify-center p-10 ">
-          <div className="flex gap-1">
-            <div className="flex flex-col items-center">
-              <div
-                id="steps"
-                className="flex items-center justify-center w-[75px] h-[75px]  border   bg-gray-51  rounded-full animate-appear   "
-              >
-                <p className="text-white-60 text-4xl font-light">1</p>
-              </div>
-              <div
-                id="steps"
-                className=" w-[1px] h-[200px] bg-red-71 animate-appearLine "
-              ></div>
-            </div>
-            <div className="flex flex-col items-start w-[300px] pt-6">
-              <p className="text-lg text-black-40">OBAVITI LJEČNIČKI PREGLED</p>
-              <p className=" ">nfinvirnibnrinbioribnrinb</p>
-            </div>
-          </div>
-          <div className="flex gap-1 ">
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center w-[75px] h-[75px] border border-red-71  bg-gray-51  rounded-full  ">
-                <p className="text-white-60 text-4xl font-light">2</p>
-              </div>
-              <div className="w-[1px] h-[200px] bg-red-71 "></div>
-            </div>
-            <div className="flex flex-col items-start w-[300px] ">
-              <p className="text-lg text-black-40">
-                SLUŠATI PREDAVANJA O PROMETNIM PRAVILIMA I SIGURNOSNIM PROPISIMA
-              </p>
-              <p>nfinvirnibnrinbioribnrinb</p>
+        <motion.div
+          initial={{ opacity: 0.5, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 3 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center p-10"
+        >
+          <div className="relative h-[1650px] ">
+            <div className="absolute z-10 translate-x-[-196px] translate-y-2 w-[2px] h-full bg-gray-50"></div>
+            <motion.div
+              initial={{ height: 0 }}
+              whileInView={{ height: "100%" }}
+              transition={{ duration: 6 }}
+              viewport={{ once: true }}
+              className="absolute z-20 translate-x-[-196px] translate-y-2 w-[2px] h-full bg-red-71"
+            ></motion.div>
+            <div className="absolute z-30 flex flex-col gap-28 items-center justify-center w-full">
+              {drivingLicenceSteps.map((step, index) => (
+                <Step key={index} step={step} />
+              ))}
             </div>
           </div>
-          <div className="flex gap-1">
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center w-[75px] h-[75px] border border-red-71  bg-gray-51  rounded-full  ">
-                <p className="text-white-60 text-4xl font-light">3</p>
-              </div>
-              <div className="w-[1px] h-[200px] bg-red-71 "></div>
-            </div>
-            <div className="flex flex-col items-start w-[300px] ">
-              <p className="text-lg text-black-40">
-                POHAĐATI PREDAVANJA PRVE POMOĆI
-              </p>
-              <p>nfinvirnibnrinbioribnrinb</p>
-            </div>
-          </div>
-          <div className="flex gap-1">
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center w-[75px] h-[75px] border border-red-71  bg-gray-51  rounded-full  ">
-                <p className="text-white-60 text-4xl font-light">4</p>
-              </div>
-              <div className="w-[1px] h-[200px] bg-red-71 "></div>
-            </div>
-            <div className="flex flex-col items-start w-[300px] ">
-              <p className="text-lg text-black-40">
-                PRIJAVITI I POLOŽITI ISPIT IZ PROPISA I PRVE POMOĆI
-              </p>
-              <p>nfinvirnibnrinbioribnrinb</p>
-            </div>
-          </div>
-          <div className="flex gap-1">
-            <div className="flex flex-col items-center">
-              <div className="flex items-center justify-center w-[75px] h-[75px] border border-red-71  bg-gray-51  rounded-full  ">
-                <p className="text-white-60 text-4xl font-light">5</p>
-              </div>
-              <div className="w-[1px] h-[200px] bg-red-71 "></div>
-            </div>
-            <div className="flex flex-col items-start w-[300px] ">
-              <p className="text-lg text-black-40">
-                POHAĐATI SATE VOŽNJE, PRIJAVITI I POLOŽITI ISPIT
-              </p>
-              <p>nfinvirnibnrinbioribnrinb</p>
-            </div>
-          </div>
-          <div className="flex gap-1">
+          <div className="absolute -translate-x-[96px] translate-y-[870px] flex  items-center w-[300px] h-[100px]">
             <Image
-              src={"/icons/badge_id.svg"}
-              alt="Badge icon"
-              width={100}
-              height={100}
+              src={"/icons/driving-licence.svg"}
+              alt="driving licence"
+              width={120}
+              height={120}
             />
-            <div className=" flex items-center w-[300px] ">
-              <p className="text-lg text-black-40">VAŠA VOZAČKA 😎</p>
+            <div className="flex flex-col items-start">
+              <p className="text-base text-red-71">6. KORAK</p>
+              <p className="text-[22px] font-semibold text-black-40 text-start leading-tight">
+                VAŠA VOZAČKA
+              </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

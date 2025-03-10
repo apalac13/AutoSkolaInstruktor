@@ -10,14 +10,19 @@ export default function OnlineTestvoviLayout({ children }) {
       <div className=" bg-online-testovi bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
         <div className="flex flex-col w-lvh h-[500px] bg-[#000]/80 ">
           <Navigacija />
-          <div className="absolute top-[30%] justify-self-center self-center">
+          <motion.div
+            initial={{ x: -50 }}
+            animate={{ x: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute top-[30%] justify-self-center self-center"
+          >
             <p className=" text-4xl font-bold italic  text-white-60">
               ONLINE TESTOVI
             </p>
             <p className="text-xl text-white-60 font-light italic ">
               Testirajte svoje znanje online uz pomoć testova koje vam nudimo
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
       <motion.div
@@ -32,7 +37,7 @@ export default function OnlineTestvoviLayout({ children }) {
         variants={{
           initialState: {
             opacity: 0,
-            x: 50,
+            x: -50,
           },
           animateState: {
             opacity: 1,
@@ -40,7 +45,7 @@ export default function OnlineTestvoviLayout({ children }) {
           },
           exitState: {
             opacity: 0,
-            x: -50,
+            x: 50,
           },
         }}
       >
