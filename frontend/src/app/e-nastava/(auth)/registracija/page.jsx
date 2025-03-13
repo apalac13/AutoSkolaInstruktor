@@ -33,7 +33,7 @@ export default function Registracija() {
   };
 
   return (
-    <div className=" mt-28 font-sourceSans3 text-black-40 ">
+    <div className=" mt-28 font-sourceSans3 text-black-40 mb-28 ">
       <form onSubmit={handleSubmit} className="flex flex-col gap-12 ">
         <p className=" text-xl font-semibold">REGISTRACIJA</p>
         <div className="flex flex-col gap-6 items-center">

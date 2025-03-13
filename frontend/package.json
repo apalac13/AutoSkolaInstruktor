@@ -12,6 +12,7 @@
     "@nextui-org/date-picker": "^2.1.8",
     "@nextui-org/system": "^2.2.6",
     "@nextui-org/theme": "^2.2.11",
+    "@react-google-maps/api": "^2.20.6",
     "axios": "^1.7.2",
     "clsx": "^2.1.1",
     "framer-motion": "^11.18.2",

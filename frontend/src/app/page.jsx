@@ -5,6 +5,7 @@ import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import Button from "@/components/buttons/Button";
 
 export default function Pocetna() {
   const statisticsItems = [
@@ -116,14 +117,18 @@ export default function Pocetna() {
               height={108}
             />
             <div className="flex gap-16">
-              <button className="w-[164px] h-16 border-red-71 bg-red-71 hover:bg-red-71/70  ">
-                <p className="text-base text-white-60 font-light ">
-                  PRIJAVI SE
-                </p>
-              </button>
-              <button className="w-[164px] h-16 border-black-40 bg-black-40 hover:bg-black-40/70 ">
-                <p className="text-base text-white-60 font-light ">KONTAKT</p>
-              </button>
+              <Button
+                type={"button"}
+                width={"200px"}
+                text={"PRIJAVI SE"}
+                color={"red"}
+              />
+              <Button
+                type={"button"}
+                width={"200px"}
+                text={"KONTAKT"}
+                color={"black"}
+              />
             </div>
           </div>
         </div>
@@ -166,7 +171,7 @@ export default function Pocetna() {
                   {item.name}
                 </p>
               </div>
-              <p className=" text-base font-extralight text-start leading-tight  ">
+              <p className=" text-base font-extralight text-justify leading-tight  ">
                 {item.text}
               </p>
             </div>
@@ -227,7 +232,7 @@ export default function Pocetna() {
                   OBUKA SVIH KATEGORIJA
                 </p>
               </div>
-              <p className=" text-base font-light text-white-60 text-start ">
+              <p className=" text-base font-light text-white-60 text-justify ">
                 Autoskola "Instruktor" se ističe svojom ponudom sveobuhvatne
                 obuke za sve kategorije vozačkih dozvola. Ova usluga je ključna
                 za sve polaznike koji žele da steknu vozačku dozvolu za
@@ -248,7 +253,7 @@ export default function Pocetna() {
                   KONDICIJSKA VOŽNJA
                 </p>
               </div>
-              <p className=" text-base font-light text-white-60 text-start ">
+              <p className=" text-base font-light text-white-60 text-justify ">
                 Kondicijska vožnja je program dodatne obuke za vozače koji žele
                 osvježiti svoje vozačke vještine i steći dodatno samopouzdanje
                 na cesti. Ova vrsta vožnje idealna je za one koji dugo nisu
@@ -270,7 +275,7 @@ export default function Pocetna() {
                   VOŽNJA U SPLIT
                 </p>
               </div>
-              <p className=" text-base font-light text-white-60 text-start ">
+              <p className=" text-base font-light text-white-60 text-justify ">
                 Nudimo vožnju u gradu Splitu i vožnje po autocesti. Ova obuka je
                 dizajnirana kako bi pomogla vozačima da steknu dodatno iskustvo
                 i sigurnost u vožnji kroz gradske gužve i na brzim cestama. Naši
@@ -295,7 +300,7 @@ export default function Pocetna() {
                     width={33}
                     height={25}
                   />
-                  <blockquote className="text-base italic text-start">
+                  <blockquote className="text-base italic text-justify">
                     {testimonial.text}
                   </blockquote>
                 </div>

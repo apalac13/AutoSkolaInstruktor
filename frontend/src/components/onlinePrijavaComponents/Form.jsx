@@ -22,7 +22,7 @@ export default function Form() {
 
   const resetMessageWithTimeout = (msg) => {
     setMessage(msg);
-    setTimeout(() => setMessage(null), 3000);
+    setTimeout(() => setMessage(null), 5000);
   };
 
   const handleChange = (e) => {

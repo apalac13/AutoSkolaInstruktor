@@ -3,7 +3,7 @@ export default function InputField({ label, id, type, name, value, onChange }) {
     <div className="w-full">
       <label htmlFor={id} className="flex flex-col items-start">
         <p className="text-lg">
-          {label} <span className="text-red-71">*</span>{" "}
+          {label} <span className="text-red-71">*</span>
         </p>
         <input
           id={id}
