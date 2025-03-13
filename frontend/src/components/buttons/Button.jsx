@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-export default function RedButton({ type, width, text, color }) {
+export default function Button({ type, width, text, color }) {
   return (
     <button
       type={type}
@@ -12,7 +12,7 @@ export default function RedButton({ type, width, text, color }) {
       )}
     >
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
-      <span className="relative text-base text-center">{text}</span>
+      <span className="relative text-base text-center font-light">{text}</span>
     </button>
   );
 }

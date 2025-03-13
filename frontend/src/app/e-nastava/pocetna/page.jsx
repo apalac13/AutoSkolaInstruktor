@@ -36,7 +36,7 @@ export default function Pocetna() {
   }, [router]);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center mb-28">
       <SubNavigacija />
       <div className="flex flex-col gap-20">
         <Kvizovi />

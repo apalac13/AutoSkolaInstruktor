@@ -34,7 +34,7 @@ export default function ChatPage() {
   }, [router]);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center mb-28">
       <SubNavigacija />
       <Chat user={user} />
     </div>

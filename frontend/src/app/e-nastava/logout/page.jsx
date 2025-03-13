@@ -21,7 +21,7 @@ export default function Logout() {
   }, [router]);
 
   return (
-    <div className="mt-28 font-sourceSans3 text-black-40 text-center">
+    <div className="my-28  font-sourceSans3 text-black-40 text-center">
       {loggedOut && (
         <>
           <p className="text-xl font-semibold">Odjavili ste se</p>
