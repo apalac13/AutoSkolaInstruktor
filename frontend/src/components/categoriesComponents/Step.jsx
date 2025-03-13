@@ -48,7 +48,7 @@ export default function ({ step }) {
         </p>
       </div>
       <div></div>
-      <p className="w-[370px] text-start self-center ">{step.description}</p>
+      <p className="w-[370px]  self-center text-justify ">{step.description}</p>
     </div>
   );
 }

@@ -6,14 +6,8 @@ const Message = require("../models/message");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const quiz = require("../models/quiz");
-// const Otp = require('../models/otp');
-// const sendMail = require('../mail/mail');
 
 const saltRunde = 10;
-
-exports.getCheck = (req, res, next) => {
-  res.json({ msg: "All ok" });
-};
 
 exports.verifyToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -64,12 +58,12 @@ exports.logIn = async (req, res) => {
         "tajniKljuc",
         { expiresIn: "1h" }
       );
-      return res.json({ token }); // Use return to stop further execution
+      return res.json({ token });
     } else {
-      return res.status(401).send("Neispravni podaci za prijavu"); // Return here as well
+      return res.status(401).send("Neispravni podaci za prijavu");
     }
   } catch (error) {
-    return res.status(500).send(error.message); // Make sure to return in case of an error
+    return res.status(500).send(error.message);
   }
 };
 
@@ -138,100 +132,3 @@ exports.getAllMessages = async (req, res) => {
     res.status(500).json({ msg: "Something went wrong!" });
   }
 };
-
-// function getEmail(email) {
-//   Otp.find({ email: email }, (err, otps) => {
-//     if (err) {
-//       console.log("err in finding email ");
-//     }
-//     if (otps.length !== 0) {
-//       console.log("yes in delete");
-//       Otp.deleteOne({ email: email }, (err) => {
-//         if (err) {
-//           console.log("err in delete");
-//         }
-//       });
-//     }
-//   });
-// }
-
-// exports.Reset = (req, res) => {
-//   User.find({ email: req.body.email }, async (err, users) => {
-//     if (err) {
-//       console.log("err in finding email ");
-//       res.json({ msg: "some error!" });
-//     }
-//     if (users.length === 0) {
-//       console.log("user does not exist with this email at forgot password");
-//       res.json({ msg: "user does not exist with this email" });
-//     } else {
-//       const email = req.body.email;
-//       const x = await getEmail(req.body.email);
-//       setTimeout(async function () {
-//         console.log("timeout (2min)");
-//         const y = await getEmail(email);
-//       }, 2 * 60000);
-//       const a = Math.floor(1000 + Math.random() * 9000);
-//       const otp = new Otp({
-//         otp: a,
-//         email: req.body.email,
-//       });
-//       console.log("otp =", otp);
-//       try {
-//         const doc = otp.save();
-//         sendMail(otp.email, otp.otp);
-//         res.status(201).json({ message: "all ok otp has been sent" });
-//       } catch (err) {
-//         res.json({ msg: "some error!" });
-//       }
-//     }
-//   });
-// };
-
-// exports.resestPasswordDone = (req, res) => {
-//   User.findOne({ email: req.body.email }, async (err, user) => {
-//     if (err) {
-//       console.log(err);
-//       res.json({ msg: "Something went wrong" });
-//     } else {
-//       if (!user) {
-//         res.json({ msg: "User does not exist with this email!!" });
-//       } else {
-//         Otp.findOne({ email: req.body.email }, async (err, otps) => {
-//           if (err) {
-//             res.json({ msg: "Something went wrong" });
-//           }
-//           if (!otps) {
-//             res.json({ msg: "Something went wrong" });
-//           } else {
-//             const otp = otps.otp;
-//             if (otp !== req.body.otp) {
-//               res.json({ msg: "Invalid Otp!!!" });
-//             } else {
-//               const p = User.hashPassword(req.body.p1);
-//               const x = await getEmail(req.body.email);
-//               User.updateOne(
-//                 { email: req.body.email },
-//                 { password: p },
-//                 function (err, user) {
-//                   if (err) {
-//                     console.log(err);
-//                     res.json({ msg: "Something went wrong" });
-//                   } else {
-//                     res.json({ message: "password updated!!" });
-//                   }
-//                 }
-//               );
-//             }
-//           }
-//         });
-//       }
-//     }
-//   });
-// };
-
-// exports.testDone = (req, res, next) => {
-//   console.log("yo boy at backend");
-//   console.log(req.body);
-//   res.json({ msg: "hello utsav" });
-// };

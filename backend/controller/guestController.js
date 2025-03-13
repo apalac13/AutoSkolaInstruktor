@@ -24,10 +24,8 @@ exports.sendOnlineApplication = async (req, res) => {
       message,
     } = req.body;
 
-    // Log the request body to check if it's coming correctly
     console.log("Received data:", req.body);
 
-    // Continue with email sending process
     const transporter = nodemailer.createTransport({
       service: "gmail",
       port: 587,
@@ -46,9 +44,7 @@ exports.sendOnlineApplication = async (req, res) => {
         <h3>Detalji prijave:</h3>
         <p><strong>Ime i prezime:</strong> ${person}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Datum rođenja:</strong> ${date.day}.${date.month}.${
-        date.year
-      }</p>
+        <p><strong>Datum rođenja:</strong> ${date}</p>
         <p><strong>Mjesto rođenja:</strong> ${placeOfBirth}</p>
         <p><strong>Kontakt broj:</strong> ${phoneNumber}</p>
         <p><strong>Kategorije:</strong> ${categories.join(", ")}</p>
@@ -60,7 +56,6 @@ exports.sendOnlineApplication = async (req, res) => {
       await transporter.sendMail(mailOptions);
       res.status(200).json({ message: "Email je uspješno poslan!" });
     } catch (error) {
-      // Log the error to understand what went wrong with sending the email
       console.error("Error while sending email:", error);
       res.status(500).json({ message: "Greška pri slanju e-maila." });
     }
@@ -73,10 +68,8 @@ exports.sendInquiry = async (req, res) => {
   if (req.method === "POST") {
     const { person, email, phoneNumber, message } = req.body;
 
-    // Log the request body to check if it's coming correctly
     console.log("Received data:", req.body);
 
-    // Continue with email sending process
     const transporter = nodemailer.createTransport({
       service: "gmail",
       port: 587,
@@ -89,7 +82,7 @@ exports.sendInquiry = async (req, res) => {
 
     const mailOptions = {
       from: `<${person}>`, // Sender
-      to: "anapalac999@gmail.com", // Receiver (fixed email)
+      to: "anapalac999@gmail.com", // Receiver
       subject: "Upit za autoškolu", // Email subject
       html: `
         <p><strong>Ime i prezime:</strong> ${person}</p>
@@ -103,7 +96,6 @@ exports.sendInquiry = async (req, res) => {
       await transporter.sendMail(mailOptions);
       res.status(200).json({ message: "Email je uspješno poslan!" });
     } catch (error) {
-      // Log the error to understand what went wrong with sending the email
       console.error("Error while sending email:", error);
       res.status(500).json({ message: "Greška pri slanju e-maila." });
     }
