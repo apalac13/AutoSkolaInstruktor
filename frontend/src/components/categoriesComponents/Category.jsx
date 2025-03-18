@@ -23,7 +23,7 @@ export default function Category({ category }) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-2 text-start">
+      <div className="flex flex-col gap-2 text-justify">
         <div className="flex gap-1 ">
           <p className="text-lg text-red-71">OZNAKA:</p>
           <p className="text-lg text-white-60  ">{category.category}</p>

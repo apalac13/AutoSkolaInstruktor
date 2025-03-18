@@ -55,28 +55,6 @@ module.exports = {
           82: "#9D9C62",
         },
       },
-      animation: {
-        appear: "appear 3s linear",
-        appearLine: "appearLine 3s forwards ",
-      },
-      keyframes: {
-        appear: {
-          "0%": {
-            "border-color": "#181818",
-          },
-          "100%": {
-            "border-color": "#DA291C",
-          },
-        },
-        appearLine: {
-          "0%": {
-            background: "#181818",
-          },
-          "100%": {
-            background: "#DA291C",
-          },
-        },
-      },
     },
   },
   plugins: [nextui()],
