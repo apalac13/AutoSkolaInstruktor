@@ -21,7 +21,19 @@ export default function ONama() {
     autoplaySpeed: 5000,
   };
   const settingsGallery = {
-    dots: false,
+    customPaging: function (i) {
+      return (
+        <a>
+          <img
+            src={gallery[i]}
+            alt={`Thumbnail ${i}`}
+            className="w-16 h-12 object-cover"
+          />
+        </a>
+      );
+    },
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
     arrows: true,
     infinite: true,
     slidesToShow: 3,
@@ -33,7 +45,7 @@ export default function ONama() {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          dots: false,
+          dots: true,
           arrows: true,
         },
       },
@@ -42,7 +54,7 @@ export default function ONama() {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          dots: false,
+          dots: true,
           arrows: true,
         },
       },
@@ -94,7 +106,7 @@ export default function ONama() {
           >
             <Image
               src={"icons/logo-horizontal.svg"}
-              alt="asi logo horizontal"
+              alt="asi-logo-horizontal"
               width={800}
               height={211}
             />
@@ -104,7 +116,12 @@ export default function ONama() {
       <section className="w-full flex border-b border-black-40 ">
         <div className="w-1/2 flex flex-col gap-20 p-10">
           <Section number={"01"} text={"O NAMA"} />
-          <div className="flex flex-col gap-5 text-black-40 ">
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col gap-5 text-black-40 "
+          >
             <h1 className="text-4xl font-semibold text-start ">
               AUTOŠKOLA INSTRUKTOR
             </h1>
@@ -121,7 +138,7 @@ export default function ONama() {
               učimo vozače da budu odgovorni sudionici u prometu, opremljeni
               trajnim znanjima i vještinama za cijeli život.
             </p>
-          </div>
+          </motion.div>
         </div>
         <div className="w-1/2 mt-10 md:mt-0 ">
           <Slider {...settings}>
@@ -159,7 +176,12 @@ export default function ONama() {
         </div>
         <div className="w-1/2 flex flex-col gap-20 p-10 bg-red-72">
           <Section number={"02"} text={"POVIJEST"} />
-          <div className="flex flex-col gap-5 text-white-60 ">
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col gap-5 text-white-60 "
+          >
             <h1 className="text-4xl font-semibold text-start ">
               1990. - DANAS
             </h1>
@@ -179,20 +201,25 @@ export default function ONama() {
               povjerenje mnogih novih vozača koji su prošli kroz njihove
               programe obuke.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
       <section className="flex flex-col gap-20 p-10 bg-gray-51">
         <Section number={"03"} text={"KATEGORIJE"} />
         <div className="grid grid-cols-3  gap-y-3 py-10">
           {categories.map((category, index) => (
-            <Category key={index} category={category} />
+            <Category key={index} category={category} index={index} />
           ))}
         </div>
       </section>
       <section className="flex flex-col gap-20 p-10">
         <Section number={"04"} text={"GALERIJA"} />
-        <div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 2 }}
+          className="h-full"
+        >
           <Slider {...settingsGallery}>
             {gallery.map((image, index) => (
               <div key={index} className="h-[400px]">
@@ -212,7 +239,7 @@ export default function ONama() {
               </div>
             ))}
           </Slider>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
