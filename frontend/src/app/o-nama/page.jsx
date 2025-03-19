@@ -5,7 +5,7 @@ import Section from "@/components/Section";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Category from "@/components/aboutUsComponents/Category";
+import Category from "@/components/oNamaComponents/Category";
 import { motion } from "framer-motion";
 
 export default function ONama() {
