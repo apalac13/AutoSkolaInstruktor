@@ -16,10 +16,22 @@ export default function Pocetna() {
   return (
     <div className="mb-24 ">
       <IntroOverlay />
+      <a
+        aria-label="Chat on WhatsApp"
+        href="https://wa.me/38763016830?text=Započinjete%20razgovor%20s%20Autoškolom%20Instruktor"
+        className="fixed bottom-2 right-2 z-20 animate-pulse"
+      >
+        <Image
+          alt="Chat on WhatsApp"
+          src="/icons/whatsapp-chat.svg"
+          width={74}
+          height={74}
+        />
+      </a>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 3 }}
+        transition={{ duration: 1, delay: 2 }}
       >
         <div className="relative bg-home-page bg-cover bg-no-repeat bg-center w-lvh h-lvh ">
           <div className="flex flex-col  w-lvh h-lvh bg-[#000]/80 ">

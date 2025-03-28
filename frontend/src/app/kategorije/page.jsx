@@ -1,8 +1,8 @@
 "use client";
-import Category from "@/components/categoriesComponents/Category";
+import Category from "@/components/kategorijeComponents/Category";
 import Navigacija from "@/components/Navigacija";
 import Section from "@/components/Section";
-import Step from "@/components/categoriesComponents/Step";
+import Step from "@/components/kategorijeComponents/Step";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -150,7 +150,6 @@ export default function Kategorije() {
               initial={{ height: 0 }}
               whileInView={{ height: "100%" }}
               transition={{ duration: 6 }}
-              viewport={{ once: true }}
               className="absolute z-20 translate-x-[-196px] translate-y-2 w-[2px] h-full bg-red-71"
             ></motion.div>
             <div className="absolute z-30 flex flex-col gap-28 items-center justify-center w-full">

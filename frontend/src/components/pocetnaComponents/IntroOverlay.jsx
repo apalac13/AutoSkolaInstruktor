@@ -9,7 +9,7 @@ export default function IntroOverlay() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOverlay(false);
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);

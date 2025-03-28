@@ -36,33 +36,25 @@ export default function Navigacija() {
         width={112}
         height={112}
       />
-
       <nav
         className={clsx(
-          "flex items-center gap-8 text-2xl  ",
+          " flex items-center gap-8 text-2xl   ",
           pathname !== "/o-nama" && pathname !== "/e-nastava"
             ? "text-white-60"
             : "text-black-40"
         )}
       >
         {navItems.map(({ name, href }) => (
-          <Link href={href} key={name} className="hover:text-gray-50 ">
+          <Link
+            href={href}
+            key={name}
+            className=" transition-all delay-50 ease-in-out hover:text-gray-50 "
+          >
             {name}
           </Link>
         ))}
       </nav>
-
-      <div className="flex gap-2 items-center">
-        {["instagram", "whatsapp"].map((icon) => (
-          <Image
-            key={icon}
-            src={`/icons/${icon}.svg`}
-            alt={icon}
-            width={48}
-            height={48}
-          />
-        ))}
-      </div>
+      <div></div>
     </div>
   );
 }
