@@ -2,6 +2,34 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
+  const contactItems = [
+    {
+      icon: "/icons/pin-map.svg",
+      alt: "pin-map logo",
+      text: "Stjepana Radića 40, 88240 POSUŠJE",
+    },
+    {
+      icon: "/icons/phone1.svg",
+      alt: "phone logo",
+      text: "+38739682345",
+    },
+    {
+      icon: "/icons/device-mobile1.svg",
+      alt: "mobile phone logo",
+      text: "+38763016830",
+    },
+    {
+      icon: "/icons/instagram-red.svg",
+      alt: "instagram logo",
+      text: "autoskola_instruktor.posusje",
+    },
+    {
+      icon: "/icons/mail1.svg",
+      alt: "mail logo",
+      text: "autoskola_instruktor@gmail.com",
+    },
+  ];
+
   const navItems = [
     { name: "POČETNA", href: "/" },
     { name: "O NAMA", href: "/o-nama" },
@@ -11,15 +39,29 @@ export default function Footer() {
     { name: "ONLINE TESTOVI", href: "/online-testovi" },
     { name: "KONTAKT", href: "/kontakt" },
   ];
+
   return (
     <div className="w-full flex flex-col justify-between h-96 bg-gray-51 pt-5  ">
-      <div className="flex h-full items-center justify-around">
+      <div className="flex h-full items-end pb-12 justify-around">
         <Image
-          src="/icons/asi-logo-bw.svg"
+          src="/icons/ASInstruktorLogoOrginalBW.svg"
           alt="Logo"
-          width={250}
-          height={250}
+          width={300}
+          height={300}
         />
+        <div className="flex flex-col gap-1 ">
+          {contactItems.map((contact) => (
+            <div className="flex gap-1 items-center" key={contact.alt}>
+              <Image
+                src={contact.icon}
+                width={32}
+                height={32}
+                alt={contact.alt}
+              />
+              <p className="text-sm text-white-60 font-thin">{contact.text}</p>
+            </div>
+          ))}
+        </div>
         <div className="flex flex-col gap-11">
           <p className="text-2xl text-red-71 ">SADRŽAJ</p>
           <div className="grid grid-cols-2 gap-x-8 gap-y-2">
@@ -27,7 +69,7 @@ export default function Footer() {
               <Link
                 href={item.href}
                 key={item.name}
-                className="text-white-60 text-xl  text-start hover:text-white-60/70"
+                className="text-white-60 text-xl  text-start transition-all delay-50 ease-in-out hover:text-white-60/70"
               >
                 {item.name}
               </Link>

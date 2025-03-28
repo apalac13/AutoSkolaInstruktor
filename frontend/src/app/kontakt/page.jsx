@@ -65,7 +65,7 @@ export default function Kontakt() {
           />
           <div className="flex flex-col gap-1">
             {contactItems.map((contact) => (
-              <div className="flex gap-1 items-end" key={contact.alt}>
+              <div className="flex gap-1 items-center" key={contact.alt}>
                 <Image
                   src={contact.icon}
                   width={38}
