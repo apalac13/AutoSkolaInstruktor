@@ -12,17 +12,17 @@ export default function StatisticSection() {
   ];
 
   return (
-    <section className="flex flex-col gap-20 h-[450px] p-10 ">
+    <section className="flex flex-col gap-20 pb-32 p-10 ">
       <Section number={"01"} text={"STATISTIKA"} />
-      <div className="w-full flex gap-24 items-center">
-        <div>
+      <div className="w-full flex flex-row max-xl:flex-col gap-24 items-center">
+        <div className="max-xl:self-start max-xl:pl-10 max-lg:self-center">
           <p className="text-base text-start text-red-71">UKRATKO</p>
           <div className="flex flex-col  text-5xl font-semibold  text-black-40 text-start leading-tighter  ">
             <p className="">AUTOŠKOLA</p>
             <p className="">INSTRUKTOR</p>
           </div>
         </div>
-        <div className="w-full flex justify-around ">
+        <div className="w-full flex justify-around max-lg:flex-col max-lg:gap-12 max-lg:items-center ">
           {statisticsItems.map((statsItem, index) => (
             <div
               key={index}

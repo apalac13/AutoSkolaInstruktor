@@ -5,7 +5,7 @@ export default function Button({ type, width, text, color }) {
     <button
       type={type}
       className={clsx(
-        `relative group w-[${width}] h-16 text-white-60 overflow-hidden`,
+        `relative group w-[${width}] h-14 text-white-60 overflow-hidden`,
         color === "red"
           ? "border-red-71 bg-red-71"
           : "border-black-40 bg-black-40"
