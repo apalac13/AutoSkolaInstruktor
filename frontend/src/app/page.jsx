@@ -18,7 +18,7 @@ export default function Pocetna() {
       <IntroOverlay />
       <a
         aria-label="Chat on WhatsApp"
-        href="https://wa.me/38763016830?text=Započinjete%20razgovor%20s%20Autoškolom%20Instruktor"
+        href="https://wa.me/38763016830?text=Započnite%20razgovor%20s%20Autoškolom%20Instruktor"
         className="fixed bottom-2 right-2 z-20 animate-pulse"
       >
         <Image
@@ -40,12 +40,12 @@ export default function Pocetna() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3, duration: 1, ease: "easeOut" }}
-              className="absolute top-1/3 left-[25%]  flex flex-col gap-9 items-center "
+              className="absolute top-1/3 left-[25%]  flex flex-col gap-9 items-center justify-center "
             >
               <Image
                 src="/icons/text-logo.svg"
                 alt="text logo"
-                width={800}
+                width={600}
                 height={108}
               />
               <div className="flex gap-16">
@@ -124,9 +124,9 @@ export default function Pocetna() {
           </div>
         </section>
         <section className="flex ">
-          <div className="bg-service-1 bg-cover bg-no-repeat bg-center w-full h-lvh">
-            <div className="w-full h-lvh flex flex-col gap-[150px] items-center bg-[#000]/80">
-              <span className="self-start justify-self-start p-10">
+          <div className="relative bg-service-1 bg-cover bg-no-repeat bg-center w-full h-lvh">
+            <div className=" w-full h-lvh flex flex-col   items-center bg-[#000]/80">
+              <span className="absolute top-10 left-10 self-start justify-self-start">
                 <Section number={"04"} text={"POSEBNE USLUGE"} />
               </span>
               <motion.div
@@ -134,7 +134,7 @@ export default function Pocetna() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                className=" flex flex-col w-[350px] gap-[18px]  "
+                className=" flex flex-col w-[350px] gap-[18px] absolute top-1/3  "
               >
                 <div className="self-start flex gap-2">
                   <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
@@ -154,14 +154,14 @@ export default function Pocetna() {
               </motion.div>
             </div>
           </div>
-          <div className="bg-service-2 bg-cover bg-no-repeat bg-center w-full h-lvh">
+          <div className="relative bg-service-2 bg-cover bg-no-repeat bg-center w-full h-lvh">
             <div className="w-full h-lvh flex flex-col justify-center items-center bg-[#000]/80">
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 1, ease: "easeOut" }}
-                className="flex flex-col w-[350px] gap-[18px]  "
+                className="flex flex-col w-[350px] gap-[18px] absolute top-1/3   "
               >
                 <div className="self-start flex gap-2">
                   <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
@@ -183,14 +183,14 @@ export default function Pocetna() {
               </motion.div>
             </div>
           </div>
-          <div className="bg-service-3 bg-cover bg-no-repeat bg-center w-full h-lvh">
+          <div className="relative bg-service-3 bg-cover bg-no-repeat bg-center w-full h-lvh">
             <div className="w-full h-lvh flex flex-col justify-center items-center bg-[#000]/80">
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
-                className="flex flex-col w-[350px] gap-[18px] "
+                className="flex flex-col w-[350px] gap-[18px] absolute top-1/3  "
               >
                 <div className="self-start flex gap-2">
                   <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
