@@ -41,35 +41,41 @@ export default function Footer() {
   ];
 
   return (
-    <div className="w-full flex flex-col justify-between h-96 bg-gray-51 pt-5  ">
-      <div className="flex h-full items-end pb-12 justify-around">
+    <div className="w-full flex flex-col justify-between  bg-gray-51  ">
+      <div className="flex max-lg:flex-col h-full items-end max-lg:items-center max-lg:gap-7  py-12 justify-around">
         <Image
           src="/icons/ASInstruktorLogoOrginalBW.svg"
           alt="Logo"
           width={300}
           height={300}
+          className="max-xl::w-52 max-xl:h-52"
         />
         <div className="flex flex-col gap-1 ">
           {contactItems.map((contact) => (
-            <div className="flex gap-1 items-center" key={contact.alt}>
+            <div
+              className="flex gap-1 max-xl:gap-[2px] items-center"
+              key={contact.alt}
+            >
               <Image
                 src={contact.icon}
                 width={32}
                 height={32}
                 alt={contact.alt}
               />
-              <p className="text-sm text-white-60 font-thin">{contact.text}</p>
+              <p className="text-sm max-xl:text-xs text-white-60 font-thin">
+                {contact.text}
+              </p>
             </div>
           ))}
         </div>
         <div className="flex flex-col gap-11">
-          <p className="text-2xl text-red-71 ">SADRŽAJ</p>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+          <p className="text-2xl max-xl:text-xl text-red-71 ">SADRŽAJ</p>
+          <div className="grid grid-cols-2 gap-x-8 gap-y-2 max-lg:gap-y-1">
             {navItems.map((item) => (
               <Link
                 href={item.href}
                 key={item.name}
-                className="text-white-60 text-xl  text-start transition-all delay-50 ease-in-out hover:text-white-60/70"
+                className="text-white-60 text-xl max-xl:text-lg  text-start transition-all delay-50 ease-in-out hover:text-white-60/70"
               >
                 {item.name}
               </Link>
@@ -79,9 +85,9 @@ export default function Footer() {
       </div>
       <div>
         <div className="w-full h-[1px] bg-gray-50 "></div>
-        <p className="text-gray-50 text-sm font-light ">
+        <p className="text-gray-50 text-sm max-xl:text-xs font-light ">
           ©Copyright 2024 Autoškola Instruktor. All Rights Reserved. Powered by{" "}
-          <strong>ACode</strong>
+          <strong>ANA</strong>
         </p>
       </div>
     </div>

@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" type="image/png" href="/asi_logo.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className={sourceSans3.className}>
         <div>{children}</div>
