@@ -21,19 +21,7 @@ export default function ONama() {
     autoplaySpeed: 5000,
   };
   const settingsGallery = {
-    customPaging: function (i) {
-      return (
-        <a>
-          <img
-            src={gallery[i]}
-            alt={`Thumbnail ${i}`}
-            className="w-16 h-12 object-cover"
-          />
-        </a>
-      );
-    },
     dots: true,
-    dotsClass: "slick-dots slick-thumb",
     arrows: true,
     infinite: true,
     slidesToShow: 3,
@@ -102,19 +90,19 @@ export default function ONama() {
             initial={{ x: -50 }}
             animate={{ x: 0 }}
             transition={{ duration: 1 }}
-            className=" absolute top-[25%] justify-self-center self-center"
+            className=" absolute top-1/4 justify-self-center self-center"
           >
             <Image
               src={"icons/logo-horizontal.svg"}
               alt="asi-logo-horizontal"
-              width={800}
+              width={600}
               height={211}
             />
           </motion.div>
         </div>
       </div>
-      <section className="w-full flex border-b border-black-40 ">
-        <div className="w-1/2 flex flex-col gap-20 p-10">
+      <section className="w-full flex max-sm:flex-col border-b border-black-40 ">
+        <div className="w-1/2 max-sm:w-full flex flex-col gap-20  p-10">
           <Section number={"01"} text={"O NAMA"} />
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -122,10 +110,10 @@ export default function ONama() {
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-5 text-black-40 "
           >
-            <h1 className="text-4xl font-semibold text-start ">
+            <h1 className="text-4xl max-lg:text-3xl font-semibold text-start ">
               AUTOŠKOLA INSTRUKTOR
             </h1>
-            <p className="text-base text-justify">
+            <p className="text-base max-lg:text-sm text-justify">
               Autoškola Instruktor je posvećena osposobljavanju vozača za
               sigurno, odgovorno i samopouzdano upravljanje vozilom, s naglaskom
               na sigurnost i poštovanje prometnih pravila. Kroz 34 godine
@@ -140,10 +128,13 @@ export default function ONama() {
             </p>
           </motion.div>
         </div>
-        <div className="w-1/2 mt-10 md:mt-0 ">
+        <div className="w-1/2 max-sm:w-full mt-10 max-sm:mt-0 ">
           <Slider {...settings}>
             {firstImages.map((image, index) => (
-              <div key={index} className="w-full h-[590px] cursor-pointer   ">
+              <div
+                key={index}
+                className="w-full h-[590px] max-sm:h-[400px] cursor-pointer   "
+              >
                 <Image
                   src={image}
                   alt="Slider image"
@@ -157,16 +148,19 @@ export default function ONama() {
           </Slider>
         </div>
       </section>
-      <section className="w-full flex ">
-        <div className="w-1/2 mt-10 md:mt-0">
+      <section className="w-full flex  max-sm:flex-col-reverse ">
+        <div className="w-1/2 max-sm:w-full mt-10 max-md:mt-0">
           <Slider {...settings}>
             {secondImages.map((image, index) => (
-              <div key={index} className="w-full h-[590px]   cursor-pointer   ">
+              <div
+                key={index}
+                className="w-full h-[590px] max-sm:h-[400px] cursor-pointer   "
+              >
                 <Image
                   src={image}
                   alt="Slider image"
                   fill
-                  style={{ objectFit: "cover", filter: "brightness(70%)" }}
+                  style={{ objectFit: "cover", filter: "brightness(60%)" }}
                   quality={100}
                   priority
                 />
@@ -174,7 +168,7 @@ export default function ONama() {
             ))}
           </Slider>
         </div>
-        <div className="w-1/2 flex flex-col gap-20 p-10 bg-red-72">
+        <div className="w-1/2 max-sm:w-full flex flex-col gap-20 p-10 bg-red-72">
           <Section number={"02"} text={"POVIJEST"} />
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -182,10 +176,10 @@ export default function ONama() {
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-5 text-white-60 "
           >
-            <h1 className="text-4xl font-semibold text-start ">
+            <h1 className="text-4xl  max-lg:text-3xl font-semibold text-start ">
               1990. - DANAS
             </h1>
-            <p className="text-base text-justify">
+            <p className="text-base  max-lg:text-sm text-justify">
               Autoškola Instruktor osnovana je 1990. godine od strane Luke
               Bradarića, koji je bio prvi vlasnik i vizionar iza ove obrazovne
               ustanove. Luka je svojim entuzijazmom i predanošću postavio
@@ -206,7 +200,7 @@ export default function ONama() {
       </section>
       <section className="flex flex-col gap-20 p-10 bg-gray-51">
         <Section number={"03"} text={"KATEGORIJE"} />
-        <div className="grid grid-cols-3  gap-y-3 py-10">
+        <div className="grid grid-cols-3 max-xl:grid-cols-2 max-[850px]:grid-cols-1  gap-y-3 py-10 justify-center items-center">
           {categories.map((category, index) => (
             <Category key={index} category={category} index={index} />
           ))}

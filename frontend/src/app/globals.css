@@ -45,10 +45,6 @@ input[type="checkbox"].online-prijava-checkbox {
   margin-left: 36px;
 }
 
-/* .slick-dots {
-  display: none;
-} */
-
 .slick-prev:before,
 .slick-next:before {
   color: black !important;
@@ -60,34 +56,6 @@ input[type="checkbox"].online-prijava-checkbox {
 
 .slick-next:before {
   content: url("/right.png") !important;
-}
-
-/* .slick-dots li {
-  margin: 0 36px !important;
-}
-
-.slick-dots li button:before {
-  content: url("/icons/line.svg") !important;
-} */
-
-.slick-thumb {
-  bottom: -100px !important;
-}
-
-.slick-thumb ul {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.slick-thumb li {
-  width: 100px !important;
-  height: 50px !important;
-}
-
-.slick-thumb li img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 #steps {
