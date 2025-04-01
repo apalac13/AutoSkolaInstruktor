@@ -14,10 +14,10 @@ export default function StatisticSection() {
   return (
     <section className="flex flex-col gap-20 pb-32 p-10 ">
       <Section number={"01"} text={"STATISTIKA"} />
-      <div className="w-full flex flex-row max-xl:flex-col gap-24 items-center">
+      <div className="w-full flex flex-row max-xl:flex-col gap-24 max-xl:gap-12 items-center">
         <div className="max-xl:self-start max-xl:pl-10 max-lg:self-center">
           <p className="text-base text-start text-red-71">UKRATKO</p>
-          <div className="flex flex-col  text-5xl font-semibold  text-black-40 text-start leading-tighter  ">
+          <div className="flex flex-col  text-5xl max-sm:text-4xl  font-semibold  text-black-40 text-start leading-tighter  ">
             <p className="">AUTOŠKOLA</p>
             <p className="">INSTRUKTOR</p>
           </div>
@@ -28,7 +28,7 @@ export default function StatisticSection() {
               key={index}
               className="w-[300px] flex flex-col items-center text-black-40"
             >
-              <p className="text-[76px] font-extralight leading-tight">
+              <p className="text-7xl max-sm:text-6xl font-extralight leading-tight">
                 <Counter from={0} to={statsItem.number} />
                 {statsItem.symbol}
               </p>
@@ -41,7 +41,9 @@ export default function StatisticSection() {
                   className="absolute z-20 w-[300px] h-[1px] bg-red-71 mb-[5px] "
                 ></motion.div>
               </div>
-              <p className="text-[22px] font-light">{statsItem.item}</p>
+              <p className="text-[22px] max-sm:text-lg font-light">
+                {statsItem.item}
+              </p>
             </div>
           ))}
         </div>

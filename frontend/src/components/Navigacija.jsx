@@ -105,7 +105,10 @@ export default function Navigacija() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="fixed w-3/5 right-0 h-full flex flex-col gap-12 z-40 bg-gradient-to-t from-red-71 to-black-40 "
+              className={clsx(
+                "fixed w-2/3 h-full flex flex-col gap-12 z-40 bg-gradient-to-t from-red-71 to-black-40 ",
+                showNavigationLinks ? "right-0" : "w-[-100%]"
+              )}
             >
               <div className="w-full h-[104px] flex items-center justify-end border-b-[1px] px-8 py-2 border-white-60">
                 <Image
@@ -116,8 +119,8 @@ export default function Navigacija() {
                   onClick={() => setShowNavigationLinks(!showNavigationLinks)}
                 />
               </div>
-              <div className="flex flex-col gap-4 justify-center items-end mr-8 ">
-                <nav className=" flex flex-col items-end justify-center gap-5 text-2xl text-white-60">
+              <div className="flex flex-col gap-6 justify-center items-end mr-8 ">
+                <nav className=" flex flex-col items-end justify-center gap-3 text-lg text-white-60">
                   {navItems.map((item, index) => (
                     <Link
                       href={item.href}
@@ -132,13 +135,13 @@ export default function Navigacija() {
                   {navIcons.map((icon, index) => (
                     <div
                       key={index}
-                      className=" flex items-center justify-center w-[60px] h-[60px] transition duration-400 ease-in-out border border-white-60  rounded-full hover:border-black-40   "
+                      className=" flex items-center justify-center w-[50px] h-[50px] transition duration-400 ease-in-out border border-white-60  rounded-full hover:border-black-40   "
                     >
                       <Image
                         src={icon.src}
                         alt={icon.alt}
-                        width={40}
-                        height={40}
+                        width={30}
+                        height={30}
                       />
                     </div>
                   ))}

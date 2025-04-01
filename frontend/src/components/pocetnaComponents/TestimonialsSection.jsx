@@ -75,7 +75,7 @@ export default function TestimonialsSection() {
                   {testimonial.text}
                 </blockquote>
               </div>
-              <div className="flex justify-between ">
+              <div className="flex justify-between items-end ">
                 <div className="flex">
                   {[...Array(5)].map((_, index) => (
                     <Image
@@ -84,6 +84,7 @@ export default function TestimonialsSection() {
                       alt="star icon"
                       width={32}
                       height={32}
+                      className="max-xl:w-7 max-xl:h-7"
                     />
                   ))}
                 </div>
@@ -94,7 +95,7 @@ export default function TestimonialsSection() {
                     width={42}
                     height={42}
                   />
-                  <p>{testimonial.person}</p>
+                  <p className="text-base leading-none">{testimonial.person}</p>
                 </div>
               </div>
             </div>
