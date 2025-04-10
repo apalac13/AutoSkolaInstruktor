@@ -17,12 +17,12 @@ export default function OnlinePrijava() {
             initial={{ x: -50 }}
             animate={{ x: 0 }}
             transition={{ duration: 1 }}
-            className="absolute top-[30%] justify-self-center self-center"
+            className="absolute top-[35%] justify-self-center self-center"
           >
-            <p className=" text-4xl font-bold italic  text-white-60">
+            <p className=" text-4xl max-md:text-3xl font-bold italic  text-white-60">
               ONLINE PRIJAVA
             </p>
-            <p className="text-xl text-white-60 font-light italic ">
+            <p className="text-xl max-md:text-lg text-white-60 font-light italic ">
               Ostavite nam podatke, a mi ćemo vam se javiti u najkraćem mogućem
               roku
             </p>
@@ -33,24 +33,27 @@ export default function OnlinePrijava() {
         initial={{ x: -50 }}
         animate={{ x: 0 }}
         transition={{ duration: 1 }}
-        className="flex justify-center items-center py-14  "
+        className=" flex justify-center items-center py-14  "
       >
-        <div className="flex flex-col items-center justify-center gap-20">
-          <div className="flex flex-col gap-3 items-center justify-center">
-            <div className="flex items-end gap-1">
-              <p className="text-xl leading-none">UVJETI UPISA</p>
-              <div className="flex items-end justify-end w-[300px] border-b border-black-40 mb-1 ">
+        <div className="flex flex-col items-center justify-center gap-20 px-5">
+          <div className="flex flex-col max-[500px]:w-full gap-3 items-center justify-center">
+            <div className="flex items-end gap-1 max-[500px]:w-full">
+              <div className="flex flex-nowrap gap-1 text-xl  max-xl:text-lg leading-none">
+                <p>UVJETI </p>
+                <p>UPISA</p>
+              </div>
+              <div className="flex items-end justify-end w-[300px] max-[440px]:w-full border-b border-black-40 mb-1 ">
                 {moreInformation ? (
                   <p
                     onClick={() => setMoreInformation(!moreInformation)}
-                    className="text-base  cursor-pointer "
+                    className="text-base max-xl:text-sm  cursor-pointer "
                   >
                     - SAKRIJ
                   </p>
                 ) : (
                   <p
                     onClick={() => setMoreInformation(!moreInformation)}
-                    className="text-base cursor-pointer"
+                    className="text-base max-xl:text-sm cursor-pointer"
                   >
                     + VIŠE INFORMACIJA
                   </p>
@@ -59,14 +62,14 @@ export default function OnlinePrijava() {
             </div>
             <div
               className={clsx(
-                "w-[420px] text-start overflow-hidden transition-all duration-1000 ease-in-out",
+                "w-[420px] max-[500px]:w-full text-start overflow-hidden transition-all duration-1000 ease-in-out",
                 {
                   "max-h-[1000px] opacity-100": moreInformation,
                   "max-h-0 opacity-0": !moreInformation,
                 }
               )}
             >
-              <p className="text-justify">
+              <p className="text-justify max-xl:text-sm">
                 Minimalna dob Za kategoriju A1, AM, i B: Najmanje 17,5 godina
                 (polaganje vozačkog ispita moguće s navršenih 18 godina). Za
                 kategoriju A: Najmanje 23 godine (ili 20 godina uz posjedovanje

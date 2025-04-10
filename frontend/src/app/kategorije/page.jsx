@@ -121,7 +121,7 @@ export default function Kategorije() {
             initial={{ x: -50 }}
             animate={{ x: 0 }}
             transition={{ duration: 1 }}
-            className="justify-self-center self-center absolute top-[35%] text-4xl max-sm:text-3xl font-bold italic  text-white-60"
+            className="justify-self-center self-center absolute top-[35%] text-4xl max-md:text-3xl font-bold italic  text-white-60"
           >
             KATEGORIJE
           </motion.p>
