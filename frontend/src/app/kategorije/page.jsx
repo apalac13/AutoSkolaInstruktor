@@ -121,7 +121,7 @@ export default function Kategorije() {
             initial={{ x: -50 }}
             animate={{ x: 0 }}
             transition={{ duration: 1 }}
-            className="justify-self-center self-center absolute top-[33%]  text-4xl font-bold italic  text-white-60"
+            className="justify-self-center self-center absolute top-[35%] text-4xl max-sm:text-3xl font-bold italic  text-white-60"
           >
             KATEGORIJE
           </motion.p>
@@ -129,7 +129,7 @@ export default function Kategorije() {
       </div>
       <section className="p-10 bg-gray-51">
         <Section number={"01"} text={"KATEGORIJE"} />
-        <div className="grid grid-cols-3 gap-x-4 gap-y-[74px] justify-items-center p-10">
+        <div className="grid grid-cols-3 max-[900px]:grid-cols-2 max-sm:grid-cols-1 gap-x-4 gap-y-[74px] justify-items-center p-10">
           {categories.map((category, index) => (
             <Category key={index} category={category} />
           ))}
@@ -142,34 +142,36 @@ export default function Kategorije() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 3 }}
           viewport={{ once: true }}
-          className="flex flex-col items-center justify-center p-10"
+          className="flex flex-col items-center max-[500px]:items-start justify-center py-10"
         >
-          <div className="relative h-[1650px] ">
-            <div className="absolute z-10 translate-x-[-196px] translate-y-2 w-[2px] h-full bg-gray-50"></div>
+          <div className="relative h-[1650px] max-[500px]:w-full max-[500px]:h-[2000px]">
+            <div className="absolute z-10 translate-x-[-196px] max-[500px]:translate-x-[46px]  translate-y-2 w-[2px] h-full bg-gray-50"></div>
             <motion.div
               initial={{ height: 0 }}
               whileInView={{ height: "100%" }}
               transition={{ duration: 6 }}
-              className="absolute z-20 translate-x-[-196px] translate-y-2 w-[2px] h-full bg-red-71"
+              className="absolute z-20 translate-x-[-196px] max-[500px]:translate-x-[46px] translate-y-2 w-[2px] h-full bg-red-71"
             ></motion.div>
-            <div className="absolute z-30 flex flex-col gap-28 items-center justify-center w-full">
+            <div className="absolute z-30 flex flex-col gap-28 items-center max-[500px]:items-start justify-center w-full">
               {drivingLicenceSteps.map((step, index) => (
                 <Step key={index} step={step} />
               ))}
-            </div>
-          </div>
-          <div className="absolute -translate-x-[96px] translate-y-[870px] flex  items-center w-[300px] h-[100px]">
-            <Image
-              src={"/icons/driving-licence.svg"}
-              alt="driving licence"
-              width={120}
-              height={120}
-            />
-            <div className="flex flex-col items-start">
-              <p className="text-base text-red-71">6. KORAK</p>
-              <p className="text-[22px] font-semibold text-black-40 text-start leading-tight">
-                VAŠA VOZAČKA
-              </p>
+              <div className="absolute z-30 bg-white-60 translate-x-[-100px] max-[500px]:translate-x-[0px] translate-y-[900px] max-[500px]:translate-y-[1120px]  flex items-center w-[300px] h-[100px]">
+                <Image
+                  src={"/icons/driving-licence.svg"}
+                  alt="driving licence"
+                  width={120}
+                  height={120}
+                />
+                <div className="flex flex-col items-start">
+                  <p className="text-base max-xl:text-sm text-red-71">
+                    6. KORAK
+                  </p>
+                  <p className="text-xl font-semibold text-black-40 text-start leading-tight">
+                    VAŠA VOZAČKA
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
