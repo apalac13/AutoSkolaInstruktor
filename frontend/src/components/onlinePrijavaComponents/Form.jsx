@@ -61,7 +61,10 @@ export default function Form() {
   };
 
   return (
-    <form className="w-[500px] flex flex-col gap-4" onSubmit={handleSubmit}>
+    <form
+      className="w-[500px] max-[500px]:w-full flex flex-col gap-4"
+      onSubmit={handleSubmit}
+    >
       <InputField
         label={"IME I PREZIME"}
         id={"person"}
@@ -103,7 +106,7 @@ export default function Form() {
         onChange={handleChange}
       />
       <div className="w-full flex flex-col gap-3 items-start ">
-        <p className="text-lg">
+        <p className="text-lg max-xl:text-base">
           KATEGORORIJA <span className="text-red-71">*</span>{" "}
         </p>
         <div className="grid grid-cols-2 justify-items-start gap-x-28 gap-y-3 ">
@@ -111,7 +114,7 @@ export default function Form() {
             <label
               key={index}
               htmlFor={category}
-              className="flex items-end gap-2 cursor-pointer "
+              className="flex  items-end gap-2 cursor-pointer "
             >
               <input
                 id={category}
@@ -119,15 +122,17 @@ export default function Form() {
                 value={category}
                 onChange={handleCategoryChange}
                 checked={formData.categories.includes(category)}
-                className="online-prijava-checkbox w-[50px] h-[50px] border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
+                className="online-prijava-checkbox w-[50px] h-[50px] max-xl:w-[40px] max-xl:h-[40px] border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
               />
-              <p className="text-xl leading-none">{category} </p>
+              <p className="text-lg max-xl:text-base leading-none">
+                {category}{" "}
+              </p>
             </label>
           ))}
         </div>
       </div>
       <label htmlFor="message" className="flex flex-col items-start">
-        <p className="text-lg">
+        <p className="text-lg max-xl:text-base">
           NAPOMENA <span className="font-light">(neobavezno)</span>
         </p>
         <textarea
@@ -135,7 +140,7 @@ export default function Form() {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className="border border-black-40 w-full  p-1 h-[150px] bg-white-60"
+          className="border border-black-40 w-full p-1 h-[150px] max-xl:h-[100px] bg-white-60"
         ></textarea>
       </label>
       <Button type={"submit"} width={"full"} text={"POŠALJI"} color={"red"} />
