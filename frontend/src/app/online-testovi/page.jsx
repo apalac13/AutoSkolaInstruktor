@@ -16,7 +16,7 @@ export default function OnlineTestovi() {
     {
       sectionNumber: "02",
       sectionText: "DODATNA PITANJA",
-      text: "Pored pitanja iz B kategorije u prilogu se nalaze dodatna pitanja za kategorije A,C i D kategoriju.",
+      text: "Pored pitanja iz B kategorije u prilogu se nalaze dodatna pitanja za kategorije A, C i D kategoriju.",
       firstButtonLink: `/online-testovi/kategorija-A`,
       firstButtonText: "KATEGORIJA A",
       secondButtonLink: `/online-testovi`,
@@ -27,16 +27,16 @@ export default function OnlineTestovi() {
   return (
     <div className="flex flex-col gap-24">
       {items.map((item, index) => (
-        <div key={index} className="flex flex-col gap-11">
+        <div key={index} className="flex  flex-col gap-11">
           <div className="flex flex-col gap-6 items-start ">
             <Section number={item.sectionNumber} text={item.sectionText} />
-            <p>{item.text}</p>
+            <p className="text-justify">{item.text}</p>
           </div>
-          <div className="flex gap-4 ml-4">
-            <Link href={item.firstButtonLink} className="w-[200px]">
+          <div className="flex max-[410px]:flex-col items-start gap-4 ml-4">
+            <Link href={item.firstButtonLink}>
               <BlackButton text={item.firstButtonText} />
             </Link>
-            <Link href={item.secondButtonLink} className="w-[200px]">
+            <Link href={item.secondButtonLink}>
               <BlackButton text={item.secondButtonText} />
             </Link>
           </div>

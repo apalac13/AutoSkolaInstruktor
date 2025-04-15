@@ -8,7 +8,7 @@ export default function Questions({
 }) {
   return (
     <div className="flex flex-col ">
-      <div className="flex gap-2 text-xl font-semibold">
+      <div className="flex gap-2 text-xl max-[450px]:text-lg text-justify  font-semibold">
         <p>{question.questionNumber}.</p>
         <p>{question.questionText}</p>
       </div>
@@ -21,7 +21,7 @@ export default function Questions({
             >
               <input
                 type="checkbox"
-                className="w-10 h-10"
+                className="online-prijava-checkbox w-10 h-10 border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
                 value={answerOption.option}
                 onChange={() =>
                   handleChange(question.questionNumber, answerOption.option)
@@ -36,7 +36,7 @@ export default function Questions({
                 }
                 disabled={viewAnswers}
               />
-              <p className="text-base">{answerOption.option}</p>
+              <p className="text-base text-justify">{answerOption.option}</p>
             </label>
             {viewAnswers ? (
               answerOption.answer ? (
@@ -45,6 +45,7 @@ export default function Questions({
                   alt="Correct icon"
                   width={32}
                   height={32}
+                  className="w-7 h-7"
                 />
               ) : (
                 <Image
@@ -52,6 +53,7 @@ export default function Questions({
                   alt="Wrong icon"
                   width={32}
                   height={32}
+                  className="w-7 h-7"
                 />
               )
             ) : (

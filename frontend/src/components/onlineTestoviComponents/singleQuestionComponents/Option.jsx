@@ -16,7 +16,7 @@ export default function Option({
           value={answerOption.option}
           onChange={handleChange}
         />
-        <p className="text-base">{answerOption.option}</p>
+        <p className="text-base text-justify">{answerOption.option}</p>
       </label>
       {showAnswer ? (
         answerOption.answer ? (
@@ -25,6 +25,7 @@ export default function Option({
             alt="Correct icon"
             width={32}
             height={32}
+            className="w-7 h-7"
           />
         ) : (
           <Image
@@ -32,6 +33,7 @@ export default function Option({
             alt="Wrong icon"
             width={32}
             height={32}
+            className="w-7 h-7"
           />
         )
       ) : (

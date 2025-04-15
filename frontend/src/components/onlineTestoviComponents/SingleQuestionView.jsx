@@ -159,7 +159,7 @@ export default function SingleQuestionView({ test }) {
       <AnimatePresence mode="wait">
         {currentQuestion < questions.length ? (
           <div className="flex flex-col gap-11">
-            <div className="flex gap-11 text-lg ">
+            <div className="flex gap-11 text-lg max-[450px]:text-base ">
               <p>Pitanje: {questions[currentQuestion].questionNumber}/40</p>
               <p>Vrijeme: {formatTime(timeLeft)}</p>
             </div>
@@ -172,7 +172,7 @@ export default function SingleQuestionView({ test }) {
               className="flex flex-col"
             >
               <div className="flex flex-col ">
-                <div className="flex gap-2 text-xl font-semibold">
+                <div className="flex gap-2 text-xl max-[450px]:text-lg text-justify  font-semibold">
                   <p>{questions[currentQuestion].questionNumber}.</p>
                   <p>{questions[currentQuestion].questionText}</p>
                 </div>
@@ -208,7 +208,7 @@ export default function SingleQuestionView({ test }) {
                       transition={{ duration: 0.4 }}
                       onClick={() => setCurrentQuestion(currentQuestion + 1)}
                     >
-                      <p>Sljedeće pitanje</p>
+                      <p className="max-[450px]:text-lg">Sljedeće pitanje</p>
                       <motion.img
                         src="/icons/right.svg"
                         alt="Right icon"
@@ -216,6 +216,7 @@ export default function SingleQuestionView({ test }) {
                         height={32}
                         animate={{ rotate: 360 }}
                         transition={{ duration: 0.5 }}
+                        className="w-7 h-7"
                       />
                     </motion.div>
                   ) : nextQuestion === false ? (
@@ -228,7 +229,7 @@ export default function SingleQuestionView({ test }) {
                       transition={{ duration: 0.4 }}
                       onClick={checkAnswer}
                     >
-                      <p>Potvrdi pitanje</p>
+                      <p className="max-[450px]:text-lg">Potvrdi pitanje</p>
                       <motion.img
                         src="/icons/accept_check.svg"
                         alt="Accept icon"
@@ -236,6 +237,7 @@ export default function SingleQuestionView({ test }) {
                         height={32}
                         animate={{ rotate: 360 }}
                         transition={{ duration: 0.5 }}
+                        className="w-7 h-7"
                       />
                     </motion.div>
                   ) : (
@@ -248,7 +250,7 @@ export default function SingleQuestionView({ test }) {
                       transition={{ duration: 0.4 }}
                       onClick={handleNextQuestion}
                     >
-                      <p>Sljedeće pitanje</p>
+                      <p className="max-[450px]:text-lg">Sljedeće pitanje</p>
                       <motion.img
                         src="/icons/right.svg"
                         alt="Right icon"
@@ -256,6 +258,7 @@ export default function SingleQuestionView({ test }) {
                         height={32}
                         animate={{ rotate: 360 }}
                         transition={{ duration: 0.5 }}
+                        className="w-7 h-7"
                       />
                     </div>
                   )}

@@ -1,3 +1,6 @@
+import Link from "next/link";
+import Button from "../buttons/Button";
+
 export default function Result({
   score,
   totalPoints,
@@ -12,7 +15,7 @@ export default function Result({
 
   return (
     <div className="flex flex-col gap-[86px] items-center justify-center">
-      <div className="flex gap-3 text-xl">
+      <div className="flex gap-3 text-xl max-[430px]:text-base">
         <p className="font-semibold  ">REZULTAT:</p>
         <p>{result}%</p>
         {result >= 90 ? (
@@ -21,14 +24,19 @@ export default function Result({
           <p className="text-red-71">PAD</p>
         )}
       </div>
-      <div className="flex flex-col gap-10 text-lg">
-        <div className="flex justify-between">
-          <h2>
-            bodovi: {score}/ {totalPoints}
+      <div className="flex flex-col gap-10 text-lg max-[430px]:text-base">
+        <div className="flex gap-5 justify-between">
+          <h2 className="flex max-[430px]:flex-col gap-1">
+            <p>bodovi:</p>{" "}
+            <p>
+              {score}/ {totalPoints}
+            </p>
           </h2>
-          <h3>broj točnih odgovora: {correctAnswers}</h3>
+          <h3 className="flex max-[430px]:flex-col gap-1">
+            <p>broj točnih odgovora:</p> <p>{correctAnswers}</p>
+          </h3>
         </div>
-        <div className="flex gap-11">
+        <div className="flex max-sm:flex-col gap-11 max-sm:gap-4 text-justify">
           <div
             className="flex gap-2 items-end cursor-pointer"
             onClick={() => setReplay(true)}
@@ -52,6 +60,14 @@ export default function Result({
           </div>
         </div>
       </div>
+      <Link href={"/online-testovi"} className="w-full">
+        <Button
+          type={"button"}
+          width={"full"}
+          text={"NATRAG NA TESTOVE"}
+          color={"red"}
+        />
+      </Link>
     </div>
   );
 }
