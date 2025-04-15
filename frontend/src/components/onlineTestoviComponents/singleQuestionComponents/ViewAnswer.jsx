@@ -20,7 +20,7 @@ export default function ViewAnswer({
           value={answerOption.option}
           disabled
         />
-        <p className="text-base">{answerOption.option}</p>
+        <p className="text-base text-justify">{answerOption.option}</p>
       </label>
       {answerOption.answer ? (
         <Image
@@ -28,9 +28,16 @@ export default function ViewAnswer({
           alt="Correct icon"
           width={32}
           height={32}
+          className="w-7 h-7"
         />
       ) : (
-        <Image src="/icons/wrong.svg" alt="Wrong icon" width={32} height={32} />
+        <Image
+          src="/icons/wrong.svg"
+          alt="Wrong icon"
+          width={32}
+          height={32}
+          className="w-7 h-7"
+        />
       )}
     </div>
   );

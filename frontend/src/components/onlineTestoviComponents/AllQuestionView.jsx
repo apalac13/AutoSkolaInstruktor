@@ -168,7 +168,7 @@ export default function AllQuestionView({ test }) {
         </motion.div>
       ) : (
         <div className="flex flex-col gap-11">
-          <div className="flex gap-11 text-lg ">
+          <div className="flex gap-11 text-lg max-[450px]:text-base ">
             <p>Pitanja: 40 </p>
             <p>Vrijeme: {formatTime(timeLeft)}</p>
           </div>
@@ -188,10 +188,12 @@ export default function AllQuestionView({ test }) {
             </motion.div>
           ))}
           <button
-            className="w-full h-16  border border-red-71 bg-red-71 transition-background delay-150 duration-500  hover:bg-red-71/90 "
+            className="w-full h-16 max-sm:h-14   border border-red-71 bg-red-71 transition-background delay-150 duration-500  hover:bg-red-71/90 "
             onClick={handleTestOver}
           >
-            <p className="text-base text-white-60 ">ZAVRŠI TEST</p>
+            <p className="text-base max-md:text-sm text-white-60 ">
+              ZAVRŠI TEST
+            </p>
           </button>
         </div>
       )}

@@ -14,12 +14,12 @@ export default function OnlineTestvoviLayout({ children }) {
             initial={{ x: -50 }}
             animate={{ x: 0 }}
             transition={{ duration: 1 }}
-            className="absolute top-[30%] justify-self-center self-center"
+            className="absolute top-[35%] justify-self-center self-center"
           >
-            <p className=" text-4xl font-bold italic  text-white-60">
+            <p className=" text-4xl max-md:text-3xl font-bold italic  text-white-60">
               ONLINE TESTOVI
             </p>
-            <p className="text-xl text-white-60 font-light italic ">
+            <p className="text-xl max-md:text-lg text-white-60 font-light italic ">
               Testirajte svoje znanje online uz pomoć testova koje vam nudimo
             </p>
           </motion.div>

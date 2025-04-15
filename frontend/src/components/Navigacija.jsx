@@ -21,9 +21,9 @@ export default function Navigacija() {
   ];
 
   const navIcons = [
-    { src: "icons/phone-white.svg", alt: "phone" },
-    { src: "icons/mail-white.svg", alt: "mail" },
-    { src: "icons/instagram-white.svg", alt: "instagram" },
+    { src: "/icons/phone-white.svg", alt: "phone" },
+    { src: "/icons/mail-white.svg", alt: "mail" },
+    { src: "/icons/instagram-white.svg", alt: "instagram" },
   ];
 
   return (
@@ -112,7 +112,7 @@ export default function Navigacija() {
             >
               <div className="w-full h-[104px] flex items-center justify-end border-b-[1px] px-8 py-2 border-white-60">
                 <Image
-                  src={"icons/close_menu.svg"}
+                  src={"/icons/close_menu.svg"}
                   alt="Logo"
                   width={40}
                   height={40}
