@@ -82,8 +82,8 @@ export default function Navigacija() {
                 : "/icons/asi-logo-orginal.svg"
             }
             alt="Logo"
-            width={87}
-            height={87}
+            width={80}
+            height={80}
           />
           <Image
             src={
