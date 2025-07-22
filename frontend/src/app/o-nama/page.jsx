@@ -128,7 +128,7 @@ export default function ONama() {
             </p>
           </motion.div>
         </div>
-        <div className="w-1/2 max-sm:w-full mt-10 max-sm:mt-0 ">
+        <div className="w-1/2 max-sm:w-full max-sm:mt-0 ">
           <Slider {...settings}>
             {firstImages.map((image, index) => (
               <div
@@ -149,7 +149,7 @@ export default function ONama() {
         </div>
       </section>
       <section className="w-full flex  max-sm:flex-col-reverse ">
-        <div className="w-1/2 max-sm:w-full mt-10 max-md:mt-0">
+        <div className="w-1/2 max-sm:w-full max-md:mt-0">
           <Slider {...settings}>
             {secondImages.map((image, index) => (
               <div
