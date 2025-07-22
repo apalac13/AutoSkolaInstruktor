@@ -24,7 +24,7 @@ const defaultMapOptions = {
 
 export default function Map() {
   return (
-    <div className="w-[1000px] h-[600px]">
+    <div className="w-[1000px] max-lg:w-full max-lg:px-6 h-[600px]">
       <GoogleMap
         mapContainerStyle={defaultMapContainerStyle}
         center={defaultMapCenter}

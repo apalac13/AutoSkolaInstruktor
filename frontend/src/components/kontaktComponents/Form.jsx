@@ -51,9 +51,12 @@ export default function Form() {
   };
 
   return (
-    <div className="flex flex-col gap-16">
+    <div className="max-[500px]:w-full flex flex-col gap-16 max-[500px]:px-6">
       <p className="text-2xl">POŠALJI UPIT</p>
-      <form className="w-[470px] flex flex-col gap-4" onSubmit={handleSubmit}>
+      <form
+        className="w-[470px] max-[500px]:w-full flex flex-col gap-4"
+        onSubmit={handleSubmit}
+      >
         <InputField
           label={"IME I PREZIME"}
           id={"person"}
@@ -80,7 +83,7 @@ export default function Form() {
         />
         <div className="w-full">
           <label htmlFor="message" className="flex flex-col items-start">
-            <p className="text-lg">
+            <p className="text-lg max-xl:text-sm">
               PORUKA <span className="text-red-71">*</span>{" "}
             </p>
             <textarea
@@ -88,7 +91,7 @@ export default function Form() {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="border border-black-40 w-full  p-1 h-[150px] bg-white-60"
+              className="border border-black-40 w-full  p-1 h-[150px] max-xl:h-[100px] bg-white-60"
               required
             ></textarea>
           </label>

@@ -44,7 +44,7 @@ export default function Kontakt() {
             initial={{ x: -50 }}
             animate={{ x: 0 }}
             transition={{ duration: 1 }}
-            className="justify-self-center self-center absolute top-[33%]  text-4xl font-bold italic  text-white-60"
+            className="justify-self-center self-center absolute top-[33%]  text-4xl max-md:text-3xl font-bold italic  text-white-60"
           >
             KONTAKT
           </motion.p>
@@ -54,25 +54,19 @@ export default function Kontakt() {
         initial={{ x: -50 }}
         animate={{ x: 0 }}
         transition={{ duration: 1 }}
-        className="flex justify-center items-center gap-44 py-14 text-black-40  "
+        className="flex flex-col lg:flex-row justify-center items-center gap-44 max-[500px]:gap-24 py-14 text-black-40 "
       >
         <div className="flex flex-col  gap-14  ">
-          <Image
-            src="/icons/ASInstruktorLogoOrginal.svg"
-            width={314}
-            height={258}
-            alt="logo"
-          />
+          <div className="relative w-[314px] h-[258px] max-[500px]:w-[250px] max-[500px]:h-[200px]">
+            <Image fill src=" /icons/ASInstruktorLogoOrginal.svg" alt="logo" />
+          </div>
           <div className="flex flex-col gap-1">
             {contactItems.map((contact) => (
               <div className="flex gap-1 items-center" key={contact.alt}>
-                <Image
-                  src={contact.icon}
-                  width={38}
-                  height={38}
-                  alt={contact.alt}
-                />
-                <p className="text-sm">{contact.text}</p>
+                <div className="relative w-[38px] h-[38px] max-[500px]:w-[32px] max-[500px]:h-[32px] ">
+                  <Image fill src={contact.icon} alt={contact.alt} />
+                </div>
+                <p className="text-sm max-[500px]:text-xs">{contact.text}</p>
               </div>
             ))}
           </div>
