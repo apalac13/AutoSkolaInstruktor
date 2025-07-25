@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 function connectDb() {
   mongoose.Promise = global.Promise;
   mongoose
-    .connect("mongodb://127.0.0.1:27017/autoskolaBaza")
+    .connect(
+      "mongodb+srv://anabradaric77:ana123321@cluster0.4jvd4gc.mongodb.net/asinstruktor"
+    )
     .then(() => {
       console.log("Database connected to MongoDB");
     })
