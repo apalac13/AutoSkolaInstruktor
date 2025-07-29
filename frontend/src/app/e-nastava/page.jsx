@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
 import Navigacija from "@/components/Navigacija";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function ENastava() {
   const [data, setData] = useState({
@@ -44,7 +46,6 @@ export default function ENastava() {
 
   return (
     <div>
-      <Navigacija />
       <div className="my-28 font-sourceSans3 text-black-40 ">
         <form onSubmit={handleSubmit} className="flex flex-col gap-12 ">
           <p className=" text-xl font-semibold">PRIJAVA</p>

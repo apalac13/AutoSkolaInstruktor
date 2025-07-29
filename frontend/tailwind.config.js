@@ -26,6 +26,7 @@ module.exports = {
         "category-C": "url('/C-kat.jpg')",
         "online-prijava": "url('/online-prijava.jpg')",
         "online-testovi": "url('/online-testovi.jpg')",
+        "e-nastava": "url('/teaching.jpg')",
         kontakt: "url('/kontakt.jpg')",
       },
       fontFamily: {

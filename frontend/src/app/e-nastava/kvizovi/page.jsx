@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
 import SubNavigacija from "@/components/eNastavaComponents/SubNavigacija";
+import Navigacija from "@/components/Navigacija";
 import Kvizovi from "@/components/eNastavaComponents/kvizoviComponents/Kvizovi";
 
 export default function KvizoviPage() {
@@ -35,6 +36,7 @@ export default function KvizoviPage() {
 
   return (
     <div className="flex flex-col items-center justify-center mb-28">
+    
       <SubNavigacija />
       <Kvizovi />
     </div>

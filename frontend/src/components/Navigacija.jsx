@@ -31,14 +31,12 @@ export default function Navigacija() {
       <div
         className={clsx(
           "max-xl:hidden w-full flex items-center justify-between border-b-[1px] px-8 py-2",
-          pathname !== "/o-nama" && pathname !== "/e-nastava"
-            ? "border-white-60"
-            : "border-black-40"
+          pathname !== "/o-nama" ? "border-white-60" : "border-black-40"
         )}
       >
         <Image
           src={
-            pathname !== "/o-nama" && pathname !== "/e-nastava"
+            pathname !== "/o-nama"
               ? "/icons/asi-logo-bw.svg"
               : "/icons/asi-logo-orginal.svg"
           }
@@ -49,9 +47,7 @@ export default function Navigacija() {
         <nav
           className={clsx(
             " flex items-center gap-8 text-2xl   ",
-            pathname !== "/o-nama" && pathname !== "/e-nastava"
-              ? "text-white-60"
-              : "text-black-40"
+            pathname !== "/o-nama" ? "text-white-60" : "text-black-40"
           )}
         >
           {navItems.map(({ name, href }) => (
@@ -70,14 +66,12 @@ export default function Navigacija() {
         <div
           className={clsx(
             "absolute w-full h-[104px] flex items-center justify-between border-b-[1px] px-8 py-2",
-            pathname !== "/o-nama" && pathname !== "/e-nastava"
-              ? "border-white-60"
-              : "border-black-40"
+            pathname !== "/o-nama" ? "border-white-60" : "border-black-40"
           )}
         >
           <Image
             src={
-              pathname !== "/o-nama" && pathname !== "/e-nastava"
+              pathname !== "/o-nama"
                 ? "/icons/asi-logo-bw.svg"
                 : "/icons/asi-logo-orginal.svg"
             }
@@ -87,9 +81,7 @@ export default function Navigacija() {
           />
           <Image
             src={
-              pathname !== "/o-nama" && pathname !== "/e-nastava"
-                ? "/icons/menu1.svg"
-                : "/icons/menu2.svg"
+              pathname !== "/o-nama" ? "/icons/menu1.svg" : "/icons/menu2.svg"
             }
             alt="Logo"
             width={40}
