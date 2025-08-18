@@ -67,6 +67,30 @@ exports.logIn = async (req, res) => {
   }
 };
 
+exports.resetPassword = async (req, res) => {
+  try {
+    const { email, newPassword, repeatPassword } = req.body;
+    if (newPassword !== repeatPassword) {
+      return res.status(400).json({ msg: "Lozinke nisu iste pokušajte ponvo" });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, saltRunde);
+    const user = await User.findOneAndUpdate(
+      { email },
+      { password: hashedPassword },
+      { new: true }
+    );
+
+    if (user) {
+      return res.json({ msg: "Lozinka je uspješno promijenjena" });
+    } else {
+      return res.status(404).json({ msg: "Korisnik nije pronađen" });
+    }
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+
 exports.getHomeQuiz = async (req, res) => {
   try {
     const quizzes = await Quiz.find({ upload: true });

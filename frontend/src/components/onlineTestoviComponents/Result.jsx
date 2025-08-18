@@ -55,7 +55,7 @@ export default function Result({
             className="flex gap-2 items-end cursor-pointer"
             onClick={() => setViewAnswers(!viewAnswers)}
           >
-            <div className="w-8 h-8 border border-black-40 rounded-full  "></div>
+            <div className="w-8 h-8 border border-black-40 rounded-full"></div>
             <p>pogledaj</p>
           </div>
         </div>

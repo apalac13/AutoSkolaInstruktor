@@ -15,7 +15,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "home-page": "url('/home.jpg')",
+        "home-page": "url('/asi-hero-image.png')",
         "service-1": "url('/bmw_old.jpg')",
         "service-2": "url('/ride.jpg')",
         "service-3": "url('/split.jpg')",

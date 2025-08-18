@@ -34,21 +34,15 @@ export default function Pocetna() {
         transition={{ duration: 1, delay: 2 }}
       >
         <div className="relative bg-home-page bg-cover bg-no-repeat bg-center w-lvh h-lvh ">
-          <div className="flex flex-col  w-lvh h-lvh bg-[#000]/80 ">
+          <div className="flex flex-col  w-lvh h-lvh bg-[#000]/10 ">
             <Navigacija />
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3, duration: 1, ease: "easeOut" }}
-              className="absolute top-1/3 left-[30%] max-xl:left-[20%] max-lg:left-[15%] max-[800px]:left-[10%] max-sm:left-2  flex flex-col gap-9 items-center justify-center "
+              className="absolute top-1/2 left-[35%] max-xl:left-[20%] max-lg:left-[15%] max-[800px]:left-[10%] max-sm:left-2  flex flex-col gap-9 items-center justify-center "
             >
-              <Image
-                src="/icons/text-logo.svg"
-                alt="text logo"
-                width={600}
-                height={108}
-              />
-              <div className="flex gap-16 max-md:gap-12 max-sm:gap-4">
+              <div className="flex max-lg:flex-col gap-16 max-md:gap-12 max-sm:gap-4">
                 <Link href={"/online-prijava"}>
                   <Button
                     type={"button"}

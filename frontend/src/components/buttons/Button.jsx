@@ -4,8 +4,9 @@ export default function Button({ type, width, text, color }) {
   return (
     <button
       type={type}
+      style={{ width }}
       className={clsx(
-        `relative group w-[${width}] max-md:w-[150px] max-sm:h-12 h-16 px-3 text-white-60 overflow-hidden`,
+        `relative group max-md:w-[150px] max-sm:h-12 h-16 px-3 text-white-60 overflow-hidden`,
         color === "red"
           ? "border-red-71 bg-red-71"
           : "border-black-40 bg-black-40"

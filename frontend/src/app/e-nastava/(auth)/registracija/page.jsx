@@ -1,8 +1,9 @@
 "use client";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import InputField from "@/components/InputField";
+import Button from "@/components/buttons/Button";
 
 export default function Registracija() {
   const [data, setData] = useState({
@@ -33,53 +34,40 @@ export default function Registracija() {
   };
 
   return (
-    <div className=" mt-28 font-sourceSans3 text-black-40 mb-28 ">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-12 ">
+    <div className="my-28 font-sourceSans3 text-black-40 flex items-center justify-center  ">
+      <form onSubmit={handleSubmit} className="w-[500px] flex flex-col gap-12 ">
         <p className=" text-xl font-semibold">REGISTRACIJA</p>
-        <div className="flex flex-col gap-6 items-center">
-          <label htmlFor="" className="flex flex-col gap-[6px] items-start">
-            <p className=" text-base">KORISNIČKO IME</p>
-            <input
-              type="text"
-              name="name"
-              value={data.name}
-              onChange={handleChange}
-              className="w-[500px] h-10 p-1 border border-black-40"
-              required
-            />
-          </label>
-          <label htmlFor="" className="flex flex-col gap-[6px] items-start">
-            <p className=" text-base">EMAIL</p>
-            <input
-              type="email"
-              name="email"
-              value={data.email}
-              onChange={handleChange}
-              className="w-[500px] h-10 p-1 border border-black-40"
-              placeholder="example@gmail.com"
-              required
-            />
-          </label>
-          <label htmlFor="" className="flex flex-col gap-[6px] items-start ">
-            <p className="text-base">LOZINKA</p>
-            <input
-              type="password"
-              name="password"
-              value={data.password}
-              onChange={handleChange}
-              className="w-[500px] h-10 p-1 border border-black-40"
-              placeholder="unesite lozinku"
-              required
-            />
-          </label>
-          <button
-            type="submit"
-            className="w-[500px] h-10 border border-red-70 bg-red-70 "
-          >
-            <p className=" text-white-60 text-base font-light text-center ">
-              REGISTRIRAJ SE
-            </p>
-          </button>
+        <div className="w-full flex flex-col gap-6 items-center">
+          <InputField
+            label={"KORISNIČKO IME"}
+            id={"name"}
+            type={"name"}
+            name={"name"}
+            value={data.name}
+            onChange={handleChange}
+          />
+          <InputField
+            label={"EMAIL"}
+            id={"email"}
+            type={"email"}
+            name={"email"}
+            value={data.email}
+            onChange={handleChange}
+          />
+          <InputField
+            label={"LOZINKA"}
+            id={"password"}
+            type={"password"}
+            name={"password"}
+            value={data.password}
+            onChange={handleChange}
+          />
+          <Button
+            type={"submit"}
+            width={"100%"}
+            text={"REGISTRIRAJ SE"}
+            color={"red"}
+          />
         </div>
       </form>
     </div>
