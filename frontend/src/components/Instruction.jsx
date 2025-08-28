@@ -1,5 +1,4 @@
-import { useState } from "react";
-import BlackButton from "../buttons/blackButton";
+import BlackButton from "./buttons/BlackButton";
 
 export default function Instruction({ setOption, setInstruction }) {
   const changeView = (viewValue) => {

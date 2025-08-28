@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
-import Button from "../buttons/Button";
-export default function Result({
+import Button from "@/components/buttons/Button";
+
+export default function EResult({
   score,
   totalPoints,
   correctAnswers,
-  wrongAnswers,
   setReplay,
   setReplayWrongAnswers,
   setViewAnswers,
@@ -60,7 +60,8 @@ export default function Result({
           </div>
         </div>
       </div>
-      <Link href={"/online-testovi"} className="w-full">
+
+      <Link href={"/e-nastava/testovi"} className="w-full">
         <Button
           type={"button"}
           width={"full"}

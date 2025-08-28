@@ -1,33 +1,17 @@
-"use client";
-import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Loading() {
-  const [showOverlay, setShowOverlay] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowOverlay(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div>
-      {showOverlay && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black-40 z-[9999] flex justify-center items-center">
-          <div className="animate-pulse ">
-            <Image
-              src="/icons/ASInstruktorLogoOrginalBW.svg"
-              alt="Autoškola Instruktor logo"
-              width={500}
-              height={500}
-              className="object-contain"
-            />
-          </div>
-        </div>
-      )}
+    <div className="fixed inset-0 bg-black-40 z-[9999] flex justify-center items-center">
+      <div className="animate-pulse">
+        <Image
+          src="/icons/ASInstruktorLogoOrginalBW.svg"
+          alt="Autoškola Instruktor logo"
+          width={300}
+          height={300}
+          className="object-contain"
+        />
+      </div>
     </div>
   );
 }

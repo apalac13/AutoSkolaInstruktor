@@ -13,7 +13,7 @@ export default function SubNavigacija() {
   }, []);
 
   const navItems = [
-    { name: "POČETNA", href: "/e-nastava/pocetna" },
+    { name: "TESTOVI", href: "/e-nastava/testovi" },
     { name: "CHAT", href: "/e-nastava/chat" },
     { name: "KVIZOVI", href: "/e-nastava/kvizovi" },
     { name: "NAPRAVI KVIZ", href: "/e-nastava/napravi-kviz" },

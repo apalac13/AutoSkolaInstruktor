@@ -6,13 +6,15 @@ import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
 import InputField from "../InputField";
 import Button from "../buttons/Button";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function LoginForm() {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
-
+  const { setUser } = useContext(AuthContext);
   const router = useRouter();
 
   const handleChange = (event) => {
@@ -32,9 +34,16 @@ export default function LoginForm() {
       localStorage.setItem("token", token);
       const decodedToken = jwtDecode(token);
       localStorage.setItem("role", decodedToken.role);
-      console.log("Decoded token:", decodedToken);
+
+      // ✅ update AuthContext immediately
+      setUser({
+        name: decodedToken.name || "",
+        email: decodedToken.email || "",
+        role: decodedToken.role,
+      });
+
       if (decodedToken.role === "admin" || decodedToken.role === "user") {
-        router.push("/e-nastava/pocetna");
+        router.push("/e-nastava/testovi");
       } else {
         router.push("/e-nastava");
       }
