@@ -1,23 +1,20 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { AuthContext } from "@/context/AuthContext";
+import { useContext } from "react";
 
 export default function Logout() {
   const [loggedOut, setLoggedOut] = useState(false);
   const router = useRouter();
+  const { logout } = useContext(AuthContext);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      router.push("/e-nastava");
-    }
-
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
+    logout();
     setLoggedOut(true);
     setTimeout(() => {
       router.push("/e-nastava");
-    }, 3000); // Redirect after 3 seconds
+    }, 3000);
   }, [router]);
 
   return (

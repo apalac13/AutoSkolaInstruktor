@@ -50,6 +50,11 @@ router.put(
   adminController.uploadQuiz
 );
 router.post(
+  "/testovi",
+  eNastavaController.verifyToken,
+  eNastavaController.saveTestResult
+);
+router.post(
   "/napravi-kviz",
   adminController.verifyToken,
   adminController.createQuiz

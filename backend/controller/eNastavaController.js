@@ -3,6 +3,7 @@ const Quiz = require("../models/quiz");
 const Question = require("../models/question");
 const Result = require("../models/result");
 const Message = require("../models/message");
+const TestResult = require("../models/testResult");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const quiz = require("../models/quiz");
@@ -56,7 +57,7 @@ exports.logIn = async (req, res) => {
       const token = jwt.sign(
         { name: user.name, email: user.email, role: user.role },
         "tajniKljuc",
-        { expiresIn: "1h" }
+        { expiresIn: "5h" }
       );
       return res.json({ token });
     } else {
@@ -124,6 +125,24 @@ exports.saveResult = async (req, res) => {
     const savedResult = await result.save();
     console.log("Result saved successfully:", savedResult);
     req.io.emit("resultsUpdated", savedResult);
+    res.status(200).json({ message: "Result added successfully!" });
+  } catch (error) {
+    console.log("Error saving quiz:", error);
+    res.status(500).json({ msg: "Error saving quiz." });
+  }
+};
+exports.saveTestResult = async (req, res) => {
+  const testResult = new TestResult({
+    test: req.body.test,
+    name: req.body.name,
+    email: req.body.email,
+    result: req.body.result,
+    answers: req.body.answers,
+  });
+
+  try {
+    const savedTestResult = await testResult.save();
+    console.log("Result saved successfully:", savedTestResult);
     res.status(200).json({ message: "Result added successfully!" });
   } catch (error) {
     console.log("Error saving quiz:", error);

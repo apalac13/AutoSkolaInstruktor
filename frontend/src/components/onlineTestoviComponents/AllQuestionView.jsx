@@ -140,6 +140,7 @@ export default function AllQuestionView({ test }) {
         wrongs.push(question.questionNumber);
       }
     });
+    console.log(userAnswers);
 
     setScore(totalScore);
     setWrongAnswers(wrongs);

@@ -1,10 +1,12 @@
+"use client";
 import { useState, useEffect } from "react";
-import Option from "./singleQuestionComponents/Option";
-import ViewAnswer from "./singleQuestionComponents/viewAnswer";
-import Result from "./Result";
-import { motion, AnimatePresence, time } from "framer-motion";
+import Option from "@/components/onlineTestoviComponents/singleQuestionComponents/Option";
+import ViewAnswer from "@/components/onlineTestoviComponents/singleQuestionComponents/ViewAnswer";
+import EResult from "./EResult";
+import { motion, AnimatePresence } from "framer-motion";
+import axios from "axios";
 
-export default function SingleQuestionView({ test }) {
+export default function ESingleQuestionView({ test, user }) {
   const [userAnswer, setUserAnswer] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
   const [wrongAnswers, setWrongAnswers] = useState([]);
@@ -18,6 +20,7 @@ export default function SingleQuestionView({ test }) {
   const [questions, setQuestions] = useState(test.questions);
   const [timeLeft, setTimeLeft] = useState(50 * 60);
   const correctAnswers = test.questions.length - wrongAnswers.length;
+  const [sendResult, setSendResult] = useState(true);
 
   useEffect(() => {
     if (replay) {
@@ -32,6 +35,7 @@ export default function SingleQuestionView({ test }) {
       setViewAnswers(false);
       setQuestions(test.questions);
       setTimeLeft(3000);
+      setSendResult(true);
     }
   }, [replay]);
 
@@ -50,6 +54,7 @@ export default function SingleQuestionView({ test }) {
       setQuestions(wrongQuestions);
       setWrongAnswers([]);
       setTimeLeft(3000);
+      setSendResult(false);
     }
   }, [replayWrongAnswers]);
 
@@ -64,6 +69,7 @@ export default function SingleQuestionView({ test }) {
       setUserAnswers(userAnswers);
       setQuestions(test.questions);
       setTimeLeft(3000);
+      setSendResult(false);
     }
   }, [viewAnswers]);
 
@@ -132,6 +138,7 @@ export default function SingleQuestionView({ test }) {
     });
 
     console.log(userAnswers);
+    console.log(user.email);
 
     setShowAnswer(true);
     setNextQuestion(true);
@@ -152,6 +159,43 @@ export default function SingleQuestionView({ test }) {
         : prevAnswers.filter((answer) => answer !== value)
     );
   };
+
+  useEffect(() => {
+    if (currentQuestion === questions.length && sendResult) {
+      const result = ((score / test.totalPoints) * 100).toFixed(2);
+
+      const postResult = async () => {
+        try {
+          await axios.post(
+            "http://localhost:3003/e-nastava/testovi",
+            {
+              test: test.testName,
+              name: user.name,
+              email: user.email,
+              result,
+              answers: userAnswers,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          console.log("Result sent successfully");
+        } catch (err) {
+          console.error(
+            "Error sending result:",
+            err.response?.data || err.message
+          );
+        } finally {
+          setSendResult(false);
+        }
+      };
+
+      postResult();
+    }
+  }, [currentQuestion, sendResult]);
 
   return (
     <div className="text-black-40">
@@ -273,11 +317,10 @@ export default function SingleQuestionView({ test }) {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.5 }}
           >
-            <Result
+            <EResult
               score={score}
               totalPoints={test.totalPoints}
               correctAnswers={correctAnswers}
-              wrongAnswers={wrongAnswers}
               setReplay={setReplay}
               setReplayWrongAnswers={setReplayWrongAnswers}
               setViewAnswers={setViewAnswers}

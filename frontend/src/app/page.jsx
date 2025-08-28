@@ -10,12 +10,10 @@ import { motion } from "framer-motion";
 import StatisticSection from "@/components/pocetnaComponents/StatisticSection";
 import WhyUsSection from "@/components/pocetnaComponents/WhyUsSection";
 import TestimonialsSection from "@/components/pocetnaComponents/TestimonialsSection";
-import IntroOverlay from "@/components/pocetnaComponents/IntroOverlay";
 
 export default function Pocetna() {
   return (
     <div className="mb-24 ">
-      <IntroOverlay />
       <a
         aria-label="Chat on WhatsApp"
         href="https://wa.me/38763016830?text=Započnite%20razgovor%20s%20Autoškolom%20Instruktor"
@@ -28,18 +26,14 @@ export default function Pocetna() {
           height={74}
         />
       </a>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2 }}
-      >
+      <div>
         <div className="relative bg-home-page bg-cover bg-no-repeat bg-center w-lvh h-lvh ">
           <div className="flex flex-col  w-lvh h-lvh bg-[#000]/10 ">
             <Navigacija />
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3, duration: 1, ease: "easeOut" }}
+              transition={{ duration: 1, ease: "easeOut" }}
               className="absolute top-1/2 left-[35%] max-xl:left-[20%] max-lg:left-[15%] max-[800px]:left-[10%] max-sm:left-2  flex flex-col gap-9 items-center justify-center "
             >
               <div className="flex max-lg:flex-col gap-16 max-md:gap-12 max-sm:gap-4">
@@ -210,7 +204,7 @@ export default function Pocetna() {
           </div>
         </section>
         <TestimonialsSection />
-      </motion.div>
+      </div>
     </div>
   );
 }
