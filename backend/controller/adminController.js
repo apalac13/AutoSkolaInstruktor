@@ -44,7 +44,7 @@ exports.createQuiz = async (req, res) => {
   try {
     const savedQuiz = await quiz.save();
     console.log("Quiz saved successfully:", savedQuiz);
-    res.status(200).json({ message: "Quiz added successfully!" });
+    res.status(200).json(savedQuiz);
   } catch (error) {
     console.log("Error saving quiz:", error);
     res.status(500).json({ msg: "Error saving quiz." });

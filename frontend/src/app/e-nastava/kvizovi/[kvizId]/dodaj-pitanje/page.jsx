@@ -1,12 +1,10 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import { jwtDecode } from "jwt-decode";
+import { useState } from "react";
+import { useParams } from "next/navigation";
 import SubNavigacija from "@/components/eNastavaComponents/SubNavigacija";
 import axios from "axios";
 
 export default function DodajPitanje() {
-  const router = useRouter();
   const { kvizId } = useParams();
   const [type, setType] = useState("multiple");
   const [fileName, setFileName] = useState(null);
@@ -30,31 +28,6 @@ export default function DodajPitanje() {
       value: "write",
     },
   ];
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
-    if (!token || role !== "admin") {
-      router.push("/e-nastava");
-      return;
-    }
-    try {
-      const decodedToken = jwtDecode(token);
-      const currentTime = Date.now() / 1000;
-
-      if (decodedToken.exp < currentTime) {
-        // Token has expired
-        localStorage.removeItem("token");
-        localStorage.removeItem("role");
-        router.push("/e-nastava");
-        return;
-      }
-    } catch (error) {
-      console.error("Invalid token", error);
-      router.push("/e-nastava");
-      return;
-    }
-  }, [router]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
