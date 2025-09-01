@@ -11,10 +11,6 @@ const quizSchema = new Schema({
     required: true,
   },
   questions: [{ type: Schema.Types.ObjectId, ref: "Question" }],
-  upload: {
-    type: Boolean,
-    default: false,
-  },
 });
 
 module.exports = mongoose.model("Quiz", quizSchema);

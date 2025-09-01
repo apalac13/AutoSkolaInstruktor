@@ -1,28 +1,31 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const questionSchema = new Schema({
-  questionText: {
-    type: String,
-    required: true,
+const questionSchema = new Schema(
+  {
+    questionText: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+      default: null,
+    },
+    questionNumber: {
+      type: Number,
+      required: true,
+    },
+    answerOptions: {
+      type: [], // Array of strings
+      required: true,
+    },
+    trueAnswers: {
+      type: [], // Array of strings, assuming true answers are specified by their text
+      required: true,
+    },
   },
-  image: {
-    type: String,
-    default: null,
-  },
-  questionNumber: {
-    type: Number,
-    required: true,
-  },
-  answerOptions: {
-    type: [], // Array of strings
-    required: true,
-  },
-  trueAnswers: {
-    type: [], // Array of strings, assuming true answers are specified by their text
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 const testSchema = new Schema({
   testName: {

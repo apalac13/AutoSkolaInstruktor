@@ -23,7 +23,7 @@ export default function Rezultat({ result, setFinish, kvizId }) {
         </div>
       </div>
       <div className="flex   gap-1">
-        <Link href={`/e-nastava/pocetna/${kvizId}`} className="w-[200px]">
+        <Link href={`/e-nastava/kvizovi/${kvizId}`} className="w-[200px]">
           <button
             onClick={() => setFinish(false)}
             className="w-[200px] h-14  border border-green-80 bg-green-80 "
@@ -33,13 +33,13 @@ export default function Rezultat({ result, setFinish, kvizId }) {
             </p>
           </button>
         </Link>
-        <Link href={`/e-nastava/pocetna`} className="w-[150px]">
+        <Link href={`/e-nastava/kvizovi`} className="w-[150px]">
           <button
             onClick={() => setFinish(false)}
             className="w-[200px] h-14  border border-black-40 bg-black-40 "
           >
             <p className=" text-white-60 text-base font-light  text-center ">
-              NATRAG NA POČETNU
+              NATRAG NA KVIZOVE
             </p>
           </button>
         </Link>

@@ -34,16 +34,6 @@ router.delete(
   adminController.verifyToken,
   adminController.deleteResult
 );
-router.get(
-  "/pocetna/:id",
-  eNastavaController.verifyToken,
-  eNastavaController.getAllQuestions
-);
-router.post(
-  "/pocetna/:id",
-  eNastavaController.verifyToken,
-  eNastavaController.saveResult
-);
 router.put(
   "/pocetna/:id",
   adminController.verifyToken,
@@ -55,7 +45,7 @@ router.post(
   eNastavaController.saveTestResult
 );
 router.post(
-  "/napravi-kviz",
+  "/kvizovi",
   adminController.verifyToken,
   adminController.createQuiz
 );
@@ -70,15 +60,24 @@ router.post(
   upload.single("image"),
   adminController.addQuestion
 );
-
 router.get(
   "/kvizovi/:id",
+  eNastavaController.verifyToken,
+  eNastavaController.getAllQuestions
+);
+router.post(
+  "/kvizovi/:id",
+  eNastavaController.verifyToken,
+  eNastavaController.saveResult
+);
+router.get(
+  "/kvizovi/:id/pogledaj",
   adminController.verifyToken,
   eNastavaController.getAllQuestions
 );
 
 router.delete(
-  "/kvizovi/:kvizId/:questionId",
+  "/kvizovi/:kvizId/:questionId/pogledaj",
   adminController.verifyToken,
   adminController.deleteQuestion
 );
