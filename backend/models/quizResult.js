@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const resultSchema = new Schema(
+const QuizResultSchema = new Schema(
   {
     quiz: { type: Schema.Types.ObjectId, ref: "Quiz" },
-    user: {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
       type: String,
       required: true,
     },
@@ -23,4 +27,4 @@ const resultSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Result", resultSchema);
+module.exports = mongoose.model("QuizResult", QuizResultSchema);

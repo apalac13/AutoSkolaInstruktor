@@ -3,10 +3,7 @@ const Schema = mongoose.Schema;
 
 const testResultSchema = new Schema(
   {
-    test: {
-      type: String,
-      required: true,
-    },
+    test: { type: Schema.Types.ObjectId, ref: "Test" },
     name: {
       type: String,
       required: true,

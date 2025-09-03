@@ -1,11 +1,11 @@
 const User = require("../models/user");
 const Quiz = require("../models/quiz");
 const Question = require("../models/question");
-const Result = require("../models/result");
+const QuizResult = require("../models/quizResult");
+const TestResult = require("../models/testResult");
 const Message = require("../models/message");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const quiz = require("../models/quiz");
 
 exports.verifyToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -60,10 +60,44 @@ exports.getAllQuizes = async (req, res) => {
   }
 };
 
-exports.getResults = async (req, res) => {
+exports.getQuizResults = async (req, res) => {
   try {
-    const results = await Result.find().populate("quiz");
-    res.status(200).json(results);
+    const quizResults = await QuizResult.find().populate("quiz");
+    res.status(200).json(quizResults);
+  } catch (error) {
+    console.error("Error fetching results:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getQuizResult = async (req, res) => {
+  const quizId = req.params.id;
+  try {
+    const quizResult = await QuizResult.findById(quizId)
+      .populate("quiz")
+      .populate("answers.question");
+    res.status(200).json(quizResult);
+  } catch (error) {
+    console.error("Error fetching results:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getTestResults = async (req, res) => {
+  try {
+    const testResults = await TestResult.find().populate("test");
+    res.status(200).json(testResults);
+  } catch (error) {
+    console.error("Error fetching results:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getTestResult = async (req, res) => {
+  const testId = req.params.id;
+  try {
+    const testResult = await TestResult.findById(testId).populate("test");
+    res.status(200).json(testResult);
   } catch (error) {
     console.error("Error fetching results:", error);
     res.status(500).json({ message: error.message });
@@ -163,10 +197,20 @@ exports.deleteQuiz = async (req, res) => {
   }
 };
 
-exports.deleteResult = async (req, res) => {
+exports.deleteQuizResult = async (req, res) => {
   const resultId = req.params.id;
   try {
-    await Result.findByIdAndDelete(resultId);
+    await QuizResult.findByIdAndDelete(resultId);
+    res.status(200).json({ msg: "Result deleted successfully!" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Something went wrong!" });
+  }
+};
+exports.deleteTestResult = async (req, res) => {
+  const resultId = req.params.id;
+  try {
+    await TestResult.findByIdAndDelete(resultId);
     res.status(200).json({ msg: "Result deleted successfully!" });
   } catch (err) {
     console.error(err);

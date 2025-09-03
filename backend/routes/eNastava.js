@@ -18,27 +18,6 @@ const upload = multer({ storage: storage });
 router.post("/register", eNastavaController.register);
 router.put("/reset-password", eNastavaController.resetPassword);
 router.post("/", eNastavaController.logIn);
-router.get(
-  "/pocetna/kvizovi",
-  eNastavaController.verifyToken,
-  eNastavaController.getHomeQuiz
-);
-router.get(
-  "/pocetna/rezultati",
-  adminController.verifyToken,
-  adminController.getResults
-);
-
-router.delete(
-  "/pocetna/rezultati/:id",
-  adminController.verifyToken,
-  adminController.deleteResult
-);
-router.put(
-  "/pocetna/:id",
-  adminController.verifyToken,
-  adminController.uploadQuiz
-);
 router.post(
   "/testovi",
   eNastavaController.verifyToken,
@@ -68,7 +47,7 @@ router.get(
 router.post(
   "/kvizovi/:id",
   eNastavaController.verifyToken,
-  eNastavaController.saveResult
+  eNastavaController.saveQuizResult
 );
 router.get(
   "/kvizovi/:id/pogledaj",
@@ -92,6 +71,38 @@ router.put(
   "/kvizovi/:id",
   adminController.verifyToken,
   adminController.uploadQuiz
+);
+
+router.get(
+  "/rezultati/kvizovi",
+  adminController.verifyToken,
+  adminController.getQuizResults
+);
+router.get(
+  "/rezultati/kviz/:id",
+  adminController.verifyToken,
+  adminController.getQuizResult
+);
+
+router.delete(
+  "/rezultati/kviz/:id",
+  adminController.verifyToken,
+  adminController.deleteQuizResult
+);
+router.get(
+  "/rezultati/testovi",
+  adminController.verifyToken,
+  adminController.getTestResults
+);
+router.get(
+  "/rezultati/test/:id",
+  adminController.verifyToken,
+  adminController.getTestResult
+);
+router.delete(
+  "/rezultati/test/:id",
+  adminController.verifyToken,
+  adminController.deleteTestResult
 );
 
 router.get(

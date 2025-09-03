@@ -38,7 +38,11 @@ export default function KvizPage() {
       const updatedAnswers = prevResult.answers.filter(
         (answer) => answer.questionId !== questionId
       );
-      updatedAnswers.push({ questionId, selectedOption, correctAnswer });
+      updatedAnswers.push({
+        question: questionId,
+        selectedOption,
+        correctAnswer,
+      });
       return {
         ...prevResult,
         answers: updatedAnswers,
@@ -52,7 +56,7 @@ export default function KvizPage() {
         (answer) => answer.questionId !== questionId
       );
       updatedAnswers.push({
-        questionId,
+        question: questionId,
         selectedOption: answerValue,
         correctAnswer,
       });
@@ -75,7 +79,8 @@ export default function KvizPage() {
 
     const submissionData = {
       quiz: kvizId,
-      user: user.name,
+      name: user?.name || "Gost",
+      email: user?.email || "n/a",
       answers: result.answers,
       result: calculatedResult,
     };

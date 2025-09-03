@@ -169,9 +169,9 @@ export default function ESingleQuestionView({ test, user }) {
           await axios.post(
             "http://localhost:3003/e-nastava/testovi",
             {
-              test: test.testName,
-              name: user.name,
-              email: user.email,
+              test: test._id,
+              name: user?.name || "Gost",
+              email: user?.email || "n/a",
               result,
               answers: userAnswers,
             },
