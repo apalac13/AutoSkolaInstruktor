@@ -16,7 +16,6 @@ export default function Ispit() {
   const [option, setOption] = useState("");
   const { user, loading } = useContext(AuthContext);
 
-  // fetch test data
   useEffect(() => {
     if (ispitId) {
       axios

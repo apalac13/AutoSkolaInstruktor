@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const Quiz = require("../models/quiz");
 const Question = require("../models/question");
-const Result = require("../models/result");
+const QuizResult = require("../models/quizResult");
 const Message = require("../models/message");
 const TestResult = require("../models/testResult");
 const jwt = require("jsonwebtoken");
@@ -55,7 +55,7 @@ exports.logIn = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (user && (await bcrypt.compare(req.body.password, user.password))) {
       const token = jwt.sign(
-        { name: user.name, email: user.email, role: user.role },
+        { _id: user._id, name: user.name, email: user.email, role: user.role },
         "tajniKljuc",
         { expiresIn: "5h" }
       );
@@ -92,16 +92,6 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
-exports.getHomeQuiz = async (req, res) => {
-  try {
-    const quizzes = await Quiz.find({ upload: true });
-    res.status(200).json(quizzes);
-  } catch (error) {
-    console.error("Error fetching quizzes:", error);
-    res.status(500).json({ message: error.message });
-  }
-};
-
 exports.getAllQuestions = async (req, res) => {
   const quizId = req.params.id;
   try {
@@ -113,10 +103,11 @@ exports.getAllQuestions = async (req, res) => {
   }
 };
 
-exports.saveResult = async (req, res) => {
-  const result = new Result({
+exports.saveQuizResult = async (req, res) => {
+  const result = new QuizResult({
     quiz: req.body.quiz,
-    user: req.body.user,
+    name: req.body.name,
+    email: req.body.email,
     answers: req.body.answers,
     result: req.body.result,
   });

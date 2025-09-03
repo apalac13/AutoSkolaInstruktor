@@ -182,7 +182,7 @@ export default function EAllQuestionView({ test, user }) {
           await axios.post(
             "http://localhost:3003/e-nastava/testovi",
             {
-              test: test.testName,
+              test: test._id,
               name: user?.name || "Gost",
               email: user?.email || "n/a",
               result,
