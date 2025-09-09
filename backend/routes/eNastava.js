@@ -17,7 +17,7 @@ const upload = multer({ storage: storage });
 
 router.post("/register", eNastavaController.register);
 router.put("/reset-password", eNastavaController.resetPassword);
-router.post("/", eNastavaController.logIn);
+router.post("", eNastavaController.logIn);
 router.post(
   "/testovi",
   eNastavaController.verifyToken,

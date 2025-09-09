@@ -29,11 +29,11 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
       {quizes.map((quiz) => (
         <div
           key={quiz._id}
-          className="grid grid-cols-3 gap-4 p-6  border-b-[1px] border-black-40 text-base"
+          className=" grid grid-cols-3 gap-4 p-6  border-b-[1px] border-black-40 text-base"
         >
           <p>{quiz.quizname}</p>
           <p>{quiz.quizdescription}</p>
-          <div className="flex flex-wrap gap-3">
+          <div className=" flex flex-wrap  gap-3">
             <Link
               href={`/e-nastava/kvizovi/${quiz._id}/pogledaj`}
               className={clsx(user.role === "admin" ? "visible" : "hidden")}
@@ -54,7 +54,6 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
                 </p>
               </button>
             </Link>
-
             <Link href={`/e-nastava/kvizovi/${quiz._id}`}>
               <button className="w-[100px] h-10 border border-green-80 bg-green-80 ">
                 <p className=" text-white-60 text-xs font-light text-center ">
@@ -67,7 +66,7 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
                 onClick={() => deleteQuiz(quiz._id)}
                 className="w-[100px] h-10 border border-red-70 bg-red-70 "
               >
-                <p className=" text-white-60 text-xs font-light text-center ">
+                <p className="text-white-60 text-xs font-light text-center ">
                   IZBRIŠI
                 </p>
               </button>

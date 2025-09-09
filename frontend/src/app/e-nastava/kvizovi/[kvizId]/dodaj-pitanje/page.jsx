@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import SubNavigacija from "@/components/eNastavaComponents/SubNavigacija";
 import axios from "axios";
 
 export default function DodajPitanje() {
   const { kvizId } = useParams();
+  const router = useRouter();
   const [type, setType] = useState("multiple");
   const [fileName, setFileName] = useState(null);
   const [question, setQuestion] = useState({
