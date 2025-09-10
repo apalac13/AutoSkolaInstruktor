@@ -8,14 +8,23 @@ import InputField from "../InputField";
 import Button from "../buttons/Button";
 import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext";
+import { motion } from "framer-motion";
+import clsx from "clsx";
 
 export default function LoginForm() {
   const [data, setData] = useState({
     email: "",
     password: "",
   });
+  const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState(null);
   const { setUser } = useContext(AuthContext);
   const router = useRouter();
+  const resetMessageWithTimeout = (message, type = "success") => {
+    setMessage(message);
+    setMessageType(type);
+    setTimeout(() => setMessage(null), 5000);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -30,12 +39,13 @@ export default function LoginForm() {
         password: data.password,
       });
 
-      const { token } = response.data;
+      const { token, message } = response.data;
+      if (message) resetMessageWithTimeout(message, "success");
+
       localStorage.setItem("token", token);
       const decodedToken = jwtDecode(token);
       localStorage.setItem("role", decodedToken.role);
 
-      // ✅ update AuthContext immediately
       setUser({
         name: decodedToken.name || "",
         email: decodedToken.email || "",
@@ -48,13 +58,27 @@ export default function LoginForm() {
         router.push("/e-nastava");
       }
     } catch (error) {
-      console.error("Error logging in", error.response?.data || error.message);
+      const backendMsg = error.response?.data?.message || "Došlo je do greške!";
+      resetMessageWithTimeout(backendMsg, "error");
     }
   };
   return (
     <div className="my-28 font-sourceSans3 text-black-40 flex items-center justify-center  ">
       <form onSubmit={handleSubmit} className="w-[500px] flex flex-col gap-12 ">
         <p className=" text-xl font-semibold">PRIJAVA</p>
+        {message && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className={clsx("text-white-60 mt-4 shadow-md uppercase p-3 ", {
+              "bg-green-80": messageType === "success",
+              "bg-red-70": messageType === "error",
+            })}
+          >
+            {message}
+          </motion.p>
+        )}
         <div className="w-full flex flex-col gap-6 items-center">
           <InputField
             label={"EMAIL"}

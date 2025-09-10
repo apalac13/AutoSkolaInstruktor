@@ -24,7 +24,7 @@ exports.verifyToken = (req, res, next) => {
   } catch (error) {
     return res.status(401).send("Neispravni Token");
   }
-  next(); // only executed if the token is valid
+  next();
 };
 
 exports.register = async (req, res) => {
@@ -33,7 +33,7 @@ exports.register = async (req, res) => {
     if (existingUser) {
       return res
         .status(400)
-        .json({ msg: "User already exists with this email!" });
+        .json({ message: "Korisnik s ovim mailom već postoji!" });
     }
     const hashPassword = await bcrypt.hash(req.body.password, saltRunde);
     const user = new User({
@@ -43,10 +43,11 @@ exports.register = async (req, res) => {
       role: req.body.email === "jure@gmail.com" ? "admin" : "user",
     });
     await user.save();
-    res.status(201).json({ msg: "User registered successfully" });
+    res.status(201).json({ message: "Uspješno ste se registrirali!" });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ msg: "An error occurred during registration!" });
+    res
+      .status(500)
+      .json({ message: "Pojavila se greška prilikom registracije!" });
   }
 };
 
@@ -61,20 +62,18 @@ exports.logIn = async (req, res) => {
       );
       return res.json({ token });
     } else {
-      return res.status(401).send("Neispravni podaci za prijavu");
+      return res.status(401).json({ message: "Neispravni podaci za prijavu" });
     }
   } catch (error) {
-    return res.status(500).send(error.message);
+    return res
+      .status(500)
+      .json({ message: "Pojavila se greška prilikom logiranja!" });
   }
 };
 
 exports.resetPassword = async (req, res) => {
   try {
-    const { email, newPassword, repeatPassword } = req.body;
-    if (newPassword !== repeatPassword) {
-      return res.status(400).json({ msg: "Lozinke nisu iste pokušajte ponvo" });
-    }
-
+    const { email, newPassword } = req.body;
     const hashedPassword = await bcrypt.hash(newPassword, saltRunde);
     const user = await User.findOneAndUpdate(
       { email },
@@ -83,12 +82,14 @@ exports.resetPassword = async (req, res) => {
     );
 
     if (user) {
-      return res.json({ msg: "Lozinka je uspješno promijenjena" });
+      return res.json({ message: "Lozinka je uspješno promijenjena" });
     } else {
-      return res.status(404).json({ msg: "Korisnik nije pronađen" });
+      return res.status(404).json({ message: "Korisnik nije pronađen" });
     }
   } catch (error) {
-    return res.status(500).json({ msg: error.message });
+    return res
+      .status(500)
+      .json({ message: "Pojavila se greška prilikom resetiranja lozinke!" });
   }
 };
 
