@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import InputField from "@/components/InputField";
 import Button from "@/components/buttons/Button";
+import { motion } from "framer-motion";
+import clsx from "clsx";
 
 export default function ResetPassword() {
   const [data, setData] = useState({
@@ -11,8 +13,15 @@ export default function ResetPassword() {
     newPassword: "",
     repeatPassword: "",
   });
-
+  const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState(null);
   const router = useRouter();
+
+  const resetMessageWithTimeout = (message, type = "success") => {
+    setMessage(message);
+    setMessageType(type);
+    setTimeout(() => setMessage(null), 5000);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,21 +30,26 @@ export default function ResetPassword() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (data.newPassword !== data.repeatPassword) {
+      resetMessageWithTimeout("Lozinke se ne poklapaju.", "error");
+      return;
+    }
     try {
-      await axios
-        .put("http://localhost:3003/e-nastava/reset-password", {
+      const response = await axios.put(
+        "http://localhost:3003/e-nastava/reset-password",
+        {
           email: data.email,
           newPassword: data.newPassword,
-          repeatPassword: data.repeatPassword,
-        })
-        .then((res) => alert(res.data.msg));
+        }
+      );
+      const message = response.data.message;
+      if (message) resetMessageWithTimeout(message, "success");
       router.push("/e-nastava");
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.msg) {
-        alert(error.response.data.msg);
-      } else {
-        alert("Došlo je do greške. Pokušajte ponovo.");
-      }
+      const message =
+        error.response?.data?.message ||
+        "Dogodila se greška pri resetiranju lozinke.";
+      resetMessageWithTimeout(message, "error");
     }
   };
 
@@ -43,6 +57,19 @@ export default function ResetPassword() {
     <div className="my-28 font-sourceSans3 text-black-40 flex items-center justify-center  ">
       <form onSubmit={handleSubmit} className="w-[500px] flex flex-col gap-12 ">
         <p className=" text-xl font-semibold">RESETIRAJ LOZINKU</p>
+        {message && (
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className={clsx("text-white-60 mt-4 shadow-md uppercase p-3 ", {
+              "bg-green-80": messageType === "success",
+              "bg-red-70": messageType === "error",
+            })}
+          >
+            {message}
+          </motion.p>
+        )}
         <div className="w-full flex flex-col gap-6 items-center">
           <InputField
             label={"EMAIL"}

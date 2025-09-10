@@ -3,6 +3,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import Button from "../buttons/Button";
 import InputField from "../InputField";
+import clsx from "clsx";
 
 const initialFormData = {
   person: "",
@@ -19,9 +20,11 @@ const categories = ["A", "A1", "B", "BE", "C1", "C1E", "C", "CE"];
 export default function Form() {
   const [formData, setFormData] = useState(initialFormData);
   const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState(null);
 
-  const resetMessageWithTimeout = (msg) => {
-    setMessage(msg);
+  const resetMessageWithTimeout = (message, type = "success") => {
+    setMessage(message);
+    setMessageType(type);
     setTimeout(() => setMessage(null), 5000);
   };
 
@@ -48,7 +51,7 @@ export default function Form() {
         formData
       );
       if (response.status === 200) {
-        resetMessageWithTimeout(response.data.message);
+        resetMessageWithTimeout(response.data.message, "success");
         setFormData(initialFormData);
       }
     } catch (error) {
@@ -56,7 +59,7 @@ export default function Form() {
       const msg =
         error.response?.data?.message ||
         "Dogodila se greška pri slanju podataka.";
-      resetMessageWithTimeout(msg);
+      resetMessageWithTimeout(msg, "error");
     }
   };
 
@@ -149,7 +152,10 @@ export default function Form() {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-white-60  mt-4 shadow-md uppercase p-3 bg-green-80 "
+          className={clsx("text-white-60 mt-4 shadow-md uppercase p-3 ", {
+            "bg-green-80": messageType === "success",
+            "bg-red-70": messageType === "error",
+          })}
         >
           {message}
         </motion.p>
