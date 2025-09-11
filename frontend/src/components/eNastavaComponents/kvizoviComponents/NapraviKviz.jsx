@@ -2,6 +2,9 @@
 import { useState } from "react";
 import axios from "axios";
 import clsx from "clsx";
+import InputField from "@/components/InputField";
+import Button from "@/components/buttons/Button";
+import { motion } from "framer-motion";
 
 export default function NapraviKviz({ quizes, setQuizes }) {
   const [quiz, setQuiz] = useState({
@@ -9,6 +12,14 @@ export default function NapraviKviz({ quizes, setQuizes }) {
     description: "",
   });
   const [createQuiz, setCreateQuiz] = useState(false);
+  const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState(null);
+
+  const resetMessageWithTimeout = (msg, type = "success") => {
+    setMessage(msg);
+    setMessageType(type);
+    setTimeout(() => setMessage(null), 5000);
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -17,6 +28,11 @@ export default function NapraviKviz({ quizes, setQuizes }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!quiz.name || !quiz.description) {
+      resetMessageWithTimeout("Ime i opis kviza su obavezni.", "error");
+      return;
+    }
     try {
       const res = await axios.post(
         "http://localhost:3003/e-nastava/kvizovi",
@@ -27,71 +43,75 @@ export default function NapraviKviz({ quizes, setQuizes }) {
           },
         }
       );
-      console.log(res.data);
       setQuizes([...quizes, res.data]);
       setCreateQuiz(false);
       setQuiz({ name: "", description: "" });
-      alert("Quiz created successfully!");
+      resetMessageWithTimeout("Kviz je uspješno kreiran!", "success");
     } catch (error) {
-      console.error("Error creating quiz", error);
-      alert("There was an error creating the quiz.");
+      resetMessageWithTimeout(
+        error.response?.data?.message || "Greška pri kreiranju kviza.",
+        "error"
+      );
     }
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col items-center">
       <button
         onClick={() => setCreateQuiz(!createQuiz)}
-        className={clsx("self-end w-[200px] h-10 border", {
+        className={clsx("self-end relative group w-[200px] h-10 border", {
           "border-black-40 bg-black-40": createQuiz,
-          "border-red-70 bg-red-70": !createQuiz,
+          "border-red-71 bg-red-71": !createQuiz,
         })}
       >
-        {createQuiz ? (
-          <p className=" text-white-60 text-base font-light text-center ">
-            ODUSTANI
-          </p>
-        ) : (
-          <p className=" text-white-60 text-base font-light text-center ">
-            + NOVI KVIZ
-          </p>
-        )}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+        <span className="relative text-white-60 text-s text-center font-light">
+          {createQuiz ? "ODUSTANI" : "+ NOVI KVIZ"}
+        </span>
       </button>
+      {message && (
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className={clsx(
+            "mt-4 p-3 shadow-md uppercase w-full max-w-[500px] text-center",
+            {
+              "bg-green-80 text-white-60": messageType === "success",
+              "bg-red-70 text-white-60": messageType === "error",
+            }
+          )}
+        >
+          {message}
+        </motion.p>
+      )}
       {createQuiz && (
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-6 items-center"
+          className="w-[500px] max-[500px]:w-full flex flex-col gap-6 items-center"
         >
-          <label htmlFor="" className="flex flex-col gap-[6px] items-start">
-            <p className=" text-base">NASLOV KVIZA</p>
-            <input
-              type="text"
-              name="name"
-              value={quiz.name}
-              onChange={handleChange}
-              className="w-[500px] h-10 p-1 border border-black-40"
-              required
-            />
-          </label>
-          <label htmlFor="" className="flex flex-col gap-[6px] items-start ">
-            <p className="text-base">OPIS</p>
-            <input
-              type="text"
-              name="description"
-              value={quiz.description}
-              onChange={handleChange}
-              className="w-[500px] h-10 p-1 border border-black-40"
-              required
-            />
-          </label>
-          <button
-            type="submit"
-            className="w-[500px] h-10 border border-red-70 bg-red-70 "
-          >
-            <p className=" text-white-60 text-base font-light text-center ">
-              NAPRAVI
-            </p>
-          </button>
+          <InputField
+            label={"NASLOV KVIZA"}
+            id={"naslovKviza"}
+            type={"text"}
+            name={"name"}
+            value={quiz.name}
+            onChange={handleChange}
+          />
+          <InputField
+            label={"OPIS"}
+            id={"opis"}
+            type={"text"}
+            name={"description"}
+            value={quiz.description}
+            onChange={handleChange}
+          />
+          <Button
+            type={"submit"}
+            width={"100%"}
+            text={"NAPRAVI"}
+            color={"red"}
+          />
         </form>
       )}
     </div>

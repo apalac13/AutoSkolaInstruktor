@@ -2,6 +2,7 @@
 import Link from "next/link";
 import axios from "axios";
 import clsx from "clsx";
+import EButton from "@/components/buttons/EButton";
 
 export default function Kvizovi({ user, quizes, setQuizes }) {
   const deleteQuiz = async (id) => {
@@ -33,42 +34,46 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
         >
           <p>{quiz.quizname}</p>
           <p>{quiz.quizdescription}</p>
-          <div className=" flex flex-wrap  gap-3">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-3">
             <Link
               href={`/e-nastava/kvizovi/${quiz._id}/pogledaj`}
               className={clsx(user.role === "admin" ? "visible" : "hidden")}
             >
-              <button className="w-[100px] h-10 border border-black-40 bg-black-40 ">
-                <p className=" text-white-60 text-xs font-light text-center ">
-                  POGLEDAJ
-                </p>
-              </button>
+              <EButton
+                type={"button"}
+                width={"100px"}
+                text={"POGLEDAJ"}
+                color={"black"}
+              />
             </Link>
             <Link
               href={`/e-nastava/kvizovi/${quiz._id}/dodaj-pitanje`}
               className={clsx(user.role === "admin" ? "visible" : "hidden")}
             >
-              <button className="w-[100px] h-10 border border-black-40 bg-black-40 ">
-                <p className=" text-white-60 text-xs font-light text-center ">
-                  DODAJ
-                </p>
-              </button>
+              <EButton
+                type={"button"}
+                width={"100px"}
+                text={"DODAJ"}
+                color={"black"}
+              />
             </Link>
             <Link href={`/e-nastava/kvizovi/${quiz._id}`}>
-              <button className="w-[100px] h-10 border border-green-80 bg-green-80 ">
-                <p className=" text-white-60 text-xs font-light text-center ">
-                  IGRAJ
-                </p>
-              </button>
+              <EButton
+                type={"button"}
+                width={"100px"}
+                text={"IGRAJ"}
+                color={"green"}
+              />
             </Link>
             {user.role === "admin" && (
               <button
                 onClick={() => deleteQuiz(quiz._id)}
-                className="w-[100px] h-10 border border-red-70 bg-red-70 "
+                className="relative group w-[100px] h-10 border-red-71 bg-red-71 "
               >
-                <p className="text-white-60 text-xs font-light text-center ">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+                <span className="relative text-white-60 text-xs text-center font-light">
                   IZBRIŠI
-                </p>
+                </span>
               </button>
             )}
           </div>
