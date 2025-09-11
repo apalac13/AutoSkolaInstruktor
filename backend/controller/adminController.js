@@ -31,11 +31,6 @@ exports.verifyToken = (req, res, next) => {
 };
 
 exports.createQuiz = async (req, res) => {
-  if (!req.body.name || !req.body.description) {
-    console.log("Missing name or description");
-    return res.status(400).json({ msg: "Name and description are required." });
-  }
-
   const quiz = new Quiz({
     quizname: req.body.name,
     quizdescription: req.body.description,
@@ -43,11 +38,10 @@ exports.createQuiz = async (req, res) => {
 
   try {
     const savedQuiz = await quiz.save();
-    console.log("Quiz saved successfully:", savedQuiz);
     res.status(200).json(savedQuiz);
   } catch (error) {
     console.log("Error saving quiz:", error);
-    res.status(500).json({ msg: "Error saving quiz." });
+    res.status(500).json({ message: "Greška prilikom spremanju kviza." });
   }
 };
 

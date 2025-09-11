@@ -11,7 +11,7 @@ export default function InputField({ label, id, type, name, value, onChange }) {
           name={name}
           value={value}
           onChange={onChange}
-          className="border border-black-40 w-full h-[45px] max-xl:h-[35px] p-1"
+          className="border border-black-40 w-full h-[40px] max-xl:h-[35px] p-1"
           required
         />
       </label>
