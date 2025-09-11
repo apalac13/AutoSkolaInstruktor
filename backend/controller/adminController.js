@@ -50,51 +50,7 @@ exports.getAllQuizes = async (req, res) => {
     const allQuizes = await Quiz.find().populate("questions");
     res.json(allQuizes);
   } catch (error) {
-    res.status(500).send(error.message);
-  }
-};
-
-exports.getQuizResults = async (req, res) => {
-  try {
-    const quizResults = await QuizResult.find().populate("quiz");
-    res.status(200).json(quizResults);
-  } catch (error) {
-    console.error("Error fetching results:", error);
-    res.status(500).json({ message: error.message });
-  }
-};
-
-exports.getQuizResult = async (req, res) => {
-  const quizId = req.params.id;
-  try {
-    const quizResult = await QuizResult.findById(quizId)
-      .populate("quiz")
-      .populate("answers.question");
-    res.status(200).json(quizResult);
-  } catch (error) {
-    console.error("Error fetching results:", error);
-    res.status(500).json({ message: error.message });
-  }
-};
-
-exports.getTestResults = async (req, res) => {
-  try {
-    const testResults = await TestResult.find().populate("test");
-    res.status(200).json(testResults);
-  } catch (error) {
-    console.error("Error fetching results:", error);
-    res.status(500).json({ message: error.message });
-  }
-};
-
-exports.getTestResult = async (req, res) => {
-  const testId = req.params.id;
-  try {
-    const testResult = await TestResult.findById(testId).populate("test");
-    res.status(200).json(testResult);
-  } catch (error) {
-    console.error("Error fetching results:", error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "Greška pri dohvaćanju kviza" });
   }
 };
 
@@ -152,6 +108,65 @@ exports.deleteQuestion = async (req, res) => {
   }
 };
 
+exports.deleteQuiz = async (req, res) => {
+  const quizId = req.params.id;
+  try {
+    await Quiz.deleteOne({ _id: quizId });
+    await Question.deleteMany({ quiz: quizId });
+
+    res
+      .status(200)
+      .json({ msg: "Quiz and associated questions deleted successfully!" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ msg: "Something went wrong!" });
+  }
+};
+
+exports.getQuizResults = async (req, res) => {
+  try {
+    const quizResults = await QuizResult.find().populate("quiz");
+    res.status(200).json(quizResults);
+  } catch (error) {
+    console.error("Error fetching results:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getQuizResult = async (req, res) => {
+  const quizId = req.params.id;
+  try {
+    const quizResult = await QuizResult.findById(quizId)
+      .populate("quiz")
+      .populate("answers.question");
+    res.status(200).json(quizResult);
+  } catch (error) {
+    console.error("Error fetching results:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getTestResults = async (req, res) => {
+  try {
+    const testResults = await TestResult.find().populate("test");
+    res.status(200).json(testResults);
+  } catch (error) {
+    console.error("Error fetching results:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getTestResult = async (req, res) => {
+  const testId = req.params.id;
+  try {
+    const testResult = await TestResult.findById(testId).populate("test");
+    res.status(200).json(testResult);
+  } catch (error) {
+    console.error("Error fetching results:", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
 exports.uploadQuiz = async (req, res) => {
   const quizId = req.params.id;
   try {
@@ -171,21 +186,6 @@ exports.uploadQuiz = async (req, res) => {
     }
     res.json(quiz);
   } catch (error) {
-    console.error(err);
-    res.status(500).json({ msg: "Something went wrong!" });
-  }
-};
-
-exports.deleteQuiz = async (req, res) => {
-  const quizId = req.params.id;
-  try {
-    await Quiz.deleteOne({ _id: quizId });
-    await Question.deleteMany({ quiz: quizId });
-
-    res
-      .status(200)
-      .json({ msg: "Quiz and associated questions deleted successfully!" });
-  } catch (err) {
     console.error(err);
     res.status(500).json({ msg: "Something went wrong!" });
   }
