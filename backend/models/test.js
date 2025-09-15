@@ -1,6 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const optionsSchema = new Schema({
+  option: {
+    type: String,
+    default: "",
+  },
+  answer: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 const questionSchema = new Schema(
   {
     questionText: {
@@ -16,11 +27,8 @@ const questionSchema = new Schema(
       required: true,
     },
     answerOptions: {
-      type: [], // Array of strings
-      required: true,
-    },
-    trueAnswers: {
-      type: [], // Array of strings, assuming true answers are specified by their text
+      type: [optionsSchema],
+      default: [],
       required: true,
     },
   },
@@ -32,8 +40,12 @@ const testSchema = new Schema({
     type: String,
     required: true,
   },
+  totalPoints: {
+    type: Number,
+    required: true,
+  },
   questions: {
-    type: [questionSchema], // Array of question subdocuments
+    type: [questionSchema],
     default: [],
   },
 });
