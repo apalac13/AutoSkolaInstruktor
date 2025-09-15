@@ -56,32 +56,33 @@ exports.getAllQuizes = async (req, res) => {
 
 exports.addQuestion = async (req, res) => {
   const quizId = req.params.id;
-  const newQuestion = new Question({
-    quiz: quizId,
-    questionText: req.body.questionText,
-    image: req.file ? req.file.originalname : null,
-    answer: req.body.answer,
-    options: JSON.parse(req.body.options),
-  });
 
   try {
     const quiz = await Quiz.findById(quizId);
     if (!quiz) {
-      return res.status(404).json({ error: "Quiz doesn't exist" });
+      return res.status(404).json({ message: "Kviz ne postoji" });
     }
 
-    const savedQuestion = await newQuestion.save();
+    let answerOptions = [];
+    if (req.body.answerOptions) {
+      answerOptions = JSON.parse(req.body.answerOptions);
+    }
 
-    quiz.questions.push(savedQuestion._id);
+    const newQuestion = {
+      questionText: req.body.questionText,
+      image: req.file ? req.file.originalname : null,
+      questionNumber: quiz.questions.length + 1,
+      type: req.body.type,
+      answerOptions,
+    };
+
+    quiz.questions.push(newQuestion);
     await quiz.save();
 
-    return res.status(200).json({
-      message: "Question added successfully!",
-      question: savedQuestion,
-    });
+    return res.status(200).json({ message: "Pitanje uspješno dodano!" });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error" });
+    console.error("Greška pri dodavanju pitanja:", error);
+    res.status(500).json({ message: "Greška pri dodavanju pitanja" });
   }
 };
 
