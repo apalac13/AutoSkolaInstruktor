@@ -93,6 +93,24 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
+exports.getAllQuizes = async (req, res) => {
+  try {
+    const allQuizes = await Quiz.find();
+    res.json(allQuizes);
+  } catch (error) {
+    res.status(500).json({ message: "Greška pri dohvaćanju kviza" });
+  }
+};
+
+exports.getQuiz = async (req, res) => {
+  try {
+    const quiz = await Quiz.findById(req.params.id);
+    res.json(quiz);
+  } catch (error) {
+    res.status(500).json({ message: "Greška pri dohvaćanju kviza" });
+  }
+};
+
 exports.getAllQuestions = async (req, res) => {
   const quizId = req.params.id;
   try {
