@@ -30,8 +30,8 @@ router.post(
 );
 router.get(
   "/kvizovi",
-  adminController.verifyToken,
-  adminController.getAllQuizes
+  eNastavaController.verifyToken,
+  eNastavaController.getAllQuizes
 );
 router.post(
   "/kvizovi/:id/dodaj-pitanje",
@@ -51,8 +51,8 @@ router.post(
 );
 router.get(
   "/kvizovi/:id/pogledaj",
-  adminController.verifyToken,
-  eNastavaController.getAllQuestions
+  eNastavaController.verifyToken,
+  eNastavaController.getQuiz
 );
 
 router.delete(

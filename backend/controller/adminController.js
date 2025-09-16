@@ -45,15 +45,6 @@ exports.createQuiz = async (req, res) => {
   }
 };
 
-exports.getAllQuizes = async (req, res) => {
-  try {
-    const allQuizes = await Quiz.find().populate("questions");
-    res.json(allQuizes);
-  } catch (error) {
-    res.status(500).json({ message: "Greška pri dohvaćanju kviza" });
-  }
-};
-
 exports.addQuestion = async (req, res) => {
   const quizId = req.params.id;
 
@@ -88,24 +79,27 @@ exports.addQuestion = async (req, res) => {
 
 exports.deleteQuestion = async (req, res) => {
   const { kvizId, questionId } = req.params;
+
   try {
     const quiz = await Quiz.findById(kvizId);
     if (!quiz) {
-      return res.status(404).json({ error: "Quiz not found" });
+      return res.status(404).json({ message: "Kviz nije pronađen" });
     }
 
-    const questionIndex = quiz.questions.indexOf(questionId);
-    if (questionIndex > -1) {
-      quiz.questions.splice(questionIndex, 1);
-      await quiz.save();
+    const question = quiz.questions.id(questionId);
+    if (!question) {
+      return res.status(404).json({ message: "Pitanje nije pronađeno" });
     }
 
-    await Question.findByIdAndDelete(questionId);
+    question.deleteOne();
+    await quiz.save();
 
-    res.json({ msg: "Question deleted successfully" });
+    res.json({ message: "Pitanje uspješno izbrisano" });
   } catch (error) {
-    console.error("Error deleting question:", error);
-    res.status(500).json({ error: "Server error" });
+    console.error(error);
+    res.status(500).json({
+      message: "Pojavila se greška prilikom brisanja pitanja",
+    });
   }
 };
 

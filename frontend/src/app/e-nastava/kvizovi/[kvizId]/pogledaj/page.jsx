@@ -4,14 +4,14 @@ import SubNavigacija from "@/components/eNastavaComponents/SubNavigacija";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import QuizQuestion from "@/components/eNastavaComponents/kvizoviComponents/QuizQuestion";
 import Button from "@/components/buttons/Button";
+import Notification from "@/components/Notification";
 
 export default function PogledajPage() {
   const router = useRouter();
   const { kvizId } = useParams();
-  const [quiz, setQuiz] = useState({ questions: [] });
+  const [quiz, setQuiz] = useState({});
   const [message, setMessage] = useState(null);
   const [messageType, setMessageType] = useState(null);
 
@@ -47,7 +47,10 @@ export default function PogledajPage() {
           },
         }
       );
-      setQuiz(quiz.filter((q) => q._id !== id));
+      setQuiz((prevQuiz) => ({
+        ...prevQuiz,
+        questions: prevQuiz.questions.filter((q) => q._id !== id),
+      }));
       resetMessageWithTimeout("Pitanje upsješno izbrisano", "success");
     } catch (error) {
       resetMessageWithTimeout(
@@ -71,22 +74,7 @@ export default function PogledajPage() {
               color={"black"}
             />
           </Link>
-          {message && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className={clsx(
-                "mt-4 p-3 shadow-md uppercase w-full max-w-[500px] text-center",
-                {
-                  "bg-green-80 text-white-60": messageType === "success",
-                  "bg-red-70 text-white-60": messageType === "error",
-                }
-              )}
-            >
-              {message}
-            </motion.p>
-          )}
+          <Notification message={message} messageType={messageType} />
         </div>
         <div className="w-full flex flex-col  gap-6">
           {quiz.questions && quiz.questions.length > 0 ? (
