@@ -111,36 +111,23 @@ exports.getQuiz = async (req, res) => {
   }
 };
 
-exports.getAllQuestions = async (req, res) => {
-  const quizId = req.params.id;
-  try {
-    const quiz = await Quiz.findById(quizId).populate("questions");
-    res.json(quiz);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error" });
-  }
-};
-
 exports.saveQuizResult = async (req, res) => {
   const result = new QuizResult({
     quiz: req.body.quiz,
     name: req.body.name,
     email: req.body.email,
-    answers: req.body.answers,
     result: req.body.result,
+    answers: req.body.answers,
   });
 
   try {
     const savedResult = await result.save();
-    console.log("Result saved successfully:", savedResult);
-    req.io.emit("resultsUpdated", savedResult);
-    res.status(200).json({ message: "Result added successfully!" });
+    res.status(200).json({ message: "Rezultati uspješno spremljeni" });
   } catch (error) {
-    console.log("Error saving quiz:", error);
-    res.status(500).json({ msg: "Error saving quiz." });
+    res.status(500).json({ message: "Greška pri spremanju rezultata kviza." });
   }
 };
+
 exports.saveTestResult = async (req, res) => {
   const testResult = new TestResult({
     test: req.body.test,
@@ -152,11 +139,9 @@ exports.saveTestResult = async (req, res) => {
 
   try {
     const savedTestResult = await testResult.save();
-    console.log("Result saved successfully:", savedTestResult);
-    res.status(200).json({ message: "Result added successfully!" });
+    res.status(200).json({ message: "Rezultati uspješno spremljeni" });
   } catch (error) {
-    console.log("Error saving quiz:", error);
-    res.status(500).json({ msg: "Error saving quiz." });
+    res.status(500).json({ message: "Greška pri spremanju rezultata testa." });
   }
 };
 

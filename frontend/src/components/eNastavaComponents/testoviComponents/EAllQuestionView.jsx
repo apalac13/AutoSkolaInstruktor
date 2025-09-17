@@ -6,16 +6,16 @@ import EResult from "./EResult";
 import { motion } from "framer-motion";
 import axios from "axios";
 
-const INITIAL_TIME = 50 * 60; // 50 minutes
+const INITIAL_TIME = 50 * 60;
 
 export default function EAllQuestionView({ test, user }) {
   const [questions, setQuestions] = useState(test.questions);
-  const [userAnswers, setUserAnswers] = useState([]); // aktivni odgovori u tekućem krugu
-  const [finalUserAnswers, setFinalUserAnswers] = useState([]); // svi odgovori za pregled
+  const [userAnswers, setUserAnswers] = useState([]);
+  const [finalUserAnswers, setFinalUserAnswers] = useState([]);
   const [testOver, setTestOver] = useState(false);
   const [wrongAnswers, setWrongAnswers] = useState([]);
   const [score, setScore] = useState(0);
-  const [baseScore, setBaseScore] = useState(0); // bodovi koji ostaju pri ponavljanju
+  const [baseScore, setBaseScore] = useState(0);
   const [replayWrongAnswers, setReplayWrongAnswers] = useState(false);
   const [replay, setReplay] = useState(false);
   const [viewAnswers, setViewAnswers] = useState(false);
@@ -24,7 +24,6 @@ export default function EAllQuestionView({ test, user }) {
 
   const correctAnswers = test.questions.length - wrongAnswers.length;
 
-  // Ponovi cijeli test
   useEffect(() => {
     if (replay) {
       setScore(0);
@@ -40,14 +39,12 @@ export default function EAllQuestionView({ test, user }) {
     }
   }, [replay]);
 
-  // Ponovi samo pogrešne odgovore
   useEffect(() => {
     if (replayWrongAnswers) {
       const wrongQuestions = test.questions.filter((q) =>
         wrongAnswers.includes(q.questionNumber)
       );
 
-      // Izračunaj bodove koje korisnik već ima od točnih pitanja
       let alreadyEarned = 0;
       test.questions.forEach((q) => {
         if (!wrongAnswers.includes(q.questionNumber)) {
@@ -64,27 +61,26 @@ export default function EAllQuestionView({ test, user }) {
       setScore(alreadyEarned);
       setReplayWrongAnswers(false);
       setViewAnswers(false);
-      setUserAnswers([]); // nova sesija za pogrešna pitanja
+      setUserAnswers([]);
       setQuestions(wrongQuestions);
       setWrongAnswers([]);
       setTestOver(false);
       setTimeLeft(INITIAL_TIME);
-      setSendResult(false); // ne šalji odmah
+      setSendResult(false);
     }
   }, [replayWrongAnswers]);
 
-  // Pregled svih odgovora
   useEffect(() => {
     if (viewAnswers) {
       setQuestions(test.questions);
       setTestOver(false);
       setTimeLeft(INITIAL_TIME);
       setSendResult(false);
-      setUserAnswers(finalUserAnswers); // prikaz svih odgovora
+      setUserAnswers(finalUserAnswers);
     }
   }, [viewAnswers, finalUserAnswers]);
 
-  // Timer
+
   useEffect(() => {
     if (!testOver && timeLeft > 0) {
       const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
@@ -156,7 +152,6 @@ export default function EAllQuestionView({ test, user }) {
     setScore(newScore);
     setWrongAnswers(wrongs);
 
-    // Spremi odgovore za pregled
     setFinalUserAnswers((prev) => {
       const updated = [...prev];
       userAnswers.forEach((ua) => {
@@ -172,7 +167,6 @@ export default function EAllQuestionView({ test, user }) {
     setTestOver(true);
   };
 
-  // Slanje rezultata backendu
   useEffect(() => {
     if (testOver && sendResult) {
       const result = ((score / test.totalPoints) * 100).toFixed(2);

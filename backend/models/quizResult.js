@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const QuizResultSchema = new Schema(
+const quizResultSchema = new Schema(
   {
-    quiz: { type: Schema.Types.ObjectId, ref: "Quiz" },
+    test: { type: Schema.Types.ObjectId, ref: "Quiz" },
     name: {
       type: String,
       required: true,
@@ -12,19 +12,19 @@ const QuizResultSchema = new Schema(
       type: String,
       required: true,
     },
-    answers: [
-      {
-        question: { type: Schema.Types.ObjectId, ref: "Question" },
-        selectedOption: { type: String, default: "" },
-        correctAnswer: { type: String },
-      },
-    ],
     result: {
       type: Number,
       default: 0,
+      required: true,
     },
+    answers: [
+      {
+        questionNumber: { type: Number, required: true },
+        answers: [{ type: String, required: true }],
+      },
+    ],
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("QuizResult", QuizResultSchema);
+module.exports = mongoose.model("QuizResult", quizResultSchema);
