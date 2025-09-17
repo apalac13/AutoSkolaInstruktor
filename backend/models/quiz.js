@@ -28,6 +28,7 @@ const questionSchema = new Schema({
   answerOptions: {
     type: [optionsSchema],
     default: [],
+    required: true,
   },
 });
 

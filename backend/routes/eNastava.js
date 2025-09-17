@@ -42,7 +42,7 @@ router.post(
 router.get(
   "/kvizovi/:id",
   eNastavaController.verifyToken,
-  eNastavaController.getAllQuestions
+  eNastavaController.getQuiz
 );
 router.post(
   "/kvizovi/:id",

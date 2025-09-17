@@ -7,17 +7,25 @@ import Kviz from "@/components/eNastavaComponents/kvizoviComponents/Kviz";
 import Rezultat from "@/components/eNastavaComponents/kvizoviComponents/Rezultat";
 import { AuthContext } from "@/context/AuthContext";
 import { useContext } from "react";
+import Notification from "@/components/Notification";
 
 export default function KvizPage() {
   const router = useRouter();
   const { kvizId } = useParams();
   const [finish, setFinish] = useState(false);
-  const [quiz, setQuiz] = useState({ questions: [] });
+  const [quiz, setQuiz] = useState({});
   const { user, loading } = useContext(AuthContext);
-  const [result, setResult] = useState({
-    answers: [],
-    result: 0,
-  });
+  const [result, setResult] = useState(0);
+  const [userAnswers, setUserAnswers] = useState([]);
+  const [replay, setReplay] = useState(false);
+  const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState(null);
+
+  const resetMessageWithTimeout = (message, type = "success") => {
+    setMessage(message);
+    setMessageType(type);
+    setTimeout(() => setMessage(null), 5000);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -28,95 +36,50 @@ export default function KvizPage() {
         },
       })
       .then((res) => setQuiz(res.data))
-      .catch((err) => console.log(err.message));
+      .catch((error) => {
+        resetMessageWithTimeout(
+          error.response?.data?.message || "Greška pri dohvaćanju kviza.",
+          "error"
+        );
+      });
   }, [router, kvizId]);
 
-  if (loading) return <div>Loading...</div>;
-
-  const handleAnswerChange = (questionId, selectedOption, correctAnswer) => {
-    setResult((prevResult) => {
-      const updatedAnswers = prevResult.answers.filter(
-        (answer) => answer.questionId !== questionId
-      );
-      updatedAnswers.push({
-        question: questionId,
-        selectedOption,
-        correctAnswer,
-      });
-      return {
-        ...prevResult,
-        answers: updatedAnswers,
-      };
-    });
-  };
-
-  const handleTextAnswerChange = (questionId, answerValue, correctAnswer) => {
-    setResult((prevResult) => {
-      const updatedAnswers = prevResult.answers.filter(
-        (answer) => answer.questionId !== questionId
-      );
-      updatedAnswers.push({
-        question: questionId,
-        selectedOption: answerValue,
-        correctAnswer,
-      });
-      return {
-        ...prevResult,
-        answers: updatedAnswers,
-      };
-    });
-  };
-
-  const handleSubmit = async () => {
-    const token = localStorage.getItem("token");
-
-    const calculatedResult = result.answers.reduce((acc, answer) => {
-      if (answer.selectedOption === answer.correctAnswer) {
-        return acc + 1;
-      }
-      return acc;
-    }, 0);
-
-    const submissionData = {
-      quiz: kvizId,
-      name: user?.name || "Gost",
-      email: user?.email || "n/a",
-      answers: result.answers,
-      result: calculatedResult,
-    };
-
-    setResult((prevResult) => ({ ...prevResult, result: calculatedResult }));
-
-    try {
-      await axios.post(
-        `http://localhost:3003/e-nastava/kvizovi/${kvizId}`,
-        submissionData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      alert("Quiz submitted successfully!");
-      setFinish(true);
-    } catch (error) {
-      console.error("Error submitting quiz", error);
-      alert("There was an error submitting the quiz.");
+  useEffect(() => {
+    if (replay) {
+      setResult(0);
+      setUserAnswers([]);
+      setReplay(false);
+      setFinish(false);
     }
-  };
+  }, [replay]);
+
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className="flex flex-col items-center justify-center">
       <SubNavigacija />
+      <Notification message={message} messageType={messageType} />
       {!finish ? (
         <Kviz
           quiz={quiz}
-          handleAnswerChange={handleAnswerChange}
-          handleTextAnswerChange={handleTextAnswerChange}
-          handleSubmit={handleSubmit}
+          kvizId={kvizId}
+          user={user}
+          userAnswers={userAnswers}
+          setUserAnswers={setUserAnswers}
+          setFinish={setFinish}
+          result={result}
+          setResult={setResult}
+          resetMessageWithTimeout={resetMessageWithTimeout}
         />
       ) : (
-        <Rezultat result={result} setFinish={setFinish} kvizId={kvizId} />
+        <Rezultat
+          result={result}
+          userAnswers={userAnswers}
+          setFinish={setFinish}
+          quiz={quiz}
+          kvizId={kvizId}
+          setReplay={setReplay}
+        />
       )}
     </div>
   );

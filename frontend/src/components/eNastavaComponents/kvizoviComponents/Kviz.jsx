@@ -1,74 +1,110 @@
-import Image from "next/image";
+"use client";
+import axios from "axios";
+import Questions from "@/components/onlineTestoviComponents/allQuestionComponents/Questions";
 
 export default function Kviz({
   quiz,
-  handleAnswerChange,
-  handleTextAnswerChange,
-  handleSubmit,
+  user,
+  userAnswers,
+  setUserAnswers,
+  setFinish,
+  result,
+  setResult,
+  kvizId,
+  resetMessageWithTimeout,
 }) {
+  const handleChange = (questionNumber, answerOption, isText = false) => {
+    setUserAnswers((prev) => {
+      const idx = prev.findIndex((a) => a.questionNumber === questionNumber);
+      if (idx >= 0) {
+        const updated = [...prev];
+        let updatedAnswers;
+
+        if (isText) {
+          updatedAnswers = [answerOption];
+        } else {
+          updatedAnswers = updated[idx].answers.includes(answerOption)
+            ? updated[idx].answers.filter((ans) => ans !== answerOption)
+            : [...updated[idx].answers, answerOption];
+        }
+
+        updated[idx] = { questionNumber, answers: updatedAnswers };
+        return updated;
+      } else {
+        return [...prev, { questionNumber, answers: [answerOption] }];
+      }
+    });
+  };
+
+  const handleSubmit = async () => {
+    const token = localStorage.getItem("token");
+    let score = 0;
+
+    quiz.questions.forEach((question) => {
+      const userAnswer = userAnswers.find(
+        (a) => a.questionNumber === question.questionNumber
+      );
+
+      if (userAnswer) {
+        const correctOptions = question.answerOptions
+          .filter((opt) => opt.answer)
+          .map((opt) => opt.option);
+
+        const isCorrect =
+          userAnswer.answers.length === correctOptions.length &&
+          userAnswer.answers.every((ans) => correctOptions.includes(ans));
+
+        if (isCorrect) {
+          score += 1;
+        }
+      }
+    });
+
+    setResult(score);
+
+    const submissionData = {
+      quiz: quiz._id,
+      name: user?.name || "Gost",
+      email: user?.email || "n/a",
+      result: score,
+      answers: userAnswers,
+    };
+
+    try {
+      await axios.post(
+        `http://localhost:3003/e-nastava/kvizovi/${kvizId}`,
+        submissionData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert("Kviz uspješno završen!");
+      setFinish(true);
+    } catch (error) {
+      resetMessageWithTimeout(
+        error.response?.data?.message || "Greška pri slanju rezultata.",
+        "error"
+      );
+    }
+  };
+
   return (
     <div className="w-[600px] flex flex-col items-start justify-center gap-6 ">
-      <p className=" text-xl text-black-40 uppercase ">{quiz.quizname}</p>
+      <p className="self-center text-xl text-black-40 uppercase ">
+        {quiz.quizname}
+      </p>
       <div className="w-full flex flex-col  gap-6">
         {quiz.questions && quiz.questions.length > 0 ? (
-          quiz.questions.map((question, index) => (
-            <div
-              key={question._id}
-              className="flex flex-col gap-6 border-b-[1px] border-black-40 "
-            >
-              <div className="flex  gap-3 text-lg font-semibold border-b-[1px] border-black-40 ">
-                <p>{index + 1}.</p>
-                <p> {question.questionText}</p>
-              </div>
-              <div className="flex flex-col gap-3">
-                {question.options && question.options.length > 0 ? (
-                  question.options.map((option, optionIndex) => (
-                    <div key={optionIndex} className="flex items-center gap-3">
-                      <label>
-                        <input
-                          type="radio"
-                          name={`question-${question._id}`}
-                          value={option.optionValue}
-                          onChange={() =>
-                            handleAnswerChange(
-                              question._id,
-                              option.optionValue,
-                              question.answer
-                            )
-                          }
-                        />
-                        {option.optionText}
-                      </label>
-                    </div>
-                  ))
-                ) : (
-                  <div className="mb-1">
-                    <label>
-                      <input
-                        type="text"
-                        name={`question-${question._id}`}
-                        className="w-full h-10 border border-black-40 "
-                        onChange={(e) =>
-                          handleTextAnswerChange(
-                            question._id,
-                            e.target.value,
-                            question.answer
-                          )
-                        }
-                      />
-                    </label>
-                  </div>
-                )}
-              </div>
-              {question.image && (
-                <Image
-                  src={`/uploads/${question.image}`}
-                  alt="..."
-                  width={200}
-                  height={200}
-                />
-              )}
-            </div>
+          quiz.questions.map((question) => (
+            <Questions
+              key={question.questionNumber}
+              question={question}
+              viewAnswers={false}
+              handleChange={handleChange}
+              userAnswers={userAnswers}
+            />
           ))
         ) : (
           <p>No questions available.</p>
