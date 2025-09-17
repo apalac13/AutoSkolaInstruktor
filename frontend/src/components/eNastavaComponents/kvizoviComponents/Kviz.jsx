@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import Questions from "@/components/onlineTestoviComponents/allQuestionComponents/Questions";
+import { motion } from "framer-motion";
 
 export default function Kviz({
   quiz,
@@ -97,14 +98,21 @@ export default function Kviz({
       </p>
       <div className="w-full flex flex-col  gap-6">
         {quiz.questions && quiz.questions.length > 0 ? (
-          quiz.questions.map((question) => (
-            <Questions
+          quiz.questions.map((question, index) => (
+            <motion.div
               key={question.questionNumber}
-              question={question}
-              viewAnswers={false}
-              handleChange={handleChange}
-              userAnswers={userAnswers}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Questions
+                key={question.questionNumber}
+                question={question}
+                viewAnswers={false}
+                handleChange={handleChange}
+                userAnswers={userAnswers}
+              />
+            </motion.div>
           ))
         ) : (
           <p>No questions available.</p>

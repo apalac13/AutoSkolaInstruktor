@@ -8,6 +8,7 @@ import Rezultat from "@/components/eNastavaComponents/kvizoviComponents/Rezultat
 import { AuthContext } from "@/context/AuthContext";
 import { useContext } from "react";
 import Notification from "@/components/Notification";
+import { motion } from "framer-motion";
 
 export default function KvizPage() {
   const router = useRouter();
@@ -72,14 +73,21 @@ export default function KvizPage() {
           resetMessageWithTimeout={resetMessageWithTimeout}
         />
       ) : (
-        <Rezultat
-          result={result}
-          userAnswers={userAnswers}
-          setFinish={setFinish}
-          quiz={quiz}
-          kvizId={kvizId}
-          setReplay={setReplay}
-        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <Rezultat
+            result={result}
+            userAnswers={userAnswers}
+            setFinish={setFinish}
+            quiz={quiz}
+            kvizId={kvizId}
+            setReplay={setReplay}
+          />
+        </motion.div>
       )}
     </div>
   );
