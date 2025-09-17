@@ -106,15 +106,11 @@ exports.deleteQuestion = async (req, res) => {
 exports.deleteQuiz = async (req, res) => {
   const quizId = req.params.id;
   try {
-    await Quiz.deleteOne({ _id: quizId });
-    await Question.deleteMany({ quiz: quizId });
+    await Quiz.findByIdAndDelete(quizId);
 
-    res
-      .status(200)
-      .json({ msg: "Quiz and associated questions deleted successfully!" });
+    res.status(200).json({ message: "Kviz uspješno izbrisan!" });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ msg: "Something went wrong!" });
+    res.status(500).json({ message: "Greška prilikom brisanja kviza!" });
   }
 };
 
@@ -190,20 +186,20 @@ exports.deleteQuizResult = async (req, res) => {
   const resultId = req.params.id;
   try {
     await QuizResult.findByIdAndDelete(resultId);
-    res.status(200).json({ msg: "Result deleted successfully!" });
+    res.status(200).json({ message: "Result deleted successfully!" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ msg: "Something went wrong!" });
+    res.status(500).json({ message: "Something went wrong!" });
   }
 };
 exports.deleteTestResult = async (req, res) => {
   const resultId = req.params.id;
   try {
     await TestResult.findByIdAndDelete(resultId);
-    res.status(200).json({ msg: "Result deleted successfully!" });
+    res.status(200).json({ message: "Result deleted successfully!" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ msg: "Something went wrong!" });
+    res.status(500).json({ message: "Something went wrong!" });
   }
 };
 
