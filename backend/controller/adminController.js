@@ -127,12 +127,9 @@ exports.getQuizResults = async (req, res) => {
 exports.getQuizResult = async (req, res) => {
   const quizId = req.params.id;
   try {
-    const quizResult = await QuizResult.findById(quizId)
-      .populate("quiz")
-      .populate("answers.question");
+    const quizResult = await QuizResult.findById(quizId).populate("quiz");
     res.status(200).json(quizResult);
   } catch (error) {
-    console.error("Error fetching results:", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -142,7 +139,6 @@ exports.getTestResults = async (req, res) => {
     const testResults = await TestResult.find().populate("test");
     res.status(200).json(testResults);
   } catch (error) {
-    console.error("Error fetching results:", error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -153,32 +149,7 @@ exports.getTestResult = async (req, res) => {
     const testResult = await TestResult.findById(testId).populate("test");
     res.status(200).json(testResult);
   } catch (error) {
-    console.error("Error fetching results:", error);
     res.status(500).json({ message: error.message });
-  }
-};
-
-exports.uploadQuiz = async (req, res) => {
-  const quizId = req.params.id;
-  try {
-    const quiz = await Quiz.findByIdAndUpdate(
-      quizId,
-      { $set: { upload: req.body.upload } },
-      { new: true }
-    );
-
-    if (!quiz) {
-      return res.status(404).send("Quiz doesnt exist");
-    }
-    if (req.body.upload === false) {
-      req.io.emit("quizRemoved", quizId);
-    } else {
-      req.io.emit("quizUpdated", quiz);
-    }
-    res.json(quiz);
-  } catch (error) {
-    console.error(err);
-    res.status(500).json({ msg: "Something went wrong!" });
   }
 };
 
