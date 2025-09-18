@@ -1,6 +1,5 @@
 const User = require("../models/user");
 const Quiz = require("../models/quiz");
-const Question = require("../models/question");
 const QuizResult = require("../models/quizResult");
 const Message = require("../models/message");
 const TestResult = require("../models/testResult");

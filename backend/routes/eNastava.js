@@ -67,12 +67,6 @@ router.delete(
   adminController.deleteQuiz
 );
 
-router.put(
-  "/kvizovi/:id",
-  adminController.verifyToken,
-  adminController.uploadQuiz
-);
-
 router.get(
   "/rezultati/kvizovi",
   adminController.verifyToken,

@@ -1,6 +1,5 @@
 const User = require("../models/user");
 const Quiz = require("../models/quiz");
-const Question = require("../models/question");
 const QuizResult = require("../models/quizResult");
 const TestResult = require("../models/testResult");
 const Message = require("../models/message");
@@ -119,8 +118,7 @@ exports.getQuizResults = async (req, res) => {
     const quizResults = await QuizResult.find().populate("quiz");
     res.status(200).json(quizResults);
   } catch (error) {
-    console.error("Error fetching results:", error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "Greška prilikom dohvaćanja rezultata" });
   }
 };
 
@@ -130,7 +128,7 @@ exports.getQuizResult = async (req, res) => {
     const quizResult = await QuizResult.findById(quizId).populate("quiz");
     res.status(200).json(quizResult);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "Greška prilikom dohvaćanja rezultata" });
   }
 };
 
@@ -139,7 +137,7 @@ exports.getTestResults = async (req, res) => {
     const testResults = await TestResult.find().populate("test");
     res.status(200).json(testResults);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "Greška prilikom dohvaćanja rezultata" });
   }
 };
 
@@ -149,28 +147,34 @@ exports.getTestResult = async (req, res) => {
     const testResult = await TestResult.findById(testId).populate("test");
     res.status(200).json(testResult);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: "Greška prilikom dohvaćanja rezultata" });
   }
 };
 
 exports.deleteQuizResult = async (req, res) => {
   const resultId = req.params.id;
   try {
-    await QuizResult.findByIdAndDelete(resultId);
-    res.status(200).json({ message: "Result deleted successfully!" });
+    const deletedResult = await QuizResult.findByIdAndDelete(resultId);
+    if (!deletedResult) {
+      return res.status(404).json({ message: "Rezultat nije pronađen" });
+    }
+    res.status(200).json({ message: "Rezultat uspješno izbrisan!" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Something went wrong!" });
+    res.status(500).json({ message: "Greška prilikom brisanja rezultata" });
   }
 };
 exports.deleteTestResult = async (req, res) => {
   const resultId = req.params.id;
   try {
-    await TestResult.findByIdAndDelete(resultId);
-    res.status(200).json({ message: "Result deleted successfully!" });
+    const deletedResult = await TestResult.findByIdAndDelete(resultId);
+    if (!deletedResult) {
+      return res.status(404).json({ message: "Rezultat nije pronađen" });
+    }
+    res.status(200).json({ message: "Rezultat uspješno izbrisan!" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Something went wrong!" });
+    res.status(500).json({ message: "Greška prilikom brisanja rezultata" });
   }
 };
 
