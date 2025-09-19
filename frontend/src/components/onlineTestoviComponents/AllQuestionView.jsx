@@ -3,70 +3,84 @@ import Questions from "./allQuestionComponents/Questions";
 import Result from "./Result";
 import { motion } from "framer-motion";
 
+const INITIAL_TIME = 50 * 60;
+
 export default function AllQuestionView({ test }) {
   const [questions, setQuestions] = useState(test.questions);
   const [userAnswers, setUserAnswers] = useState([]);
+  const [finalUserAnswers, setFinalUserAnswers] = useState([]);
   const [testOver, setTestOver] = useState(false);
   const [wrongAnswers, setWrongAnswers] = useState([]);
   const [score, setScore] = useState(0);
+  const [baseScore, setBaseScore] = useState(0);
   const [replayWrongAnswers, setReplayWrongAnswers] = useState(false);
   const [replay, setReplay] = useState(false);
   const [viewAnswers, setViewAnswers] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(50 * 60);
+  const [timeLeft, setTimeLeft] = useState(INITIAL_TIME);
+
   const correctAnswers = test.questions.length - wrongAnswers.length;
 
   useEffect(() => {
     if (replay) {
       setScore(0);
+      setBaseScore(0);
       setWrongAnswers([]);
       setUserAnswers([]);
       setReplay(false);
       setViewAnswers(false);
       setQuestions(test.questions);
       setTestOver(false);
-      setTimeLeft(3000);
+      setTimeLeft(INITIAL_TIME);
     }
   }, [replay]);
 
   useEffect(() => {
     if (replayWrongAnswers) {
-      const wrongQuestions = test.questions.filter((question) =>
-        wrongAnswers.includes(question.questionNumber)
+      const wrongQuestions = test.questions.filter((q) =>
+        wrongAnswers.includes(q.questionNumber)
       );
-      setScore(score);
+
+      let alreadyEarned = 0;
+      test.questions.forEach((q) => {
+        if (!wrongAnswers.includes(q.questionNumber)) {
+          if (q.questionNumber >= 1 && q.questionNumber <= 20)
+            alreadyEarned += 2;
+          else if (q.questionNumber >= 21 && q.questionNumber <= 30)
+            alreadyEarned += 3;
+          else if (q.questionNumber >= 31 && q.questionNumber <= 40)
+            alreadyEarned += 5;
+        }
+      });
+
+      setBaseScore(alreadyEarned);
+      setScore(alreadyEarned);
       setReplayWrongAnswers(false);
       setViewAnswers(false);
-      setUserAnswers(userAnswers);
+      setUserAnswers([]);
       setQuestions(wrongQuestions);
       setWrongAnswers([]);
       setTestOver(false);
-      setTimeLeft(3000);
+      setTimeLeft(INITIAL_TIME);
     }
   }, [replayWrongAnswers]);
 
   useEffect(() => {
     if (viewAnswers) {
-      setWrongAnswers(wrongAnswers);
-      setReplay(false);
-      setUserAnswers(userAnswers);
       setQuestions(test.questions);
       setTestOver(false);
-      setTimeLeft(3000);
+      setTimeLeft(INITIAL_TIME);
+      setUserAnswers(finalUserAnswers);
     }
-  }, [viewAnswers]);
+  }, [viewAnswers, finalUserAnswers]);
 
   useEffect(() => {
-    if (timeLeft <= 0) {
+    if (!testOver && timeLeft > 0) {
+      const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
+      return () => clearInterval(timer);
+    } else if (timeLeft <= 0) {
       handleTestOver();
-      return;
     }
-
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, [testOver, timeLeft]);
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
@@ -75,75 +89,73 @@ export default function AllQuestionView({ test }) {
   };
 
   const handleChange = (questionNumber, answerOption) => {
-    setUserAnswers((prevAnswers) => {
-      const existingAnswerIndex = prevAnswers.findIndex(
-        (answer) => answer.questionNumber === questionNumber
-      );
-      if (existingAnswerIndex >= 0) {
-        // Update existing answer
-        const updatedAnswers = [...prevAnswers];
-        const updatedQuestionAnswers = updatedAnswers[
-          existingAnswerIndex
-        ].answers.includes(answerOption)
-          ? updatedAnswers[existingAnswerIndex].answers.filter(
-              (ans) => ans !== answerOption
-            )
-          : [...updatedAnswers[existingAnswerIndex].answers, answerOption];
-        updatedAnswers[existingAnswerIndex] = {
-          questionNumber,
-          answers: updatedQuestionAnswers,
-        };
-        return updatedAnswers;
+    setUserAnswers((prev) => {
+      const idx = prev.findIndex((a) => a.questionNumber === questionNumber);
+      if (idx >= 0) {
+        const updated = [...prev];
+        const updatedAnswers = updated[idx].answers.includes(answerOption)
+          ? updated[idx].answers.filter((ans) => ans !== answerOption)
+          : [...updated[idx].answers, answerOption];
+        updated[idx] = { questionNumber, answers: updatedAnswers };
+        return updated;
       } else {
-        // Add new answer
-        return [...prevAnswers, { questionNumber, answers: [answerOption] }];
+        return [...prev, { questionNumber, answers: [answerOption] }];
       }
     });
   };
 
   const handleTestOver = () => {
-    let totalScore = 0;
+    if (viewAnswers) {
+      setTestOver(true);
+      return;
+    }
+
+    let earnedThisRound = 0;
     const wrongs = [];
 
-    questions.forEach((question) => {
+    questions.forEach((q) => {
       const userAnswer = userAnswers.find(
-        (answer) => answer.questionNumber === question.questionNumber
+        (ans) => ans.questionNumber === q.questionNumber
       );
 
       if (!userAnswer) {
-        wrongs.push(question.questionNumber);
+        wrongs.push(q.questionNumber);
         return;
       }
 
-      const isCorrect = question.answerOptions.every((option) => {
-        const userSelected = userAnswer.answers.includes(option.option);
-        return userSelected === option.answer;
+      const isCorrect = q.answerOptions.every((opt) => {
+        const selected = userAnswer.answers.includes(opt.option);
+        return selected === opt.answer;
       });
 
       if (isCorrect) {
-        let points = 0;
-        if (question.questionNumber >= 1 && question.questionNumber <= 20) {
-          points = 2;
-        } else if (
-          question.questionNumber >= 21 &&
-          question.questionNumber <= 30
-        ) {
-          points = 3;
-        } else if (
-          question.questionNumber >= 31 &&
-          question.questionNumber <= 40
-        ) {
-          points = 5;
-        }
-        totalScore += points;
+        if (q.questionNumber >= 1 && q.questionNumber <= 20)
+          earnedThisRound += 2;
+        else if (q.questionNumber >= 21 && q.questionNumber <= 30)
+          earnedThisRound += 3;
+        else if (q.questionNumber >= 31 && q.questionNumber <= 40)
+          earnedThisRound += 5;
       } else {
-        wrongs.push(question.questionNumber);
+        wrongs.push(q.questionNumber);
       }
     });
-    console.log(userAnswers);
 
-    setScore(totalScore);
+    const newScore = baseScore + earnedThisRound;
+    setScore(newScore);
     setWrongAnswers(wrongs);
+
+    setFinalUserAnswers((prev) => {
+      const updated = [...prev];
+      userAnswers.forEach((ua) => {
+        const idx = updated.findIndex(
+          (a) => a.questionNumber === ua.questionNumber
+        );
+        if (idx >= 0) updated[idx] = ua;
+        else updated.push(ua);
+      });
+      return updated;
+    });
+
     setTestOver(true);
   };
 
