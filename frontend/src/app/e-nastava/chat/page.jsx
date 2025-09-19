@@ -13,7 +13,7 @@ export default function ChatPage() {
   return (
     <div className="flex flex-col items-center justify-center mb-28">
       <SubNavigacija />
-      <Chat user={user.name} />
+      <Chat user={user} />
     </div>
   );
 }

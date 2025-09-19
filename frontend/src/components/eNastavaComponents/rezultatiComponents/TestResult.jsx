@@ -3,6 +3,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import Notification from "@/components/Notification";
+import EButton from "@/components/buttons/EButton";
 
 export default function TestResult({
   testResults,
@@ -49,19 +50,21 @@ export default function TestResult({
       </p>
       <div className="flex lg:flex-row flex-col gap-3">
         <Link href={`/e-nastava/rezultati/test/${testResult._id}`}>
-          <button className="w-[100px] h-10 border border-black-40 bg-black-40 ">
-            <p className=" text-white-60 text-xs font-light text-center ">
-              POGLEDAJ
-            </p>
-          </button>
+          <EButton
+            type={"button"}
+            width={"100px"}
+            text={"POGLEDAJ"}
+            color={"black"}
+          />
         </Link>
         <button
           onClick={() => deleteTestResult(testResult._id)}
-          className="w-[100px] h-10 border border-red-71 bg-red-71 "
+          className="relative group w-[100px] h-10 border-red-71 bg-red-71 "
         >
-          <p className=" text-white-60 text-xs font-light text-center ">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+          <span className="relative text-white-60 text-xs text-center font-light">
             IZBRIŠI
-          </p>
+          </span>
         </button>
       </div>
     </div>

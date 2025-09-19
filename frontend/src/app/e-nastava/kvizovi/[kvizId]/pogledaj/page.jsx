@@ -38,8 +38,9 @@ export default function PogledajPage() {
   }, [router, kvizId]);
 
   const deleteQuestion = async (id) => {
+    if (!window.confirm("Jeste li sigurni da želite izbrisati pitanje")) return;
     try {
-      await axios.delete(
+      const response = await axios.delete(
         `http://localhost:3003/e-nastava/kvizovi/${kvizId}/${id}/pogledaj`,
         {
           headers: {
@@ -51,7 +52,8 @@ export default function PogledajPage() {
         ...prevQuiz,
         questions: prevQuiz.questions.filter((q) => q._id !== id),
       }));
-      resetMessageWithTimeout("Pitanje upsješno izbrisano", "success");
+      const message = response.data.message;
+      if (message) resetMessageWithTimeout(message, "success");
     } catch (error) {
       resetMessageWithTimeout(
         error.response?.data?.message || "Greška pri brisanju pitanja.",
@@ -66,14 +68,6 @@ export default function PogledajPage() {
       <div className="w-full flex flex-col items-start justify-center gap-6 ">
         <div className="w-full flex flex-col gap-6 ">
           <p className=" text-xl text-black-40 uppercase ">{quiz.quizname}</p>
-          <Link href={"/e-nastava/kvizovi"} className="w-[120px]">
-            <Button
-              type={"button"}
-              width={"150px"}
-              text={"ZAVRŠI PREGLED"}
-              color={"black"}
-            />
-          </Link>
           <Notification message={message} messageType={messageType} />
         </div>
         <div className="w-full flex flex-col  gap-6">
@@ -90,6 +84,14 @@ export default function PogledajPage() {
             <p>No questions available.</p>
           )}
         </div>
+        <Link href={"/e-nastava/kvizovi"} className="w-full">
+          <Button
+            type={"button"}
+            width={"100%"}
+            text={"ZAVRŠI PREGLED"}
+            color={"black"}
+          />
+        </Link>
       </div>
     </div>
   );

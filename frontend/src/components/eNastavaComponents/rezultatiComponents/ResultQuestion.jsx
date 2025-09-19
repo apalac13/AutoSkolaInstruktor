@@ -11,7 +11,9 @@ export default function ResultQuestion({ question, testAnswer }) {
       <div className="flex flex-col gap-3 items-start border-y border-black-40 py-10">
         {!question.answerOptions || question.answerOptions.length === 0 ? (
           <div className="border border-black-40 p-2">
-            <p className="text-black-40 ">{testAnswer.answers[0]}</p>
+            <p className="text-black-40 ">
+              {testAnswer?.answers?.[0] || "Kandidat nije ništa odgovorio"}
+            </p>
           </div>
         ) : (
           question.answerOptions.map((answerOption, index) => {
