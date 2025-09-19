@@ -6,10 +6,19 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext";
+import Notification from "@/components/Notification";
 
 export default function KvizoviPage() {
   const [quizes, setQuizes] = useState([]);
   const { user, loading } = useContext(AuthContext);
+  const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState(null);
+
+  const resetMessageWithTimeout = (msg, type = "success") => {
+    setMessage(msg);
+    setMessageType(type);
+    setTimeout(() => setMessage(null), 5000);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -18,7 +27,13 @@ export default function KvizoviPage() {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setQuizes(res.data))
-      .catch((err) => console.log(err.message));
+      .catch((error) => {
+        resetMessageWithTimeout(
+          error.response?.data?.message ||
+            "Greška prilikom dohvaćanja kvizova.",
+          "error"
+        );
+      });
   }, []);
 
   if (loading) return <div>Loading...</div>;
@@ -27,6 +42,7 @@ export default function KvizoviPage() {
     <div className="flex flex-col items-center justify-center mb-28">
       <SubNavigacija />
       <div className="flex flex-col gap-16">
+        <Notification message={message} messageType={messageType} />
         {user.role === "admin" && (
           <NapraviKviz quizes={quizes} setQuizes={setQuizes} />
         )}

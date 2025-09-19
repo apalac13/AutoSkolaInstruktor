@@ -17,11 +17,17 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
   };
 
   const deleteQuiz = async (id) => {
+    if (!window.confirm("Jeste li sigurni da želite izbrisati kviz")) return;
     try {
-      await axios.delete(`http://localhost:3003/e-nastava/kvizovi/${id}`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
+      const response = await axios.delete(
+        `http://localhost:3003/e-nastava/kvizovi/${id}`,
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
       setQuizes(quizes.filter((q) => q._id !== id));
+      const message = response.data.message;
+      if (message) resetMessageWithTimeout(message, "success");
     } catch (error) {
       resetMessageWithTimeout(
         error.response?.data?.message || "Greška pri brisanju kviza.",
@@ -38,7 +44,6 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
         <p>OPCIJE</p>
       </div>
       <Notification message={message} messageType={messageType} />
-
       {quizes && quizes.length > 0 ? (
         quizes.map((quiz) => (
           <div

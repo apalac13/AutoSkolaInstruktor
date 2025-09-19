@@ -79,7 +79,7 @@ export default function Chat({ user }) {
 
   return (
     <div className="w-[600px] flex flex-col gap-1">
-      {user === "Jure" ? (
+      {user.role === "admin" ? (
         <button
           onClick={deleteMessages}
           className="w-[150px] self-end h-10 border rounded-sm border-red-70 bg-red-70 "

@@ -91,6 +91,9 @@ exports.deleteQuestion = async (req, res) => {
     }
 
     question.deleteOne();
+    quiz.questions.forEach((q, index) => {
+      q.questionNumber = index + 1;
+    });
     await quiz.save();
 
     res.json({ message: "Pitanje uspješno izbrisano" });
@@ -105,7 +108,10 @@ exports.deleteQuestion = async (req, res) => {
 exports.deleteQuiz = async (req, res) => {
   const quizId = req.params.id;
   try {
-    await Quiz.findByIdAndDelete(quizId);
+    const deletedQuiz = await Quiz.findByIdAndDelete(quizId);
+    if (!deletedQuiz) {
+      return res.status(404).json({ message: "Kviz nije pronađen!" });
+    }
 
     res.status(200).json({ message: "Kviz uspješno izbrisan!" });
   } catch (err) {

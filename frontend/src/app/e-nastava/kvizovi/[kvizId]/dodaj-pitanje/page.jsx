@@ -4,8 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import SubNavigacija from "@/components/eNastavaComponents/SubNavigacija";
 import axios from "axios";
 import Button from "@/components/buttons/Button";
-import { motion } from "framer-motion";
-import clsx from "clsx";
+import Notification from "@/components/Notification";
 
 export default function DodajPitanje() {
   const { kvizId } = useParams();
@@ -20,19 +19,11 @@ export default function DodajPitanje() {
     answerOptions: [],
   });
   const [optionText, setOptionText] = useState("");
+
   const options = [
-    {
-      label: "višestruki odgovori",
-      value: "multiple",
-    },
-    {
-      label: "točno/netočno ",
-      value: "true/false",
-    },
-    {
-      label: "upiši odgovor",
-      value: "write",
-    },
+    { label: "višestruki odgovori", value: "multiple" },
+    { label: "točno/netočno", value: "true/false" },
+    { label: "upiši odgovor", value: "write" },
   ];
 
   const resetMessageWithTimeout = (message, type = "success") => {
@@ -48,35 +39,50 @@ export default function DodajPitanje() {
       [name]: value,
     }));
   };
+
   const handleOptionChange = (event) => {
     setOptionText(event.target.value);
   };
 
+  const handleTypeChange = (e) => {
+    const selectedType = e.target.value;
+    setType(selectedType);
+
+    if (selectedType === "true/false") {
+      setQuestion((prev) => ({
+        ...prev,
+        answerOptions: [
+          { option: "TOČNO", answer: false },
+          { option: "NETOČNO", answer: false },
+        ],
+      }));
+    } else {
+      setQuestion((prev) => ({ ...prev, answerOptions: [] }));
+    }
+  };
+
   const handleAddOption = (event) => {
     event.preventDefault();
+    if (!optionText.trim()) return;
 
-    if (type === "true/false") {
-      const trueFalseOption = [
-        { option: "TOČNO", answer: false },
-        { option: "NETOČNO", answer: false },
-      ];
-
-      setQuestion({
-        ...question,
-        answerOptions: trueFalseOption,
-      });
-    } else {
-      const newOption = {
-        option: optionText,
-        answer: false,
-      };
-      setQuestion({
-        ...question,
-        answerOptions: [...question.answerOptions, newOption],
-      });
-    }
+    const newOption = {
+      option: optionText,
+      answer: false,
+    };
+    setQuestion((prev) => ({
+      ...prev,
+      answerOptions: [...prev.answerOptions, newOption],
+    }));
 
     setOptionText("");
+  };
+
+  const handleRemoveOption = (index) => {
+    setQuestion((prev) => {
+      const updated = [...prev.answerOptions];
+      updated.splice(index, 1);
+      return { ...prev, answerOptions: updated };
+    });
   };
 
   const onchangeFile = (e) => {
@@ -92,11 +98,14 @@ export default function DodajPitanje() {
       };
       return { ...prev, answerOptions: newAnswerValue };
     });
-    console.log(question.answerOptions);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (type === "multiple" && question.answerOptions.length === 0) {
+      return resetMessageWithTimeout("Dodaj barem jednu opciju.", "error");
+    }
 
     const formData = new FormData();
     formData.append("questionText", question.questionText);
@@ -130,29 +139,15 @@ export default function DodajPitanje() {
   return (
     <div className="flex flex-col items-center justify-center">
       <SubNavigacija />
-      {message && (
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className={clsx("text-white-60 mt-4 shadow-md uppercase p-3 ", {
-            "bg-green-80": messageType === "success",
-            "bg-red-70": messageType === "error",
-          })}
-        >
-          {message}
-        </motion.p>
-      )}
+      <Notification message={message} messageType={messageType} />
       <form
         onSubmit={handleSubmit}
         encType="multipart/form-data"
         className="w-[500px] max-[500px]:w-full flex flex-col gap-6 items-center"
       >
-        <label
-          htmlFor=""
-          className="w-full flex flex-col gap-[6px] items-start"
-        >
-          <p className=" text-base">PITANJE</p>
+        {/* Pitanje */}
+        <label className="w-full flex flex-col gap-[6px] items-start">
+          <p className="text-base">PITANJE</p>
           <input
             type="text"
             name="questionText"
@@ -162,34 +157,34 @@ export default function DodajPitanje() {
             required
           />
         </label>
+
+        {/* Slika */}
         <label htmlFor="file" className="w-full flex flex-col">
           <input type="file" name="image" onChange={onchangeFile} />
         </label>
-        <label
-          htmlFor=""
-          className="w-full flex flex-col gap-[6px] items-start "
-        >
+
+        {/* Tip pitanja */}
+        <label className="w-full flex flex-col gap-[6px] items-start ">
           <p className="text-base">TIP PITANJA</p>
           <select
             name="type"
             value={type}
-            onChange={(e) => setType(e.target.value)}
+            onChange={handleTypeChange}
             className="w-full h-10 p-1 border border-black-40"
           >
-            {options.map((option, index) => (
-              <option key={index} value={option.value}>
+            {options.map((option) => (
+              <option key={option.value} value={option.value}>
                 {option.label}
               </option>
             ))}
           </select>
         </label>
+
+        {/* Opcije */}
         {type === "multiple" && (
-          <>
-            <label
-              htmlFor=""
-              className="w-full flex flex-col gap-[6px] items-start"
-            >
-              <p className="text-base">OPCIJE ODGOVORA</p>
+          <div className="w-full flex flex-col gap-2 items-start">
+            <p className="text-base">OPCIJE ODGOVORA</p>
+            <div className="flex gap-2 w-full">
               <input
                 type="text"
                 value={optionText}
@@ -200,58 +195,69 @@ export default function DodajPitanje() {
               <button
                 type="button"
                 onClick={handleAddOption}
-                className="w-[100px] h-10  border border-black-40 bg-black-40 "
+                className="relative group w-1/4 h-10 border-black-40 bg-black-40 "
               >
-                <p className=" text-white-60 text-xs font-light text-center ">
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+                <span className="relative text-white-60 text-xs text-center font-light">
                   DODAJ
-                </p>
+                </span>
               </button>
-            </label>
-          </>
-        )}
-        {type === "true/false" && (
-          <div className="w-full flex flex-col items-start justify-start gap-4 mt-4">
-            <p className="text-base">TOČNO</p>
-            <p className="text-base">NETOČNO</p>
-            <button
-              type="button"
-              onClick={handleAddOption}
-              className="w-[100px] h-10  border border-black-40 bg-black-40 "
-            >
-              <p className=" text-white-60 text-xs font-light text-center ">
-                DODAJ
-              </p>
-            </button>
+            </div>
           </div>
         )}
+
+        {type === "true/false" && (
+          <p className="italic text-sm text-gray-500">
+            Automatski dodane opcije: TOČNO / NETOČNO
+          </p>
+        )}
+
         {type === "write" && (
           <p className="italic text-sm text-gray-500">
             Nema opcija — učenik mora unijeti svoj odgovor.
           </p>
         )}
-        <div className="w-full flex flex-col gap-[6px] items-start">
-          <div className="w-full flex justify-between">
-            <p>OPCIJE</p>
-            <p>TOČAN ODGOVOR</p>
+
+        {/* Lista opcija */}
+        {question.answerOptions.length > 0 && (
+          <div className="w-full flex flex-col gap-[6px] items-start">
+            <div className="w-full flex justify-between">
+              <p>OPCIJE</p>
+              <p>TOČAN ODGOVOR</p>
+            </div>
+            {question.answerOptions.map((answerOption, index) => (
+              <div
+                key={answerOption.option + index}
+                className="w-full flex justify-between items-center gap-2"
+              >
+                <p className="w-2/4 h-10 p-1 border border-black-40">
+                  {answerOption.option}
+                </p>
+                <input
+                  type="checkbox"
+                  checked={answerOption.answer}
+                  onChange={() => handleAnswerChange(index)}
+                  className="online-prijava-checkbox w-1/4 h-10 border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer"
+                />
+                {type === "multiple" && (
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveOption(index)}
+                    className="relative group w-1/4 h-10 border-red-71 bg-red-71 "
+                  >
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+                    <span className="relative text-white-60 text-xs text-center font-light">
+                      UKLONI
+                    </span>
+                  </button>
+                )}
+              </div>
+            ))}
           </div>
-          {question.answerOptions.map((answerOption, index) => (
-            <label
-              key={index}
-              className="w-full flex justify-between items-start gap-4"
-            >
-              <p className="w-3/4 h-10 p-1 border border-black-40">
-                {answerOption.option}
-              </p>
-              <input
-                type="checkbox"
-                checked={answerOption.answer}
-                onChange={() => handleAnswerChange(index)}
-                className="online-prijava-checkbox w-1/4 h-10 border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer"
-              />
-            </label>
-          ))}
-        </div>
-        <Button type={"submit"} width={"100%"} text={"DODAJ"} color={"red"} />
+        )}
+
+        {/* Submit */}
+        <Button type="submit" width="100%" text="DODAJ" color="red" />
       </form>
     </div>
   );

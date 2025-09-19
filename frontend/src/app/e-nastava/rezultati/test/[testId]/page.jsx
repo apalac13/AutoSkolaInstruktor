@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import ResultQuestion from "@/components/eNastavaComponents/rezultatiComponents/ResultQuestion";
 import Notification from "@/components/Notification";
+import Button from "@/components/buttons/Button";
 
 export default function TestRezultatDetalji() {
   const { testId } = useParams();
@@ -60,11 +61,12 @@ export default function TestRezultatDetalji() {
         </motion.div>
       ))}
       <Link href={"/e-nastava/rezultati"}>
-        <button className="w-full h-16 max-sm:h-14 border border-red-71 bg-red-71 hover:bg-red-71/90 transition">
-          <p className="text-base max-md:text-sm text-white-60">
-            ZAVRŠI PREGLED
-          </p>
-        </button>
+        <Button
+          type={"button"}
+          width={"100%"}
+          text={"ZAVRŠI PREGLED"}
+          color={"black"}
+        />
       </Link>
     </div>
   );
