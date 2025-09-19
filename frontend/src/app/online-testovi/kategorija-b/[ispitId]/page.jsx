@@ -2,7 +2,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Instruction from "@/components/onlineTestoviComponents/Instruction";
+import Instruction from "@/components/Instruction";
 import SingleQuestionView from "@/components/onlineTestoviComponents/SingleQuestionView";
 import AllQuestionView from "@/components/onlineTestoviComponents/AllQuestionView";
 import Section from "@/components/Section";
