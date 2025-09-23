@@ -3,6 +3,7 @@ import Option from "./singleQuestionComponents/Option";
 import ViewAnswer from "./singleQuestionComponents/viewAnswer";
 import Result from "./Result";
 import { motion, AnimatePresence, time } from "framer-motion";
+import Image from "next/image";
 
 export default function SingleQuestionView({ test }) {
   const [userAnswer, setUserAnswer] = useState([]);
@@ -175,28 +176,40 @@ export default function SingleQuestionView({ test }) {
                   <p>{questions[currentQuestion].questionNumber}.</p>
                   <p>{questions[currentQuestion].questionText}</p>
                 </div>
-                <div className="flex flex-col gap-3 items-start border-y border-black-40 pt-10">
-                  {questions[currentQuestion].answerOptions.map(
-                    (answerOption, index) =>
-                      viewAnswers ? (
-                        <ViewAnswer
-                          key={index}
-                          answerOption={answerOption}
-                          questionNumber={
-                            questions[currentQuestion].questionNumber
-                          }
-                          userAnswers={userAnswers}
-                        />
-                      ) : (
-                        <Option
-                          key={index}
-                          showAnswer={showAnswer}
-                          answerOption={answerOption}
-                          userAnswer={userAnswer}
-                          handleChange={handleChange}
-                        />
-                      )
-                  )}
+                <div className="flex flex-col items-start border-y border-black-40 pt-10">
+                  <div className="w-full flex flex-row justify-between">
+                    <div className="flex flex-col gap-3 items-start">
+                      {questions[currentQuestion].answerOptions.map(
+                        (answerOption, index) =>
+                          viewAnswers ? (
+                            <ViewAnswer
+                              key={index}
+                              answerOption={answerOption}
+                              questionNumber={
+                                questions[currentQuestion].questionNumber
+                              }
+                              userAnswers={userAnswers}
+                            />
+                          ) : (
+                            <Option
+                              key={index}
+                              showAnswer={showAnswer}
+                              answerOption={answerOption}
+                              userAnswer={userAnswer}
+                              handleChange={handleChange}
+                            />
+                          )
+                      )}
+                    </div>
+                    {questions[currentQuestion].image && (
+                      <Image
+                        src={`/uploads/${questions[currentQuestion].image}`}
+                        alt={"question image"}
+                        width={250}
+                        height={200}
+                      />
+                    )}
+                  </div>
                   {viewAnswers ? (
                     <motion.div
                       key="next"
