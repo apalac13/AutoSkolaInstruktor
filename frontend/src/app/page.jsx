@@ -29,15 +29,15 @@ export default function Pocetna() {
       </a>
       <div>
         <div className="relative bg-home-page bg-cover bg-no-repeat bg-center w-lvh h-lvh ">
-          <div className="flex flex-col  w-lvh h-lvh bg-[#000]/10 ">
+          <div className="flex flex-col  w-lvh h-lvh bg-[#000]/30 ">
             <Navigacija />
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
-              className="absolute top-1/2 left-[35%] max-xl:left-[20%] max-lg:left-[15%] max-[800px]:left-[10%] max-sm:left-2  flex flex-col gap-9 items-center justify-center "
+              className="w-full h-full relative flex flex-col gap-9 items-center justify-center "
             >
-              <div className="flex max-lg:flex-col gap-16 max-md:gap-12 max-sm:gap-4">
+              <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex max-lg:flex-col gap-16 max-md:gap-12 max-sm:gap-4">
                 <Link href={"/online-prijava"}>
                   <Button
                     type={"button"}
