@@ -62,10 +62,10 @@ export default function Navigacija() {
         </nav>
         <div></div>
       </div>
-      <div className="xl:hidden relative">
+      <div className="xl:hidden relative z-40">
         <div
           className={clsx(
-            "absolute w-full h-[104px] flex items-center justify-between border-b-[1px] px-8 py-2",
+            "fixed  w-full h-24 flex items-center justify-between border-b-[1px] px-8 py-2 backdrop-blur-md bg-black-40/60",
             pathname !== "/o-nama" ? "border-white-60" : "border-black-40"
           )}
         >
@@ -76,16 +76,16 @@ export default function Navigacija() {
                 : "/icons/asi-logo-orginal.svg"
             }
             alt="Logo"
-            width={80}
-            height={80}
+            width={65}
+            height={65}
           />
           <Image
             src={
               pathname !== "/o-nama" ? "/icons/menu1.svg" : "/icons/menu2.svg"
             }
             alt="Logo"
-            width={40}
-            height={40}
+            width={36}
+            height={36}
             onClick={() => setShowNavigationLinks(!showNavigationLinks)}
           />
         </div>
@@ -102,17 +102,17 @@ export default function Navigacija() {
                 showNavigationLinks ? "right-0" : "w-[-100%]"
               )}
             >
-              <div className="w-full h-[104px] flex items-center justify-end border-b-[1px] px-8 py-2 border-white-60">
+              <div className="w-full h-24 px-8 py-8 flex items-center justify-end border-b-[1px] border-white-60">
                 <Image
                   src={"/icons/close_menu.svg"}
                   alt="Logo"
-                  width={40}
-                  height={40}
+                  width={36}
+                  height={36}
                   onClick={() => setShowNavigationLinks(!showNavigationLinks)}
                 />
               </div>
               <div className="flex flex-col gap-6 justify-center items-end mr-8 ">
-                <nav className=" flex flex-col items-end justify-center gap-3 text-lg text-white-60">
+                <nav className=" flex flex-col items-end justify-center gap-2 text-base text-white-60">
                   {navItems.map((item, index) => (
                     <Link
                       href={item.href}
@@ -127,13 +127,13 @@ export default function Navigacija() {
                   {navIcons.map((icon, index) => (
                     <div
                       key={index}
-                      className=" flex items-center justify-center w-[50px] h-[50px] transition duration-400 ease-in-out border border-white-60  rounded-full hover:border-black-40   "
+                      className=" flex items-center justify-center w-12 h-12 transition duration-400 ease-in-out border border-white-60  rounded-full hover:border-black-40   "
                     >
                       <Image
                         src={icon.src}
                         alt={icon.alt}
-                        width={30}
-                        height={30}
+                        width={28}
+                        height={28}
                       />
                     </div>
                   ))}
