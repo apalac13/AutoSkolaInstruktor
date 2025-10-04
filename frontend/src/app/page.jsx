@@ -23,8 +23,8 @@ export default function Pocetna() {
         <Image
           alt="Chat on WhatsApp"
           src="/icons/whatsapp-chat.svg"
-          width={74}
-          height={74}
+          width={65}
+          height={65}
         />
       </a>
       <div>
