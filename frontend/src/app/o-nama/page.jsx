@@ -90,7 +90,7 @@ export default function ONama() {
             initial={{ x: -50 }}
             animate={{ x: 0 }}
             transition={{ duration: 1 }}
-            className=" absolute top-1/3 justify-self-center self-center"
+            className=" absolute top-1/4 justify-self-center self-center"
           >
             <Image
               src={"icons/logo-horizontal.svg"}
@@ -133,7 +133,7 @@ export default function ONama() {
             {firstImages.map((image, index) => (
               <div
                 key={index}
-                className="w-full h-[590px] max-sm:h-[400px] cursor-pointer   "
+                className="w-full h-[590px] max-sm:h-[400px] cursor-pointer "
               >
                 <Image
                   src={image}
