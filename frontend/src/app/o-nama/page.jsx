@@ -83,14 +83,14 @@ export default function ONama() {
 
   return (
     <div className="mb-24">
-      <div className=" bg-gradient-to-r  from-white-60 to-gray-52 w-lvh h-[500px]  border-b border-black-40   ">
+      <div className=" bg-gradient-to-r from-white-60 to-gray-52 w-lvh h-[500px]  border-b border-black-40   ">
         <div className="flex flex-col w-lvh h-[500px] ">
           <Navigacija />
           <motion.div
             initial={{ x: -50 }}
             animate={{ x: 0 }}
             transition={{ duration: 1 }}
-            className=" absolute top-1/4 justify-self-center self-center"
+            className=" absolute top-1/3 justify-self-center self-center"
           >
             <Image
               src={"icons/logo-horizontal.svg"}

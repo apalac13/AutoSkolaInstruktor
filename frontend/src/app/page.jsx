@@ -29,7 +29,7 @@ export default function Pocetna() {
       </a>
       <div>
         <div className="relative bg-home-page bg-cover bg-no-repeat bg-center w-lvh h-lvh ">
-          <div className="flex flex-col  w-lvh h-lvh bg-[#000]/30 ">
+          <div className="flex flex-col w-lvh h-lvh bg-[#000]/30 ">
             <Navigacija />
             <motion.div
               initial={{ opacity: 0, y: 50 }}
