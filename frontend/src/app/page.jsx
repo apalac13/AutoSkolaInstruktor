@@ -60,7 +60,7 @@ export default function Pocetna() {
         </div>
         <StatisticSection />
         <WhyUsSection />
-        <section className="flex flex-col gap-20 p-10 pb-28">
+        <section className="flex flex-col gap-24 p-10 pb-28">
           <Section number={"03"} text={"VLASNIK"} />
           <div className="self-center gap-12 flex flex-col  items-center ">
             <div className="grid auto-rows-3   ">
@@ -76,7 +76,7 @@ export default function Pocetna() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                className="text-xl max-sm:text-lg text-black-40 italic px-7"
+                className="text-xl max-sm:text-base  text-black-40 italic px-7"
               >
                 Naša autoškola nije samo mjesto za polaganje vozačkog ispita,
                 već i za sticanje trajnih znanja i vještina koje će svaki vozač
@@ -98,10 +98,10 @@ export default function Pocetna() {
                 height={42}
               />
               <div className="flex flex-col items-start gap-1 max-sm:gap-0  text-black-40">
-                <p className=" text-sm max-sm:text-xs leading-none">
+                <p className="text-sm max-sm:text-xs leading-none">
                   Instruktor
                 </p>
-                <p className=" text-xl max-sm:text-lg leading-none">
+                <p className=" text-xl max-sm:text-base leading-none">
                   Jure Bradarić
                 </p>
               </div>
@@ -131,18 +131,23 @@ export default function Pocetna() {
               >
                 <div className="self-start flex gap-2">
                   <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
-                  <p className="text-2xl max-[500px]:text-xl text-white-60 font-semibold">
+                  <p className="text-2xl max-sm:text-xl text-white-60 font-semibold">
                     OBUKA SVIH KATEGORIJA
                   </p>
                 </div>
-                <p className=" text-base max-[500px]:text-sm font-light text-white-60 text-justify ">
+                <p className=" text-base max-sm:text-sm font-light text-white-60 text-justify ">
                   Autoskola "Instruktor" se ističe svojom ponudom sveobuhvatne
                   obuke za sve kategorije vozačkih dozvola. Ova usluga je
                   ključna za sve polaznike koji žele da steknu vozačku dozvolu
                   za različite tipove vozila. Bilo da se radi o motociklima,
                   putničkim vozilima, teretnim vozilima ili autobusima,
                   Autoskola "Instruktor" pruža kompletnu edukaciju prilagođenu
-                  specifičnim potrebama svake kategorije.
+                  specifičnim potrebama svake kategorije.{" "}
+                  <Link href={"/kategorije"}>
+                    <span className="underline text-red-71 hover:text-gray-50">
+                      saznaj više
+                    </span>
+                  </Link>
                 </p>
               </motion.div>
             </div>
@@ -158,11 +163,11 @@ export default function Pocetna() {
               >
                 <div className="self-start flex gap-2">
                   <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
-                  <p className="text-2xl max-[500px]:text-xl text-white-60 font-semibold">
+                  <p className="text-2xl max-sm:text-xl text-white-60 font-semibold">
                     KONDICIJSKA VOŽNJA
                   </p>
                 </div>
-                <p className=" text-base max-[500px]:text-sm font-light text-white-60 text-justify ">
+                <p className=" text-base max-sm:text-sm font-light text-white-60 text-justify ">
                   Kondicijska vožnja je program dodatne obuke za vozače koji
                   žele osvježiti svoje vozačke vještine i steći dodatno
                   samopouzdanje na cesti. Ova vrsta vožnje idealna je za one
@@ -187,11 +192,11 @@ export default function Pocetna() {
               >
                 <div className="self-start flex gap-2">
                   <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
-                  <p className="text-2xl max-[500px]:text-xl text-white-60 font-semibold">
+                  <p className="text-2xl max-sm:text-xl text-white-60 font-semibold">
                     VOŽNJA U SPLIT
                   </p>
                 </div>
-                <p className=" text-base max-[500px]:text-sm font-light text-white-60 text-justify ">
+                <p className=" text-base max-sm:text-sm font-light text-white-60 text-justify ">
                   Nudimo vožnju u gradu Splitu i vožnje po autocesti. Ova obuka
                   je dizajnirana kako bi pomogla vozačima da steknu dodatno
                   iskustvo i sigurnost u vožnji kroz gradske gužve i na brzim

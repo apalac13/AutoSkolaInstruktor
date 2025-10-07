@@ -18,8 +18,8 @@ export default function StatisticSection() {
         <div className="max-xl:self-start max-xl:pl-10 max-lg:self-center">
           <p className="text-base text-start text-red-71">UKRATKO</p>
           <div className="flex flex-col  text-5xl max-sm:text-4xl  font-semibold  text-black-40 text-start leading-tighter  ">
-            <p className="">AUTOŠKOLA</p>
-            <p className="">INSTRUKTOR</p>
+            <p>AUTOŠKOLA</p>
+            <p>INSTRUKTOR</p>
           </div>
         </div>
         <div className="w-full flex justify-around max-lg:flex-col max-lg:gap-12 max-lg:items-center ">
@@ -28,7 +28,7 @@ export default function StatisticSection() {
               key={index}
               className="w-[300px] flex flex-col items-center text-black-40"
             >
-              <p className="text-7xl max-sm:text-6xl font-extralight leading-tight">
+              <p className="text-6xl max-sm:text-5xl font-extralight leading-tight">
                 <Counter from={0} to={statsItem.number} />
                 {statsItem.symbol}
               </p>
@@ -41,7 +41,7 @@ export default function StatisticSection() {
                   className="absolute z-20 w-[300px] h-[1px] bg-red-71 mb-[5px] "
                 ></motion.div>
               </div>
-              <p className="text-[22px] max-sm:text-lg font-light">
+              <p className="text-xl max-sm:text-lg font-light">
                 {statsItem.item}
               </p>
             </div>

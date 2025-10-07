@@ -57,9 +57,9 @@ export default function WhyUsSection() {
             transition={{ delay: 0.7, duration: index * 0.2 }}
             viewport={{ once: true }}
             key={index}
-            className="flex flex-col gap-2 max-xl:w-[300px] max-sm:w-[250px] "
+            className="flex flex-col gap-2 w-[300px] h-full max-sm:w-[250px] "
           >
-            <div className="flex gap-1 items-end">
+            <div className="flex gap-1 items-end leading-none">
               <Image
                 src={item.link}
                 alt="icons"
@@ -67,11 +67,11 @@ export default function WhyUsSection() {
                 height={55}
                 className="leading-none max-xl:w-12 max-md:h-12 "
               />
-              <p className="text-[22px] max-xl:text-lg text-red-71 leading-none text-start ">
+              <p className="text-xl max-xl:text-lg text-red-71 leading-none text-start ">
                 {item.name}
               </p>
             </div>
-            <p className="text-base font-extralight text-justify leading-tight  ">
+            <p className="text-base max-md:text-sm font-extralight text-justify leading-tight  ">
               {item.text}
             </p>
           </motion.div>

@@ -10,15 +10,15 @@ const sourceSans3 = Source_Sans_3({
 export const metadata = {
   title: "Autoškola Instruktor",
   description: "Autoškola Instruktor Posušje",
+  viewport: "width=device-width, initial-scale=1.0",
+  icons: {
+    icon: "/asi_logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="icon" type="image/png" href="/asi_logo.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </head>
+    <html lang="hr" className="scroll-smooth">
       <body className={sourceSans3.className}>
         {children}
         <Footer />

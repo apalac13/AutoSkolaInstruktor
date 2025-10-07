@@ -71,12 +71,12 @@ export default function TestimonialsSection() {
                   width={33}
                   height={25}
                 />
-                <blockquote className="text-base italic text-justify">
+                <blockquote className="text-base max-lg:text-sm italic text-justify">
                   {testimonial.text}
                 </blockquote>
               </div>
-              <div className="flex justify-between items-end ">
-                <div className="flex">
+              <div className="flex max-[350px]:flex-col justify-between items-end ">
+                <div className="flex ">
                   {[...Array(5)].map((_, index) => (
                     <Image
                       key={index}
@@ -84,7 +84,7 @@ export default function TestimonialsSection() {
                       alt="star icon"
                       width={32}
                       height={32}
-                      className="max-xl:w-7 max-xl:h-7"
+                      className="max-xl:w-7 max-xl:h-7 max-lg:w-6 max-lg:h-6"
                     />
                   ))}
                 </div>
@@ -94,6 +94,7 @@ export default function TestimonialsSection() {
                     alt="User male icon"
                     width={42}
                     height={42}
+                    className="max-lg:w-9 max-lg:h-9"
                   />
                   <p className="text-base leading-none">{testimonial.person}</p>
                 </div>
