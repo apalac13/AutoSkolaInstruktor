@@ -48,7 +48,7 @@ export default function Footer() {
           alt="Logo"
           width={300}
           height={300}
-          className="max-xl::w-52 max-xl:h-52"
+          className="max-xl:w-52 max-xl:h-52"
         />
         <div className="flex flex-col gap-1 ">
           {contactItems.map((contact) => (
@@ -68,9 +68,9 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="flex flex-col gap-11">
+        <div className="flex flex-col gap-8">
           <p className="text-2xl max-xl:text-xl text-red-71 ">SADRŽAJ</p>
-          <div className="grid grid-cols-2 gap-x-8 gap-y-2 max-lg:gap-y-1">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-1">
             {navItems.map((item) => (
               <Link
                 href={item.href}

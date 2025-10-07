@@ -46,7 +46,7 @@ export default function Navigacija() {
         />
         <nav
           className={clsx(
-            " flex items-center gap-8 text-2xl   ",
+            " flex items-center gap-6 text-xl   ",
             pathname !== "/o-nama" ? "text-white-60" : "text-black-40"
           )}
         >
@@ -54,7 +54,7 @@ export default function Navigacija() {
             <Link
               href={href}
               key={name}
-              className=" transition-all delay-50 ease-in-out hover:text-gray-50 "
+              className="transition-all delay-50 ease-in-out hover:text-gray-50 "
             >
               {name}
             </Link>
