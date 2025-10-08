@@ -129,7 +129,7 @@ export default function Kategorije() {
       </div>
       <section className="p-10 max-lg:px-4 bg-gray-51">
         <Section number={"01"} text={"KATEGORIJE"} />
-        <div className="grid grid-cols-3 max-[900px]:grid-cols-2 max-sm:grid-cols-1 gap-x-4 gap-y-16 justify-items-center p-10 max-lg:px-4">
+        <div className="grid grid-cols-3 max-[900px]:grid-cols-2 max-sm:grid-cols-1 gap-x-8 gap-y-16 justify-items-center p-10 max-lg:px-4">
           {categories.map((category, index) => (
             <Category key={index} category={category} />
           ))}
