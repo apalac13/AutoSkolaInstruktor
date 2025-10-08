@@ -14,7 +14,7 @@ export default function Category({ category }) {
         }}
         className=" bg-cover bg-no-repeat bg-center w-full h-[400px] max-md:h-[350px]  "
       >
-        <div className="flex items-center justify-center w-full h-[400px] max-md:h-[350px]  bg-[#000]/85 ">
+        <div className="flex items-center justify-center w-full h-[400px] max-md:h-[350px]  bg-[#000]/80 ">
           <div className="flex gap-2">
             <div className="w-1 h-8 bg-red-71 mb-[5px]"></div>
             <p className="text-white-60 text-xl font-semibold">
