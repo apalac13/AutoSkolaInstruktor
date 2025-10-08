@@ -78,6 +78,7 @@ export default function ResetPassword() {
             name={"email"}
             value={data.email}
             onChange={handleChange}
+            placeholder="example@gmail.com"
           />
           <InputField
             label={"NOVA LOZINKA"}
@@ -86,6 +87,7 @@ export default function ResetPassword() {
             name={"newPassword"}
             value={data.newPassword}
             onChange={handleChange}
+            placeholder="unesite novu lozinku"
           />
           <InputField
             label={"PONOVI LOZINKU"}
@@ -94,6 +96,7 @@ export default function ResetPassword() {
             name={"repeatPassword"}
             value={data.repeatPassword}
             onChange={handleChange}
+            placeholder="unesite ponovo novu lozinku"
           />
           <Button
             type={"submit"}

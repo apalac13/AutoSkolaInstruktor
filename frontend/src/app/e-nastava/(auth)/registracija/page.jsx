@@ -81,6 +81,7 @@ export default function Registracija() {
             name={"email"}
             value={data.email}
             onChange={handleChange}
+            placeholder="example@gmail.com"
           />
           <InputField
             label={"LOZINKA"}

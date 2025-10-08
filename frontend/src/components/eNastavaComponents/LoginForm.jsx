@@ -87,6 +87,7 @@ export default function LoginForm() {
             name={"email"}
             value={data.email}
             onChange={handleChange}
+            placeholder="example@gmail.com"
           />
           <div className="w-full">
             <InputField
