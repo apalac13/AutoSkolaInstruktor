@@ -12,10 +12,10 @@ export default function Category({ category }) {
         style={{
           backgroundImage: `url(/${category.image})`,
         }}
-        className=" bg-cover bg-no-repeat bg-center w-full h-[400px] max-[550px]:h-[350px]  "
+        className=" bg-cover bg-no-repeat bg-center w-full h-[400px] max-md:h-[350px]  "
       >
-        <div className="flex items-center justify-center w-full h-[400px] max-[550px]:h-[350px]  bg-[#000]/85 ">
-          <div className="flex gap-2 ">
+        <div className="flex items-center justify-center w-full h-[400px] max-md:h-[350px]  bg-[#000]/85 ">
+          <div className="flex gap-2">
             <div className="w-1 h-8 bg-red-71 mb-[5px]"></div>
             <p className="text-white-60 text-xl font-semibold">
               {category.imageText}
@@ -25,28 +25,28 @@ export default function Category({ category }) {
       </div>
       <div className="flex flex-col gap-2 text-justify">
         <div className="flex gap-1 ">
-          <p className="text-lg max-xl:text-base max-[550px]:text-sm text-red-71">
+          <p className="text-lg max-xl:text-base max-lg:text-sm text-red-71">
             OZNAKA:
           </p>
-          <p className="text-lg max-xl:text-base max-[550px]:text-sm text-white-60  ">
+          <p className="text-lg max-xl:text-base max-lg:text-sm text-white-60  ">
             {category.category}
           </p>
         </div>
         <div className="flex flex-col  ">
-          <p className="text-lg max-xl:text-base max-[550px]:text-sm text-red-71 leading-none">
+          <p className="text-lg max-xl:text-base max-lg:text-sm text-red-71 leading-none">
             TIPOVI VOZILA:
           </p>
 
-          <p className="text-base max-[550px]:text-sm  text-gray-50 font-light">
+          <p className="text-lg max-xl:text-base max-lg:text-sm  text-gray-50 font-light">
             {category.type}
           </p>
         </div>
         <div className="flex flex-col ">
-          <p className="text-lg max-xl:text-base max-[550px]:text-sm text-red-71 leading-none">
+          <p className="text-lg max-xl:text-base max-lg:text-sm text-red-71 leading-none">
             UVJETI ZA UPIS:
           </p>
 
-          <p className="text-base max-[550px]:text-sm text-gray-50 font-light">
+          <p className="text-lg max-xl:text-base max-lg:text-sm text-gray-50 font-light">
             {category.conditions}
           </p>
         </div>
