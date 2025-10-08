@@ -86,8 +86,8 @@ export default function Footer() {
       <div>
         <div className="w-full h-[1px] bg-gray-50 "></div>
         <p className="text-gray-50 text-sm max-xl:text-xs font-light ">
-          ©Copyright 2024 Autoškola Instruktor. All Rights Reserved. Powered by{" "}
-          <strong>ANA</strong>
+          ©Copyright 2025 Autoškola Instruktor. All Rights Reserved. Design and
+          development by <strong>ANA</strong>
         </p>
       </div>
     </div>
