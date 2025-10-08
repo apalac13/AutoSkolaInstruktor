@@ -65,7 +65,7 @@ export default function Form() {
 
   return (
     <form
-      className="w-[500px] max-[500px]:w-full flex flex-col gap-4"
+      className="w-[500px] max-sm:w-full flex flex-col gap-4"
       onSubmit={handleSubmit}
     >
       <InputField
@@ -83,6 +83,7 @@ export default function Form() {
         name={"email"}
         value={formData.email}
         onChange={handleChange}
+        placeholder="primjer@gmail.com"
       />
       <InputField
         label={"DATUM I GODINA ROĐENJA"}
@@ -109,7 +110,7 @@ export default function Form() {
         onChange={handleChange}
       />
       <div className="w-full flex flex-col gap-3 items-start ">
-        <p className="text-lg max-xl:text-base">
+        <p className="text-lg max-sm:text-base">
           KATEGORORIJA <span className="text-red-71">*</span>{" "}
         </p>
         <div className="grid grid-cols-2 justify-items-start gap-x-28 gap-y-3 ">
@@ -117,7 +118,7 @@ export default function Form() {
             <label
               key={index}
               htmlFor={category}
-              className="flex  items-end gap-2 cursor-pointer "
+              className="flex items-end gap-2 cursor-pointer "
             >
               <input
                 id={category}
@@ -125,9 +126,9 @@ export default function Form() {
                 value={category}
                 onChange={handleCategoryChange}
                 checked={formData.categories.includes(category)}
-                className="online-prijava-checkbox w-[50px] h-[50px] max-xl:w-[40px] max-xl:h-[40px] border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
+                className="online-prijava-checkbox w-[40px] h-[40px] max-sm:w-[35px] max-sm:h-[35px] border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
               />
-              <p className="text-lg max-xl:text-base leading-none">
+              <p className="text-lg max-sm:text-base leading-none">
                 {category}{" "}
               </p>
             </label>
@@ -135,7 +136,7 @@ export default function Form() {
         </div>
       </div>
       <label htmlFor="message" className="flex flex-col items-start">
-        <p className="text-lg max-xl:text-base">
+        <p className="text-lg max-sm:text-base">
           NAPOMENA <span className="font-light">(neobavezno)</span>
         </p>
         <textarea
@@ -143,7 +144,7 @@ export default function Form() {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className="border border-black-40 w-full p-1 h-[150px] max-xl:h-[100px] bg-white-60"
+          className="border border-black-40 w-full p-1 h-[150px] max-sm:h-[100px] bg-white-60"
         ></textarea>
       </label>
       <Button type={"submit"} width={"full"} text={"POŠALJI"} color={"red"} />

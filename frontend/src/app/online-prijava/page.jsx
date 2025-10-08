@@ -11,13 +11,13 @@ export default function OnlinePrijava() {
   return (
     <div>
       <div className=" bg-online-prijava bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
-        <div className="flex flex-col w-lvh h-[500px] bg-[#000]/80 ">
+        <div className="flex flex-col w-lvh h-[500px] bg-[#000]/60 ">
           <Navigacija />
           <motion.div
             initial={{ x: -50 }}
             animate={{ x: 0 }}
             transition={{ duration: 1 }}
-            className="absolute top-[35%] justify-self-center self-center"
+            className="absolute top-1/3 justify-self-center self-center"
           >
             <p className=" text-4xl max-md:text-3xl font-bold italic  text-white-60">
               ONLINE PRIJAVA
@@ -37,7 +37,7 @@ export default function OnlinePrijava() {
       >
         <div className="flex flex-col items-center justify-center gap-20 px-5">
           <div className="flex flex-col max-[500px]:w-full gap-3 items-center justify-center">
-            <div className="flex items-end gap-1 max-[500px]:w-full">
+            <div className="flex items-end gap-1 max-sm:w-full">
               <div className="flex flex-nowrap gap-1 text-xl  max-xl:text-lg leading-none">
                 <p>UVJETI </p>
                 <p>UPISA</p>
