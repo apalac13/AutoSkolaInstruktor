@@ -201,12 +201,13 @@ export default function AllQuestionView({ test }) {
             </motion.div>
           ))}
           <button
-            className="w-full h-16 max-sm:h-14   border border-red-71 bg-red-71 transition-background delay-150 duration-500  hover:bg-red-71/90 "
             onClick={handleTestOver}
+            className="relative group max-md:w-[150px] max-sm:h-12 h-14 px-5 border-red-71 bg-red-71 text-white-60 overflow-hidden"
           >
-            <p className="text-base max-md:text-sm text-white-60 ">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+            <span className="relative text-base max-md:text-sm text-center font-light">
               ZAVRŠI TEST
-            </p>
+            </span>
           </button>
         </div>
       )}

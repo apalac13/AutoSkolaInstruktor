@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Option from "./singleQuestionComponents/Option";
-import ViewAnswer from "./singleQuestionComponents/viewAnswer";
+import ViewAnswer from "./singleQuestionComponents/ViewAnswer";
 import Result from "./Result";
 import { motion, AnimatePresence, time } from "framer-motion";
 import Image from "next/image";
@@ -177,7 +177,7 @@ export default function SingleQuestionView({ test }) {
                   <p>{questions[currentQuestion].questionText}</p>
                 </div>
                 <div className="flex flex-col items-start border-y border-black-40 pt-10">
-                  <div className="w-full flex flex-row justify-between">
+                  <div className="w-full flex flex-row max-lg:flex-col max-lg:gap-8 justify-between">
                     <div className="flex flex-col gap-3 items-start">
                       {questions[currentQuestion].answerOptions.map(
                         (answerOption, index) =>
