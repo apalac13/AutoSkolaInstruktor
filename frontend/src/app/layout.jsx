@@ -10,10 +10,14 @@ const sourceSans3 = Source_Sans_3({
 export const metadata = {
   title: "Autoškola Instruktor",
   description: "Autoškola Instruktor Posušje",
-  viewport: "width=device-width, initial-scale=1.0",
   icons: {
     icon: "/asi_logo.png",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1.0,
 };
 
 export default function RootLayout({ children }) {

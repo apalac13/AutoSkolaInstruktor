@@ -25,7 +25,10 @@ export default function Ispit() {
   return (
     <div className="m-5">
       <div className="mb-11">
-        <Section number={"ISPIT"} text={"1"} />
+        <Section
+          number={"ISPIT"}
+          text={test ? test.testName.replace("ispit-", "") : ""}
+        />
       </div>
       {instruction ? (
         <Instruction setOption={setOption} setInstruction={setInstruction} />

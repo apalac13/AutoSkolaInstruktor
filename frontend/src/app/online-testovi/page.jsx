@@ -30,7 +30,7 @@ export default function OnlineTestovi() {
         <div key={index} className="flex  flex-col gap-11">
           <div className="flex flex-col gap-6 items-start ">
             <Section number={item.sectionNumber} text={item.sectionText} />
-            <p className="text-justify">{item.text}</p>
+            <p className="text-justify ">{item.text}</p>
           </div>
           <div className="flex max-[410px]:flex-col items-start gap-4 ml-4">
             <Link href={item.firstButtonLink}>

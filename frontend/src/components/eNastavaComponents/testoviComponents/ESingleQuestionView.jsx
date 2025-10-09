@@ -5,6 +5,7 @@ import ViewAnswer from "@/components/onlineTestoviComponents/singleQuestionCompo
 import EResult from "./EResult";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
+import Image from "next/image";
 
 export default function ESingleQuestionView({ test, user }) {
   const [userAnswer, setUserAnswer] = useState([]);
@@ -220,27 +221,40 @@ export default function ESingleQuestionView({ test, user }) {
                   <p>{questions[currentQuestion].questionText}</p>
                 </div>
                 <div className="flex flex-col gap-3 items-start border-y border-black-40 pt-10">
-                  {questions[currentQuestion].answerOptions.map(
-                    (answerOption, index) =>
-                      viewAnswers ? (
-                        <ViewAnswer
-                          key={index}
-                          answerOption={answerOption}
-                          questionNumber={
-                            questions[currentQuestion].questionNumber
-                          }
-                          userAnswers={userAnswers}
-                        />
-                      ) : (
-                        <Option
-                          key={index}
-                          showAnswer={showAnswer}
-                          answerOption={answerOption}
-                          userAnswer={userAnswer}
-                          handleChange={handleChange}
-                        />
-                      )
-                  )}
+                  <div className="w-full flex flex-row max-lg:flex-col max-lg:gap-8 justify-between">
+                    <div className="flex flex-col gap-3 items-start">
+                      {questions[currentQuestion].answerOptions.map(
+                        (answerOption, index) =>
+                          viewAnswers ? (
+                            <ViewAnswer
+                              key={index}
+                              answerOption={answerOption}
+                              questionNumber={
+                                questions[currentQuestion].questionNumber
+                              }
+                              userAnswers={userAnswers}
+                            />
+                          ) : (
+                            <Option
+                              key={index}
+                              showAnswer={showAnswer}
+                              answerOption={answerOption}
+                              userAnswer={userAnswer}
+                              handleChange={handleChange}
+                            />
+                          )
+                      )}
+                    </div>
+                    {questions[currentQuestion].image && (
+                      <Image
+                        src={`/uploads/${questions[currentQuestion].image}`}
+                        alt="Question image"
+                        width={250}
+                        height={200}
+                        className="object-contain"
+                      />
+                    )}
+                  </div>
                   {viewAnswers ? (
                     <motion.div
                       key="next"

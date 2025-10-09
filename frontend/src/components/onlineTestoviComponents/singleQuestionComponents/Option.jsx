@@ -9,13 +9,15 @@ export default function Option({
   return (
     <div className="flex gap-3 ">
       <label className="flex items-center gap-3 cursor-pointer ">
-        <input
-          type="checkbox"
-          className="online-prijava-checkbox w-10 h-10 border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
-          checked={userAnswer.includes(answerOption.option)}
-          value={answerOption.option}
-          onChange={handleChange}
-        />
+        <div className="w-10 h-10">
+          <input
+            type="checkbox"
+            className="online-prijava-checkbox w-10 h-10 border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
+            checked={userAnswer.includes(answerOption.option)}
+            value={answerOption.option}
+            onChange={handleChange}
+          />
+        </div>
         <p className="text-base text-justify">{answerOption.option}</p>
       </label>
       {showAnswer ? (
