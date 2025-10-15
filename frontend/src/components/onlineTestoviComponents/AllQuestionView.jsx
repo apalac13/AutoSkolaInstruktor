@@ -182,7 +182,7 @@ export default function AllQuestionView({ test }) {
       ) : (
         <div className="flex flex-col gap-11">
           <div className="flex gap-11 text-lg max-[450px]:text-base ">
-            <p>Pitanja: 40 </p>
+            <p>Pitanja: {questions.length} </p>
             <p>Vrijeme: {formatTime(timeLeft)}</p>
           </div>
           {questions.map((question, index) => (

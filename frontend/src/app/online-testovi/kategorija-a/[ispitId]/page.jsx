@@ -7,7 +7,7 @@ import SingleQuestionView from "@/components/onlineTestoviComponents/SingleQuest
 import AllQuestionView from "@/components/onlineTestoviComponents/AllQuestionView";
 import Section from "@/components/Section";
 
-export default function IspitB() {
+export default function IspitA() {
   const { ispitId } = useParams();
   const [test, setTest] = useState(null);
   const [instruction, setInstruction] = useState(true);

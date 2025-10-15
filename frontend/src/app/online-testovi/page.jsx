@@ -17,9 +17,9 @@ export default function OnlineTestovi() {
       sectionNumber: "02",
       sectionText: "DODATNA PITANJA",
       text: "Pored pitanja iz B kategorije u prilogu se nalaze dodatna pitanja za kategorije A, C i D kategoriju.",
-      firstButtonLink: `/online-testovi/kategorija-A`,
+      firstButtonLink: `/online-testovi/kategorija-a`,
       firstButtonText: "KATEGORIJA A",
-      secondButtonLink: `/online-testovi`,
+      secondButtonLink: `/online-testovi/kategorija-cd`,
       secondButtonText: "KATEGORIJA C-D",
     },
   ];

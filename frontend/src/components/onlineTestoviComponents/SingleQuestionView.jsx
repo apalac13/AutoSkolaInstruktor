@@ -160,7 +160,10 @@ export default function SingleQuestionView({ test }) {
         {currentQuestion < questions.length ? (
           <div className="flex flex-col gap-11">
             <div className="flex gap-11 text-lg max-[450px]:text-base ">
-              <p>Pitanje: {questions[currentQuestion].questionNumber}/40</p>
+              <p>
+                Pitanje: {questions[currentQuestion].questionNumber}/
+                {questions.length}
+              </p>
               <p>Vrijeme: {formatTime(timeLeft)}</p>
             </div>
             <motion.div
