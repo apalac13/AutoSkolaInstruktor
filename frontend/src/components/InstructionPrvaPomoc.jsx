@@ -1,6 +1,6 @@
 import BlackButton from "./buttons/BlackButton";
 
-export default function Instruction({ setOption, setInstruction }) {
+export default function InstructionPrvaPomoc({ setOption, setInstruction }) {
   const changeView = (viewValue) => {
     setOption(viewValue);
     setInstruction(false);
@@ -14,34 +14,24 @@ export default function Instruction({ setOption, setInstruction }) {
           <div className="flex flex-col">
             <div className="flex gap-2  ">
               <p>1.</p>
-              <p>
-                Vrijeme za popunjavanje testa kategorija A i B je 50 minuta.
-              </p>
-            </div>
-            <div className="flex gap-5  ">
-              <div></div>
-              <p>
-                Vrijeme za popunjavanje testa kategorija C, CE, D, DE je 60
-                minuta.
-              </p>
+              <p>Vrijeme za popunjavanje testa je 50 minuta.</p>
             </div>
           </div>
           <div className="flex gap-2 ">
             <p>2.</p>
             <div className="flex flex-col items-start">
-              <p>Pitanja od 1-20 su vrednovana sa 2 boda</p>
-              <p>Pitanja od 21-30 su vrednovana sa 3 boda</p>
-              <p>Pitanja od 31-40 su vrednovana sa 5 bodova</p>
               <p>
-                Dodatna pitanja za kategorije C i D su vrednovana sa 2 boda.
+                Svako pitanje nosi po 1 bod te svako pitanje ima 1 točan
+                odgovor.
               </p>
             </div>
           </div>
           <div className="flex gap-2">
             <p>3.</p>
             <p>
-              Ako ste zadovoljili najmanje 90% točnih odgovora od ukupnog broja
-              mogućih bodova smatrat će se da ste položili ispit.
+              Ako ste zadovoljili najmanje 90% točnih odgovora, odnosno 9 točnih
+              odgovora od ukupnog broja mogućih bodova (10) smatrat će se da ste
+              položili ispit.
             </p>
           </div>
         </div>

@@ -8,7 +8,7 @@ export default function KategorijaCD() {
   return (
     <div className="flex flex-col gap-16">
       <div className="flex flex-col items-start gap-6">
-        <Section number={"A"} text={"kategorija"} />
+        <Section number={"C-D"} text={"kategorija"} />
         <p className="text-justify ">
           Ovdje se nalaze
           <strong> dodatna pitanja za testove kategorije C i D</strong> za
@@ -20,7 +20,7 @@ export default function KategorijaCD() {
         {buttons.map((description, index) => (
           <Link
             key={index}
-            href={`/online-testovi/kategorija-a/${description
+            href={`/online-testovi/kategorija-cd/${description
               .toLowerCase()
               .replace(" ", "-")}`}
           >
