@@ -11,7 +11,7 @@ export default function KvizoviPage() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="flex flex-col items-center justify-center mb-28">
+    <div className="flex flex-col items-center justify-center mb-28 p-5">
       <SubNavigacija />
       <div className="flex flex-col gap-24">
         <TestsResults />

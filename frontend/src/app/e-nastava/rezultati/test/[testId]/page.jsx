@@ -47,19 +47,22 @@ export default function TestRezultatDetalji() {
           <span>%</span>{" "}
         </p>
       </div>
-      {testResult.test?.questions?.map((question, index) => (
-        <motion.div
-          key={question.questionNumber}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-        >
-          <ResultQuestion
-            question={question}
-            testAnswer={testResult.answers[index]}
-          />
-        </motion.div>
-      ))}
+      {testResult.test?.questions?.map((question, index) => {
+        const matchedAnswer = testResult.answers?.find(
+          (answer) => answer.questionNumber === question.questionNumber
+        );
+
+        return (
+          <motion.div
+            key={question.questionNumber}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <ResultQuestion question={question} testAnswer={matchedAnswer} />
+          </motion.div>
+        );
+      })}
       <Link href={"/e-nastava/rezultati"}>
         <Button
           type={"button"}

@@ -48,12 +48,17 @@ export default function EAllQuestionView({ test, user }) {
       let alreadyEarned = 0;
       test.questions.forEach((q) => {
         if (!wrongAnswers.includes(q.questionNumber)) {
-          if (q.questionNumber >= 1 && q.questionNumber <= 20)
-            alreadyEarned += 2;
-          else if (q.questionNumber >= 21 && q.questionNumber <= 30)
+          if (q.questionNumber >= 1 && q.questionNumber <= 20) {
+            if (test.totalPoints > 10) {
+              alreadyEarned += 2;
+            } else {
+              alreadyEarned += 1;
+            }
+          } else if (q.questionNumber >= 21 && q.questionNumber <= 30) {
             alreadyEarned += 3;
-          else if (q.questionNumber >= 31 && q.questionNumber <= 40)
+          } else if (q.questionNumber >= 31 && q.questionNumber <= 40) {
             alreadyEarned += 5;
+          }
         }
       });
 
@@ -136,12 +141,17 @@ export default function EAllQuestionView({ test, user }) {
       });
 
       if (isCorrect) {
-        if (q.questionNumber >= 1 && q.questionNumber <= 20)
-          earnedThisRound += 2;
-        else if (q.questionNumber >= 21 && q.questionNumber <= 30)
+        if (q.questionNumber >= 1 && q.questionNumber <= 20) {
+          if (test.totalPoints > 10) {
+            earnedThisRound += 2;
+          } else {
+            earnedThisRound += 1;
+          }
+        } else if (q.questionNumber >= 21 && q.questionNumber <= 30) {
           earnedThisRound += 3;
-        else if (q.questionNumber >= 31 && q.questionNumber <= 40)
+        } else if (q.questionNumber >= 31 && q.questionNumber <= 40) {
           earnedThisRound += 5;
+        }
       } else {
         wrongs.push(q.questionNumber);
       }
