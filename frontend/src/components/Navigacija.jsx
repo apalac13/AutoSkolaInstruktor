@@ -21,9 +21,21 @@ export default function Navigacija() {
   ];
 
   const navIcons = [
-    { src: "/icons/phone-white.svg", alt: "phone" },
-    { src: "/icons/mail-white.svg", alt: "mail" },
-    { src: "/icons/instagram-white.svg", alt: "instagram" },
+    {
+      src: "/icons/phone-white.svg",
+      alt: "phone",
+      link: "https://wa.me/38763016830?text=Započnite%20razgovor%20s%20Autoškolom%20Instruktor",
+    },
+    {
+      src: "/icons/mail-white.svg",
+      alt: "mail",
+      link: "mailto:anabradaric77@gmail.com",
+    },
+    {
+      src: "/icons/instagram-white.svg",
+      alt: "instagram",
+      link: "https://www.instagram.com/autoskola_instruktor.posusje/?hl=en",
+    },
   ];
 
   return (
@@ -125,7 +137,8 @@ export default function Navigacija() {
                 </nav>
                 <div className="flex gap-3">
                   {navIcons.map((icon, index) => (
-                    <div
+                    <Link
+                      href={icon.link}
                       key={index}
                       className=" flex items-center justify-center w-12 h-12 transition duration-400 ease-in-out border border-white-60  rounded-full hover:border-black-40   "
                     >
@@ -135,7 +148,7 @@ export default function Navigacija() {
                         width={28}
                         height={28}
                       />
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
