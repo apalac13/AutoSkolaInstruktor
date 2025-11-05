@@ -21,10 +21,14 @@ export default function SingleQuestionView({ test }) {
   const correctAnswers = test.questions.length - wrongAnswers.length;
 
   useEffect(() => {
+    setWrongAnswers(test.questions.map((q) => q.questionNumber));
+  }, [test]);
+
+  useEffect(() => {
     if (replay) {
       setCurrentQuestion(0);
       setScore(0);
-      setWrongAnswers([]);
+      setWrongAnswers(test.questions.map((q) => q.questionNumber));
       setUserAnswer([]);
       setUserAnswers([]);
       setShowAnswer(false);
@@ -49,7 +53,7 @@ export default function SingleQuestionView({ test }) {
       setReplayWrongAnswers(false);
       setViewAnswers(false);
       setQuestions(wrongQuestions);
-      setWrongAnswers([]);
+      setWrongAnswers(wrongQuestions.map((q) => q.questionNumber));
       setTimeLeft(3000);
     }
   }, [replayWrongAnswers]);
@@ -79,7 +83,7 @@ export default function SingleQuestionView({ test }) {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, [timeLeft, questions.length]);
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
@@ -97,7 +101,11 @@ export default function SingleQuestionView({ test }) {
     if (isCorrect) {
       let points = 0;
       if (currentQ.questionNumber >= 1 && currentQ.questionNumber <= 20) {
-        points = 2;
+        if (test.totalPoints > 10) {
+          points = 2;
+        } else {
+          points = 1;
+        }
       } else if (
         currentQ.questionNumber >= 21 &&
         currentQ.questionNumber <= 30
@@ -110,8 +118,15 @@ export default function SingleQuestionView({ test }) {
         points = 5;
       }
       setScore((prevScore) => prevScore + points);
+      setWrongAnswers((prev) =>
+        prev.filter((num) => num !== currentQ.questionNumber)
+      );
     } else {
-      setWrongAnswers([...wrongAnswers, currentQ.questionNumber]);
+      setWrongAnswers((prev) => {
+        if (!prev.includes(currentQ.questionNumber))
+          return [...prev, currentQ.questionNumber];
+        return prev;
+      });
     }
     setUserAnswers((prevAnswers) => {
       const existingAnswerIndex = prevAnswers.findIndex(
@@ -132,8 +147,6 @@ export default function SingleQuestionView({ test }) {
       }
     });
 
-    console.log(userAnswers);
-
     setShowAnswer(true);
     setNextQuestion(true);
   };
@@ -143,6 +156,20 @@ export default function SingleQuestionView({ test }) {
     setShowAnswer(false);
     setUserAnswer([]);
     setCurrentQuestion(currentQuestion + 1);
+  };
+
+  const handleCurrentQuestion = (index) => {
+    setCurrentQuestion(index);
+    const questionNumber = questions[index].questionNumber;
+    const existing = userAnswers.find(
+      (a) => a.questionNumber === questionNumber
+    );
+
+    if (existing) {
+      setUserAnswer(existing.answers);
+    } else {
+      setUserAnswer([]);
+    }
   };
 
   const handleChange = (event) => {
@@ -175,9 +202,33 @@ export default function SingleQuestionView({ test }) {
               className="flex flex-col"
             >
               <div className="flex flex-col ">
-                <div className="flex gap-2 text-xl max-[450px]:text-lg text-justify  font-semibold">
+                <div className="flex gap-2 text-xl max-[450px]:text-lg text-justify font-semibold">
                   <p>{questions[currentQuestion].questionNumber}.</p>
                   <p>{questions[currentQuestion].questionText}</p>
+                </div>
+                <div className="flex flex-wrap gap-3 py-2">
+                  {questions.map((q, index) => (
+                    <label key={q.questionNumber} className="cursor-pointer">
+                      <div className="relative w-10 h-10 flex  items-center justify-center">
+                        <input
+                          type="radio"
+                          name="questionNav"
+                          className="appearance-none absolute inset-0 border border-black-40 bg-white-60 checked:bg-black-40  cursor-pointer"
+                          checked={currentQuestion === index}
+                          onChange={() => handleCurrentQuestion(index)}
+                        />
+                        <p
+                          className={`text-sm font-semibold pointer-events-none absolute ${
+                            currentQuestion === index
+                              ? "text-white-60"
+                              : "text-black-40"
+                          }`}
+                        >
+                          {q.questionNumber}
+                        </p>
+                      </div>
+                    </label>
+                  ))}
                 </div>
                 <div className="flex flex-col items-start border-y border-black-40 pt-10">
                   <div className="w-full flex flex-row max-lg:flex-col max-lg:gap-8 justify-between">

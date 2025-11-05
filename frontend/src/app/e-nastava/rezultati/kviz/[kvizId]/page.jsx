@@ -49,19 +49,22 @@ export default function KvizRezultatDetalji() {
           <span>{quizResult.quiz?.questions?.length || 0}</span>
         </div>
       </div>
-      {quizResult.quiz?.questions?.map((question, index) => (
-        <motion.div
-          key={question.questionNumber}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-        >
-          <ResultQuestion
-            question={question}
-            testAnswer={quizResult.answers[index]}
-          />
-        </motion.div>
-      ))}
+      {quizResult.quiz?.questions?.map((question, index) => {
+        const matchedAnswer = quizResult.answers?.find(
+          (answer) => answer.questionNumber === question.questionNumber
+        );
+
+        return (
+          <motion.div
+            key={question.questionNumber}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <ResultQuestion question={question} testAnswer={matchedAnswer} />
+          </motion.div>
+        );
+      })}
       <Link href={"/e-nastava/rezultati"}>
         <Button
           type={"button"}

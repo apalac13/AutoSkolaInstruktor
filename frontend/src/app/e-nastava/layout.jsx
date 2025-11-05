@@ -28,7 +28,7 @@ export default function ENastavaLayout({ children }) {
           </div>
         </div>
         <motion.div
-          className="p-10"
+          className="p-10 max-xl:px-0"
           key={pathname}
           initial="initialState"
           animate="animateState"
