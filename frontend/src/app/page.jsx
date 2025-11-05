@@ -29,7 +29,7 @@ export default function Pocetna() {
       </a>
       <div>
         <div className="relative bg-home-page bg-cover bg-no-repeat bg-center w-lvh h-lvh ">
-          <div className="flex flex-col w-lvh h-lvh bg-[#000]/30 ">
+          <div className="flex flex-col w-lvh h-lvh bg-[#000]/10 ">
             <Navigacija />
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -118,7 +118,7 @@ export default function Pocetna() {
         </section>
         <section className="flex max-xl:flex-col  ">
           <div className="relative bg-service-1 bg-cover bg-no-repeat bg-center w-full h-lvh ">
-            <div className=" w-full h-lvh flex flex-col items-center bg-[#000]/80">
+            <div className=" w-full h-lvh flex flex-col items-center bg-[#000]/60">
               <span className="absolute top-10 left-10 self-start justify-self-start">
                 <Section number={"04"} text={"POSEBNE USLUGE"} />
               </span>
@@ -153,7 +153,7 @@ export default function Pocetna() {
             </div>
           </div>
           <div className="relative bg-service-2 bg-cover bg-no-repeat bg-center w-full h-lvh max-xl:h-1/3">
-            <div className="w-full h-lvh flex flex-col justify-center items-center bg-[#000]/80">
+            <div className="w-full h-lvh flex flex-col justify-center items-center bg-[#000]/60">
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -182,7 +182,7 @@ export default function Pocetna() {
             </div>
           </div>
           <div className="relative bg-service-3 bg-cover bg-no-repeat bg-center w-full h-lvh max-xl:h-1/3">
-            <div className="w-full h-lvh flex flex-col justify-center items-center bg-[#000]/80">
+            <div className="w-full h-lvh flex flex-col justify-center items-center bg-[#000]/60">
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
