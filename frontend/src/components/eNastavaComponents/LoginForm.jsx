@@ -64,7 +64,10 @@ export default function LoginForm() {
   };
   return (
     <div className="my-28 font-sourceSans3 text-black-40 flex items-center justify-center  ">
-      <form onSubmit={handleSubmit} className="w-[500px] flex flex-col gap-12 ">
+      <form
+        onSubmit={handleSubmit}
+        className="w-[500px] flex flex-col gap-12 px-5 "
+      >
         <p className=" text-xl font-semibold">PRIJAVA</p>
         {message && (
           <motion.p

@@ -115,7 +115,7 @@ export default function Kategorije() {
   return (
     <div className="mb-24">
       <div className=" bg-category-title bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
-        <div className="flex flex-col w-lvh h-[500px] bg-[#000]/30 ">
+        <div className="flex flex-col w-lvh h-[500px] bg-[#000]/10 ">
           <Navigacija />
           <motion.p
             initial={{ x: -50 }}
