@@ -63,7 +63,7 @@ export default function PogledajPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center p-5">
       <SubNavigacija />
       <div className="w-full flex flex-col items-start justify-center gap-6 ">
         <div className="w-full flex flex-col gap-6 ">

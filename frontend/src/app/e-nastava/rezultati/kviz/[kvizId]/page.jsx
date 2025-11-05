@@ -38,7 +38,7 @@ export default function KvizRezultatDetalji() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-11">
+    <div className="flex flex-col gap-11 p-5">
       <Notification message={message} messageType={messageType} />
       <div className="flex gap-11 text-lg max-[450px]:text-base ">
         <p>Kandidat: {quizResult.name}</p>

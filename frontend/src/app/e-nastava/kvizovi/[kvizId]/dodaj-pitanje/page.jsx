@@ -137,7 +137,7 @@ export default function DodajPitanje() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center p-5">
       <SubNavigacija />
       <Notification message={message} messageType={messageType} />
       <form

@@ -92,7 +92,7 @@ export default function Kviz({
   };
 
   return (
-    <div className="w-[600px] flex flex-col items-start justify-center gap-6 ">
+    <div className="w-[600px] max-[600px]:w-full flex flex-col items-start justify-center gap-6 ">
       <p className="self-center text-xl text-black-40 uppercase ">
         {quiz.quizname}
       </p>
