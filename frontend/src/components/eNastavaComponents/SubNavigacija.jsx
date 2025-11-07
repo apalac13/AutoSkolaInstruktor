@@ -11,7 +11,6 @@ export default function SubNavigacija() {
     { name: "TESTOVI", href: "/e-nastava/testovi" },
     { name: "KVIZOVI", href: "/e-nastava/kvizovi" },
     { name: "REZULTATI", href: "/e-nastava/rezultati" },
-    { name: "CHAT", href: "/e-nastava/chat" },
     { name: "LOGOUT", href: "/e-nastava/logout" },
   ];
 

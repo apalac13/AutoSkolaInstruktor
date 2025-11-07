@@ -5,7 +5,7 @@ import axios from "axios";
 import QuizResult from "./QuizResult";
 import Notification from "@/components/Notification";
 
-export default function QuizesResults() {
+export default function QuizesResults({ user }) {
   const [quizesResults, setQuizesResults] = useState([]);
   const [message, setMessage] = useState(null);
   const [messageType, setMessageType] = useState(null);
@@ -23,7 +23,15 @@ export default function QuizesResults() {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
-      .then((res) => setQuizesResults(res.data))
+      .then((res) => {
+        const allResults = res.data;
+        const filteredResults =
+          user?.role === "admin"
+            ? allResults
+            : allResults.filter((r) => r?.email === user?.email);
+
+        setQuizesResults(filteredResults);
+      })
       .catch((error) => {
         resetMessageWithTimeout(
           error.response?.data?.message ||
@@ -31,7 +39,7 @@ export default function QuizesResults() {
           "error"
         );
       });
-  }, []);
+  }, [user]);
 
   return (
     <div className="flex flex-col gap-11">
@@ -44,14 +52,21 @@ export default function QuizesResults() {
           <p>REZULTAT</p>
           <p>OPCIJE</p>
         </div>
-        {quizesResults.map((quizResult) => (
-          <QuizResult
-            key={quizResult._id}
-            quizesResults={quizesResults}
-            quizResult={quizResult}
-            setQuizesResults={setQuizesResults}
-          />
-        ))}
+        {quizesResults.length > 0 ? (
+          quizesResults.map((quizResult) => (
+            <QuizResult
+              key={quizResult._id}
+              user={user}
+              quizesResults={quizesResults}
+              quizResult={quizResult}
+              setQuizesResults={setQuizesResults}
+            />
+          ))
+        ) : (
+          <p className="text-center mt-4 text-gray-600">
+            Nema dostupnih rezultata.
+          </p>
+        )}
       </div>
     </div>
   );

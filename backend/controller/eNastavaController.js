@@ -1,7 +1,6 @@
 const User = require("../models/user");
 const Quiz = require("../models/quiz");
 const QuizResult = require("../models/quizResult");
-const Message = require("../models/message");
 const TestResult = require("../models/testResult");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -141,31 +140,5 @@ exports.saveTestResult = async (req, res) => {
     res.status(200).json({ message: "Rezultati uspješno spremljeni" });
   } catch (error) {
     res.status(500).json({ message: "Greška pri spremanju rezultata testa." });
-  }
-};
-
-exports.saveMessage = async (req, res) => {
-  const message = new Message({
-    user: req.body.user,
-    message: req.body.message,
-  });
-  try {
-    const savedMessage = await message.save();
-    console.log("Message saved successfully:", savedMessage);
-    req.io.emit("messageSaved", savedMessage);
-    res.status(200).json(savedMessage);
-  } catch (error) {
-    console.log("Error saving message:", error);
-    res.status(500).json({ msg: "Error saving message." });
-  }
-};
-
-exports.getAllMessages = async (req, res) => {
-  try {
-    const messages = await Message.find();
-    res.status(200).json(messages);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ msg: "Something went wrong!" });
   }
 };

@@ -6,7 +6,7 @@ export default function TestvoviLayout({ children }) {
   const pathname = usePathname();
   return (
     <motion.div
-      className="p-5 mb-24"
+      className="p-5"
       key={pathname}
       initial="initialState"
       animate="animateState"
