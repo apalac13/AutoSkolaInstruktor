@@ -9,7 +9,7 @@ export default function ENastavaLayout({ children }) {
   return (
     <AuthProvider>
       <div className="mb-24">
-        <div className=" bg-e-nastava bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
+        <div className=" bg-e-nastava bg-cover bg-no-repeat bg-center w-lvh h-[500px] ">
           <div className="flex flex-col w-lvh h-[500px] bg-[#000]/50 ">
             <Navigacija />
             <motion.div

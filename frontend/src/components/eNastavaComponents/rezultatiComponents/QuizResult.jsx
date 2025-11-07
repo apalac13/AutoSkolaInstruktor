@@ -6,6 +6,7 @@ import Notification from "@/components/Notification";
 import EButton from "@/components/buttons/EButton";
 
 export default function QuizResult({
+  user,
   quizesResults,
   quizResult,
   setQuizesResults,
@@ -57,15 +58,17 @@ export default function QuizResult({
             color={"black"}
           />
         </Link>
-        <button
-          onClick={() => deleteQuizResult(quizResult._id)}
-          className="relative group w-[100px] h-10 border-red-71 bg-red-71 "
-        >
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
-          <span className="relative text-white-60 text-xs text-center font-light">
-            IZBRIŠI
-          </span>
-        </button>
+        {user.role === "admin" && (
+          <button
+            onClick={() => deleteQuizResult(quizResult._id)}
+            className="relative group w-[100px] h-10 border-red-71 bg-red-71 "
+          >
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+            <span className="relative text-white-60 text-xs text-center font-light">
+              IZBRIŠI
+            </span>
+          </button>
+        )}
       </div>
     </div>
   );

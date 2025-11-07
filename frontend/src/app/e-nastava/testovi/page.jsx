@@ -33,7 +33,7 @@ export default function Testovi() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center mb-28">
+    <div className="flex flex-col items-center justify-center">
       <SubNavigacija />
       <div className="flex flex-col  gap-24">
         {items.map((item, index) => (

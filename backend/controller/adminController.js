@@ -2,7 +2,6 @@ const User = require("../models/user");
 const Quiz = require("../models/quiz");
 const QuizResult = require("../models/quizResult");
 const TestResult = require("../models/testResult");
-const Message = require("../models/message");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
@@ -181,16 +180,5 @@ exports.deleteTestResult = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Greška prilikom brisanja rezultata" });
-  }
-};
-
-exports.deleteMessages = async (req, res) => {
-  try {
-    await Message.deleteMany();
-    req.io.emit("messagesDeleted");
-    res.status(200).json({ msg: "Messages deleted successfully!" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ msg: "Something went wrong!" });
   }
 };

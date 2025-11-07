@@ -54,7 +54,7 @@ export default function ResetPassword() {
   };
 
   return (
-    <div className="my-28 font-sourceSans3 text-black-40 flex items-center justify-center  ">
+    <div className="my-12 font-sourceSans3 text-black-40 flex items-center justify-center  ">
       <form
         onSubmit={handleSubmit}
         className="w-[500px] flex flex-col gap-12 px-5 "
