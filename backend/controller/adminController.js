@@ -4,6 +4,7 @@ const QuizResult = require("../models/quizResult");
 const TestResult = require("../models/testResult");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const saltRunde = 10;
 
 exports.verifyToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -118,6 +119,53 @@ exports.deleteQuiz = async (req, res) => {
   }
 };
 
+exports.getAllUsers = async (req, res) => {
+  try {
+    const allUsers = await User.find({ role: "user" });
+    res.json(allUsers);
+  } catch (error) {
+    res.status(500).json({ message: "Greška pri dohvaćanju korisnika" });
+  }
+};
+
+exports.registerUser = async (req, res) => {
+  try {
+    const existingUser = await User.findOne({ email: req.body.email });
+    if (existingUser) {
+      return res
+        .status(400)
+        .json({ message: "Korisnik s ovim mailom već postoji!" });
+    }
+    const hashPassword = await bcrypt.hash(req.body.password, saltRunde);
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: hashPassword,
+      role: req.body.email === "jure@gmail.com" ? "admin" : "user",
+    });
+    const savedUser = await user.save();
+    res.status(201).json(savedUser);
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Pojavila se greška prilikom registracije!" });
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const deletedUser = await User.findByIdAndDelete(userId);
+    if (!deletedUser) {
+      return res.status(404).json({ message: "Korinsik nije pronađen" });
+    }
+    res.status(200).json({ message: "Korisnik uspješno izbrisan!" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Greška prilikom brisanja korisnika" });
+  }
+};
+
 exports.getQuizResults = async (req, res) => {
   try {
     const quizResults = await QuizResult.find().populate("quiz");
@@ -169,6 +217,7 @@ exports.deleteQuizResult = async (req, res) => {
     res.status(500).json({ message: "Greška prilikom brisanja rezultata" });
   }
 };
+
 exports.deleteTestResult = async (req, res) => {
   const resultId = req.params.id;
   try {

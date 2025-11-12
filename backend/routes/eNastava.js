@@ -68,6 +68,24 @@ router.delete(
 );
 
 router.get(
+  "/kandidati",
+  eNastavaController.verifyToken,
+  adminController.getAllUsers
+);
+
+router.post(
+  "/kandidati",
+  adminController.verifyToken,
+  adminController.registerUser
+);
+
+router.delete(
+  "/kandidati/:id",
+  adminController.verifyToken,
+  adminController.deleteUser
+);
+
+router.get(
   "/rezultati/kvizovi",
   adminController.verifyToken,
   adminController.getQuizResults
