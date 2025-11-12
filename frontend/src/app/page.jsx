@@ -1,5 +1,4 @@
 "use client";
-
 import Navigacija from "@/components/Navigacija";
 import Section from "@/components/Section";
 import Image from "next/image";
@@ -25,6 +24,7 @@ export default function Pocetna() {
           src="/icons/whatsapp-chat.svg"
           width={65}
           height={65}
+          className="w-auto h-auto"
         />
       </a>
       <div>
@@ -69,7 +69,7 @@ export default function Pocetna() {
                 alt="mark quote icon"
                 width={36}
                 height={25}
-                className=" justify-self-start  "
+                className=" justify-self-start w-auto h-auto  "
               />
               <motion.blockquote
                 initial={{ opacity: 0, y: 50 }}
@@ -78,16 +78,18 @@ export default function Pocetna() {
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 className="text-xl max-sm:text-base  text-black-40 italic px-7"
               >
-                Naša autoškola nije samo mjesto za polaganje vozačkog ispita,
-                već i za sticanje trajnih znanja i vještina koje će svaki vozač
-                koristiti cijeli život.
+                Cilj naše autoškole je naučiti vozit na siguran i samouvjeren
+                način. Posebnu pažnju posvećujemo svakom kandidatu, jer svatko
+                uči svojim tempom i na svoj način. Našu obuku prilagođavamo
+                različitim osobinama, iskustvima i razini samopouzdanja
+                kandidata, kako bi svatko stekao sigurnost i mirnoću za volanom.
               </motion.blockquote>
               <Image
                 src={"/icons/mark_quote.svg"}
                 alt="mark quote icon"
                 width={36}
                 height={25}
-                className="justify-self-end "
+                className="justify-self-end w-auto h-auto "
               />
             </div>
             <div className="self-end flex gap-2 items-end">
@@ -96,6 +98,7 @@ export default function Pocetna() {
                 alt="user male icon"
                 width={42}
                 height={42}
+                className="w-auto h-auto"
               />
               <div className="flex flex-col items-start gap-1 max-sm:gap-0  text-black-40">
                 <p className="text-sm max-sm:text-xs leading-none">
@@ -132,7 +135,7 @@ export default function Pocetna() {
                 <div className="self-start flex gap-2">
                   <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
                   <p className="text-2xl max-sm:text-xl text-white-60 font-semibold">
-                    OBUKA SVIH KATEGORIJA
+                    ŠIROK IZBOR KATEGORIJA
                   </p>
                 </div>
                 <p className=" text-base max-sm:text-sm font-light text-white-60 text-justify ">
@@ -140,9 +143,9 @@ export default function Pocetna() {
                   obuke za sve kategorije vozačkih dozvola. Ova usluga je
                   ključna za sve polaznike koji žele da steknu vozačku dozvolu
                   za različite tipove vozila. Bilo da se radi o motociklima,
-                  putničkim vozilima, teretnim vozilima ili autobusima,
-                  Autoskola "Instruktor" pruža kompletnu edukaciju prilagođenu
-                  specifičnim potrebama svake kategorije.{" "}
+                  putničkim vozilima, teretnim vozilima, Autoskola "Instruktor"
+                  pruža kompletnu edukaciju prilagođenu specifičnim potrebama
+                  svake kategorije.{" "}
                   <Link href={"/kategorije"}>
                     <span className="underline text-red-71 hover:text-gray-50">
                       saznaj više
@@ -158,7 +161,7 @@ export default function Pocetna() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 1, ease: "easeOut" }}
+                transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 className="flex flex-col w-[350px] max-xl:w-[600px] max-[620px]:w-auto max-[620px]:px-4 gap-[18px] absolute top-1/3   "
               >
                 <div className="self-start flex gap-2">
@@ -187,7 +190,7 @@ export default function Pocetna() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
+                transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 className="flex flex-col w-[350px] max-xl:w-[600px] max-[620px]:w-auto max-[620px]:px-4 gap-[18px] absolute top-1/3  "
               >
                 <div className="self-start flex gap-2">

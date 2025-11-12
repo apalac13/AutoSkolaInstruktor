@@ -9,68 +9,48 @@ import { motion } from "framer-motion";
 export default function Kategorije() {
   const categories = [
     {
-      image: "A-kat.jpg",
+      image: "motor3.jpg",
       imageText: "A KATEGORIJA",
       category: "A",
-      type: "Motocikli sa ili bez bočne prikolice te motorna vozila na tri kotača (od 15kW)",
-      conditions:
-        "23 godine i 6 mjeseci života (21 godinu za vozilo na tri kotača) ili 20 godina uz posjedovanje vozačke dozvole A2 kategorije najmanje 2 godine ",
+      type: "Motocikl, čija zapremina motora premašuje 125 cm3, a snage iznad 11 kW, a najviše 25 kW, koji je sposoban da razvije brzinu od najmanje 100 km/h.",
+      conditions: "18 godina",
     },
+
     {
-      image: "A-kat.jpg",
-      imageText: "A1 KATEGORIJA",
-      category: "A1",
-      type: "Motocikli sa ili bez bočne prikolice te motorna vozila na tri kotača (od 15kW)",
-      conditions:
-        "23 godine i 6 mjeseci života (21 godinu za vozilo na tri kotača) ili 20 godina uz posjedovanje vozačke dozvole A2 kategorije najmanje 2 godine ",
-    },
-    {
-      image: "B-kat.jpg",
+      image: "golf-1.jpg",
       imageText: "B KATEGORIJA",
       category: "B",
-      type: "Motocikli sa ili bez bočne prikolice te motorna vozila na tri kotača (od 15kW)",
-      conditions:
-        "23 godine i 6 mjeseci života (21 godinu za vozilo na tri kotača) ili 20 godina uz posjedovanje vozačke dozvole A2 kategorije najmanje 2 godine ",
+      type: "Putnička motorna vozila, sa ručnim ili automatskim mjenjačem i koja imaju: najveću dozvoljenu masu manje od 3500 kg, više od tri, a manje od devet sjedišta, više od troja vrata, sposobnost razviti brzinu od najmanje 100 km/h.",
+      conditions: "18 godina",
     },
+
     {
-      image: "BE-kat.jpg",
-      imageText: "BE KATEGORIJA",
-      category: "BE",
-      type: "Motocikli sa ili bez bočne prikolice te motorna vozila na tri kotača (od 15kW)",
-      conditions:
-        "23 godine i 6 mjeseci života (21 godinu za vozilo na tri kotača) ili 20 godina uz posjedovanje vozačke dozvole A2 kategorije najmanje 2 godine ",
-    },
-    {
-      image: "C-kat.jpg",
+      image: "kamion8.jpg",
       imageText: "C1 KATEGORIJA",
       category: "C1",
-      type: "Motocikli sa ili bez bočne prikolice te motorna vozila na tri kotača (od 15kW)",
-      conditions:
-        "23 godine i 6 mjeseci života (21 godinu za vozilo na tri kotača) ili 20 godina uz posjedovanje vozačke dozvole A2 kategorije najmanje 2 godine ",
+      type: "Motorna vozila za prevoz tereta, čija je najveća dozvoljena masa veća od 4000 kg, a manja od 7500 kg, sposobna da razviju brzinu od najmanje 80 km/h.",
+      conditions: "18 godina",
     },
     {
-      image: "C-kat.jpg",
+      image: "kamion8.jpg",
       imageText: "C1E KATEGORIJA",
       category: "C1E",
-      type: "Motocikli sa ili bez bočne prikolice te motorna vozila na tri kotača (od 15kW)",
-      conditions:
-        "23 godine i 6 mjeseci života (21 godinu za vozilo na tri kotača) ili 20 godina uz posjedovanje vozačke dozvole A2 kategorije najmanje 2 godine ",
+      type: "Skup vozila dug najmanje 8 m i sposoban da razvije brzinu od najmanje 80 km/h, čija se vučna vozila ubrajaju u potkategoriju C1, a priključna vozila imaju najveću dozvoljenu masu veću od 2000 kg, s tim da najveća dozvoljena masa skupa vozila ne prelazi 12 000 kg, i da najveća dozvoljena masa priključnog vozila ne prelazi masu neopterećenog vučnog vozila.",
+      conditions: "18 godina",
     },
     {
-      image: "C-kat.jpg",
+      image: "kamion8.jpg",
       imageText: "C KATEGORIJA",
       category: "C",
-      type: "Motocikli sa ili bez bočne prikolice te motorna vozila na tri kotača (od 15kW)",
-      conditions:
-        "23 godine i 6 mjeseci života (21 godinu za vozilo na tri kotača) ili 20 godina uz posjedovanje vozačke dozvole A2 kategorije najmanje 2 godine ",
+      type: "Motorna vozila za prevoz tereta, čija je najveća dozvoljena masa veća od 7500 kg.",
+      conditions: "21 godina",
     },
     {
-      image: "C-kat.jpg",
+      image: "kamion8.jpg",
       imageText: "CE KATEGORIJA",
       category: "CE",
-      type: "Motocikli sa ili bez bočne prikolice te motorna vozila na tri kotača (od 15kW)",
-      conditions:
-        "23 godine i 6 mjeseci života (21 godinu za vozilo na tri kotača) ili 20 godina uz posjedovanje vozačke dozvole A2 kategorije najmanje 2 godine ",
+      type: "Skupovi vozila čija se vučna vozila ubrajaju u kategoriju C, a priključna vozila imaju najveću dozvoljenu masu veću od 750 kg, a nosivost minimalno 2500 kg, i koje ima zatvoreni tovarni sanduk (stalna nadgradnja ili cerada) čija je širina najmanje ista kao širina kabine vozila i pri čemu je najviša točka tovarnog sanduka najmanje na istoj visini kao najviša točka kabine motornog vozila,",
+      conditions: "21 godina",
     },
   ];
 
@@ -80,14 +60,14 @@ export default function Kategorije() {
       number: "1. KORAK",
       title: "OBAVITI LJEČNIČKI PREGLED",
       description:
-        "Prvi korak je posjetiti liječnika radi procjene zdravstvenog stanja i utvrđivanja jeste li sposobni za vožnju.",
+        "Prvi korak je liječnički pregled kandidata za vozača. Obavlja se u ovlaštenim zdravstvenim ustanovama (dom zdravlja ili specijalizirane ordinacije). Nakon pregleda, dobivate uvjerenje o zdravstvenoj sposobnosti koje vrijedi 12 mjeseci.",
     },
     {
       icon: "/icons/school.svg",
       number: "2. KORAK",
       title: "SLUŠATI PREDAVANJA O PROMETNIM PRAVILIMA I SIGURNOSNIM PROPISIMA",
       description:
-        "Prvi korak je posjetiti liječnika radi procjene zdravstvenog stanja i utvrđivanja jeste li sposobni za vožnju.",
+        "Nakon što predate liječničko uvjerenje, autoškola vas upisuje u teorijsku nastavu (propisi). Ova nastava obuhvaća: prometne znakove, pravila u vožnji, sigurnosne propise, ponašanje u prometu i odgovornost vozača.",
     },
     {
       icon: "/icons/health-cross.svg",
@@ -114,8 +94,8 @@ export default function Kategorije() {
 
   return (
     <div className="mb-24">
-      <div className=" bg-category-title bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
-        <div className="flex flex-col w-lvh h-[500px] bg-[#000]/10 ">
+      <div className=" bg-category-title bg-cover bg-no-repeat bg-bottom w-lvh h-[500px]   ">
+        <div className="flex flex-col w-lvh h-[500px] bg-[#000]/40 ">
           <Navigacija />
           <motion.p
             initial={{ x: -50 }}

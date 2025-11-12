@@ -81,7 +81,7 @@ export default function ResetPassword() {
             name={"email"}
             value={data.email}
             onChange={handleChange}
-            placeholder="example@gmail.com"
+            placeholder="primjer@gmail.com"
           />
           <InputField
             label={"NOVA LOZINKA"}

@@ -42,10 +42,6 @@ input[type="checkbox"].online-prijava-checkbox {
   }
 }
 
-.slick-slide > div {
-  margin-left: 36px;
-}
-
 .slick-prev:before,
 .slick-next:before {
   color: black !important;

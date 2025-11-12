@@ -31,15 +31,15 @@ exports.sendOnlineApplication = async (req, res) => {
       port: 587,
       secure: false,
       auth: {
-        user: email, // Sender's email
-        pass: "khsq stoy lrfc rdhr", // App password for Gmail (if 2FA is enabled)
+        user: email,
+        pass: "khsq stoy lrfc rdhr",
       },
     });
 
     const mailOptions = {
-      from: `<${person}>`, // Sender
-      to: "anapalac@gmail.com", // Receiver (fixed email)
-      subject: "Online prijava", // Email subject
+      from: `<${person}>`,
+      to: "anapalac@gmail.com",
+      subject: "Online prijava",
       html: `
         <h3>Detalji prijave:</h3>
         <p><strong>Ime i prezime:</strong> ${person}</p>
@@ -75,15 +75,15 @@ exports.sendInquiry = async (req, res) => {
       port: 587,
       secure: false,
       auth: {
-        user: email, // Sender's email
-        pass: "khsq stoy lrfc rdhr", // App password for Gmail (if 2FA is enabled)
+        user: email,
+        pass: "khsq stoy lrfc rdhr",
       },
     });
 
     const mailOptions = {
-      from: `<${person}>`, // Sender
-      to: "anapalac999@gmail.com", // Receiver
-      subject: "Upit za autoškolu", // Email subject
+      from: `<${person}>`,
+      to: "anapalac999@gmail.com",
+      subject: "Upit za autoškolu",
       html: `
         <p><strong>Ime i prezime:</strong> ${person}</p>
         <p><strong>Email:</strong> ${email}</p>

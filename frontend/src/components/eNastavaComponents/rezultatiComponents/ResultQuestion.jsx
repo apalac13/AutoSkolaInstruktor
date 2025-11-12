@@ -57,8 +57,8 @@ export default function ResultQuestion({ question, testAnswer }) {
           <Image
             src={`/uploads/${question.image}`}
             alt={"question image"}
-            width={300}
-            height={300}
+            width={250}
+            height={200}
           />
         )}
       </div>
