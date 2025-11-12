@@ -70,27 +70,17 @@ export default function OnlinePrijava() {
               )}
             >
               <p className="text-justify max-xl:text-sm">
-                Minimalna dob Za kategoriju A1, AM, i B: Najmanje 17,5 godina
-                (polaganje vozačkog ispita moguće s navršenih 18 godina). Za
-                kategoriju A: Najmanje 23 godine (ili 20 godina uz posjedovanje
-                A2 kategorije najmanje 2 godine). Za ostale kategorije (C, D,
-                E): Ovisi o kategoriji i prethodnom iskustvu. Zdravstveni uvjeti
-                Obavezno obavljanje liječničkog pregleda u ovlaštenoj medicini
-                rada radi utvrđivanja psihofizičkih sposobnosti za upravljanje
-                vozilom. Dokumentacija Osobna iskaznica ili putovnica. Potvrda o
-                prebivalištu (ako je potrebno). Fotokopija liječničkog
-                uvjerenja. Ako je maloljetna osoba, suglasnost roditelja ili
-                skrbnika. Edukacija i ispit Pohađanje teoretske i praktične
-                nastave. Polaganje ispita iz prometnih propisa i sigurnosnih
-                pravila (PPSP). Polaganje ispita iz vožnje nakon završene
-                praktične obuke. Plaćanje troškova Uplata za teoretsku i
-                praktičnu obuku, liječnički pregled te ispite. Mogućnost
-                plaćanja u ratama (ovisno o autoškoli). Druge napomene Kandidati
-                koji žele polagati profesionalne kategorije (C, D, E) moraju
-                imati određeno iskustvo s vozačkom dozvolom B kategorije. Strani
-                državljani moraju dokazati boravište u državi u kojoj polažu
-                vozački ispit. Ako imaš dodatnih pitanja ili želiš prilagoditi
-                uvjete specifično za tvoju autoškolu, javi se! 🚗
+                Osposobljavanju za vozača motornih vozila može pristupiti osoba
+                koja ima minimalnu dob za kategorije A, B, C1 i C1E 18 godina, a
+                za kategorije C i CE 21. godinu. Koja je je zdravstveno sposobna
+                za rješavanje ispitnih testova i upravljanje vozilom
+                odgovarajuće kategorije ili potkategorije, a što se dokazuje
+                ljekarskim uvjerenjem koje ne smije biti starije od godinu dana.
+                Ima bosanskohercegovačko državljanstvo, prijavljeno prebivalište
+                ili boravak u Bosni i Hercegovini, kao i strani državljanin koji
+                u Bosni i Hercegovini ima odobren stalni ili privremeni boravak
+                na period ne kraći od šest mjeseci. Ispunjava i druge uslove
+                propisane za određenu kategoriju ili potkategoriju. 🚗
               </p>
             </div>
           </div>

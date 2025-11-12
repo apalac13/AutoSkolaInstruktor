@@ -72,7 +72,7 @@ export default function Form() {
           name={"email"}
           value={formData.email}
           onChange={handleChange}
-          placeholder="example@gmail.com"
+          placeholder="primjer@gmail.com"
         />
         <InputField
           label={"KONTAKT BROJ"}

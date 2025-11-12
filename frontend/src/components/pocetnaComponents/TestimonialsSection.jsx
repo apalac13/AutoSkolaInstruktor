@@ -8,12 +8,12 @@ import Image from "next/image";
 export default function TestimonialsSection() {
   const testimonials = [
     {
-      text: '"Autoškola Instruktor je odlična! Instruktori su izuzetno strpljivi i profesionalni, a obuka je temeljita i prilagođena svakom učeniku. Vozila su moderna i dobro održavana, što dodatno ulijeva povjerenje. Posebno mi se svidjela fleksibilnost u terminima i mogućnost plaćanja na rate. Preporučujem svima koji žele kvalitetnu i sigurnu obuku."',
-      person: "Luka Lukić",
+      text: '"Prije prve vožnje si mislim, nije ovo tako strašno, mogu ja to, predugo sam odgađala. Dođe prvi sat i umjesto kočnice, svaki put gas. Drugi sat smo savladali vozit u svojoj traci i držat volan. lako ne bez manjih incidenata. Svakom sljedećom vožnjom, sve manje straha. Dočekala sam trenutak koji nisam mislila da će doć da jedva čekam vozat."',
+      person: "Marija",
     },
     {
-      text: '"Autoškola Instruktor je odlična! Instruktori su izuzetno strpljivi i profesionalni, a obuka je temeljita i prilagođena svakom učeniku. Vozila su moderna i dobro održavana, što dodatno ulijeva povjerenje. Posebno mi se svidjela fleksibilnost u terminima i mogućnost plaćanja na rate. Preporučujem svima koji žele kvalitetnu i sigurnu obuku."',
-      person: "Mara Marić",
+      text: '"Drago mi je sto sam položio, ali mi je zao sto se više nećemo vozat, stvarno mi je bilo super s vama i sekunde nisam požalio sto sam odabrao da me vi obučavate."',
+      person: "Ivan",
     },
     {
       text: '"Autoškola Instruktor je odlična! Instruktori su izuzetno strpljivi i profesionalni, a obuka je temeljita i prilagođena svakom učeniku. Vozila su moderna i dobro održavana, što dodatno ulijeva povjerenje. Posebno mi se svidjela fleksibilnost u terminima i mogućnost plaćanja na rate. Preporučujem svima koji žele kvalitetnu i sigurnu obuku."',
@@ -63,40 +63,44 @@ export default function TestimonialsSection() {
       >
         <Slider {...settings}>
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="w-full h-full flex flex-col ">
-              <div className="flex flex-col gap-5 mb-9">
-                <Image
-                  src={"icons/mark_quote.svg"}
-                  alt="mark quote icon"
-                  width={33}
-                  height={25}
-                />
-                <blockquote className="text-base max-lg:text-sm italic text-justify">
-                  {testimonial.text}
-                </blockquote>
-              </div>
-              <div className="flex max-[350px]:flex-col justify-between items-end ">
-                <div className="flex ">
-                  {[...Array(5)].map((_, index) => (
-                    <Image
-                      key={index}
-                      src={"/icons/star.svg"}
-                      alt="star icon"
-                      width={32}
-                      height={32}
-                      className="max-xl:w-7 max-xl:h-7 max-lg:w-6 max-lg:h-6"
-                    />
-                  ))}
-                </div>
-                <div className="flex items-end leading-none">
+            <div key={index} className="px-2">
+              <div className="flex flex-col w-full h-full justify-between">
+                <div className="flex flex-col gap-5 mb-9">
                   <Image
-                    src={"/icons/user_male.svg"}
-                    alt="User male icon"
-                    width={42}
-                    height={42}
-                    className="max-lg:w-9 max-lg:h-9"
+                    src={"icons/mark_quote.svg"}
+                    alt="mark quote icon"
+                    width={33}
+                    height={25}
                   />
-                  <p className="text-base leading-none">{testimonial.person}</p>
+                  <blockquote className="text-base max-lg:text-sm italic text-justify">
+                    {testimonial.text}
+                  </blockquote>
+                </div>
+                <div className="flex max-[350px]:flex-col justify-between items-end ">
+                  <div className="flex ">
+                    {[...Array(5)].map((_, index) => (
+                      <Image
+                        key={index}
+                        src={"/icons/star.svg"}
+                        alt="star icon"
+                        width={32}
+                        height={32}
+                        className=" max-xl:w-7 max-xl:h-7 max-lg:w-6 max-lg:h-6"
+                      />
+                    ))}
+                  </div>
+                  <div className="flex items-end leading-none">
+                    <Image
+                      src={"/icons/user_male.svg"}
+                      alt="User male icon"
+                      width={42}
+                      height={42}
+                      className=" max-lg:w-9 max-lg:h-9"
+                    />
+                    <p className="text-base leading-none">
+                      {testimonial.person}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

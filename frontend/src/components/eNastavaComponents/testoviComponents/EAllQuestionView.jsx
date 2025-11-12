@@ -198,7 +198,6 @@ export default function EAllQuestionView({ test, user }) {
               },
             }
           );
-          console.log("✅ Rezultat poslan");
         } catch (err) {
           console.error(
             "❌ Greška kod slanja:",

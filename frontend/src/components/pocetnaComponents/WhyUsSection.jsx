@@ -7,12 +7,12 @@ export default function WhyUsSection() {
     {
       link: "/icons/belt.svg",
       name: "SIGURNOST",
-      text: "Naši instruktori posvećeni su sigurnosti svakog učenika, koristeći najnovije metode i tehnologije za sigurno upravljanje vozilom.",
+      text: "Naši instruktori posvećeni su sigurnosti svakog učenika, koristeći najnovije metode i moderne tehnologije za sigurno i odgovorno upravljanje vozilom.",
     },
     {
       link: "/icons/creative-head.svg",
       name: "ISKUSNI INSTRUKTORI",
-      text: "Naš tim instruktora ima dugogodišnje iskustvo u obuci vozača i posjeduje sve potrebne certifikate kako bi vam pružili najbolje obrazovanje.",
+      text: "Naš tim instruktora čine visokoobrazovani i stručni profesionalci s dugogodišnjim iskustvom u obuci vozača. Posjeduju sva potrebna znanja, certifikate i licence, te vam pružaju kvalitetnu, sigurnu i pouzdanu obuku.",
     },
     {
       link: "/icons/man_profile.svg",
@@ -27,7 +27,7 @@ export default function WhyUsSection() {
     {
       link: "/icons/car.svg",
       name: "ŠIROK IZBOR\nKATEGORIJA",
-      text: "Obučavamo za sve kategorije vozačkih dozvola (A, B, C, E), omogućujući vam da vozite sve vrste vozila. saznaj više...",
+      text: "Obučavamo za sve kategorije vozačkih dozvola (A, B, C, CE, C1, C1E), omogućujući vam da vozite sve vrste vozila. ",
     },
     {
       link: "/icons/graph.svg",
@@ -65,7 +65,8 @@ export default function WhyUsSection() {
                 alt="icons"
                 width={55}
                 height={55}
-                className="leading-none max-xl:w-12 max-md:h-12 "
+                className="leading-none w-auto h-auto max-xl:w-12 max-md:h-12"
+                style={{ width: "auto", height: "auto" }}
               />
               <p className="text-xl max-xl:text-lg text-red-71 leading-none text-start ">
                 {item.name}

@@ -13,20 +13,21 @@ export default function ONama() {
     dots: false,
     arrows: false,
     fade: true,
-    speed: 5000,
+    speed: 3500,
     infinite: true,
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3500,
+    pauseOnHover: false,
   };
   const settingsGallery = {
     dots: true,
     arrows: true,
     infinite: true,
     slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
+    slidesToScroll: 3,
+    autoplay: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -50,36 +51,60 @@ export default function ONama() {
   };
 
   const firstImages = [
-    "/driving.jpg",
-    "/teaching.jpg",
-    "/bmw1.jpg",
-    "/car_drive.jpg",
-    "/golf7.jpg",
-    "/mirror.jpg",
+    "/bmw-golf2.jpg",
+    "/kamion5.jpg",
+    "/ured1.jpg",
+    "/bmw2.jpg",
+    "/audi1.jpeg",
+    "/golfkandidat6.jpg",
+    "/bmwkandidat3.jpg",
+    "/kamion5.jpg",
+    "/golfkandidatinstruktor1.jpg",
+    "/kandidati3.jpg",
+    "/golfkandidat5.jpg",
+    "/motor2.jpg",
   ];
+
   const secondImages = [
-    "/man_with_car.jpg",
-    "/old_teaching.jpg",
-    "/old_drive.jpg",
-    "/couple_car.jpg",
-    "/scooter.jpg",
+    "/luka.jpg",
+    "/lukavozila.jpg",
+    "/golf3bocno.jpg",
+    "/kandidatkamion.jpg",
+    "/postavljanjetable.jpg",
+    "/golf3zadnja.jpeg",
+    "/lukakandidati.jpg",
+    "/golf3prednja.jpeg",
   ];
 
   const gallery = [
-    "/driving.jpg",
-    "/teaching.jpg",
-    "/bmw1.jpg",
-    "/car_drive.jpg",
-    "/golf7.jpg",
-    "/mirror.jpg",
-    "/man_with_car.jpg",
-    "/old_teaching.jpg",
-    "/old_drive.jpg",
-    "/couple_car.jpg",
-    "/scooter.jpg",
+    "/jurevoznja.jpeg",
+    "/bmw-golf2.jpg",
+    "/golfkandidat6.jpg",
+    "/bmwkandidat5.jpg",
+    "/lukakandidati3.jpg",
+    "/bmw2.jpg",
+    "/bmwkandidat2.jpg",
+    "/motor1.jpg",
+    "/golfkandidati-1.jpeg",
+    "/golfkandidatinstruktor2.jpg",
+    "/bmwkandidat3.jpg",
+    "/luka.jpg",
+    "/recenzija.jpg",
+    "/audi1.jpeg",
+    "/kamion5.jpg",
+    "/kamion1.jpg",
+    "/golf3bocno.jpg",
+    "/golfkat2.jpeg",
+    "/golfkandidatinstruktor1.jpg",
+    "/golf3zadnja.jpeg",
+    "/kandidati3.jpg",
+    "/golfkandidat5.jpg",
+    "/motor2.jpg",
+    "/lukakandidati.jpg",
+    "/golf3prednja.jpeg",
   ];
 
-  const categories = ["A", "A1", "B", "BE", "C1", "C1E", "C", "CE"];
+  const categories = ["A", "B", "C1", "C1E", "C", "CE"];
 
   return (
     <div className="mb-24">
@@ -97,12 +122,13 @@ export default function ONama() {
               alt="asi-logo-horizontal"
               width={600}
               height={211}
+              style={{ width: "auto", height: "auto" }}
             />
           </motion.div>
         </div>
       </div>
-      <section className="w-full flex max-sm:flex-col border-b border-black-40 ">
-        <div className="w-1/2 max-sm:w-full flex flex-col gap-20  p-10">
+      <section className="w-full flex max-lg:flex-col border-b border-black-40 ">
+        <div className="w-1/2 max-lg:w-full flex flex-col gap-20 p-10">
           <Section number={"01"} text={"O NAMA"} />
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -115,60 +141,70 @@ export default function ONama() {
             </h1>
             <p className="text-base max-lg:text-sm text-justify">
               Autoškola Instruktor je posvećena osposobljavanju vozača za
-              sigurno, odgovorno i samopouzdano upravljanje vozilom, s naglaskom
-              na sigurnost i poštovanje prometnih pravila. Kroz 34 godine
-              iskustva, naši stručni i iskusni instruktori pružaju
-              visokokvalitetnu obuku koristeći najnovije metode i tehnologije.
-              Nudimo fleksibilne termine i mogućnost plaćanja na rate kako bismo
-              prilagodili naše usluge vašim potrebama. Naša moderna vozila i
-              individualan pristup osiguravaju najbolje rezultate, što se ogleda
-              u visokom postotku prolaznosti na ispitima. U Autoškoli Instruktor
-              učimo vozače da budu odgovorni sudionici u prometu, opremljeni
-              trajnim znanjima i vještinama za cijeli život.
+              sigurno, odgovorno i samopouzdano upravljanje vozilom, s posebnim
+              naglaskom na sigurnost, poštovanje prometnih pravila i razvoj
+              prometne kulture. Kroz više od 35 godina iskustva, naši stručni i
+              iskusni instruktori pružaju visokokvalitetnu i modernu obuku,
+              koristeći najnovije metode i tehnologije prilagođene svakom
+              polazniku. Nudimo fleksibilne termine i mogućnost plaćanja na rate
+              kako bismo maksimalno olakšali pristup našim uslugama. Naša
+              moderna vozila i individualan pristup omogućavaju najbolje
+              rezultate. U Autoškoli Instruktor učimo vozače da budu odgovorni i
+              pažljivi sudionici u prometu, osposobljeni ne samo za polaganje
+              ispita, već i za sigurno i samopouzdano upravljanje vozilom kroz
+              cijeli život.
             </p>
           </motion.div>
         </div>
-        <div className="w-1/2 max-sm:w-full max-sm:mt-0 ">
-          <Slider {...settings}>
-            {firstImages.map((image, index) => (
-              <div
-                key={index}
-                className="w-full h-[590px] max-sm:h-[400px] cursor-pointer "
-              >
-                <Image
-                  src={image}
-                  alt="Slider image"
-                  fill
-                  style={{ objectFit: "cover", filter: "brightness(60%)" }}
-                  quality={100}
-                  priority
-                />
-              </div>
-            ))}
-          </Slider>
+        <div className="w-1/2 max-lg:w-full max-lg:mt-0 ">
+          <div className="h-[590px] max-lg:h-[400px]">
+            <Slider {...settings}>
+              {firstImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="w-full h-[590px] max-lg:h-[400px] cursor-pointer   "
+                >
+                  <div className="w-full h-full relative">
+                    <Image
+                      src={image}
+                      alt="Slider image"
+                      fill
+                      style={{ objectFit: "cover", filter: "brightness(60%)" }}
+                      quality={100}
+                      priority
+                    />
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
         </div>
       </section>
-      <section className="w-full flex  max-sm:flex-col-reverse ">
-        <div className="w-1/2 max-sm:w-full max-md:mt-0">
-          <Slider {...settings}>
-            {secondImages.map((image, index) => (
-              <div
-                key={index}
-                className="w-full h-[590px] max-sm:h-[400px] cursor-pointer   "
-              >
-                <Image
-                  src={image}
-                  alt="Slider image"
-                  fill
-                  style={{ objectFit: "cover", filter: "brightness(60%)" }}
-                  quality={100}
-                  priority
-                />
-              </div>
-            ))}
-          </Slider>
+      <section className="w-full flex  max-lg:flex-col-reverse ">
+        <div className="w-1/2 max-lg:w-full max-md:mt-0">
+          <div className="h-[590px] max-lg:h-[400px]">
+            <Slider {...settings}>
+              {secondImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="w-full h-[590px] max-lg:h-[400px] cursor-pointer   "
+                >
+                  <div className="w-full h-full relative">
+                    <Image
+                      src={image}
+                      alt="Slider image"
+                      fill
+                      style={{ objectFit: "cover", filter: "brightness(60%)" }}
+                      quality={100}
+                      priority
+                    />
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
         </div>
-        <div className="w-1/2 max-sm:w-full flex flex-col gap-20 p-10 bg-red-72">
+        <div className="w-1/2 max-lg:w-full flex flex-col gap-20 p-10 bg-red-72">
           <Section number={"02"} text={"POVIJEST"} />
           <motion.div
             initial={{ x: -50, opacity: 0 }}
@@ -180,20 +216,21 @@ export default function ONama() {
               1990. - DANAS
             </h1>
             <p className="text-base  max-lg:text-sm text-justify">
-              Autoškola Instruktor osnovana je 1990. godine od strane Luke
-              Bradarića, koji je bio prvi vlasnik i vizionar iza ove obrazovne
-              ustanove. Luka je svojim entuzijazmom i predanošću postavio
-              temelje autoškole, fokusirajući se na kvalitetnu obuku vozača i
-              sigurnost u prometu. Njegova vizija bila je osposobiti vozače ne
+              Autoškola je osnovana 1990. godine od strane Luke Bradarića, koji
+              je bio prvi vlasnik i vizionar iza ove obrazovne ustanove. Pod
+              nazivom Autoškola Luka, Luka je svojim entuzijazmom i predanošću
+              postavio temelje škole, fokusirajući se na kvalitetnu obuku vozača
+              i sigurnost u prometu. Njegova vizija bila je osposobiti vozače ne
               samo za polaganje vozačkog ispita, već i za sigurno i odgovorno
-              sudjelovanje u prometu. Kasnije, autoškolu je preuzeo njegov sin
-              Jure Bradarić, koji je nastavio očevu misiju s jednakom strašću i
-              posvećenošću. Jure je unio nove metode obuke i modernizaciju
-              opreme, osiguravajući da Autoškola Instruktor ostane na vrhu u
-              pružanju visokokvalitetne vozačke edukacije. Pod njegovim
-              vodstvom, autoškola je nastavila rasti i razvijati se, pridobivši
-              povjerenje mnogih novih vozača koji su prošli kroz njihove
-              programe obuke.
+              sudjelovanje u prometu. Sve do 2020. godine autoškola je nosila
+              ime Autoškola Luka, kada je preimenovana u Autoškola Instruktor i
+              preuzeta od strane Jure Bradarića, Lukinog sina. Jure je nastavio
+              očevu misiju s jednakom strašću i posvećenošću, uvodeći moderne
+              metode obuke i modernizirajući opremu, osiguravajući da autoškola
+              ostane vodeća u pružanju visokokvalitetne vozačke edukacije. Pod
+              njegovim vodstvom, autoškola je nastavila rasti i razvijati se,
+              pridobivši povjerenje mnogih novih vozača koji su prošli kroz
+              njihove programe obuke.
             </p>
           </motion.div>
         </div>
@@ -216,17 +253,15 @@ export default function ONama() {
         >
           <Slider {...settingsGallery}>
             {gallery.map((image, index) => (
-              <div key={index} className="h-[400px]">
+              <div
+                key={index}
+                className="relative w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px]"
+              >
                 <Image
                   src={image}
-                  alt="Gallery image"
-                  width={500}
-                  height={400}
-                  style={{
-                    height: "100%",
-                    objectFit: "cover",
-                    filter: "brightness(70%)",
-                  }}
+                  alt={`Gallery image ${index + 1}`}
+                  fill
+                  className="object-contain px-1"
                   quality={100}
                   priority
                 />

@@ -209,7 +209,6 @@ export default function ESingleQuestionView({ test, user }) {
               },
             }
           );
-          console.log("Result sent successfully");
         } catch (err) {
           console.error(
             "Error sending result:",

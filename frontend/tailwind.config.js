@@ -16,17 +16,17 @@ module.exports = {
     extend: {
       backgroundImage: {
         "home-page": "url('/asi-hero-image.png')",
-        "service-1": "url('/bmw_old.jpg')",
-        "service-2": "url('/ride.jpg')",
+        "service-1": "url('/bmw-golf2.jpg')",
+        "service-2": "url('/bmw2.jpg')",
         "service-3": "url('/split.jpg')",
-        "category-title": "url('/parking-lot.jpg')",
+        "category-title": "url('/bmw-golf2.jpg')",
         "category-A": "url('/A-kat.jpg')",
         "category-B": "url('/B-kat.jpg')",
         "category-BE": "url('/BE-kat.jpg')",
         "category-C": "url('/C-kat.jpg')",
         "online-prijava": "url('/online-prijava.jpg')",
         "online-testovi": "url('/online-testovi.jpg')",
-        "e-nastava": "url('/teaching.jpg')",
+        "e-nastava": "url('/lukakandidati.jpg')",
         kontakt: "url('/kontakt.jpg')",
       },
       fontFamily: {
