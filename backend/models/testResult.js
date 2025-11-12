@@ -12,6 +12,16 @@ const testResultSchema = new Schema(
       type: String,
       required: true,
     },
+    points: {
+      type: Number,
+      default: 0,
+      required: true,
+    },
+    totalPoints: {
+      type: Number,
+      default: 0,
+      required: true,
+    },
     result: {
       type: Number,
       default: 0,

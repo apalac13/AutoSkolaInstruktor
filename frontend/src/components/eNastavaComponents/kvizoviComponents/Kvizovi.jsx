@@ -100,7 +100,9 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
           </div>
         ))
       ) : (
-        <p>Nema dostupnih kvizova</p>
+        <p className="text-center mt-4 text-gray-600">
+          Nema dostupnih kvizova.
+        </p>
       )}
     </div>
   );

@@ -131,6 +131,8 @@ exports.saveTestResult = async (req, res) => {
     test: req.body.test,
     name: req.body.name,
     email: req.body.email,
+    points: req.body.points,
+    totalPoints: req.body.totalPoints,
     result: req.body.result,
     answers: req.body.answers,
   });

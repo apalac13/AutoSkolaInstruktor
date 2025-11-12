@@ -45,10 +45,15 @@ export default function TestResult({
       <Notification message={message} messageType={messageType} />
       <p>{testResult.name}</p>
       <p>{testResult.test.testName}</p>
-      <p>
-        {testResult.result}
-        <span>%</span>{" "}
-      </p>
+      <div className="flex flex-col gap-1">
+        <p>
+          {testResult.points}/{testResult.totalPoints}
+        </p>
+        <p>
+          {testResult.result}
+          <span>%</span>{" "}
+        </p>
+      </div>
       <div className="flex lg:flex-row flex-col gap-3">
         <Link href={`/e-nastava/rezultati/test/${testResult._id}`}>
           <EButton
