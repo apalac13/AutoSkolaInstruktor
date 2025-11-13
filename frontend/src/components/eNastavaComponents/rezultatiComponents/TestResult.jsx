@@ -41,7 +41,7 @@ export default function TestResult({
     }
   };
   return (
-    <div className="grid grid-cols-4 gap-4 p-6  border-b-[1px] border-black-40 text-base">
+    <div className="grid grid-cols-4 max-sm:flex max-sm:flex-col max-sm:items-center gap-4 p-6  border-b-[1px] border-black-40 text-base">
       <Notification message={message} messageType={messageType} />
       <p>{testResult.name}</p>
       <p>{testResult.test.testName}</p>

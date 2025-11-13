@@ -9,6 +9,7 @@ export default function SubNavigacija() {
   const navItems = [
     { name: "TESTOVI", href: "/e-nastava/testovi" },
     { name: "KVIZOVI", href: "/e-nastava/kvizovi" },
+    { name: "MATERIJALI", href: "/e-nastava/materijali" },
     { name: "KANDIDATI", href: "/e-nastava/kandidati", adminOnly: true },
     { name: "REZULTATI", href: "/e-nastava/rezultati" },
     { name: "LOGOUT", href: "/e-nastava/logout" },
@@ -21,7 +22,11 @@ export default function SubNavigacija() {
       {navItems
         .filter((item) => !item.adminOnly || user?.role === "admin")
         .map((item) => (
-          <Link href={item.href} key={item.name} className="text-black-40">
+          <Link
+            href={item.href}
+            key={item.name}
+            className="text-black-40 hover:text-gray-50"
+          >
             {item.name}
           </Link>
         ))}
