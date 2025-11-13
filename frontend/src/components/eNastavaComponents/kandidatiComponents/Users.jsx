@@ -37,7 +37,7 @@ export default function Users({ users, setUsers }) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex justify-around border-b-[1px] border-black-40 text-base font-semibold ">
+      <div className="flex flex-row max-sm:flex-col justify-around border-b-[1px] border-black-40 text-base font-semibold ">
         <p>IME KANDIDATA</p>
         <p>KORISNIČKO IME</p>
         <p>ŠIFRA</p>
@@ -48,7 +48,7 @@ export default function Users({ users, setUsers }) {
         users.map((user) => (
           <div
             key={user._id}
-            className=" grid grid-cols-4 gap-4 p-6  border-b-[1px] border-black-40 text-base"
+            className=" grid grid-cols-4 max-sm:flex max-sm:flex-col max-sm:items-center gap-4 p-6  border-b-[1px] border-black-40 text-base"
           >
             <p>{user.name}</p>
             <p>{user.username}</p>
