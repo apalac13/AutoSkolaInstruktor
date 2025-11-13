@@ -39,8 +39,8 @@ export default function Users({ users, setUsers }) {
     <div className="flex flex-col">
       <div className="flex justify-around border-b-[1px] border-black-40 text-base font-semibold ">
         <p>IME KANDIDATA</p>
-        <p>EMAIL</p>
-
+        <p>KORISNIČKO IME</p>
+        <p>ŠIFRA</p>
         <p>OPCIJE</p>
       </div>
       <Notification message={message} messageType={messageType} />
@@ -48,10 +48,11 @@ export default function Users({ users, setUsers }) {
         users.map((user) => (
           <div
             key={user._id}
-            className=" grid grid-cols-3 gap-4 p-6  border-b-[1px] border-black-40 text-base"
+            className=" grid grid-cols-4 gap-4 p-6  border-b-[1px] border-black-40 text-base"
           >
             <p>{user.name}</p>
-            <p>{user.email}</p>
+            <p>{user.username}</p>
+            <p>{user.password}</p>
             <div>
               <button
                 onClick={() => deleteUser(user._id)}

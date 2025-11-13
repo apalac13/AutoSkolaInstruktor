@@ -4,7 +4,6 @@ const QuizResult = require("../models/quizResult");
 const TestResult = require("../models/testResult");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const quiz = require("../models/quiz");
 
 const saltRunde = 10;
 
@@ -27,18 +26,17 @@ exports.verifyToken = (req, res, next) => {
 
 exports.register = async (req, res) => {
   try {
-    const existingUser = await User.findOne({ email: req.body.email });
+    const existingUser = await User.findOne({ username: req.body.username });
     if (existingUser) {
       return res
         .status(400)
         .json({ message: "Korisnik s ovim mailom već postoji!" });
     }
-    const hashPassword = await bcrypt.hash(req.body.password, saltRunde);
     const user = new User({
       name: req.body.name,
-      email: req.body.email,
-      password: hashPassword,
-      role: req.body.email === "jure@gmail.com" ? "admin" : "user",
+      username: req.body.username,
+      password: req.body.password,
+      role: req.body.username === "asinstruktor1990" ? "admin" : "user",
     });
     await user.save();
     res.status(201).json({ message: "Uspješno ste se registrirali!" });
@@ -51,10 +49,15 @@ exports.register = async (req, res) => {
 
 exports.logIn = async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.body.email });
-    if (user && (await bcrypt.compare(req.body.password, user.password))) {
+    const user = await User.findOne({ username: req.body.username });
+    if (user && req.body.password === user.password) {
       const token = jwt.sign(
-        { _id: user._id, name: user.name, email: user.email, role: user.role },
+        {
+          _id: user._id,
+          name: user.name,
+          username: user.username,
+          role: user.role,
+        },
         "tajniKljuc",
         { expiresIn: "5h" }
       );
@@ -71,11 +74,10 @@ exports.logIn = async (req, res) => {
 
 exports.resetPassword = async (req, res) => {
   try {
-    const { email, newPassword } = req.body;
-    const hashedPassword = await bcrypt.hash(newPassword, saltRunde);
+    const { username, newPassword } = req.body;
     const user = await User.findOneAndUpdate(
-      { email },
-      { password: hashedPassword },
+      { username },
+      { password: newPassword },
       { new: true }
     );
 
@@ -113,7 +115,7 @@ exports.saveQuizResult = async (req, res) => {
   const result = new QuizResult({
     quiz: req.body.quiz,
     name: req.body.name,
-    email: req.body.email,
+    username: req.body.username,
     result: req.body.result,
     answers: req.body.answers,
   });
@@ -130,7 +132,7 @@ exports.saveTestResult = async (req, res) => {
   const testResult = new TestResult({
     test: req.body.test,
     name: req.body.name,
-    email: req.body.email,
+    username: req.body.username,
     points: req.body.points,
     totalPoints: req.body.totalPoints,
     result: req.body.result,

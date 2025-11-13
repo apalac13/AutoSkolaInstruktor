@@ -187,7 +187,7 @@ export default function EAllQuestionView({ test, user }) {
             {
               test: test._id,
               name: user?.name || "Gost",
-              email: user?.email || "n/a",
+              username: user?.username || "n/a",
               points: score,
               totalPoints: test.totalPoints,
               result,

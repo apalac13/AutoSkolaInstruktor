@@ -130,19 +130,19 @@ exports.getAllUsers = async (req, res) => {
 
 exports.registerUser = async (req, res) => {
   try {
-    const existingUser = await User.findOne({ email: req.body.email });
+    const existingUser = await User.findOne({ username: req.body.username });
     if (existingUser) {
       return res
         .status(400)
-        .json({ message: "Korisnik s ovim mailom već postoji!" });
+        .json({ message: "Korisnik s ovim korisnickim imenom već postoji!" });
     }
-    const hashPassword = await bcrypt.hash(req.body.password, saltRunde);
     const user = new User({
       name: req.body.name,
-      email: req.body.email,
-      password: hashPassword,
-      role: req.body.email === "jure@gmail.com" ? "admin" : "user",
+      username: req.body.username,
+      password: req.body.password,
+      role: req.body.username === "asinstruktor1990" ? "admin" : "user",
     });
+
     const savedUser = await user.save();
     res.status(201).json(savedUser);
   } catch (error) {

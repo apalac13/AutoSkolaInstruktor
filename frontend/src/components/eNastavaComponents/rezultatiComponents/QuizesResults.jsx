@@ -28,7 +28,7 @@ export default function QuizesResults({ user }) {
         const filteredResults =
           user?.role === "admin"
             ? allResults
-            : allResults.filter((r) => r?.email === user?.email);
+            : allResults.filter((r) => r?.username === user?.username);
 
         setQuizesResults(filteredResults);
       })

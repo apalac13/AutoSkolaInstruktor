@@ -9,7 +9,7 @@ import clsx from "clsx";
 
 export default function ResetPassword() {
   const [data, setData] = useState({
-    email: "",
+    username: "",
     newPassword: "",
     repeatPassword: "",
   });
@@ -38,7 +38,7 @@ export default function ResetPassword() {
       const response = await axios.put(
         "http://localhost:3003/e-nastava/reset-password",
         {
-          email: data.email,
+          usernamae: data.username,
           newPassword: data.newPassword,
         }
       );
@@ -75,13 +75,12 @@ export default function ResetPassword() {
         )}
         <div className="w-full flex flex-col gap-6 items-center">
           <InputField
-            label={"EMAIL"}
-            id={"email"}
-            type={"email"}
-            name={"email"}
-            value={data.email}
+            label={"KORISNIČKO IME"}
+            id={"username"}
+            type={"text"}
+            name={"username"}
+            value={data.username}
             onChange={handleChange}
-            placeholder="primjer@gmail.com"
           />
           <InputField
             label={"NOVA LOZINKA"}

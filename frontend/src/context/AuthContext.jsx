@@ -34,7 +34,7 @@ export function AuthProvider({ children }) {
 
       setUser({
         name: decodedToken.name || "",
-        email: decodedToken.email || "",
+        username: decodedToken.username || "",
         role: decodedToken.role || role || "",
       });
       setLoading(false);

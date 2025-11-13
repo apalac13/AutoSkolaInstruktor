@@ -10,7 +10,7 @@ import clsx from "clsx";
 export default function Registracija() {
   const [data, setData] = useState({
     name: "",
-    email: "",
+    username: "",
     password: "",
   });
   const [message, setMessage] = useState(null);
@@ -34,7 +34,7 @@ export default function Registracija() {
         "http://localhost:3003/e-nastava/register",
         {
           name: data.name,
-          email: data.email,
+          username: data.username,
           password: data.password,
         }
       );
@@ -70,21 +70,20 @@ export default function Registracija() {
         )}
         <div className="w-full flex flex-col gap-6 items-center">
           <InputField
-            label={"KORISNIČKO IME"}
+            label={"IME I PREZIME"}
             id={"name"}
-            type={"name"}
+            type={"text"}
             name={"name"}
             value={data.name}
             onChange={handleChange}
           />
           <InputField
-            label={"EMAIL"}
-            id={"email"}
-            type={"email"}
-            name={"email"}
-            value={data.email}
+            label={"KORISNIČKO IME"}
+            id={"username"}
+            type={"text"}
+            name={"username"}
+            value={data.username}
             onChange={handleChange}
-            placeholder="primjer@gmail.com"
           />
           <InputField
             label={"LOZINKA"}

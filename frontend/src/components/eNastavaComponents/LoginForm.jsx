@@ -13,7 +13,7 @@ import clsx from "clsx";
 
 export default function LoginForm() {
   const [data, setData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
   const [message, setMessage] = useState(null);
@@ -35,7 +35,7 @@ export default function LoginForm() {
     event.preventDefault();
     try {
       const response = await axios.post("http://localhost:3003/e-nastava", {
-        email: data.email,
+        username: data.username,
         password: data.password,
       });
 
@@ -48,7 +48,7 @@ export default function LoginForm() {
 
       setUser({
         name: decodedToken.name || "",
-        email: decodedToken.email || "",
+        username: decodedToken.username || "",
         role: decodedToken.role,
       });
 
@@ -84,13 +84,12 @@ export default function LoginForm() {
         )}
         <div className="w-full flex flex-col gap-6 items-center">
           <InputField
-            label={"EMAIL"}
-            id={"email"}
-            type={"email"}
-            name={"email"}
-            value={data.email}
+            label={"KORISNIČKO IME"}
+            id={"username"}
+            type={"text"}
+            name={"username"}
+            value={data.username}
             onChange={handleChange}
-            placeholder="primjer@gmail.com"
           />
           <div className="w-full">
             <InputField

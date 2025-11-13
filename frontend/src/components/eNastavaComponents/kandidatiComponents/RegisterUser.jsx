@@ -10,7 +10,7 @@ import clsx from "clsx";
 export default function RegisterUser({ users, setUsers }) {
   const [user, setUser] = useState({
     name: "",
-    email: "",
+    username: "",
     password: "",
   });
   const [createUser, setCreateUser] = useState(false);
@@ -35,7 +35,7 @@ export default function RegisterUser({ users, setUsers }) {
         "http://localhost:3003/e-nastava/kandidati",
         {
           name: user.name,
-          email: user.email,
+          username: user.username,
           password: user.password,
         },
         {
@@ -47,7 +47,7 @@ export default function RegisterUser({ users, setUsers }) {
 
       setUsers([...users, response.data]);
       setCreateUser(false);
-      setUser({ name: "", email: "", password: "" });
+      setUser({ name: "", username: "", password: "" });
       resetMessageWithTimeout("Korisnik je uspješno registriran!", "success");
     } catch (error) {
       const message =
@@ -82,21 +82,20 @@ export default function RegisterUser({ users, setUsers }) {
           <p className=" text-xl font-semibold">REGISTRACIJA</p>
           <div className="w-full flex flex-col gap-6 items-center">
             <InputField
-              label={"KORISNIČKO IME"}
+              label={"IME I PREZIME"}
               id={"name"}
-              type={"name"}
+              type={"text"}
               name={"name"}
               value={user.name}
               onChange={handleChange}
             />
             <InputField
-              label={"EMAIL"}
-              id={"email"}
-              type={"email"}
-              name={"email"}
-              value={user.email}
+              label={"KORISNIČKO IME"}
+              id={"username"}
+              type={"text"}
+              name={"username"}
+              value={user.username}
               onChange={handleChange}
-              placeholder="primjer@gmail.com"
             />
             <InputField
               label={"LOZINKA"}
