@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Option from "./singleQuestionComponents/Option";
-import ViewAnswer from "./singleQuestionComponents/ViewAnswer";
+import Option from "../eNastavaComponents/testoviComponents/Option";
+import ViewAnswer from "../eNastavaComponents/testoviComponents/ViewAnswer";
 import Result from "./Result";
 import { motion, AnimatePresence, time } from "framer-motion";
 import Image from "next/image";

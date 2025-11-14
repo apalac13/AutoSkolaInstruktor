@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Questions from "./allQuestionComponents/Questions";
+import Questions from "../eNastavaComponents/testoviComponents/Questions";
 import Result from "./Result";
 import { motion } from "framer-motion";
 

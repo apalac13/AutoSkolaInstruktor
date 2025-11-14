@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import Questions from "@/components/onlineTestoviComponents/allQuestionComponents/Questions";
+import Questions from "@/components/eNastavaComponents/testoviComponents/Questions";
 import { motion } from "framer-motion";
 
 export default function Kviz({

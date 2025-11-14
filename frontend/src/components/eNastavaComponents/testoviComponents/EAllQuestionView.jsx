@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Questions from "@/components/onlineTestoviComponents/allQuestionComponents/Questions";
+import Questions from "@/components/eNastavaComponents/testoviComponents/Questions";
 import EResult from "./EResult";
 import { motion } from "framer-motion";
 import axios from "axios";

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import Option from "@/components/onlineTestoviComponents/singleQuestionComponents/Option";
-import ViewAnswer from "@/components/onlineTestoviComponents/singleQuestionComponents/ViewAnswer";
+import Option from "@/components/eNastavaComponents/testoviComponents/Option";
+import ViewAnswer from "@/components/eNastavaComponents/testoviComponents/ViewAnswer";
 import EResult from "./EResult";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
