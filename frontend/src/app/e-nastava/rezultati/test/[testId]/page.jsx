@@ -42,10 +42,15 @@ export default function TestRezultatDetalji() {
       <Notification message={message} messageType={messageType} />
       <div className="flex gap-11 text-lg max-[450px]:text-base ">
         <p>Kandidat: {testResult.name}</p>
-        <p>
-          Rezultat: {testResult.result}
-          <span>%</span>{" "}
-        </p>
+        <div className="flex flex-col gap-1">
+          <p>
+            {testResult.points}/{testResult.totalPoints}
+          </p>
+          <p>
+            {testResult.result}
+            <span>%</span>{" "}
+          </p>
+        </div>
       </div>
       {testResult.test?.questions?.map((question, index) => {
         const matchedAnswer = testResult.answers?.find(

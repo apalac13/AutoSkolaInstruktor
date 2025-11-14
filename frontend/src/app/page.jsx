@@ -17,7 +17,7 @@ export default function Pocetna() {
       <a
         aria-label="Chat on WhatsApp"
         href="https://wa.me/38763016830?text=Započnite%20razgovor%20s%20Autoškolom%20Instruktor"
-        className="fixed bottom-2 right-2 z-20 animate-pulse"
+        className="fixed bottom-2 right-2 z-50 animate-pulse"
       >
         <Image
           alt="Chat on WhatsApp"
@@ -37,23 +37,28 @@ export default function Pocetna() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="w-full h-full relative flex flex-col gap-9 items-center justify-center "
             >
-              <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex max-lg:flex-col gap-16 max-md:gap-12 max-sm:gap-4">
-                <Link href={"/online-prijava"}>
-                  <Button
-                    type={"button"}
-                    width={"200px"}
-                    text={"PRIJAVI SE"}
-                    color={"red"}
-                  />
-                </Link>
-                <Link href={"/kontakt"}>
-                  <Button
-                    type={"button"}
-                    width={"200px"}
-                    text={"KONTAKT"}
-                    color={"black"}
-                  />
-                </Link>
+              <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-4">
+                <p className="text-2xl max-md:text-lg text-white-60 font-light italic ">
+                  Uči za život, ne za ispit. Najbolji zbog vas!
+                </p>
+                <div className="flex max-lg:flex-col gap-16 max-lg:gap-4">
+                  <Link href={"/online-prijava"}>
+                    <Button
+                      type={"button"}
+                      width={"200px"}
+                      text={"PRIJAVI SE"}
+                      color={"red"}
+                    />
+                  </Link>
+                  <Link href={"/kontakt"}>
+                    <Button
+                      type={"button"}
+                      width={"200px"}
+                      text={"KONTAKT"}
+                      color={"black"}
+                    />
+                  </Link>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -69,7 +74,7 @@ export default function Pocetna() {
                 alt="mark quote icon"
                 width={36}
                 height={25}
-                className=" justify-self-start w-auto h-auto  "
+                className=" justify-self-end w-auto h-auto  "
               />
               <motion.blockquote
                 initial={{ opacity: 0, y: 50 }}
@@ -89,7 +94,7 @@ export default function Pocetna() {
                 alt="mark quote icon"
                 width={36}
                 height={25}
-                className="justify-self-end w-auto h-auto "
+                className="justify-self-start w-auto h-auto "
               />
             </div>
             <div className="self-end flex gap-2 items-end">

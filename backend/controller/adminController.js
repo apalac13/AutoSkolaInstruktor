@@ -3,8 +3,6 @@ const Quiz = require("../models/quiz");
 const QuizResult = require("../models/quizResult");
 const TestResult = require("../models/testResult");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-const saltRunde = 10;
 
 exports.verifyToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];

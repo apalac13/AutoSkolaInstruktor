@@ -65,8 +65,8 @@ export default function Kviz({
 
     const submissionData = {
       quiz: quiz._id,
-      username: user?.username || "Gost",
-      email: user?.email || "n/a",
+      name: user?.name || "Gost",
+      username: user?.username || "n/a",
       result: score,
       answers: userAnswers,
     };

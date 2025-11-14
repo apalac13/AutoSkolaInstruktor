@@ -16,6 +16,7 @@ export default function Option({
             checked={userAnswer.includes(answerOption.option)}
             value={answerOption.option}
             onChange={handleChange}
+            disabled={showAnswer}
           />
         </div>
         <p className="text-base text-justify">{answerOption.option}</p>

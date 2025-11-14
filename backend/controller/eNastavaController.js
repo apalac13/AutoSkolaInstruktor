@@ -3,9 +3,6 @@ const Quiz = require("../models/quiz");
 const QuizResult = require("../models/quizResult");
 const TestResult = require("../models/testResult");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-
-const saltRunde = 10;
 
 exports.verifyToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -24,29 +21,6 @@ exports.verifyToken = (req, res, next) => {
   next();
 };
 
-exports.register = async (req, res) => {
-  try {
-    const existingUser = await User.findOne({ username: req.body.username });
-    if (existingUser) {
-      return res
-        .status(400)
-        .json({ message: "Korisnik s ovim mailom već postoji!" });
-    }
-    const user = new User({
-      name: req.body.name,
-      username: req.body.username,
-      password: req.body.password,
-      role: req.body.username === "asinstruktor1990" ? "admin" : "user",
-    });
-    await user.save();
-    res.status(201).json({ message: "Uspješno ste se registrirali!" });
-  } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Pojavila se greška prilikom registracije!" });
-  }
-};
-
 exports.logIn = async (req, res) => {
   try {
     const user = await User.findOne({ username: req.body.username });
@@ -59,7 +33,7 @@ exports.logIn = async (req, res) => {
           role: user.role,
         },
         "tajniKljuc",
-        { expiresIn: "5h" }
+        { expiresIn: "3h" }
       );
       return res.json({ token });
     } else {
