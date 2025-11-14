@@ -15,8 +15,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-router.post("/register", eNastavaController.register);
-router.put("/reset-password", eNastavaController.resetPassword);
 router.post("", eNastavaController.logIn);
 router.post(
   "/testovi",

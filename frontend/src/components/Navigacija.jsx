@@ -5,18 +5,23 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function Navigacija() {
   const pathname = usePathname();
   const [showNavigationLinks, setShowNavigationLinks] = useState(false);
+  const { user } = useContext(AuthContext);
 
   const navItems = [
     { name: "POČETNA", href: "/" },
     { name: "O NAMA", href: "/o-nama" },
     { name: "KATEGORIJE", href: "/kategorije" },
     { name: "ONLINE PRIJAVA", href: "/online-prijava" },
-    { name: "E-NASTAVA", href: "/e-nastava" },
-    { name: "ONLINE TESTOVI", href: "/online-testovi" },
+    {
+      name: "E-NASTAVA",
+      href: user ? "/e-nastava/testovi" : "/e-nastava",
+    },
     { name: "KONTAKT", href: "/kontakt" },
   ];
 
@@ -72,7 +77,14 @@ export default function Navigacija() {
             </Link>
           ))}
         </nav>
-        <div></div>
+        <div
+          className={clsx(
+            " flex items-center  text-lg   ",
+            pathname !== "/o-nama" ? "text-white-60" : "text-black-40"
+          )}
+        >
+          <p className="leading-none">+387 63 016 830</p>
+        </div>
       </div>
       <div className="xl:hidden relative z-40">
         <div

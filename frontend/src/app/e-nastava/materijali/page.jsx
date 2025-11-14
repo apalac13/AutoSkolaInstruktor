@@ -4,6 +4,7 @@ import Section from "@/components/Section";
 import { AuthContext } from "@/context/AuthContext";
 import { useContext } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Materijali() {
   const { user, loading } = useContext(AuthContext);
@@ -37,7 +38,7 @@ export default function Materijali() {
                 <p className="text-sm">{document.title}</p>
               </div>
               <div>
-                <a
+                <Link
                   href={`/documents/${document.file}`}
                   download
                   className="flex flex-col "
@@ -45,7 +46,7 @@ export default function Materijali() {
                   <p className="text-sm text-red-71 hover:text-gray-50">
                     klikni ovdje za preuzimanje
                   </p>
-                </a>
+                </Link>
               </div>
             </div>
           ))}

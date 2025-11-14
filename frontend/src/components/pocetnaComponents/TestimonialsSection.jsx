@@ -17,11 +17,7 @@ export default function TestimonialsSection() {
     },
     {
       text: '"Autoškola Instruktor je odlična! Instruktori su izuzetno strpljivi i profesionalni, a obuka je temeljita i prilagođena svakom učeniku. Vozila su moderna i dobro održavana, što dodatno ulijeva povjerenje. Posebno mi se svidjela fleksibilnost u terminima i mogućnost plaćanja na rate. Preporučujem svima koji žele kvalitetnu i sigurnu obuku."',
-      person: "Jure Jurić",
-    },
-    {
-      text: '"Autoškola Instruktor je odlična! Instruktori su izuzetno strpljivi i profesionalni, a obuka je temeljita i prilagođena svakom učeniku. Vozila su moderna i dobro održavana, što dodatno ulijeva povjerenje. Posebno mi se svidjela fleksibilnost u terminima i mogućnost plaćanja na rate. Preporučujem svima koji žele kvalitetnu i sigurnu obuku."',
-      person: "Irena Irenić",
+      person: "Ante",
     },
   ];
 
@@ -89,7 +85,7 @@ export default function TestimonialsSection() {
                       />
                     ))}
                   </div>
-                  <div className="flex items-end leading-none">
+                  <div className="flex gap-1 items-end leading-none">
                     <Image
                       src={"/icons/user_male.svg"}
                       alt="User male icon"

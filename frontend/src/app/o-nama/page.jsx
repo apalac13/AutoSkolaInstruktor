@@ -80,6 +80,7 @@ export default function ONama() {
     "/jurevoznja.jpeg",
     "/bmw-golf2.jpg",
     "/golfkandidat6.jpg",
+    "/bmwnovi2.jpg",
     "/bmwkandidat5.jpg",
     "/lukakandidati3.jpg",
     "/bmw2.jpg",
@@ -89,6 +90,7 @@ export default function ONama() {
     "/golfkandidatinstruktor2.jpg",
     "/bmwkandidat3.jpg",
     "/luka.jpg",
+
     "/recenzija.jpg",
     "/audi1.jpeg",
     "/kamion5.jpg",

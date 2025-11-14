@@ -2,7 +2,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import InstructionPrvaPomoc from "@/components/InstructionPrvaPomoc";
+import InstructionPrvaPomoc from "@/components/eNastavaComponents/testoviComponents/InstructionPrvaPomoc";
 import ESingleQuestionView from "@/components/eNastavaComponents/testoviComponents/ESingleQuestionView";
 import EAllQuestionView from "@/components/eNastavaComponents/testoviComponents/EAllQuestionView";
 import Section from "@/components/Section";

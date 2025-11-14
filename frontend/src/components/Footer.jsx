@@ -36,7 +36,6 @@ export default function Footer() {
     { name: "KATEGORIJE", href: "/kategorije" },
     { name: "ONLINE PRIJAVA", href: "/online-prijava" },
     { name: "E-NASTAVA", href: "/e-nastava" },
-    { name: "ONLINE TESTOVI", href: "/online-testovi" },
     { name: "KONTAKT", href: "/kontakt" },
   ];
 

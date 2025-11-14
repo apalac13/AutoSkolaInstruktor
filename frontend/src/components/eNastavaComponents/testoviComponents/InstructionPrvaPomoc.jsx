@@ -1,4 +1,4 @@
-import BlackButton from "./buttons/BlackButton";
+import BlackButton from "@/components/buttons/BlackButton";
 
 export default function InstructionPrvaPomoc({ setOption, setInstruction }) {
   const changeView = (viewValue) => {

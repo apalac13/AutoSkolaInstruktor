@@ -34,7 +34,7 @@ export default function Category({ category }) {
         </div>
         <div className="flex flex-col  ">
           <p className="text-lg max-xl:text-base max-lg:text-sm text-red-71 leading-none">
-            TIPOVI VOZILA:
+            TIP VOZILA:
           </p>
 
           <p className="text-lg max-xl:text-base max-lg:text-sm  text-gray-50 font-light">
