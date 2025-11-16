@@ -1,14 +1,12 @@
 "use client";
 import SubNavigacija from "@/components/eNastavaComponents/SubNavigacija";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { jwtDecode } from "jwt-decode";
-import { useContext } from "react";
-import { AuthContext } from "@/context/AuthContext";
 import Notification from "@/components/Notification";
 import RegisterUser from "@/components/eNastavaComponents/kandidatiComponents/RegisterUser";
 import Users from "@/components/eNastavaComponents/kandidatiComponents/Users";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function KandidatiPage() {
   const [users, setUsers] = useState([]);
@@ -24,27 +22,37 @@ export default function KandidatiPage() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const decodedToken = jwtDecode(token);
-    if (decodedToken.role === "admin") {
-      axios
-        .get("http://localhost:3003/e-nastava/kandidati", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((res) => setUsers(res.data))
-        .catch((error) => {
-          resetMessageWithTimeout(
-            error.response?.data?.message ||
-              "Greška prilikom dohvaćanja kandidata.",
-            "error"
-          );
-        });
-    } else {
-      router.push("/e-nastava/testovi");
-    }
-  }, []);
+    if (loading) return;
 
-  if (loading) return <div>Loading...</div>;
+    if (!user) {
+      router.replace("/e-nastava");
+      return;
+    }
+
+    if (user.role !== "admin") {
+      router.replace("/e-nastava/testovi");
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+
+    axios
+      .get("http://localhost:3003/e-nastava/kandidati", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => setUsers(res.data))
+      .catch((error) => {
+        resetMessageWithTimeout(
+          error.response?.data?.message ||
+            "Greška prilikom dohvaćanja kandidata.",
+          "error"
+        );
+      });
+  }, [loading, user, router]);
+
+  if (loading || !user || user.role !== "admin") {
+    return <div className="text-center mt-10">Loading...</div>;
+  }
 
   return (
     <div className="flex flex-col items-center justify-center p-5">

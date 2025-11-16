@@ -11,10 +11,17 @@ export default function ENastavaLayout({ children }) {
   const { user, loading } = useContext(AuthContext);
 
   useEffect(() => {
-    if (!loading && user) {
-      if (pathname === "/e-nastava") {
-        router.replace("/e-nastava/testovi");
+    if (loading) return;
+
+    if (!user) {
+      if (pathname !== "/e-nastava") {
+        router.replace("/e-nastava");
       }
+      return;
+    }
+
+    if (pathname === "/e-nastava") {
+      router.replace("/e-nastava/testovi");
     }
   }, [loading, user, pathname, router]);
 

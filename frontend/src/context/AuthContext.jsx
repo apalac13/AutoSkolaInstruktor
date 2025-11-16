@@ -1,12 +1,10 @@
 "use client";
 import { createContext, useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const router = useRouter();
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +14,6 @@ export function AuthProvider({ children }) {
 
     if (!token) {
       setLoading(false);
-      router.push("/e-nastava");
       return;
     }
 
@@ -27,7 +24,6 @@ export function AuthProvider({ children }) {
       if (decodedToken.exp < currentTime) {
         localStorage.removeItem("token");
         localStorage.removeItem("role");
-        router.push("/e-nastava");
         setLoading(false);
         return;
       }
@@ -37,18 +33,14 @@ export function AuthProvider({ children }) {
         username: decodedToken.username || "",
         role: decodedToken.role || role || "",
       });
-      setLoading(false);
     } catch (error) {
       console.error("Invalid token", error);
       localStorage.removeItem("token");
       localStorage.removeItem("role");
-      setLoading(false);
-      router.push("/e-nastava");
-      return;
     } finally {
       setLoading(false);
     }
-  }, [router]);
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("token");
