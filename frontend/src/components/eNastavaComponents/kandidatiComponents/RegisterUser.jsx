@@ -32,7 +32,7 @@ export default function RegisterUser({ users, setUsers }) {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3003/e-nastava/kandidati",
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kandidati`,
         {
           name: user.name,
           username: user.username,

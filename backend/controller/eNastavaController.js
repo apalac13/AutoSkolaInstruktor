@@ -13,7 +13,7 @@ exports.verifyToken = (req, res, next) => {
   if (!token) return res.status(403).send("Bearer token nije pronađen");
 
   try {
-    const dekodiraniToken = jwt.verify(token, "tajniKljuc");
+    const dekodiraniToken = jwt.verify(token, process.env.JWT_SECRET);
     req.user = dekodiraniToken;
   } catch (error) {
     return res.status(401).send("Neispravni Token");
@@ -32,7 +32,7 @@ exports.logIn = async (req, res) => {
           username: user.username,
           role: user.role,
         },
-        "tajniKljuc",
+        process.env.JWT_SECRET,
         { expiresIn: "3h" }
       );
       return res.json({ token });

@@ -35,7 +35,7 @@ export default function NapraviKviz({ quizes, setQuizes }) {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3003/e-nastava/kvizovi",
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kvizovi`,
         { name: quiz.name, description: quiz.description },
         {
           headers: {

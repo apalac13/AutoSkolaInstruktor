@@ -19,7 +19,7 @@ export default function IspitPrvaPomoc() {
   useEffect(() => {
     if (ispitId) {
       axios
-        .get(`http://localhost:3003/e-nastava/testovi/${ispitId}`)
+        .get(`${process.env.NEXT_PUBLIC_API_URL}/e-nastava/testovi/${ispitId}`)
         .then((res) => setTest(res.data))
         .catch((err) => console.log(err.message));
     }

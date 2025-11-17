@@ -3,9 +3,7 @@ const mongoose = require("mongoose");
 function connectDb() {
   mongoose.Promise = global.Promise;
   mongoose
-    .connect(
-      "mongodb+srv://anabradaric77:ana123321@cluster0.4jvd4gc.mongodb.net/asinstruktor"
-    )
+    .connect(process.env.DB_URI)
     .then(() => {
       console.log("Database connected to MongoDB");
     })

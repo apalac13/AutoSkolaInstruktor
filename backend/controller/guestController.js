@@ -32,13 +32,13 @@ exports.sendOnlineApplication = async (req, res) => {
       secure: false,
       auth: {
         user: email,
-        pass: "khsq stoy lrfc rdhr",
+        pass: process.env.EMAIL_PASS,
       },
     });
 
     const mailOptions = {
       from: `<${person}>`,
-      to: "anapalac@gmail.com",
+      to: process.env.EMAIL_USER,
       subject: "Online prijava",
       html: `
         <h3>Detalji prijave:</h3>
@@ -76,13 +76,13 @@ exports.sendInquiry = async (req, res) => {
       secure: false,
       auth: {
         user: email,
-        pass: "khsq stoy lrfc rdhr",
+        pass: process.env.EMAIL_PASS,
       },
     });
 
     const mailOptions = {
       from: `<${person}>`,
-      to: "anapalac999@gmail.com",
+      to: process.env.EMAIL_USER,
       subject: "Upit za autoškolu",
       html: `
         <p><strong>Ime i prezime:</strong> ${person}</p>

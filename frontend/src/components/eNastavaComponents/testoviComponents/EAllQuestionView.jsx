@@ -182,7 +182,7 @@ export default function EAllQuestionView({ test, user }) {
       const postResult = async () => {
         try {
           await axios.post(
-            "http://localhost:3003/e-nastava/testovi",
+            `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/testovi`,
             {
               test: test._id,
               name: user?.name || "Gost",

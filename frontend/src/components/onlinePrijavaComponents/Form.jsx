@@ -15,7 +15,7 @@ const initialFormData = {
   message: "",
 };
 
-const categories = ["A", "A1", "B", "BE", "C1", "C1E", "C", "CE"];
+const categories = ["A", "B", "C1", "C1E", "C", "CE"];
 
 export default function Form() {
   const [formData, setFormData] = useState(initialFormData);
@@ -47,7 +47,7 @@ export default function Form() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3003/online-prijava",
+        `${process.env.NEXT_PUBLIC_API_URL}/online-prijava`,
         formData
       );
       if (response.status === 200) {

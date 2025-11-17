@@ -18,7 +18,7 @@ exports.verifyToken = (req, res, next) => {
   }
 
   try {
-    const dekodiraniToken = jwt.verify(token, "tajniKljuc");
+    const dekodiraniToken = jwt.verify(token, process.env.JWT_SECRET);
     req.user = dekodiraniToken;
     next();
   } catch (error) {
@@ -138,7 +138,7 @@ exports.registerUser = async (req, res) => {
       name: req.body.name,
       username: req.body.username,
       password: req.body.password,
-      role: req.body.username === "asinstruktor1990" ? "admin" : "user",
+      role: req.body.username === process.env.ADMIN_USERNAME ? "admin" : "user",
     });
 
     const savedUser = await user.save();

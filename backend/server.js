@@ -1,7 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const PORT = 3003;
+const PORT = process.env.PORT || 3003;
 
 const eNastavaRoutes = require("./routes/eNastava");
 const guestRoutes = require("./routes/guest");

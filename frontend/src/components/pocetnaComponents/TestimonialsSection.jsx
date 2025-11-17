@@ -9,14 +9,14 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       text: '"Prije prve vožnje si mislim, nije ovo tako strašno, mogu ja to, predugo sam odgađala. Dođe prvi sat i umjesto kočnice, svaki put gas. Drugi sat smo savladali vozit u svojoj traci i držat volan. lako ne bez manjih incidenata. Svakom sljedećom vožnjom, sve manje straha. Dočekala sam trenutak koji nisam mislila da će doć da jedva čekam vozat."',
-      person: "Marija",
+      person: "Manda",
     },
     {
       text: '"Drago mi je sto sam položio, ali mi je zao sto se više nećemo vozat, stvarno mi je bilo super s vama i sekunde nisam požalio sto sam odabrao da me vi obučavate."',
-      person: "Ivan",
+      person: "Luka",
     },
     {
-      text: '"Autoškola Instruktor je odlična! Instruktori su izuzetno strpljivi i profesionalni, a obuka je temeljita i prilagođena svakom učeniku. Vozila su moderna i dobro održavana, što dodatno ulijeva povjerenje. Posebno mi se svidjela fleksibilnost u terminima i mogućnost plaćanja na rate. Preporučujem svima koji žele kvalitetnu i sigurnu obuku."',
+      text: '"Odlična autoškola! Instruktori su strpljivi i znaju svoj posao. Ako želiš stvarno naučiti voziti i biti siguran za volanom, ovo je pravo mjesto."',
       person: "Ante",
     },
   ];

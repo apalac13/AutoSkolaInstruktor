@@ -23,7 +23,7 @@ export default function KvizoviPage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:3003/e-nastava/kvizovi", {
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kvizovi`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setQuizes(res.data))
