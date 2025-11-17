@@ -46,7 +46,7 @@ export default function QuizesResults({ user }) {
       <Notification message={message} messageType={messageType} />
       <Section number={"02"} text={"REZULTATI KVIZOVA"} />
       <div className="flex flex-col">
-        <div className="flex justify-around border-b-[1px] border-black-40 text-base font-semibold ">
+        <div className="flex  flex-row max-sm:flex-col justify-around border-b-[1px] border-black-40 text-base font-semibold ">
           <p>KANDIDAT</p>
           <p>KVIZ</p>
           <p>REZULTAT</p>

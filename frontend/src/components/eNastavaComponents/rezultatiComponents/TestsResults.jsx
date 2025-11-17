@@ -45,7 +45,7 @@ export default function TestsResults({ user }) {
       <Notification message={message} messageType={messageType} />
       <Section number={"01"} text={"REZULTATI TESTOVA"} />
       <div className="flex flex-col">
-        <div className="flex justify-around border-b-[1px] border-black-40 text-base font-semibold ">
+        <div className="flex  flex-row max-sm:flex-col justify-around border-b-[1px] border-black-40 text-base font-semibold ">
           <p>KANDIDAT</p>
           <p>TEST</p>
           <p>REZULTAT</p>
