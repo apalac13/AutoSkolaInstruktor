@@ -25,7 +25,7 @@ export default function TestResult({
 
     try {
       const response = await axios.delete(
-        `http://localhost:3003/e-nastava/rezultati/test/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/rezultati/test/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

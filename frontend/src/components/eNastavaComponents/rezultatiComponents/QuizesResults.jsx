@@ -18,7 +18,7 @@ export default function QuizesResults({ user }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3003/e-nastava/rezultati/kvizovi`, {
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/e-nastava/rezultati/kvizovi`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

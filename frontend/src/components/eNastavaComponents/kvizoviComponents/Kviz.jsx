@@ -73,7 +73,7 @@ export default function Kviz({
 
     try {
       await axios.post(
-        `http://localhost:3003/e-nastava/kvizovi/${kvizId}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kvizovi/${kvizId}`,
         submissionData,
         {
           headers: {

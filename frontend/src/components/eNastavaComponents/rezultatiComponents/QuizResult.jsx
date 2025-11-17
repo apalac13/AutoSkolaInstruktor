@@ -24,7 +24,7 @@ export default function QuizResult({
       return;
     try {
       await axios.delete(
-        `http://localhost:3003/e-nastava/rezultati/kviz/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/rezultati/kviz/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

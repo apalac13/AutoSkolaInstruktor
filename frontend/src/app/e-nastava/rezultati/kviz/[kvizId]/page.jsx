@@ -22,11 +22,14 @@ export default function KvizRezultatDetalji() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3003/e-nastava/rezultati/kviz/${kvizId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      .get(
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/rezultati/kviz/${kvizId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       .then((res) => setQuizResult(res.data))
       .catch((error) => {
         resetMessageWithTimeout(

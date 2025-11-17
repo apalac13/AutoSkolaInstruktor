@@ -37,7 +37,7 @@ export default function KandidatiPage() {
     const token = localStorage.getItem("token");
 
     axios
-      .get("http://localhost:3003/e-nastava/kandidati", {
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kandidati`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setUsers(res.data))

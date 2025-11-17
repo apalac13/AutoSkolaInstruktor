@@ -22,11 +22,14 @@ export default function TestRezultatDetalji() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3003/e-nastava/rezultati/test/${testId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      .get(
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/rezultati/test/${testId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       .then((res) => setTestResult(res.data))
       .catch((error) => {
         resetMessageWithTimeout(

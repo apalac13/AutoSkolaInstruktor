@@ -17,7 +17,7 @@ export default function TestsResults({ user }) {
   };
   useEffect(() => {
     axios
-      .get(`http://localhost:3003/e-nastava/rezultati/testovi`, {
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/e-nastava/rezultati/testovi`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

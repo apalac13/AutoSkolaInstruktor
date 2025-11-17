@@ -19,7 +19,7 @@ export default function Users({ users, setUsers }) {
       return;
     try {
       const response = await axios.delete(
-        `http://localhost:3003/e-nastava/kandidati/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kandidati/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

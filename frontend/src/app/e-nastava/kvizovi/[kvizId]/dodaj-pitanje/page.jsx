@@ -116,7 +116,7 @@ export default function DodajPitanje() {
     formData.append("answerOptions", JSON.stringify(question.answerOptions));
     try {
       const response = await axios.post(
-        `http://localhost:3003/e-nastava/kvizovi/${kvizId}/dodaj-pitanje`,
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kvizovi/${kvizId}/dodaj-pitanje`,
         formData,
         {
           headers: {

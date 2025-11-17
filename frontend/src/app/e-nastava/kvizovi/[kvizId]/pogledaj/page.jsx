@@ -23,11 +23,14 @@ export default function PogledajPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3003/e-nastava/kvizovi/${kvizId}/pogledaj`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
+      .get(
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kvizovi/${kvizId}/pogledaj`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
       .then((res) => setQuiz(res.data))
       .catch((error) => {
         resetMessageWithTimeout(
@@ -41,7 +44,7 @@ export default function PogledajPage() {
     if (!window.confirm("Jeste li sigurni da želite izbrisati pitanje")) return;
     try {
       const response = await axios.delete(
-        `http://localhost:3003/e-nastava/kvizovi/${kvizId}/${id}/pogledaj`,
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kvizovi/${kvizId}/${id}/pogledaj`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

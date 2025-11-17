@@ -5,7 +5,7 @@ const libraries = ["places", "drawing", "geometry"];
 
 export function MapProvider({ children }) {
   const { isLoaded: scriptLoaded, loadError } = useJsApiLoader({
-    googleMapsApiKey: process.env.GOOGLE_MAP_API,
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API,
     libraries,
   });
 

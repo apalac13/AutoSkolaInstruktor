@@ -27,7 +27,7 @@ export default function WhyUsSection() {
     {
       link: "/icons/car.svg",
       name: "ŠIROK IZBOR\nKATEGORIJA",
-      text: "Obučavamo za sve kategorije vozačkih dozvola (A, B, C, CE, C1, C1E), omogućujući vam da vozite sve vrste vozila. ",
+      text: "Obučavamo za sve kategorije vozačkih dozvola (A, B, C1, C1E, C, CE), omogućujući vam da vozite sve vrste vozila. ",
     },
     {
       link: "/icons/graph.svg",

@@ -20,7 +20,7 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
     if (!window.confirm("Jeste li sigurni da želite izbrisati kviz")) return;
     try {
       const response = await axios.delete(
-        `http://localhost:3003/e-nastava/kvizovi/${id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kvizovi/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         }

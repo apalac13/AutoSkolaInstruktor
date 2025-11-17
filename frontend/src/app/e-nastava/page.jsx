@@ -33,10 +33,13 @@ export default function ENastava() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3003/e-nastava", {
-        username: data.username,
-        password: data.password,
-      });
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/e-nastava`,
+        {
+          username: data.username,
+          password: data.password,
+        }
+      );
 
       const { token, message } = response.data;
       if (message) resetMessageWithTimeout(message, "success");

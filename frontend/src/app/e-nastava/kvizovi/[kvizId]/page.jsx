@@ -31,7 +31,7 @@ export default function KvizPage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get(`http://localhost:3003/e-nastava/kvizovi/${kvizId}`, {
+      .get(`${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kvizovi/${kvizId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
