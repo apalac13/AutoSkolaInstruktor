@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3003;
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 connectDb();
 
+app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/e-nastava", eNastavaRoutes);
 app.use("/", guestRoutes);
 
