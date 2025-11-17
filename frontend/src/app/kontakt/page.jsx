@@ -31,7 +31,7 @@ export default function Kontakt() {
     {
       icon: "/icons/mail1.svg",
       alt: "mail logo",
-      text: "autoskola_instruktor@gmail.com",
+      text: "askinstruktor@gmail.com",
     },
   ];
 

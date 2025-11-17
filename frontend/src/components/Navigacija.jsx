@@ -34,7 +34,7 @@ export default function Navigacija() {
     {
       src: "/icons/mail-white.svg",
       alt: "mail",
-      link: "mailto:anabradaric77@gmail.com",
+      link: "mailto:askinstruktor@gmail.com",
     },
     {
       src: "/icons/instagram-white.svg",
