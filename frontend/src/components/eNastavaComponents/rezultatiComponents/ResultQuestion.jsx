@@ -55,7 +55,11 @@ export default function ResultQuestion({ question, testAnswer }) {
         )}
         {question.image && (
           <Image
-            src={`/uploads/${question.image}`}
+            src={
+              question.image.startsWith("/images")
+                ? `${process.env.NEXT_PUBLIC_API_URL}${question.image}`
+                : `/uploads/${question.image}`
+            }
             alt={"question image"}
             width={250}
             height={200}

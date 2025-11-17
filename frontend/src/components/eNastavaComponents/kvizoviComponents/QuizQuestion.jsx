@@ -20,7 +20,7 @@ export default function QuizQuestion({ question, index, deleteQuestion }) {
         </div>
         {question.image && (
           <Image
-            src={`/uploads/${question.image}`}
+            src={`${process.env.NEXT_PUBLIC_API_URL}${question.image}`}
             alt="..."
             width={300}
             height={300}

@@ -1,19 +1,21 @@
 const express = require("express");
 const multer = require("multer");
+const path = require("path");
 const router = express.Router();
 const eNastavaController = require("../controller/eNastavaController");
 const adminController = require("../controller/adminController");
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, "../frontend/public/uploads");
+    callback(null, path.join(__dirname, "../images"));
   },
   filename: (req, file, callback) => {
-    callback(null, file.originalname);
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    callback(null, uniqueSuffix + "-" + file.originalname);
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
 router.post("", eNastavaController.logIn);
 router.post(

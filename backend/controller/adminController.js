@@ -58,7 +58,7 @@ exports.addQuestion = async (req, res) => {
 
     const newQuestion = {
       questionText: req.body.questionText,
-      image: req.file ? req.file.originalname : null,
+      image: req.file ? `/images/${req.file.filename}` : null,
       questionNumber: quiz.questions.length + 1,
       type: req.body.type,
       answerOptions,
