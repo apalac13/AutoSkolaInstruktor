@@ -72,14 +72,14 @@ export default function OnlinePrijava() {
               <p className="text-justify max-xl:text-sm">
                 Osposobljavanju za vozača motornih vozila može pristupiti osoba
                 koja ima minimalnu dob za kategorije A, B, C1 i C1E 18 godina, a
-                za kategorije C i CE 21. godinu. Koja je je zdravstveno sposobna
+                za kategorije C i CE 21 godinu. Koja je je zdravstveno sposobna
                 za rješavanje ispitnih testova i upravljanje vozilom
                 odgovarajuće kategorije ili potkategorije, a što se dokazuje
                 ljekarskim uvjerenjem koje ne smije biti starije od godinu dana.
                 Ima bosanskohercegovačko državljanstvo, prijavljeno prebivalište
                 ili boravak u Bosni i Hercegovini, kao i strani državljanin koji
                 u Bosni i Hercegovini ima odobren stalni ili privremeni boravak
-                na period ne kraći od šest mjeseci. Ispunjava i druge uslove
+                na period ne kraći od šest mjeseci. Ispunjava i druge uvjete
                 propisane za određenu kategoriju ili potkategoriju. 🚗
               </p>
             </div>

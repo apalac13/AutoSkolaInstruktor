@@ -65,7 +65,7 @@ export default function Kategorije() {
     {
       icon: "/icons/school.svg",
       number: "2. KORAK",
-      title: "SLUŠATI PREDAVANJA O PROMETNIM PRAVILIMA I SIGURNOSNIM PROPISIMA",
+      title: "SLUŠATI PREDAVANJA O OSNOVAMA SIGURNOSTI U PROMETU",
       description:
         "Nakon što predate liječničko uvjerenje, autoškola vas upisuje u teorijsku nastavu (propisi). Ova nastava obuhvaća: prometne znakove, pravila u vožnji, sigurnosne propise, ponašanje u prometu i odgovornost vozača.",
     },
