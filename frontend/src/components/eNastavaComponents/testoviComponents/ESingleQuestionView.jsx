@@ -244,10 +244,6 @@ export default function ESingleQuestionView({ test, user }) {
               className="flex flex-col"
             >
               <div className="flex flex-col ">
-                <div className="flex gap-2 text-xl max-[450px]:text-lg text-justify  font-semibold">
-                  <p>{questions[currentQuestion].questionNumber}.</p>
-                  <p>{questions[currentQuestion].questionText}</p>
-                </div>
                 <div className="flex flex-wrap gap-3 py-2">
                   {questions.map((q, index) => (
                     <label key={q.questionNumber} className="cursor-pointer">
@@ -272,6 +268,11 @@ export default function ESingleQuestionView({ test, user }) {
                     </label>
                   ))}
                 </div>
+                <div className="flex gap-2 text-xl max-[450px]:text-lg text-justify  font-semibold">
+                  <p>{questions[currentQuestion].questionNumber}.</p>
+                  <p>{questions[currentQuestion].questionText}</p>
+                </div>
+
                 <div className="flex flex-col gap-3 items-start border-y border-black-40 pt-10">
                   <div className="w-full flex flex-row max-lg:flex-col max-lg:gap-8 justify-between">
                     <div className="flex flex-col gap-3 items-start">
