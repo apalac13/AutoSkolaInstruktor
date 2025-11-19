@@ -6,19 +6,25 @@ const jwt = require("jsonwebtoken");
 
 exports.verifyToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
-  if (!authHeader)
+  if (!authHeader) {
+    console.log("Authorization header missing");
     return res.status(403).send("Ne postoji autorizacijasko zaglavlje");
+  }
 
   const token = authHeader.split(" ")[1];
-  if (!token) return res.status(403).send("Bearer token nije pronađen");
+  if (!token) {
+    console.log("Bearer token missing");
+    return res.status(403).send("Bearer token nije pronađen");
+  }
 
   try {
     const dekodiraniToken = jwt.verify(token, process.env.JWT_SECRET);
     req.user = dekodiraniToken;
+    next();
   } catch (error) {
+    console.log("Invalid token:", error);
     return res.status(401).send("Neispravni Token");
   }
-  next();
 };
 
 exports.logIn = async (req, res) => {

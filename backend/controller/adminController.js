@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const User = require("../models/user");
 const Quiz = require("../models/quiz");
 const QuizResult = require("../models/quizResult");
@@ -111,9 +112,20 @@ exports.deleteQuiz = async (req, res) => {
       return res.status(404).json({ message: "Kviz nije pronađen!" });
     }
 
-    res.status(200).json({ message: "Kviz uspješno izbrisan!" });
+    const objectId = mongoose.Types.ObjectId.isValid(quizId)
+      ? new mongoose.Types.ObjectId(quizId)
+      : quizId;
+
+    await QuizResult.deleteMany({ quiz: objectId });
+
+    res
+      .status(200)
+      .json({ message: "Kviz i svi njegovi rezultati uspješno izbrisani!" });
   } catch (err) {
-    res.status(500).json({ message: "Greška prilikom brisanja kviza!" });
+    console.error(err);
+    res
+      .status(500)
+      .json({ message: "Greška prilikom brisanja kviza i rezultata!" });
   }
 };
 
