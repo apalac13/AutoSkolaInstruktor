@@ -46,7 +46,7 @@ export default function Pocetna() {
                     <Button
                       type={"button"}
                       width={"200px"}
-                      text={"UPIŠI SE"}
+                      text={"PRIJAVI SE"}
                       color={"red"}
                     />
                   </Link>
