@@ -30,6 +30,7 @@ exports.sendOnlineApplication = async (req, res) => {
 
   try {
     await sendEmail({
+      from: email,
       to: process.env.EMAIL_USER,
       subject: "Online prijava",
       html: `
@@ -62,6 +63,7 @@ exports.sendInquiry = async (req, res) => {
 
   try {
     await sendEmail({
+      from: email,
       to: process.env.EMAIL_USER,
       subject: "Upit za autoškolu",
       html: `
