@@ -57,7 +57,7 @@ export default function RegisterUser({ users, setUsers }) {
   };
 
   return (
-    <div className="flex flex-col gap-6 items-center">
+    <div className=" flex flex-col gap-6 items-center">
       <button
         onClick={() => setCreateUser(!createUser)}
         className={clsx(
@@ -77,7 +77,7 @@ export default function RegisterUser({ users, setUsers }) {
       {createUser && (
         <form
           onSubmit={handleSubmit}
-          className="w-[500px] flex flex-col gap-12 px-5 "
+          className="w-[500px] max-[500px]:w-full flex flex-col gap-12 px-5 "
         >
           <p className=" text-xl font-semibold">REGISTRACIJA</p>
           <div className="w-full flex flex-col gap-6 items-center">
@@ -89,6 +89,7 @@ export default function RegisterUser({ users, setUsers }) {
               value={user.name}
               onChange={handleChange}
             />
+
             <InputField
               label={"KORISNIČKO IME"}
               id={"username"}

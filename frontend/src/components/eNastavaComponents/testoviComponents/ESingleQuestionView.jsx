@@ -175,6 +175,7 @@ export default function ESingleQuestionView({ test, user }) {
 
   const handleCurrentQuestion = (index) => {
     setCurrentQuestion(index);
+    setShowAnswer(false);
     const questionNumber = questions[index].questionNumber;
     const existing = userAnswers.find(
       (a) => a.questionNumber === questionNumber

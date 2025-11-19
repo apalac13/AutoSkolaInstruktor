@@ -57,7 +57,7 @@ export default function KandidatiPage() {
   return (
     <div className="flex flex-col items-center justify-center p-5">
       <SubNavigacija />
-      <div className="flex flex-col gap-16">
+      <div className="flex flex-col gap-16 w-full">
         <Notification message={message} messageType={messageType} />
         <RegisterUser users={users} setUsers={setUsers} />
         <Users users={users} setUsers={setUsers} />
