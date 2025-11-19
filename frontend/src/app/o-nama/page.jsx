@@ -61,6 +61,7 @@ export default function ONama() {
     "/kamion5.jpg",
     "/golfkandidatinstruktor1.jpg",
     "/kandidati3.jpg",
+    "/bmwnight.jpg",
     "/golfkandidat5.jpg",
     "/motor2.jpg",
   ];
@@ -90,10 +91,10 @@ export default function ONama() {
     "/golfkandidatinstruktor2.jpg",
     "/bmwkandidat3.jpg",
     "/luka.jpg",
-
     "/recenzija.jpg",
     "/audi1.jpeg",
     "/kamion5.jpg",
+    "/bmwnight.jpg",
     "/kamion1.jpg",
     "/golf3bocno.jpg",
     "/golfkat2.jpeg",
