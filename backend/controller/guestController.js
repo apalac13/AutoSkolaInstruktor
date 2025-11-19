@@ -32,6 +32,7 @@ exports.sendOnlineApplication = async (req, res) => {
     await sendEmail({
       to: process.env.EMAIL_USER,
       subject: "Online prijava",
+      replyTo: email,
       html: `
         <h3>Detalji prijave:</h3>
         <p><strong>Ime i prezime:</strong> ${person}</p>
@@ -64,6 +65,7 @@ exports.sendInquiry = async (req, res) => {
     await sendEmail({
       to: process.env.EMAIL_USER,
       subject: "Upit za autoškolu",
+      replyTo: email,
       html: `
         <p><strong>Ime i prezime:</strong> ${person}</p>
         <p><strong>Email korisnika:</strong> ${email}</p>
