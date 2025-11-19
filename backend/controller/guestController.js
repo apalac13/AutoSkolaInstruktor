@@ -1,4 +1,4 @@
-const nodemailer = require("nodemailer");
+const sendEmail = require("../utils/mailer");
 const Test = require("../models/test");
 
 exports.getTest = async (req, res) => {
@@ -13,93 +13,69 @@ exports.getTest = async (req, res) => {
 };
 
 exports.sendOnlineApplication = async (req, res) => {
-  if (req.method === "POST") {
-    const {
-      person,
-      email,
-      date,
-      placeOfBirth,
-      phoneNumber,
-      categories,
-      message,
-    } = req.body;
+  if (req.method !== "POST")
+    return res.status(405).json({ message: "Metoda nije podržana." });
 
-    console.log("Received data:", req.body);
+  const {
+    person,
+    email,
+    date,
+    placeOfBirth,
+    phoneNumber,
+    categories,
+    message,
+  } = req.body;
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+  console.log("Received data:", req.body);
 
-    const mailOptions = {
-      from: `<${person}>`,
+  try {
+    await sendEmail({
       to: process.env.EMAIL_USER,
       subject: "Online prijava",
       html: `
         <h3>Detalji prijave:</h3>
         <p><strong>Ime i prezime:</strong> ${person}</p>
-        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Email korisnika:</strong> ${email}</p>
         <p><strong>Datum rođenja:</strong> ${date}</p>
         <p><strong>Mjesto rođenja:</strong> ${placeOfBirth}</p>
         <p><strong>Kontakt broj:</strong> ${phoneNumber}</p>
         <p><strong>Kategorije:</strong> ${categories.join(", ")}</p>
         <p><strong>Napomena:</strong> ${message}</p>
       `,
-    };
+    });
 
-    try {
-      await transporter.sendMail(mailOptions);
-      res.status(200).json({ message: "Email je uspješno poslan!" });
-    } catch (error) {
-      console.error("Error while sending email:", error);
-      res.status(500).json({ message: "Greška pri slanju e-maila." });
-    }
-  } else {
-    res.status(405).json({ message: "Metoda nije podržana." });
+    res.status(200).json({ message: "Email je uspješno poslan!" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Greška pri slanju e-maila.", error: error.message });
   }
 };
 
 exports.sendInquiry = async (req, res) => {
-  if (req.method === "POST") {
-    const { person, email, phoneNumber, message } = req.body;
+  if (req.method !== "POST")
+    return res.status(405).json({ message: "Metoda nije podržana." });
 
-    console.log("Received data:", req.body);
+  const { person, email, phoneNumber, message } = req.body;
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+  console.log("Received data:", req.body);
 
-    const mailOptions = {
-      from: `<${person}>`,
+  try {
+    await sendEmail({
       to: process.env.EMAIL_USER,
       subject: "Upit za autoškolu",
       html: `
         <p><strong>Ime i prezime:</strong> ${person}</p>
-        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Email korisnika:</strong> ${email}</p>
         <p><strong>Kontakt broj:</strong> ${phoneNumber}</p>
         <p><strong>Poruka:</strong> ${message}</p>
       `,
-    };
+    });
 
-    try {
-      await transporter.sendMail(mailOptions);
-      res.status(200).json({ message: "Email je uspješno poslan!" });
-    } catch (error) {
-      console.error("Error while sending email:", error);
-      res.status(500).json({ message: "Greška pri slanju e-maila." });
-    }
-  } else {
-    res.status(405).json({ message: "Metoda nije podržana." });
+    res.status(200).json({ message: "Email je uspješno poslan!" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Greška pri slanju e-maila.", error: error.message });
   }
 };
