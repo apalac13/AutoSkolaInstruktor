@@ -339,7 +339,7 @@ export default function ESingleQuestionView({ test, user }) {
                       transition={{ duration: 0.4 }}
                       onClick={checkAnswer}
                     >
-                      <p className="max-[450px]:text-lg">Potvrdi pitanje</p>
+                      <p className="max-[450px]:text-lg">Potvrdi odgovor</p>
                       <motion.img
                         src="/icons/accept_check.svg"
                         alt="Accept icon"
