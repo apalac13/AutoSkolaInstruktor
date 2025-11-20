@@ -7,7 +7,7 @@ export default function StatisticSection() {
 
   const statisticsItems = [
     { number: experience, symbol: "+", item: "Godina iskustva" },
-    { number: 4000, symbol: "+", item: "Položenih vozački" },
+    { number: 4000, symbol: "+", item: "Položenih vozačkih ispita" },
     { number: 100, symbol: "%", item: "Zadovoljnih kandidata" },
   ];
 
