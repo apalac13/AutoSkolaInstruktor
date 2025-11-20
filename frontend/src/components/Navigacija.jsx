@@ -89,7 +89,7 @@ export default function Navigacija() {
       <div className="xl:hidden relative z-40">
         <div
           className={clsx(
-            "fixed  w-full h-24 flex items-center justify-between border-b-[1px] px-8 py-2 backdrop-blur-md bg-black-40/60",
+            "fixed  w-full h-[88px] flex items-center justify-between border-b-[1px] px-8 py-2 backdrop-blur-md bg-black-40/60",
             pathname !== "/o-nama" ? "border-white-60" : "border-black-40"
           )}
         >
@@ -100,16 +100,16 @@ export default function Navigacija() {
                 : "/icons/asi-logo-orginal.svg"
             }
             alt="Logo"
-            width={65}
-            height={65}
+            width={54}
+            height={54}
           />
           <Image
             src={
               pathname !== "/o-nama" ? "/icons/menu1.svg" : "/icons/menu2.svg"
             }
             alt="Logo"
-            width={36}
-            height={36}
+            width={32}
+            height={32}
             onClick={() => setShowNavigationLinks(!showNavigationLinks)}
           />
         </div>
@@ -122,21 +122,21 @@ export default function Navigacija() {
               exit={{ x: "100%" }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
               className={clsx(
-                "fixed w-2/3 h-full flex flex-col gap-12 z-40 bg-gradient-to-t from-red-71 to-black-40 ",
+                "fixed w-2/3 h-full flex flex-col gap-12 z-40 bg-gradient-to-t from-gray-53 to-gray-54 ",
                 showNavigationLinks ? "right-0" : "w-[-100%]"
               )}
             >
-              <div className="w-full h-24 px-8 py-8 flex items-center justify-end border-b-[1px] border-white-60">
+              <div className="w-full h-[88px] px-8 py-8 flex items-center justify-end border-b-[1px] border-white-60">
                 <Image
                   src={"/icons/close_menu.svg"}
                   alt="Logo"
-                  width={36}
-                  height={36}
+                  width={32}
+                  height={32}
                   onClick={() => setShowNavigationLinks(!showNavigationLinks)}
                 />
               </div>
               <div className="flex flex-col gap-6 justify-center items-end mr-8 ">
-                <nav className=" flex flex-col items-end justify-center gap-2 text-xl text-white-60">
+                <nav className=" flex flex-col items-end justify-center gap-2 text-lg text-white-60">
                   {navItems.map((item, index) => (
                     <Link
                       href={item.href}
