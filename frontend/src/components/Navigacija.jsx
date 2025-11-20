@@ -136,12 +136,12 @@ export default function Navigacija() {
                 />
               </div>
               <div className="flex flex-col gap-6 justify-center items-end mr-8 ">
-                <nav className=" flex flex-col items-end justify-center gap-2 text-base text-white-60">
+                <nav className=" flex flex-col items-end justify-center gap-2 text-xl text-white-60">
                   {navItems.map((item, index) => (
                     <Link
                       href={item.href}
                       key={index}
-                      className=" transition-all delay-50 ease-in-out font-medium  hover:text-gray-50 "
+                      className="transition-all delay-50 ease-in-out font-medium  hover:text-gray-50 "
                     >
                       {item.name}
                     </Link>

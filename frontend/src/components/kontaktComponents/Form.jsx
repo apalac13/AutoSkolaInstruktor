@@ -84,7 +84,7 @@ export default function Form() {
         />
         <div className="w-full">
           <label htmlFor="message" className="flex flex-col items-start">
-            <p className="text-lg max-sm:text-sm">
+            <p className="text-lg max-sm:text-base">
               PORUKA <span className="text-red-71">*</span>{" "}
             </p>
             <textarea
@@ -92,7 +92,7 @@ export default function Form() {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="border border-black-40 w-full p-1 h-[150px] max-sm:h-[100px] bg-white-60"
+              className="border border-black-40 w-full p-1 h-[150px]  bg-white-60"
               required
             ></textarea>
           </label>

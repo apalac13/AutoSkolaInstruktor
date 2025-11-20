@@ -142,7 +142,7 @@ export default function ONama() {
             <h1 className="text-4xl max-lg:text-3xl font-semibold text-start ">
               AUTOŠKOLA INSTRUKTOR
             </h1>
-            <p className="text-base max-lg:text-sm text-justify">
+            <p className="text-base  text-justify">
               Autoškola Instruktor je posvećena osposobljavanju vozača za
               sigurno, odgovorno i samopouzdano upravljanje vozilom, s posebnim
               naglaskom na sigurnost, poštovanje prometnih pravila i razvoj
@@ -215,10 +215,10 @@ export default function ONama() {
             transition={{ duration: 0.5 }}
             className="flex flex-col gap-5 text-white-60 "
           >
-            <h1 className="text-4xl  max-lg:text-3xl font-semibold text-start ">
+            <h1 className="text-4xl max-lg:text-3xl font-semibold text-start ">
               1990. - DANAS
             </h1>
-            <p className="text-base  max-lg:text-sm text-justify">
+            <p className="text-base text-justify">
               Autoškola je osnovana 1990. godine od strane Luke Bradarića, koji
               je bio prvi vlasnik i vizionar iza ove obrazovne ustanove. Pod
               nazivom Autoškola Luka, Luka je svojim entuzijazmom i predanošću

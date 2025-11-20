@@ -6,7 +6,7 @@ export default function Button({ type, width, text, color }) {
       type={type}
       style={{ width }}
       className={clsx(
-        `relative group max-md:w-[150px] max-sm:h-12 h-14 px-5 text-white-60 overflow-hidden`,
+        `relative group max-md:w-[150px]  h-14 px-5 text-white-60 overflow-hidden`,
 
         {
           "border-red-71 bg-red-71": color === "red",

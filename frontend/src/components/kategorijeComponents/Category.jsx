@@ -25,28 +25,26 @@ export default function Category({ category }) {
       </div>
       <div className="flex flex-col gap-2 text-justify">
         <div className="flex gap-1 ">
-          <p className="text-lg max-xl:text-base max-lg:text-sm text-red-71">
-            OZNAKA:
-          </p>
-          <p className="text-lg max-xl:text-base max-lg:text-sm text-white-60  ">
+          <p className="text-lg max-xl:text-base  text-red-71">OZNAKA:</p>
+          <p className="text-lg max-xl:text-base  text-white-60  ">
             {category.category}
           </p>
         </div>
         <div className="flex flex-col  ">
-          <p className="text-lg max-xl:text-base max-lg:text-sm text-red-71 leading-none">
+          <p className="text-lg max-xl:text-base  text-red-71 leading-none">
             TIP VOZILA:
           </p>
 
-          <p className="text-lg max-xl:text-base max-lg:text-sm  text-gray-50 font-light">
+          <p className="text-lg max-xl:text-base   text-gray-50 font-light">
             {category.type}
           </p>
         </div>
         <div className="flex flex-col ">
-          <p className="text-lg max-xl:text-base max-lg:text-sm text-red-71 leading-none">
+          <p className="text-lg max-xl:text-base  text-red-71 leading-none">
             UVJETI ZA UPIS:
           </p>
 
-          <p className="text-lg max-xl:text-base max-lg:text-sm text-gray-50 font-light">
+          <p className="text-lg max-xl:text-base m text-gray-50 font-light">
             {category.conditions}
           </p>
         </div>

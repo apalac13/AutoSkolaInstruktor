@@ -38,7 +38,7 @@ export default function Pocetna() {
               className="w-full h-full relative flex flex-col gap-9 items-center justify-center "
             >
               <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-4">
-                <p className="text-2xl max-md:text-lg text-white-60 font-light italic ">
+                <p className="text-3xl max-md:text-xl text-white-60 font-light italic ">
                   Uči za život, ne za ispit. Najbolji zbog vas!
                 </p>
                 <div className="flex max-lg:flex-col gap-16 max-lg:gap-4">
@@ -81,7 +81,7 @@ export default function Pocetna() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                className="text-xl max-sm:text-base  text-black-40 italic px-7"
+                className="text-xl max-sm:text-lg  text-black-40 italic px-7"
               >
                 Cilj naše autoškole je naučiti vozit na siguran i samouvjeren
                 način. Posebnu pažnju posvećujemo svakom kandidatu, jer svatko
@@ -139,11 +139,11 @@ export default function Pocetna() {
               >
                 <div className="self-start flex gap-2">
                   <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
-                  <p className="text-2xl max-sm:text-xl text-white-60 font-semibold">
+                  <p className="text-2xl  text-white-60 font-semibold">
                     ŠIROK IZBOR KATEGORIJA
                   </p>
                 </div>
-                <p className=" text-base max-sm:text-sm font-light text-white-60 text-justify ">
+                <p className=" text-base font-light text-white-60 text-justify ">
                   Autoskola "Instruktor" se ističe svojom ponudom sveobuhvatne
                   obuke za sve kategorije vozačkih dozvola. Ova usluga je
                   ključna za sve polaznike koji žele da steknu vozačku dozvolu
@@ -171,11 +171,11 @@ export default function Pocetna() {
               >
                 <div className="self-start flex gap-2">
                   <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
-                  <p className="text-2xl max-sm:text-xl text-white-60 font-semibold">
+                  <p className="text-2xl  text-white-60 font-semibold">
                     KONDICIJSKA VOŽNJA
                   </p>
                 </div>
-                <p className=" text-base max-sm:text-sm font-light text-white-60 text-justify ">
+                <p className=" text-base font-light text-white-60 text-justify ">
                   Kondicijska vožnja je program dodatne obuke za vozače koji
                   žele osvježiti svoje vozačke vještine i steći dodatno
                   samopouzdanje na cesti. Ova vrsta vožnje idealna je za one
@@ -200,11 +200,11 @@ export default function Pocetna() {
               >
                 <div className="self-start flex gap-2">
                   <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
-                  <p className="text-2xl max-sm:text-xl text-white-60 font-semibold">
+                  <p className="text-2xl  text-white-60 font-semibold">
                     VOŽNJA U SPLIT
                   </p>
                 </div>
-                <p className=" text-base max-sm:text-sm font-light text-white-60 text-justify ">
+                <p className=" text-base font-light text-white-60 text-justify ">
                   Nudimo vožnju u gradu Splitu i vožnje po autocesti. Ova obuka
                   je dizajnirana kako bi pomogla vozačima da steknu dodatno
                   iskustvo i sigurnost u vožnji kroz gradske gužve i na brzim

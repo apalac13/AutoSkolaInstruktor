@@ -126,7 +126,7 @@ export default function Form() {
                 value={category}
                 onChange={handleCategoryChange}
                 checked={formData.categories.includes(category)}
-                className="online-prijava-checkbox w-[40px] h-[40px] max-sm:w-[35px] max-sm:h-[35px] border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
+                className="online-prijava-checkbox w-[40px] h-[40px] border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
               />
               <p className="text-lg max-sm:text-base leading-none">
                 {category}{" "}
@@ -144,7 +144,7 @@ export default function Form() {
           name="message"
           value={formData.message}
           onChange={handleChange}
-          className="border border-black-40 w-full p-1 h-[150px] max-sm:h-[100px] bg-white-60"
+          className="border border-black-40 w-full p-1 h-[150px]  bg-white-60"
         ></textarea>
       </label>
       <Button type={"submit"} width={"full"} text={"POŠALJI"} color={"red"} />

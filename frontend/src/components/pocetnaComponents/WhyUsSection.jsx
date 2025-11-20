@@ -72,7 +72,7 @@ export default function WhyUsSection() {
                 {item.name}
               </p>
             </div>
-            <p className="text-base max-md:text-sm font-extralight text-justify leading-tight  ">
+            <p className="text-base font-extralight text-justify leading-tight  ">
               {item.text}
             </p>
           </motion.div>
