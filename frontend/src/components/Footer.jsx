@@ -61,9 +61,7 @@ export default function Footer() {
                 height={38}
                 alt={contact.alt}
               />
-              <p className="text-sm max-xl:text-sm text-white-60 font-thin">
-                {contact.text}
-              </p>
+              <p className="text-sm  text-white-60 font-thin">{contact.text}</p>
             </div>
           ))}
         </div>
