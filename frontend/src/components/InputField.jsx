@@ -19,7 +19,7 @@ export default function InputField({
           name={name}
           value={value}
           onChange={onChange}
-          className="border border-black-40 w-full h-[40px]  p-1"
+          className="border border-black-40 w-full h-[45px] p-1"
           placeholder={placeholder}
           required
         />

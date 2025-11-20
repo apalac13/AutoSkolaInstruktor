@@ -126,7 +126,7 @@ export default function Form() {
                 value={category}
                 onChange={handleCategoryChange}
                 checked={formData.categories.includes(category)}
-                className="online-prijava-checkbox w-[40px] h-[40px] border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
+                className="online-prijava-checkbox w-[45px] h-[45px] border border-black-40 bg-white-60 checked:bg-black-40 cursor-pointer "
               />
               <p className="text-lg max-sm:text-base leading-none">
                 {category}{" "}
