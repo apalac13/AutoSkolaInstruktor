@@ -1,9 +1,23 @@
 "use client";
 import Image from "next/image";
+import clsx from "clsx";
 
 export default function ResultQuestion({ question, testAnswer }) {
+  const correctAnswers =
+    question.answerOptions
+      ?.filter((opt) => opt.answer)
+      .map((opt) => opt.option) || [];
+
+  const userAnswers = testAnswer?.answers || [];
+
+  const isWholeQuestionWrong =
+    JSON.stringify([...correctAnswers].sort()) !==
+    JSON.stringify([...userAnswers].sort());
+
   return (
-    <div className="flex flex-col">
+    <div
+      className={clsx("flex flex-col", isWholeQuestionWrong && "bg-[#e5a5ab]")}
+    >
       <div className="flex gap-2 text-xl max-[450px]:text-lg text-justify font-semibold">
         <p>{question.questionNumber}.</p>
         <p>{question.questionText}</p>
