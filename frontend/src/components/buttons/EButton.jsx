@@ -6,7 +6,7 @@ export default function EButton({ type, width, text, color }) {
       type={type}
       style={{ width }}
       className={clsx(
-        `relative group h-10  `,
+        `relative group h-12`,
 
         {
           "border-red-71 bg-red-71 ": color === "red",
@@ -16,7 +16,7 @@ export default function EButton({ type, width, text, color }) {
       )}
     >
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
-      <span className="relative text-white-60 text-xs text-center font-light">
+      <span className="relative text-white-60 text-sm text-center font-light">
         {text}
       </span>
     </button>

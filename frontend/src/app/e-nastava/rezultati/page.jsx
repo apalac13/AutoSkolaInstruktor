@@ -13,7 +13,7 @@ export default function KvizoviPage() {
   return (
     <div className="flex flex-col items-center justify-center p-5">
       <SubNavigacija />
-      <div className="flex flex-col gap-24">
+      <div className="flex flex-col gap-24 w-full">
         <TestsResults user={user} />
         <QuizesResults user={user} />
       </div>
