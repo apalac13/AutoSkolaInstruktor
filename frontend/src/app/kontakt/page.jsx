@@ -63,10 +63,10 @@ export default function Kontakt() {
           <div className="flex flex-col gap-1">
             {contactItems.map((contact) => (
               <div className="flex gap-1 items-center" key={contact.alt}>
-                <div className="relative w-[38px] h-[38px] max-[500px]:w-[32px] max-[500px]:h-[32px] ">
+                <div className="relative w-[38px] h-[38px]  ">
                   <Image fill src={contact.icon} alt={contact.alt} />
                 </div>
-                <p className="text-sm max-[500px]:text-xs">{contact.text}</p>
+                <p className="text-base max-[500px]:text-sm">{contact.text}</p>
               </div>
             ))}
           </div>

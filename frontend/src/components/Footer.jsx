@@ -57,11 +57,11 @@ export default function Footer() {
             >
               <Image
                 src={contact.icon}
-                width={32}
-                height={32}
+                width={38}
+                height={38}
                 alt={contact.alt}
               />
-              <p className="text-sm max-xl:text-xs text-white-60 font-thin">
+              <p className="text-sm max-xl:text-sm text-white-60 font-thin">
                 {contact.text}
               </p>
             </div>
