@@ -136,7 +136,7 @@ export default function Navigacija() {
                 />
               </div>
               <div className="flex flex-col gap-6 justify-center items-end mr-8 ">
-                <nav className=" flex flex-col items-end justify-center gap-2 text-lg text-white-60">
+                <nav className=" flex flex-col items-end justify-center gap-2 text-xl text-white-60">
                   {navItems.map((item, index) => (
                     <Link
                       href={item.href}
