@@ -39,7 +39,7 @@ export default function Pocetna() {
             >
               <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-4">
                 <p className="text-3xl max-md:text-xl text-white-60 font-light italic ">
-                  Uči za život, ne za ispit. Najbolji zbog vas!
+                  Najsigurniji put do vozačke!
                 </p>
                 <div className="flex max-lg:flex-col gap-16 max-lg:gap-4">
                   <Link href={"/online-prijava"}>
