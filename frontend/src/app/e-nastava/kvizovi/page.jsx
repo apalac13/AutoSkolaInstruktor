@@ -41,7 +41,7 @@ export default function KvizoviPage() {
   return (
     <div className="flex flex-col items-center justify-center p-5">
       <SubNavigacija />
-      <div className="flex flex-col gap-16">
+      <div className="flex flex-col gap-16 w-full">
         <Notification message={message} messageType={messageType} />
         {user.role === "admin" && (
           <NapraviKviz quizes={quizes} setQuizes={setQuizes} />
