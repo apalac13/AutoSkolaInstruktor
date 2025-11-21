@@ -10,7 +10,7 @@ export default function Instruction({ setOption, setInstruction }) {
     <div className="flex flex-col gap-8 items-start text-black-40 text-justify">
       <div className="flex flex-col gap-4 items-start ">
         <p className=" text-xl max-[400px]:text-lg">NAPOMENE:</p>
-        <div className="flex flex-col gap-3 max-[400px]:text-sm ">
+        <div className="flex flex-col gap-3">
           <div className="flex flex-col">
             <div className="flex gap-2  ">
               <p>1.</p>
@@ -48,7 +48,7 @@ export default function Instruction({ setOption, setInstruction }) {
       </div>
       <div className="flex flex-col gap-4 items-start ">
         <p className=" text-xl max-[400px]:text-lg">IZABERITE OPCIJU:</p>
-        <div className="flex flex-col gap-3 mb-7 max-[410px]:text-sm">
+        <div className="flex flex-col gap-3 mb-7">
           <div className="flex gap-2 ">
             <p>*</p>
             <p>
@@ -64,7 +64,7 @@ export default function Instruction({ setOption, setInstruction }) {
             </p>
           </div>
         </div>
-        <div className="flex max-[400px]:flex-col gap-4 ">
+        <div className="flex max-[480px]:flex-col gap-4 ">
           <span onClick={() => changeView("single")}>
             <BlackButton text={"OPCIJA 1"} />
           </span>

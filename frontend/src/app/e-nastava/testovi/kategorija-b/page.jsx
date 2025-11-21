@@ -19,7 +19,7 @@ export default function KategorijaB() {
           točnih odgovora.
         </p>
       </div>
-      <div className="grid grid-cols-6 max-xl:grid-cols-5 max-[1400px]:grid-cols-4 max-[1120px]:grid-cols-3 max-[570px]:grid-cols-2 max-[410px]:grid-cols-1 gap-y-10 max-[1400px]:gap-y-5 ml-4 ">
+      <div className="grid grid-cols-6 max-xl:grid-cols-5 max-[1400px]:grid-cols-4 max-[1120px]:grid-cols-3 max-[680px]:grid-cols-2 max-[480px]:grid-cols-1 gap-y-10 max-[1400px]:gap-y-5 ml-4 ">
         {buttons.map((description, index) => (
           <Link
             key={index}

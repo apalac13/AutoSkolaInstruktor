@@ -51,16 +51,18 @@ export default function Navigacija() {
           pathname !== "/o-nama" ? "border-white-60" : "border-black-40"
         )}
       >
-        <Image
-          src={
-            pathname !== "/o-nama"
-              ? "/icons/asi-logo-bw.svg"
-              : "/icons/asi-logo-orginal.svg"
-          }
-          alt="Logo"
-          width={112}
-          height={112}
-        />
+        <Link href={"/"}>
+          <Image
+            src={
+              pathname !== "/o-nama"
+                ? "/icons/asi-logo-bw.svg"
+                : "/icons/asi-logo-orginal.svg"
+            }
+            alt="Logo"
+            width={112}
+            height={112}
+          />
+        </Link>
         <nav
           className={clsx(
             " flex items-center gap-6 text-xl   ",
@@ -93,23 +95,25 @@ export default function Navigacija() {
             pathname !== "/o-nama" ? "border-white-60" : "border-black-40"
           )}
         >
-          <Image
-            src={
-              pathname !== "/o-nama"
-                ? "/icons/asi-logo-bw.svg"
-                : "/icons/asi-logo-orginal.svg"
-            }
-            alt="Logo"
-            width={54}
-            height={54}
-          />
+          <Link href={"/"}>
+            <Image
+              src={
+                pathname !== "/o-nama"
+                  ? "/icons/asi-logo-bw.svg"
+                  : "/icons/asi-logo-orginal.svg"
+              }
+              alt="Logo"
+              width={64}
+              height={64}
+            />
+          </Link>
           <Image
             src={
               pathname !== "/o-nama" ? "/icons/menu1.svg" : "/icons/menu2.svg"
             }
             alt="Logo"
-            width={32}
-            height={32}
+            width={36}
+            height={36}
             onClick={() => setShowNavigationLinks(!showNavigationLinks)}
           />
         </div>
@@ -130,8 +134,8 @@ export default function Navigacija() {
                 <Image
                   src={"/icons/close_menu.svg"}
                   alt="Logo"
-                  width={32}
-                  height={32}
+                  width={36}
+                  height={36}
                   onClick={() => setShowNavigationLinks(!showNavigationLinks)}
                 />
               </div>

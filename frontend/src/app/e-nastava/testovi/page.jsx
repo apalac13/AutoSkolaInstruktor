@@ -42,7 +42,7 @@ export default function Testovi() {
               <Section number={item.sectionNumber} text={item.sectionText} />
               <p className="text-justify">{item.text}</p>
             </div>
-            <div className="flex max-[410px]:flex-col items-start gap-4 ml-4">
+            <div className="flex max-[470px]:flex-col items-start gap-4 ml-4">
               <Link href={item.firstButtonLink}>
                 <BlackButton text={item.firstButtonText} />
               </Link>

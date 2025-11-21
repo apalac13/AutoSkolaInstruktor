@@ -18,7 +18,7 @@ export default function SubNavigacija() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <nav className="w-[600px] max-sm:w-full flex max-sm:flex-col items-center max-sm:items-end justify-between text-lg text-black-40  mb-16 border-b-[1px] border-black-40">
+    <nav className="w-[600px] max-sm:w-full flex max-sm:flex-col items-center max-sm:items-end justify-between text-xl text-black-40  mb-16 border-b-[1px] border-black-40">
       {navItems
         .filter((item) => !item.adminOnly || user?.role === "admin")
         .map((item) => (
