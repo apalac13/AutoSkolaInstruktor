@@ -13,9 +13,11 @@ export default function Form() {
     message: "",
   });
   const [message, setMessage] = useState(null);
+  const [messageType, setMessageType] = useState(null);
 
-  const resetMessageWithTimeout = (msg) => {
+  const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
+    setMessageType(type);
     setTimeout(() => setMessage(null), 5000);
   };
 
@@ -34,7 +36,7 @@ export default function Form() {
       );
 
       if (response.status === 200) {
-        resetMessageWithTimeout(response.data.message);
+        resetMessageWithTimeout(response.data.message, "success");
         setFormData({
           person: "",
           email: "",
@@ -47,7 +49,7 @@ export default function Form() {
       const msg =
         error.response?.data?.message ||
         "Dogodila se greška pri slanju podataka.";
-      resetMessageWithTimeout(msg);
+      resetMessageWithTimeout(msg, "error");
     }
   };
 
