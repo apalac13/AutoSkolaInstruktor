@@ -38,7 +38,7 @@ export default function Pocetna() {
               className="w-full h-full relative flex flex-col gap-9 items-center justify-center "
             >
               <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-4">
-                <p className="text-3xl text-white-60 font-light italic ">
+                <p className="text-4xl max-lg:text-3xl text-white-60 font-light italic ">
                   Najsigurniji put do vozačke!
                 </p>
                 <div className="flex max-lg:flex-col gap-16 max-lg:gap-4">
