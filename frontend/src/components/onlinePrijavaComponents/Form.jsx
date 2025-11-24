@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Button from "../buttons/Button";
 import InputField from "../InputField";
 import clsx from "clsx";
+import Notification from "../Notification";
 
 const initialFormData = {
   person: "",
@@ -68,6 +69,7 @@ export default function Form() {
       className="w-[500px] max-sm:w-full flex flex-col gap-4"
       onSubmit={handleSubmit}
     >
+      <Notification message={message} messageType={messageType} />
       <InputField
         label={"IME I PREZIME"}
         id={"person"}
@@ -148,19 +150,6 @@ export default function Form() {
         ></textarea>
       </label>
       <Button type={"submit"} width={"full"} text={"POŠALJI"} color={"red"} />
-      {message && (
-        <motion.p
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className={clsx("text-white-60 mt-4 shadow-md uppercase p-3 ", {
-            "bg-green-80": messageType === "success",
-            "bg-red-70": messageType === "error",
-          })}
-        >
-          {message}
-        </motion.p>
-      )}
     </form>
   );
 }

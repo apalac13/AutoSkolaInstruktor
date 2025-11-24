@@ -3,6 +3,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import Button from "../buttons/Button";
 import InputField from "../InputField";
+import Notification from "../Notification";
 
 export default function Form() {
   const [formData, setFormData] = useState({
@@ -53,6 +54,7 @@ export default function Form() {
   return (
     <div className="max-[500px]:w-full flex flex-col gap-16 max-[500px]:px-6">
       <p className="text-2xl">POŠALJI UPIT</p>
+      <Notification message={message} messageType={messageType} />
       <form
         className="w-[470px] max-[500px]:w-full flex flex-col gap-4"
         onSubmit={handleSubmit}
@@ -98,16 +100,6 @@ export default function Form() {
           </label>
         </div>
         <Button type={"submit"} width={"full"} text={"POŠALJI"} color={"red"} />
-        {message && (
-          <motion.p
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-white-60  mt-4 shadow-md uppercase p-3 bg-green-80 "
-          >
-            {message}
-          </motion.p>
-        )}
       </form>
     </div>
   );
