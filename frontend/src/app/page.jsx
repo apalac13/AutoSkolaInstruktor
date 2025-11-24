@@ -46,7 +46,7 @@ export default function Pocetna() {
                     <Button
                       type={"button"}
                       width={"200px"}
-                      text={"PRIJAVI SE"}
+                      text={"ONLINE UPIS"}
                       color={"red"}
                     />
                   </Link>
