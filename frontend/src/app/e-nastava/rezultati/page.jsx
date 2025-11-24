@@ -5,7 +5,7 @@ import { AuthContext } from "@/context/AuthContext";
 import QuizesResults from "@/components/eNastavaComponents/rezultatiComponents/QuizesResults";
 import TestsResults from "@/components/eNastavaComponents/rezultatiComponents/TestsResults";
 
-export default function KvizoviPage() {
+export default function RezultatiPage() {
   const { user, loading } = useContext(AuthContext);
 
   if (loading) return <div>Loading...</div>;

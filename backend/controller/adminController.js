@@ -131,7 +131,7 @@ exports.deleteQuiz = async (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
   try {
-    const allUsers = await User.find({ role: "user" });
+    const allUsers = await User.find({ role: "user" }).sort({ createdAt: -1 });
     res.json(allUsers);
   } catch (error) {
     res.status(500).json({ message: "Greška pri dohvaćanju korisnika" });
@@ -178,7 +178,10 @@ exports.deleteUser = async (req, res) => {
 
 exports.getQuizResults = async (req, res) => {
   try {
-    const quizResults = await QuizResult.find().populate("quiz");
+    const quizResults = await QuizResult.find()
+      .populate("quiz")
+      .sort({ createdAt: -1 });
+
     res.status(200).json(quizResults);
   } catch (error) {
     res.status(500).json({ message: "Greška prilikom dohvaćanja rezultata" });
@@ -197,7 +200,10 @@ exports.getQuizResult = async (req, res) => {
 
 exports.getTestResults = async (req, res) => {
   try {
-    const testResults = await TestResult.find().populate("test");
+    const testResults = await TestResult.find()
+      .populate("test")
+      .sort({ createdAt: -1 });
+
     res.status(200).json(testResults);
   } catch (error) {
     res.status(500).json({ message: "Greška prilikom dohvaćanja rezultata" });

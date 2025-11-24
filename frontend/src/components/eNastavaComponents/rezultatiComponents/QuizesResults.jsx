@@ -7,6 +7,7 @@ import Notification from "@/components/Notification";
 
 export default function QuizesResults({ user }) {
   const [quizesResults, setQuizesResults] = useState([]);
+  const [loadingResults, setLoadingResults] = useState(true);
   const [message, setMessage] = useState(null);
   const [messageType, setMessageType] = useState(null);
 
@@ -17,6 +18,8 @@ export default function QuizesResults({ user }) {
   };
 
   useEffect(() => {
+    setLoadingResults(true);
+
     axios
       .get(`${process.env.NEXT_PUBLIC_API_URL}/e-nastava/rezultati/kvizovi`, {
         headers: {
@@ -38,8 +41,16 @@ export default function QuizesResults({ user }) {
             "Greška prilikom dohvaćanja rezultata.",
           "error"
         );
+      })
+      .finally(() => {
+        setLoadingResults(false);
       });
   }, [user]);
+
+  if (loadingResults)
+    return (
+      <p className="text-center mt-4 text-gray-600">Učitavanje rezultata...</p>
+    );
 
   return (
     <div className="flex flex-col gap-11">
