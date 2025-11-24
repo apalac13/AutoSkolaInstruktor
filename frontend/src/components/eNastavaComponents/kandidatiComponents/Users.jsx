@@ -45,12 +45,15 @@ export default function Users({ users, setUsers }) {
       </div>
       <Notification message={message} messageType={messageType} />
       {users && users.length > 0 ? (
-        users.map((user) => (
+        users.map((user, index) => (
           <div
             key={user._id}
-            className=" grid grid-cols-4 max-sm:flex max-sm:flex-col max-sm:items-center gap-4 p-6  border-b-[1px] border-black-40 text-base"
+            className="grid grid-cols-4 max-sm:flex max-sm:flex-col max-sm:items-center gap-4 p-6  border-b-[1px] border-black-40 text-base"
           >
-            <p>{user.name}</p>
+            <p className="flex gap-1 items-center justify-center">
+              <span>{index + 1}. </span>
+              <span>{user.name}</span>
+            </p>
             <p>{user.username}</p>
             <p>{user.password}</p>
             <div>

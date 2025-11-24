@@ -60,6 +60,9 @@ export default function KandidatiPage() {
       <div className="flex flex-col gap-16 w-full">
         <Notification message={message} messageType={messageType} />
         <RegisterUser users={users} setUsers={setUsers} />
+        <div className="self-start text-lg">
+          Broj registriranih kandidata: {users.length}{" "}
+        </div>
         <Users users={users} setUsers={setUsers} />
       </div>
     </div>
