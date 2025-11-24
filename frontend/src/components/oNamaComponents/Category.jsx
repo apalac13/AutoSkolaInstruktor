@@ -19,7 +19,7 @@ export default function Category({ category, index }) {
         >
           <p>SAZNAJ VIŠE...</p>
         </Link>
-        <div className="w-72 h-[1px] bg-white-60 "></div>
+        <div className="w-72 max-[500px]:w-44 h-[1px] bg-white-60 "></div>
       </div>
     </motion.div>
   );
