@@ -200,9 +200,21 @@ exports.getQuizResult = async (req, res) => {
 
 exports.getTestResults = async (req, res) => {
   try {
-    const testResults = await TestResult.find()
-      .populate("test")
-      .sort({ createdAt: -1 });
+    const testResults = await TestResult.find(
+      {},
+      {
+        test: 1,
+        name: 1,
+        username: 1,
+        points: 1,
+        totalPoints: 1,
+        result: 1,
+        createdAt: 1,
+      }
+    )
+      .populate("test", "testName")
+      .sort({ createdAt: -1 })
+      .lean();
 
     res.status(200).json(testResults);
   } catch (error) {
@@ -213,7 +225,13 @@ exports.getTestResults = async (req, res) => {
 exports.getTestResult = async (req, res) => {
   const testId = req.params.id;
   try {
-    const testResult = await TestResult.findById(testId).populate("test");
+    const testResult = await TestResult.findById(testId)
+      .populate("test")
+      .lean();
+
+    if (!testResult) {
+      return res.status(404).json({ message: "Rezultat nije pronađen" });
+    }
     res.status(200).json(testResult);
   } catch (error) {
     res.status(500).json({ message: "Greška prilikom dohvaćanja rezultata" });
