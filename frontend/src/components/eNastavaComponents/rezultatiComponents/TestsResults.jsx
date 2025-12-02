@@ -59,6 +59,7 @@ export default function TestsResults({ user }) {
         <div className="flex  flex-row max-sm:flex-col justify-around border-b-[1px] border-black-40 text-base font-semibold ">
           <p>KANDIDAT</p>
           <p>TEST</p>
+          <p>DATUM</p>
           <p>REZULTAT</p>
           <p>OPCIJE</p>
         </div>
