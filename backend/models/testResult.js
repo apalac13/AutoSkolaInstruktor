@@ -37,4 +37,8 @@ const testResultSchema = new Schema(
   { timestamps: true }
 );
 
+testResultSchema.index({ createdAt: -1 });
+testResultSchema.index({ username: 1 });
+testResultSchema.index({ test: 1 });
+
 module.exports = mongoose.model("TestResult", testResultSchema);
