@@ -73,6 +73,12 @@ export default function TestsResults({ user }) {
             placeholder="Pretraži kandidata..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                e.target.blur();
+              }
+            }}
             className="border border-black-40 px-4 py-2 w-[300px]"
           />
         </div>
