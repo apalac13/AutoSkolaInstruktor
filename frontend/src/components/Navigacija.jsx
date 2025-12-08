@@ -119,56 +119,62 @@ export default function Navigacija() {
         </div>
         <AnimatePresence mode="wait">
           {showNavigationLinks && (
-            <motion.div
-              key="navMenu"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className={clsx(
-                "fixed w-2/3 h-full flex flex-col gap-12 z-40 bg-gradient-to-t from-gray-53 to-gray-54 ",
-                showNavigationLinks ? "right-0" : "w-[-100%]"
-              )}
-            >
-              <div className="w-full h-[88px] px-8 py-8 flex items-center justify-end border-b-[1px] border-white-60">
-                <Image
-                  src={"/icons/close_menu.svg"}
-                  alt="Logo"
-                  width={36}
-                  height={36}
-                  onClick={() => setShowNavigationLinks(!showNavigationLinks)}
-                />
-              </div>
-              <div className="flex flex-col gap-10 justify-center items-end mr-8 ">
-                <nav className=" flex flex-col items-end justify-center gap-2 text-xl text-white-60">
-                  {navItems.map((item, index) => (
-                    <Link
-                      href={item.href}
-                      key={index}
-                      className="transition-all delay-50 ease-in-out font-medium  hover:text-gray-50 "
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </nav>
-                <div className="flex gap-3">
-                  {navIcons.map((icon, index) => (
-                    <Link
-                      href={icon.link}
-                      key={index}
-                      className=" flex items-center justify-center w-12 h-12 transition duration-400 ease-in-out border border-white-60  rounded-full hover:border-black-40   "
-                    >
-                      <Image
-                        src={icon.src}
-                        alt={icon.alt}
-                        width={28}
-                        height={28}
-                      />
-                    </Link>
-                  ))}
+            <>
+              <div
+                className="fixed inset-0 bg-black/40 z-30"
+                onClick={() => setShowNavigationLinks(false)}
+              />
+              <motion.div
+                key="navMenu"
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className={clsx(
+                  "fixed w-2/3 h-full flex flex-col gap-12 z-40 bg-gradient-to-t from-gray-53 to-gray-54 ",
+                  showNavigationLinks ? "right-0" : "w-[-100%]"
+                )}
+              >
+                <div className="w-full h-[88px] px-8 py-8 flex items-center justify-end border-b-[1px] border-white-60">
+                  <Image
+                    src={"/icons/close_menu.svg"}
+                    alt="Logo"
+                    width={36}
+                    height={36}
+                    onClick={() => setShowNavigationLinks(!showNavigationLinks)}
+                  />
                 </div>
-              </div>
-            </motion.div>
+                <div className="flex flex-col gap-10 justify-center items-end mr-8 ">
+                  <nav className=" flex flex-col items-end justify-center gap-2 text-xl text-white-60">
+                    {navItems.map((item, index) => (
+                      <Link
+                        href={item.href}
+                        key={index}
+                        className="transition-all delay-50 ease-in-out font-medium  hover:text-gray-50 "
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </nav>
+                  <div className="flex gap-3">
+                    {navIcons.map((icon, index) => (
+                      <Link
+                        href={icon.link}
+                        key={index}
+                        className=" flex items-center justify-center w-12 h-12 transition duration-400 ease-in-out border border-white-60  rounded-full hover:border-black-40   "
+                      >
+                        <Image
+                          src={icon.src}
+                          alt={icon.alt}
+                          width={28}
+                          height={28}
+                        />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </div>
