@@ -164,15 +164,29 @@ exports.registerUser = async (req, res) => {
 
 exports.deleteUser = async (req, res) => {
   const userId = req.params.id;
+
   try {
-    const deletedUser = await User.findByIdAndDelete(userId);
-    if (!deletedUser) {
-      return res.status(404).json({ message: "Korinsik nije pronađen" });
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "Korisnik nije pronađen" });
     }
-    res.status(200).json({ message: "Korisnik uspješno izbrisan!" });
+
+    const username = user.username;
+
+    await User.findByIdAndDelete(userId);
+
+    await QuizResult.deleteMany({ username });
+
+    await TestResult.deleteMany({ username });
+
+    return res.status(200).json({
+      message: "Korisnik i svi njegovi rezultati uspješno izbrisani!",
+    });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Greška prilikom brisanja korisnika" });
+    res.status(500).json({
+      message: "Greška prilikom brisanja korisnika i njegovih rezultata",
+    });
   }
 };
 
