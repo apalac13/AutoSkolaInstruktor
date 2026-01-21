@@ -2,6 +2,7 @@ import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import AuthProviderWrapper from "@/context/AuthProviderWrapper";
+import { Analytics } from "@vercel/analytics/next";
 
 const sourceSans3 = Source_Sans_3({
   subsets: ["latin"],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
         <body className={sourceSans3.className}>
           {children}
           <Footer />
+          <Analytics />
         </body>
       </AuthProviderWrapper>
     </html>
