@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { AuthContext } from "@/context/AuthContext";
 import { useContext } from "react";
@@ -9,16 +9,23 @@ export default function Logout() {
   const router = useRouter();
   const { logout } = useContext(AuthContext);
 
-  useEffect(() => {
+  const handleLogout = useCallback(() => {
     logout();
+    router.push("/e-nastava");
+  }, [logout, router]);
+
+  useEffect(() => {
     setLoggedOut(true);
-    setTimeout(() => {
-      router.push("/e-nastava");
-    }, 3000);
-  }, [router]);
+
+    const timeout = setTimeout(() => {
+      handleLogout();
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, [handleLogout]);
 
   return (
-    <div className="my-28  font-sourceSans3 text-black-40 text-center">
+    <div className="my-28 font-sourceSans3 text-black-40 text-center">
       {loggedOut && (
         <>
           <p className="text-xl font-semibold">Odjavili ste se</p>

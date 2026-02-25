@@ -144,13 +144,13 @@ export default function Pocetna() {
                   </p>
                 </div>
                 <p className=" text-base font-light text-white-60 text-justify ">
-                  Autoskola "Instruktor" se ističe svojom ponudom sveobuhvatne
-                  obuke za sve kategorije vozačkih dozvola. Ova usluga je
-                  ključna za sve polaznike koji žele da steknu vozačku dozvolu
-                  za različite tipove vozila. Bilo da se radi o motociklima,
-                  putničkim vozilima, teretnim vozilima, Autoskola "Instruktor"
-                  pruža kompletnu edukaciju prilagođenu specifičnim potrebama
-                  svake kategorije.{" "}
+                  Autoškola &quot;Instruktor&quot; se ističe svojom ponudom
+                  sveobuhvatne obuke za sve kategorije vozačkih dozvola. Ova
+                  usluga je ključna za sve polaznike koji žele da steknu vozačku
+                  dozvolu za različite tipove vozila. Bilo da se radi o
+                  motociklima, putničkim vozilima, teretnim vozilima, Autoškola
+                  &quot;Instruktor&quot; pruža kompletnu edukaciju prilagođenu
+                  specifičnim potrebama svake kategorije.
                   <Link href={"/kategorije"}>
                     <span className="underline text-red-71 hover:text-gray-50">
                       saznaj više

@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import { jwtDecode } from "jwt-decode";
 
 export const AuthContext = createContext();
@@ -42,11 +42,11 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
     setUser(null);
-  };
+  }, [setUser]);
 
   return (
     <AuthContext.Provider value={{ user, setUser, loading, logout }}>
