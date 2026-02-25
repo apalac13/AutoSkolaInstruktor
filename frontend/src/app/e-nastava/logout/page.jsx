@@ -30,7 +30,7 @@ export default function Logout() {
         <>
           <p className="text-xl font-semibold">Odjavili ste se</p>
           <p className="text-base">Hvala vam na korištenju aplikacije!</p>
-          <p className="text-sm text-red-70">
+          <p className="text-sm text-red-71">
             Bit ćete preusmjereni na prijavu...
           </p>
         </>
