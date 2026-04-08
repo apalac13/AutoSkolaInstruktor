@@ -17,7 +17,7 @@ export default function TestResult({
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
   const deleteTestResult = async (id) => {
     if (!window.confirm("Jeste li sigurni da želite izbrisati rezultat?"))
@@ -28,7 +28,7 @@ export default function TestResult({
         `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/rezultati/test/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
+        },
       );
       setTestResults(testResults.filter((q) => q._id !== id));
       const message = response.data.message;
@@ -36,7 +36,7 @@ export default function TestResult({
     } catch (error) {
       resetMessageWithTimeout(
         error.response?.data?.message || "Greška pri brisanju pitanja.",
-        "error"
+        "error",
       );
     }
   };

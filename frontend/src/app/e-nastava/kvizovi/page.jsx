@@ -17,7 +17,7 @@ export default function KvizoviPage() {
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function KvizoviPage() {
         resetMessageWithTimeout(
           error.response?.data?.message ||
             "Greška prilikom dohvaćanja kvizova.",
-          "error"
+          "error",
         );
       });
   }, []);

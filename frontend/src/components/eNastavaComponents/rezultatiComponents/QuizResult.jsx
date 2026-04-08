@@ -17,7 +17,7 @@ export default function QuizResult({
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
   const deleteQuizResult = async (id) => {
     if (!window.confirm("Jeste li sigurni da želite izbrisati rezultat?"))
@@ -27,7 +27,7 @@ export default function QuizResult({
         `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/rezultati/kviz/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
+        },
       );
       setQuizesResults(quizesResults.filter((q) => q._id !== id));
       const message = response.data.message;
@@ -35,7 +35,7 @@ export default function QuizResult({
     } catch (error) {
       resetMessageWithTimeout(
         error.response?.data?.message || "Greška pri brisanju pitanja.",
-        "error"
+        "error",
       );
     }
   };

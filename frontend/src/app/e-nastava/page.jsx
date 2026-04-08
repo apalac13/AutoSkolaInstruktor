@@ -22,7 +22,7 @@ export default function ENastava() {
   const resetMessageWithTimeout = (message, type = "success") => {
     setMessage(message);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   const handleChange = (event) => {
@@ -38,7 +38,7 @@ export default function ENastava() {
         {
           username: data.username,
           password: data.password,
-        }
+        },
       );
 
       const { token, message } = response.data;

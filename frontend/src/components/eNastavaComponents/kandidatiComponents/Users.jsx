@@ -11,7 +11,7 @@ export default function Users({ users, setUsers }) {
   const resetMessageWithTimeout = (message, type = "success") => {
     setMessage(message);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   const deleteUser = async (id) => {
@@ -22,7 +22,7 @@ export default function Users({ users, setUsers }) {
         `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kandidati/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
+        },
       );
       setUsers(users.filter((u) => u._id !== id));
       const message = response.data.message;
@@ -30,7 +30,7 @@ export default function Users({ users, setUsers }) {
     } catch (error) {
       resetMessageWithTimeout(
         error.response?.data?.message || "Greška pri brisanju kandidata.",
-        "error"
+        "error",
       );
     }
   };

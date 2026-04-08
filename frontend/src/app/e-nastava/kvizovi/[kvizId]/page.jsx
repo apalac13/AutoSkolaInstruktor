@@ -25,7 +25,7 @@ export default function KvizPage() {
   const resetMessageWithTimeout = (message, type = "success") => {
     setMessage(message);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function KvizPage() {
       .catch((error) => {
         resetMessageWithTimeout(
           error.response?.data?.message || "Greška pri dohvaćanju kviza.",
-          "error"
+          "error",
         );
       });
   }, [router, kvizId]);

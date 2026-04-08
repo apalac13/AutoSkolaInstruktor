@@ -18,7 +18,7 @@ export default function PogledajPage() {
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   useEffect(() => {
@@ -29,13 +29,13 @@ export default function PogledajPage() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       )
       .then((res) => setQuiz(res.data))
       .catch((error) => {
         resetMessageWithTimeout(
           error.response?.data?.message || "Greška pri dohvaćanju kviza.",
-          "error"
+          "error",
         );
       });
   }, [router, kvizId]);
@@ -49,7 +49,7 @@ export default function PogledajPage() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
       setQuiz((prevQuiz) => ({
         ...prevQuiz,
@@ -60,7 +60,7 @@ export default function PogledajPage() {
     } catch (error) {
       resetMessageWithTimeout(
         error.response?.data?.message || "Greška pri brisanju pitanja.",
-        "error"
+        "error",
       );
     }
   };

@@ -21,7 +21,7 @@ export default function RegisterUser({ users, setUsers }) {
   const resetMessageWithTimeout = (message, type = "success") => {
     setMessage(message);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -42,7 +42,7 @@ export default function RegisterUser({ users, setUsers }) {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
 
       setUsers([...users, response.data]);
@@ -65,7 +65,7 @@ export default function RegisterUser({ users, setUsers }) {
           {
             "border-black-40 bg-black-40": createUser,
             "border-red-71 bg-red-71": !createUser,
-          }
+          },
         )}
       >
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>

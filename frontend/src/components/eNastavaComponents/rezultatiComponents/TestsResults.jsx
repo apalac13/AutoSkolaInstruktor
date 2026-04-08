@@ -16,7 +16,7 @@ export default function TestsResults({ user }) {
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function TestsResults({ user }) {
         resetMessageWithTimeout(
           error.response?.data?.message ||
             "Greška prilikom dohvaćanja rezultata.",
-          "error"
+          "error",
         );
       })
       .finally(() => {
@@ -57,7 +57,7 @@ export default function TestsResults({ user }) {
   const searchedResults =
     user?.role === "admin"
       ? testResults.filter((r) =>
-          r?.name?.toLowerCase().includes(searchQuery.toLowerCase())
+          r?.name?.toLowerCase().includes(searchQuery.toLowerCase()),
         )
       : testResults;
 

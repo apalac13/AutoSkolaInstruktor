@@ -17,7 +17,7 @@ export default function KvizRezultatDetalji() {
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   useEffect(() => {
@@ -28,14 +28,14 @@ export default function KvizRezultatDetalji() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       )
       .then((res) => setQuizResult(res.data))
       .catch((error) => {
         resetMessageWithTimeout(
           error.response?.data?.message ||
             "Greška prilikom dohvaćanja rezultata.",
-          "error"
+          "error",
         );
       });
   }, []);
@@ -54,7 +54,7 @@ export default function KvizRezultatDetalji() {
       </div>
       {quizResult.quiz?.questions?.map((question, index) => {
         const matchedAnswer = quizResult.answers?.find(
-          (answer) => answer.questionNumber === question.questionNumber
+          (answer) => answer.questionNumber === question.questionNumber,
         );
 
         return (

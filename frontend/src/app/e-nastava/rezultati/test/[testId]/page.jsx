@@ -17,7 +17,7 @@ export default function TestRezultatDetalji() {
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   useEffect(() => {
@@ -28,14 +28,14 @@ export default function TestRezultatDetalji() {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       )
       .then((res) => setTestResult(res.data))
       .catch((error) => {
         resetMessageWithTimeout(
           error.response?.data?.message ||
             "Greška prilikom dohvaćanja rezultata.",
-          "error"
+          "error",
         );
       });
   }, []);
@@ -57,7 +57,7 @@ export default function TestRezultatDetalji() {
       </div>
       {testResult.test?.questions?.map((question, index) => {
         const matchedAnswer = testResult.answers?.find(
-          (answer) => answer.questionNumber === question.questionNumber
+          (answer) => answer.questionNumber === question.questionNumber,
         );
 
         return (

@@ -18,7 +18,7 @@ export default function Form() {
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   const handleChange = (event) => {
@@ -32,7 +32,7 @@ export default function Form() {
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/kontakt`,
-        formData
+        formData,
       );
 
       if (response.status === 200) {

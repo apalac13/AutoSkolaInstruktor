@@ -29,7 +29,7 @@ export default function DodajPitanje() {
   const resetMessageWithTimeout = (message, type = "success") => {
     setMessage(message);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   const handleChange = (event) => {
@@ -123,7 +123,7 @@ export default function DodajPitanje() {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "multipart/form-data",
           },
-        }
+        },
       );
       const message = response.data.message;
       if (message) resetMessageWithTimeout(message, "success");

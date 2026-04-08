@@ -18,7 +18,7 @@ export default function NapraviKviz({ quizes, setQuizes }) {
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   const handleChange = (event) => {
@@ -41,7 +41,7 @@ export default function NapraviKviz({ quizes, setQuizes }) {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
-        }
+        },
       );
       setQuizes([...quizes, response.data]);
       setCreateQuiz(false);
@@ -50,7 +50,7 @@ export default function NapraviKviz({ quizes, setQuizes }) {
     } catch (error) {
       resetMessageWithTimeout(
         error.response?.data?.message || "Greška pri kreiranju kviza.",
-        "error"
+        "error",
       );
     }
   };
@@ -64,7 +64,7 @@ export default function NapraviKviz({ quizes, setQuizes }) {
           {
             "border-black-40 bg-black-40": createQuiz,
             "border-red-71 bg-red-71": !createQuiz,
-          }
+          },
         )}
       >
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>

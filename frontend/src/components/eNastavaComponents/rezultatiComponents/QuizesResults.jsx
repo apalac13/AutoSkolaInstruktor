@@ -14,7 +14,7 @@ export default function QuizesResults({ user }) {
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function QuizesResults({ user }) {
         resetMessageWithTimeout(
           error.response?.data?.message ||
             "Greška prilikom dohvaćanja rezultata.",
-          "error"
+          "error",
         );
       })
       .finally(() => {

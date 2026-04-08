@@ -13,7 +13,7 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
   const resetMessageWithTimeout = (message, type = "success") => {
     setMessage(message);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   const deleteQuiz = async (id) => {
@@ -23,7 +23,7 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
         `${process.env.NEXT_PUBLIC_API_URL}/e-nastava/kvizovi/${id}`,
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
+        },
       );
       setQuizes(quizes.filter((q) => q._id !== id));
       const message = response.data.message;
@@ -31,7 +31,7 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
     } catch (error) {
       resetMessageWithTimeout(
         error.response?.data?.message || "Greška pri brisanju kviza.",
-        "error"
+        "error",
       );
     }
   };
@@ -59,7 +59,7 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
               >
                 <EButton
                   type={"button"}
-                  width={"150px"}
+                  width={"100px"}
                   text={"POGLEDAJ"}
                   color={"black"}
                 />
@@ -87,7 +87,7 @@ export default function Kvizovi({ user, quizes, setQuizes }) {
                 <div>
                   <button
                     onClick={() => deleteQuiz(quiz._id)}
-                    className="relative group w-[150px] h-12 border-red-71 bg-red-71 "
+                    className="relative group w-[100px] h-12 border-red-71 bg-red-71 "
                   >
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
                     <span className="relative text-white-60 text-sm text-center font-light">

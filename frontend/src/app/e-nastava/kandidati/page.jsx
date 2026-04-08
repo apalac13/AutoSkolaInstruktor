@@ -18,7 +18,7 @@ export default function KandidatiPage() {
   const resetMessageWithTimeout = (msg, type = "success") => {
     setMessage(msg);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function KandidatiPage() {
         resetMessageWithTimeout(
           error.response?.data?.message ||
             "Greška prilikom dohvaćanja kandidata.",
-          "error"
+          "error",
         );
       });
   }, [loading, user, router]);

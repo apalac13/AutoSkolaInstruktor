@@ -26,7 +26,7 @@ export default function Form() {
   const resetMessageWithTimeout = (message, type = "success") => {
     setMessage(message);
     setMessageType(type);
-    setTimeout(() => setMessage(null), 5000);
+    setTimeout(() => setMessage(null), 2000);
   };
 
   const handleChange = (e) => {
@@ -49,7 +49,7 @@ export default function Form() {
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/online-prijava`,
-        formData
+        formData,
       );
       if (response.status === 200) {
         resetMessageWithTimeout(response.data.message, "success");
