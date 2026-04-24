@@ -36,12 +36,11 @@ export default function Pocetna() {
             fill
             quality={75}
             className="object-cover"
-            priority={true}
+            priority
           />
-          <div className="absolute inset-0 bg-black/10">
+          <div className="absolute inset-0 bg-[#000]/10">
             <div className="flex flex-col w-full h-full">
               <Navigacija />
-
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -3,27 +3,25 @@ import { MarkerF, InfoWindowF } from "@react-google-maps/api";
 import { useState } from "react";
 
 export default function LocationPin({ lat, lng, text }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const position = { lat, lng };
 
   return (
-    <MarkerF
-      position={{ lat, lng }}
-      onClick={() => setIsOpen(true)}
-      icon={{
-        url: "/location-pin.png",
-        scaledSize: { width: 50, height: 50 },
-      }}
-    >
+    <>
+      <MarkerF
+        position={position}
+        onClick={() => setIsOpen(true)}
+        icon={{
+          url: "/location-pin.png",
+        }}
+      />
+
       {isOpen && (
-        <InfoWindowF
-          position={{ lat, lng }}
-          onCloseClick={() => setIsOpen(false)}
-        >
-          <div>
-            <p>{text}</p>
-          </div>
+        <InfoWindowF position={position} onCloseClick={() => setIsOpen(false)}>
+          <div>{text}</div>
         </InfoWindowF>
       )}
-    </MarkerF>
+    </>
   );
 }

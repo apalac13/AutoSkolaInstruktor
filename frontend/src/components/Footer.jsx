@@ -42,13 +42,14 @@ export default function Footer() {
   return (
     <div className="w-full flex flex-col justify-between  bg-gray-51  ">
       <div className="flex max-lg:flex-col h-full items-end max-lg:items-center max-lg:gap-7  py-12 justify-around">
-        <Image
-          src="/icons/ASInstruktorLogoOrginalBW.svg"
-          alt="Logo"
-          width={300}
-          height={300}
-          className="max-xl:w-52 max-xl:h-52"
-        />
+        <div className="relative w-[270px] h-[270px] max-xl:w-52 max-xl:h-52">
+          <Image
+            src="/icons/ASInstruktorLogoOrginalBW.svg"
+            alt="Logo"
+            fill
+            className="object-contain"
+          />
+        </div>
         <div className="flex flex-col gap-1 ">
           {contactItems.map((contact) => (
             <div

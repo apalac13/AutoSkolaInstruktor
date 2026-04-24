@@ -94,17 +94,26 @@ export default function Kategorije() {
 
   return (
     <div className="mb-24">
-      <div className=" bg-category-title bg-cover bg-no-repeat bg-bottom w-lvh h-[500px]   ">
-        <div className="flex flex-col w-lvh h-[500px] bg-[#000]/40 ">
-          <Navigacija />
-          <motion.p
-            initial={{ x: -50 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1 }}
-            className="justify-self-center self-center absolute top-1/3 text-4xl max-md:text-3xl font-bold italic  text-white-60"
-          >
-            KATEGORIJE
-          </motion.p>
+      <div className="relative w-full h-[500px]">
+        <Image
+          src="/bmw-golf2.jpg"
+          alt="Kategorije naslovna"
+          fill
+          priority
+          className="object-cover object-bottom"
+        />
+        <div className="absolute inset-0 bg-[#000]/40">
+          <div className="flex flex-col w-full h-full">
+            <Navigacija />
+            <motion.p
+              initial={{ x: -50 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 1 }}
+              className="w-full h-full flex items-center justify-center text-4xl max-md:text-3xl font-bold italic text-white-60"
+            >
+              KATEGORIJE
+            </motion.p>
+          </div>
         </div>
       </div>
       <section className="p-10 max-lg:px-4 bg-gray-51">

@@ -4,29 +4,38 @@ import { useState } from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import Form from "@/components/onlinePrijavaComponents/Form";
+import Image from "next/image";
 
 export default function OnlinePrijava() {
   const [moreInformation, setMoreInformation] = useState(false);
 
   return (
     <div>
-      <div className=" bg-online-prijava bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
-        <div className="flex flex-col w-lvh h-[500px] bg-[#000]/50 ">
+      <div className="relative w-full h-[500px]">
+        <Image
+          src="/online-prijava.jpg"
+          alt="Online prijava naslovna"
+          fill
+          priority
+          className="object-cover object-bottom"
+        />
+        <div className="absolute inset-0 bg-[#000]/40">
           <Navigacija />
-          <motion.div
-            initial={{ x: -50 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute top-1/3 justify-self-center self-center"
-          >
-            <p className=" text-4xl max-md:text-3xl font-bold italic  text-white-60">
-              ONLINE PRIJAVA
-            </p>
-            <p className="text-xl max-md:text-lg text-white-60 font-light italic ">
-              Ostavite nam podatke, a mi ćemo vam se javiti u najkraćem mogućem
-              roku
-            </p>
-          </motion.div>
+          <div className="absolute w-full  top-1/2 left-1/2 -translate-x-1/2">
+            <motion.div
+              initial={{ x: -50 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <p className=" text-4xl max-md:text-3xl font-bold italic  text-white-60">
+                ONLINE PRIJAVA
+              </p>
+              <p className="text-xl max-md:text-lg text-white-60 font-light italic ">
+                Ostavite nam podatke, a mi ćemo vam se javiti u najkraćem
+                mogućem roku
+              </p>
+            </motion.div>
+          </div>
         </div>
       </div>
       <motion.section
@@ -66,7 +75,7 @@ export default function OnlinePrijava() {
                 {
                   "max-h-[1000px] opacity-100": moreInformation,
                   "max-h-0 opacity-0": !moreInformation,
-                }
+                },
               )}
             >
               <p className="text-justify max-xl:text-sm">

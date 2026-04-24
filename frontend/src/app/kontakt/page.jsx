@@ -3,8 +3,6 @@ import Navigacija from "@/components/Navigacija";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Form from "@/components/kontaktComponents/Form";
-import { MapProvider } from "../../providers/MapProvider";
-import Map from "@/components/kontaktComponents/Map";
 
 export default function Kontakt() {
   const contactItems = [
@@ -37,17 +35,26 @@ export default function Kontakt() {
 
   return (
     <div>
-      <div className=" bg-kontakt bg-cover bg-no-repeat bg-center w-lvh h-[500px]   ">
-        <div className="flex flex-col w-lvh h-[500px] bg-[#000]/50 ">
-          <Navigacija />
-          <motion.p
-            initial={{ x: -50 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1 }}
-            className="justify-self-center self-center absolute top-1/3  text-4xl max-md:text-3xl font-bold italic  text-white-60"
-          >
-            KONTAKT
-          </motion.p>
+      <div className="relative w-full h-[500px]">
+        <Image
+          src="/kontakt.jpg"
+          alt="Kontakt naslovna"
+          fill
+          priority
+          className="object-cover object-middle"
+        />
+        <div className="absolute inset-0 bg-[#000]/40">
+          <div className="flex flex-col w-full h-full">
+            <Navigacija />
+            <motion.p
+              initial={{ x: -50 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 1 }}
+              className="w-full h-full flex items-center justify-center text-4xl max-md:text-3xl font-bold italic text-white-60"
+            >
+              KONTAKT
+            </motion.p>
+          </div>
         </div>
       </div>
       <motion.section
@@ -58,7 +65,7 @@ export default function Kontakt() {
       >
         <div className="flex flex-col  gap-14  ">
           <div className="relative w-[314px] h-[258px] max-[500px]:w-[250px] max-[500px]:h-[200px]">
-            <Image fill src=" /icons/ASInstruktorLogoOrginal.svg" alt="logo" />
+            <Image fill src="/icons/ASInstruktorLogoOrginal.svg" alt="logo" />
           </div>
           <div className="flex flex-col gap-1">
             {contactItems.map((contact) => (
@@ -73,17 +80,6 @@ export default function Kontakt() {
         </div>
         <Form />
       </motion.section>
-      <motion.div
-        initial={{ x: -50 }}
-        whileInView={{ x: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="flex items-center justify-center pb-14"
-      >
-        <MapProvider>
-          <Map />
-        </MapProvider>
-      </motion.div>
     </div>
   );
 }

@@ -19,7 +19,7 @@ module.exports = {
         "service-1": "url('/bmw-golf2.jpg')",
         "service-2": "url('/bmw2.jpg')",
         "service-3": "url('/split.jpg')",
-        "category-title": "url('/bmw-golf2.jpg')",
+        category: "url('/bmw-golf2.jpg')",
         "category-A": "url('/A-kat.jpg')",
         "category-B": "url('/B-kat.jpg')",
         "category-BE": "url('/BE-kat.jpg')",

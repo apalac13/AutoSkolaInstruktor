@@ -111,8 +111,8 @@ export default function ONama() {
 
   return (
     <div className="mb-24">
-      <div className=" bg-gradient-to-r from-white-60 to-gray-52 w-lvh h-[500px]  border-b border-black-40   ">
-        <div className="flex flex-col w-lvh h-[500px] ">
+      <div className=" bg-gradient-to-r from-white-60 to-gray-52 w-full h-[500px]  border-b border-black-40   ">
+        <div className="flex flex-col  w-full h-[500px] ">
           <Navigacija />
           <motion.div
             initial={{ x: -50 }}
@@ -125,7 +125,8 @@ export default function ONama() {
               alt="asi-logo-horizontal"
               width={600}
               height={211}
-              style={{ width: "auto", height: "auto" }}
+              style={{ height: "auto" }}
+              priority
             />
           </motion.div>
         </div>
@@ -174,7 +175,6 @@ export default function ONama() {
                       fill
                       style={{ objectFit: "cover", filter: "brightness(60%)" }}
                       quality={100}
-                      priority
                     />
                   </div>
                 </div>
@@ -199,7 +199,6 @@ export default function ONama() {
                       fill
                       style={{ objectFit: "cover", filter: "brightness(60%)" }}
                       quality={100}
-                      priority
                     />
                   </div>
                 </div>
@@ -266,7 +265,6 @@ export default function ONama() {
                   fill
                   className="object-contain px-1"
                   quality={100}
-                  priority
                 />
               </div>
             ))}

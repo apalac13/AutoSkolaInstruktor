@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "@/context/AuthContext";
+import Image from "next/image";
 
 export default function ENastavaLayout({ children }) {
   const pathname = usePathname();
@@ -27,24 +28,33 @@ export default function ENastavaLayout({ children }) {
 
   return (
     <div className="mb-24">
-      <div className=" bg-e-nastava bg-cover bg-no-repeat bg-center w-lvh h-[500px] ">
-        <div className="flex flex-col w-lvh h-[500px] bg-[#000]/50 ">
+      <div className="relative w-full h-[500px]">
+        <Image
+          src="/lukakandidati.jpg"
+          alt="E-nastava naslovna"
+          fill
+          priority
+          className="object-cover object-middle"
+        />
+        <div className="absolute inset-0 bg-[#000]/40">
           <Navigacija />
-          <motion.div
-            initial={{ x: -50 }}
-            animate={{ x: 0 }}
-            transition={{ duration: 1 }}
-            className="absolute top-[35%] justify-self-center self-center"
-          >
-            <p className=" text-4xl max-md:text-3xl font-bold italic  text-white-60">
-              E-NASTAVA
-            </p>
-            <p className="text-xl max-md:text-lg text-white-60 font-light italic ">
-              Dobrodošli na E-nastavu Autoškole Instruktor
-            </p>
-          </motion.div>
+          <div className="absolute w-full top-1/2 left-1/2 -translate-x-1/2">
+            <motion.div
+              initial={{ x: -50 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 1 }}
+            >
+              <p className=" text-4xl max-md:text-3xl font-bold italic  text-white-60">
+                E-NASTAVA
+              </p>
+              <p className="text-xl max-md:text-lg text-white-60 font-light italic ">
+                Dobrodošli na E-nastavu Autoškole Instruktor
+              </p>
+            </motion.div>
+          </div>
         </div>
       </div>
+
       <motion.div
         className="p-10 max-xl:px-0"
         key={pathname}
