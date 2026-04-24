@@ -19,48 +19,62 @@ export default function Pocetna() {
         href="https://wa.me/38763016830?text=Započnite%20razgovor%20s%20Autoškolom%20Instruktor"
         className="fixed bottom-2 right-2 z-50 animate-pulse"
       >
-        <Image
-          alt="Chat on WhatsApp"
-          src="/icons/whatsapp-chat.svg"
-          width={65}
-          height={65}
-          className="w-auto h-auto"
-        />
+        <div className="relative w-16 h-16">
+          <Image
+            src="/icons/whatsapp-chat.svg"
+            alt="WhatsApp Icon"
+            fill
+            className="object-contain"
+          />
+        </div>
       </a>
       <div>
-        <div className="relative bg-home-page bg-cover bg-no-repeat bg-center w-lvh h-lvh ">
-          <div className="flex flex-col w-lvh h-lvh bg-[#000]/10 ">
-            <Navigacija />
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="w-full h-full relative flex flex-col gap-9 items-center justify-center "
-            >
-              <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col gap-4">
-                <p className="text-4xl max-lg:text-3xl text-white-60 font-light italic ">
-                  Najsigurniji put do vozačke!
-                </p>
-                <div className="flex max-lg:flex-col gap-16 max-lg:gap-4">
-                  <Link href={"/online-prijava"}>
-                    <Button
-                      type={"button"}
-                      width={"200px"}
-                      text={"ONLINE UPIS"}
-                      color={"red"}
-                    />
-                  </Link>
-                  <Link href={"/kontakt"}>
-                    <Button
-                      type={"button"}
-                      width={"200px"}
-                      text={"KONTAKT"}
-                      color={"black"}
-                    />
-                  </Link>
+        <div className="relative w-lvh h-lvh">
+          <Image
+            src="/asi-hero-image.png"
+            alt="Naslovna slika"
+            fill
+            quality={75}
+            className="object-cover"
+            priority={true}
+          />
+          <div className="absolute inset-0 bg-black/10">
+            <div className="flex flex-col w-full h-full">
+              <Navigacija />
+
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="w-full h-full flex items-center justify-center"
+              >
+                <div className="flex flex-col gap-4 items-center text-center px-4">
+                  <p className="text-4xl max-lg:text-3xl text-white-60 font-light italic">
+                    Najsigurniji put do vozačke!
+                  </p>
+
+                  <div className="flex max-lg:flex-col gap-16 max-lg:gap-4">
+                    <Link href="/online-prijava">
+                      <Button
+                        type="button"
+                        width="200px"
+                        text="ONLINE UPIS"
+                        color="red"
+                      />
+                    </Link>
+
+                    <Link href="/kontakt">
+                      <Button
+                        type="button"
+                        width="200px"
+                        text="KONTAKT"
+                        color="black"
+                      />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
         </div>
         <StatisticSection />
