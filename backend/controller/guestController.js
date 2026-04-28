@@ -26,7 +26,9 @@ exports.sendOnlineApplication = async (req, res) => {
     message,
   } = req.body;
 
-  console.log("Received data:", req.body);
+  if (!person || !email) {
+    return res.status(400).json({ message: "Nedostaju obavezni podaci." });
+  }
 
   try {
     await sendEmail({
@@ -40,7 +42,7 @@ exports.sendOnlineApplication = async (req, res) => {
         <p><strong>Datum rođenja:</strong> ${date}</p>
         <p><strong>Mjesto rođenja:</strong> ${placeOfBirth}</p>
         <p><strong>Kontakt broj:</strong> ${phoneNumber}</p>
-        <p><strong>Kategorije:</strong> ${categories.join(", ")}</p>
+        <p><strong>Kategorije:</strong> ${Array.isArray(categories) ? categories.join(", ") : ""}</p>
         <p><strong>Napomena:</strong> ${message}</p>
       `,
     });
