@@ -41,7 +41,7 @@ export default function Pocetna() {
             />
 
             <Image
-              src="/bmwnaslovnamobilna.jpeg"
+              src="/vozniparkmobilna.jpeg"
               alt="Naslovna slika"
               fill
               quality={75}
