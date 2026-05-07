@@ -30,15 +30,26 @@ export default function Pocetna() {
       </a>
       <div>
         <div className="relative w-lvh h-lvh">
-          <Image
-            src="/asi-hero-image.png"
-            alt="Naslovna slika"
-            fill
-            quality={75}
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-[#000]/10">
+          <>
+            <Image
+              src="/voznipark.jpeg"
+              alt="Naslovna slika"
+              fill
+              quality={75}
+              className="object-cover hidden md:block"
+              priority
+            />
+
+            <Image
+              src="/bmwnaslovnamobilna.jpeg"
+              alt="Naslovna slika"
+              fill
+              quality={75}
+              className="object-cover block md:hidden"
+              priority
+            />
+          </>
+          <div className="absolute inset-0 bg-[#000]/45">
             <div className="flex flex-col w-full h-full">
               <Navigacija />
               <motion.div
@@ -47,9 +58,10 @@ export default function Pocetna() {
                 transition={{ duration: 1, ease: "easeOut" }}
                 className="w-full h-full flex items-center justify-center"
               >
-                <div className="flex flex-col gap-4 items-center text-center px-4">
-                  <p className="text-4xl max-lg:text-3xl text-white-60 font-light italic">
-                    Najsigurniji put do vozačke!
+                <div className="flex flex-col gap-6 items-center text-center px-4">
+                  <p className="flex max-lg:flex-col  gap-2 text-4xl max-lg:text-3xl text-white-60/90  italic">
+                    <span>Najsigurniji put</span>
+                    <span>do vozačke!</span>
                   </p>
 
                   <div className="flex max-lg:flex-col gap-16 max-lg:gap-4">
