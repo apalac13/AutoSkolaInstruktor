@@ -47,26 +47,26 @@ export default function Navigacija() {
     <header className="w-full">
       <div
         className={clsx(
-          "max-xl:hidden w-full flex items-center justify-between border-b-[1px] px-8 py-2",
-          pathname !== "/o-nama" ? "border-white-60" : "border-black-40"
+          "max-xl:hidden w-full flex items-center justify-between border-b-[1px] px-8 py-4 ",
+          pathname !== "/o-nama" ? "border-white-60" : "border-black-40",
         )}
       >
         <Link href={"/"}>
           <Image
             src={
               pathname !== "/o-nama"
-                ? "/icons/asi-logo-bw.svg"
-                : "/icons/asi-logo-orginal.svg"
+                ? "/icons/logo-horizontalbw.svg"
+                : "/icons/logo-horizontal.svg"
             }
             alt="Logo"
-            width={112}
-            height={112}
+            width={250}
+            height={100}
           />
         </Link>
         <nav
           className={clsx(
-            " flex items-center gap-6 text-xl   ",
-            pathname !== "/o-nama" ? "text-white-60" : "text-black-40"
+            " flex items-center gap-6 text-xl  ",
+            pathname !== "/o-nama" ? "text-white-60" : "text-black-40",
           )}
         >
           {navItems.map(({ name, href }) => (
@@ -82,7 +82,7 @@ export default function Navigacija() {
         <div
           className={clsx(
             " flex items-center  text-lg   ",
-            pathname !== "/o-nama" ? "text-white-60" : "text-black-40"
+            pathname !== "/o-nama" ? "text-white-60" : "text-black-40",
           )}
         >
           <p className="leading-none">+387 63 016 830</p>
@@ -91,20 +91,20 @@ export default function Navigacija() {
       <div className="xl:hidden relative z-40">
         <div
           className={clsx(
-            "fixed  w-full h-[88px] flex items-center justify-between border-b-[1px] px-8 py-2 backdrop-blur-md bg-black-40/60",
-            pathname !== "/o-nama" ? "border-white-60" : "border-black-40"
+            "fixed  w-full h-[88px] flex items-center justify-between border-b-[1px] px-6 py-2 backdrop-blur-md bg-black-40/60",
+            pathname !== "/o-nama" ? "border-white-60" : "border-black-40",
           )}
         >
           <Link href={"/"}>
             <Image
               src={
                 pathname !== "/o-nama"
-                  ? "/icons/asi-logo-bw.svg"
-                  : "/icons/asi-logo-orginal.svg"
+                  ? "/icons/logo-horizontalbw.svg"
+                  : "/icons/logo-horizontal.svg"
               }
               alt="Logo"
-              width={64}
-              height={64}
+              width={200}
+              height={100}
             />
           </Link>
           <Image
@@ -132,7 +132,7 @@ export default function Navigacija() {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className={clsx(
                   "fixed w-2/3 h-full flex flex-col gap-12 z-40 bg-gradient-to-t from-gray-53 to-gray-54 ",
-                  showNavigationLinks ? "right-0" : "w-[-100%]"
+                  showNavigationLinks ? "right-0" : "w-[-100%]",
                 )}
               >
                 <div className="w-full h-[88px] px-8 py-8 flex items-center justify-end border-b-[1px] border-white-60">
