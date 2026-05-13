@@ -139,7 +139,7 @@ export default function Kategorije() {
               initial={{ height: 0 }}
               whileInView={{ height: "100%" }}
               transition={{ duration: 6 }}
-              className="absolute z-20 translate-x-[-196px] max-sm:translate-x-[40px] translate-y-2 w-[2px] h-full bg-red-71"
+              className="absolute z-20 translate-x-[-196px] max-sm:translate-x-[40px] translate-y-2 w-[2px] h-full bg-red-70"
             ></motion.div>
             <div className="absolute z-30 flex flex-col gap-28 items-center max-sm:items-start justify-center w-full ">
               {drivingLicenceSteps.map((step, index) => (
@@ -153,7 +153,7 @@ export default function Kategorije() {
                   height={120}
                 />
                 <div className="flex flex-col items-start">
-                  <p className="text-base max-xl:text-sm text-red-71">
+                  <p className="text-base max-xl:text-sm text-red-70">
                     6. KORAK
                   </p>
                   <p className="text-xl font-semibold text-black-40 text-start leading-tight max-sm:leading-none">

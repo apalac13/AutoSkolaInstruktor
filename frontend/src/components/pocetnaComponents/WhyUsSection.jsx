@@ -68,7 +68,7 @@ export default function WhyUsSection() {
                 className="leading-none w-auto h-auto max-xl:w-12 max-md:h-12"
                 style={{ width: "auto", height: "auto" }}
               />
-              <p className="text-xl max-xl:text-lg text-red-71 leading-none text-start ">
+              <p className="text-xl max-xl:text-lg text-red-70 leading-none text-start ">
                 {item.name}
               </p>
             </div>

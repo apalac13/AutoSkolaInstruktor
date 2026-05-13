@@ -16,7 +16,7 @@ export default function Category({ category }) {
       >
         <div className="flex items-center justify-center w-full h-[400px] max-md:h-[350px]  bg-[#000]/40 ">
           <div className="flex gap-2">
-            <div className="w-1 h-8 bg-red-71 mb-[5px]"></div>
+            <div className="w-1 h-8 bg-red-70 mb-[5px]"></div>
             <p className="text-white-60 text-xl font-semibold">
               {category.imageText}
             </p>
@@ -25,13 +25,13 @@ export default function Category({ category }) {
       </div>
       <div className="flex flex-col gap-2 text-justify">
         <div className="flex gap-1 ">
-          <p className="text-lg max-xl:text-base  text-red-71">OZNAKA:</p>
+          <p className="text-lg max-xl:text-base  text-red-70">OZNAKA:</p>
           <p className="text-lg max-xl:text-base  text-white-60  ">
             {category.category}
           </p>
         </div>
         <div className="flex flex-col  ">
-          <p className="text-lg max-xl:text-base  text-red-71 leading-none">
+          <p className="text-lg max-xl:text-base  text-red-70 leading-none">
             TIP VOZILA:
           </p>
 
@@ -40,7 +40,7 @@ export default function Category({ category }) {
           </p>
         </div>
         <div className="flex flex-col ">
-          <p className="text-lg max-xl:text-base text-red-71 leading-none">
+          <p className="text-lg max-xl:text-base text-red-70 leading-none">
             UVJETI ZA UPIS:
           </p>
 

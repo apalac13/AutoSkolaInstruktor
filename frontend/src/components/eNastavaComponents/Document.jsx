@@ -17,7 +17,7 @@ export default function Document({ document }) {
           download
           className="flex flex-col "
         >
-          <p className="text-sm text-red-71 hover:text-gray-50">
+          <p className="text-sm text-red-70 hover:text-gray-50">
             klikni ovdje za preuzimanje
           </p>
         </Link>

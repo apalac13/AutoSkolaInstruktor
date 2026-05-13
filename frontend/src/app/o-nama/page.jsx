@@ -206,7 +206,7 @@ export default function ONama() {
             </Slider>
           </div>
         </div>
-        <div className="w-1/2 max-lg:w-full flex flex-col gap-20 p-10 bg-red-72">
+        <div className="w-1/2 max-lg:w-full flex flex-col gap-20 p-10 bg-red-71">
           <Section number={"02"} text={"POVIJEST"} />
           <motion.div
             initial={{ x: -50, opacity: 0 }}

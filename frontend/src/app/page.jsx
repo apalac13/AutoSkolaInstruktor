@@ -163,7 +163,7 @@ export default function Pocetna() {
                 className=" flex flex-col w-[350px] max-xl:w-[600px] max-[620px]:w-auto max-[620px]:px-4 gap-[18px] absolute top-1/3  "
               >
                 <div className="self-start flex gap-2">
-                  <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
+                  <div className="w-1 h-8 bg-red-70 mb-[5px] "></div>
                   <p className="text-2xl  text-white-60 font-semibold">
                     ŠIROK IZBOR KATEGORIJA
                   </p>
@@ -177,7 +177,7 @@ export default function Pocetna() {
                   &quot;Instruktor&quot; pruža kompletnu edukaciju prilagođenu
                   specifičnim potrebama svake kategorije.
                   <Link href={"/kategorije"}>
-                    <span className="underline text-red-71 hover:text-gray-50">
+                    <span className="underline text-red-70 hover:text-gray-50">
                       saznaj više
                     </span>
                   </Link>
@@ -195,7 +195,7 @@ export default function Pocetna() {
                 className="flex flex-col w-[350px] max-xl:w-[600px] max-[620px]:w-auto max-[620px]:px-4 gap-[18px] absolute top-1/3   "
               >
                 <div className="self-start flex gap-2">
-                  <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
+                  <div className="w-1 h-8 bg-red-70 mb-[5px] "></div>
                   <p className="text-2xl  text-white-60 font-semibold">
                     KONDICIJSKA VOŽNJA
                   </p>
@@ -224,7 +224,7 @@ export default function Pocetna() {
                 className="flex flex-col w-[350px] max-xl:w-[600px] max-[620px]:w-auto max-[620px]:px-4 gap-[18px] absolute top-1/3  "
               >
                 <div className="self-start flex gap-2">
-                  <div className="w-1 h-8 bg-red-71 mb-[5px] "></div>
+                  <div className="w-1 h-8 bg-red-70 mb-[5px] "></div>
                   <p className="text-2xl  text-white-60 font-semibold">
                     VOŽNJA U SPLIT
                   </p>

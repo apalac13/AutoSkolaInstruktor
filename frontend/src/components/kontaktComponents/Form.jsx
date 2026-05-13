@@ -89,7 +89,7 @@ export default function Form() {
         <div className="w-full">
           <label htmlFor="message" className="flex flex-col items-start">
             <p className="text-lg max-sm:text-base">
-              PORUKA <span className="text-red-71">*</span>{" "}
+              PORUKA <span className="text-red-70">*</span>{" "}
             </p>
             <textarea
               id="message"

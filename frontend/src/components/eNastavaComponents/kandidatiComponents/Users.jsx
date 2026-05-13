@@ -59,9 +59,9 @@ export default function Users({ users, setUsers }) {
             <div>
               <button
                 onClick={() => deleteUser(user._id)}
-                className="relative group w-[150px] h-12 border-red-71 bg-red-71 "
+                className="relative group w-[150px] h-12 border-red-70 bg-red-70 "
               >
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#BE1E2D,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
                 <span className="relative text-white-60 text-sm text-center font-light">
                   IZBRIŠI
                 </span>

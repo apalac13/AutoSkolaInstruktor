@@ -23,7 +23,7 @@ export default function ({ step }) {
             cy="50%"
             r={radius}
             fill="#fff"
-            stroke="#DA291C"
+            stroke="#BE1E2D"
             strokeWidth="2"
             strokeDasharray={circumference}
             strokeDashoffset={circumference}
@@ -42,7 +42,7 @@ export default function ({ step }) {
         />
       </div>
       <div className="flex flex-col items-start">
-        <p className="text-base max-xl:text-sm text-red-71">{step.number}</p>
+        <p className="text-base max-xl:text-sm text-red-70">{step.number}</p>
         <p className="text-xl font-semibold text-black-40 text-start leading-tight max-sm:leading-none">
           {step.title}
         </p>

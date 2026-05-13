@@ -21,7 +21,7 @@ export default function EResult({
         {result >= 90 ? (
           <p className=" text-green-80">PROLAZ</p>
         ) : (
-          <p className="text-red-71">PAD</p>
+          <p className="text-red-70">PAD</p>
         )}
       </div>
       <div className="flex flex-col gap-10 text-lg max-[430px]:text-base">

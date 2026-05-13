@@ -64,11 +64,11 @@ export default function RegisterUser({ users, setUsers }) {
           "self-end relative group w-[200px] max-md:h-12 h-14 border",
           {
             "border-black-40 bg-black-40": createUser,
-            "border-red-71 bg-red-71": !createUser,
+            "border-red-70 bg-red-70": !createUser,
           },
         )}
       >
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#BE1E2D,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
         <span className="relative text-white-60 text-base max-md:text-sm text-center font-light">
           {createUser ? "ODUSTANI" : "+ NOVI KANDIDAT"}
         </span>

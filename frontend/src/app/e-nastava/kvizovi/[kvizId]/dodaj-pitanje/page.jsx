@@ -197,7 +197,7 @@ export default function DodajPitanje() {
                 onClick={handleAddOption}
                 className="relative group w-1/4 h-10 border-black-40 bg-black-40 "
               >
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#BE1E2D,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
                 <span className="relative text-white-60 text-xs text-center font-light">
                   DODAJ
                 </span>
@@ -243,9 +243,9 @@ export default function DodajPitanje() {
                   <button
                     type="button"
                     onClick={() => handleRemoveOption(index)}
-                    className="relative group w-1/4 h-10 border-red-71 bg-red-71 "
+                    className="relative group w-1/4 h-10 border-red-70 bg-red-70 "
                   >
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#BE1E2D,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
                     <span className="relative text-white-60 text-xs text-center font-light">
                       UKLONI
                     </span>

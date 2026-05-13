@@ -11,7 +11,7 @@ export default function InputField({
     <div className="w-full">
       <label htmlFor={id} className="flex flex-col items-start">
         <p className="text-lg max-sm:text-base">
-          {label} <span className="text-red-71">*</span>
+          {label} <span className="text-red-70">*</span>
         </p>
         <input
           id={id}

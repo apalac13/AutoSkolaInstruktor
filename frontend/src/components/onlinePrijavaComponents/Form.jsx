@@ -113,7 +113,7 @@ export default function Form() {
       />
       <div className="w-full flex flex-col gap-3 items-start ">
         <p className="text-lg max-sm:text-base">
-          KATEGORORIJA <span className="text-red-71">*</span>{" "}
+          KATEGORORIJA <span className="text-red-70">*</span>{" "}
         </p>
         <div className="grid grid-cols-2 justify-items-start gap-x-28 gap-y-3 ">
           {categories.map((category, index) => (

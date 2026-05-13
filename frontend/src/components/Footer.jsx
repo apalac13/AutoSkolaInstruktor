@@ -67,7 +67,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="flex flex-col gap-8">
-          <p className="text-2xl max-xl:text-xl text-red-71 ">SADRŽAJ</p>
+          <p className="text-2xl max-xl:text-xl text-red-70 ">SADRŽAJ</p>
           <div className="grid grid-cols-2 gap-x-8 gap-y-1">
             {navItems.map((item) => (
               <Link

@@ -41,7 +41,7 @@ export default function EAllQuestionView({ test, user }) {
   useEffect(() => {
     if (replayWrongAnswers) {
       const wrongQuestions = test.questions.filter((q) =>
-        wrongAnswers.includes(q.questionNumber)
+        wrongAnswers.includes(q.questionNumber),
       );
 
       let alreadyEarned = 0;
@@ -126,7 +126,7 @@ export default function EAllQuestionView({ test, user }) {
 
     questions.forEach((q) => {
       const userAnswer = userAnswers.find(
-        (ans) => ans.questionNumber === q.questionNumber
+        (ans) => ans.questionNumber === q.questionNumber,
       );
 
       if (!userAnswer) {
@@ -164,7 +164,7 @@ export default function EAllQuestionView({ test, user }) {
       const updated = [...prev];
       userAnswers.forEach((ua) => {
         const idx = updated.findIndex(
-          (a) => a.questionNumber === ua.questionNumber
+          (a) => a.questionNumber === ua.questionNumber,
         );
         if (idx >= 0) updated[idx] = ua;
         else updated.push(ua);
@@ -197,12 +197,12 @@ export default function EAllQuestionView({ test, user }) {
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
                 "Content-Type": "application/json",
               },
-            }
+            },
           );
         } catch (err) {
           console.error(
             "❌ Greška kod slanja:",
-            err.response?.data || err.message
+            err.response?.data || err.message,
           );
         } finally {
           setSendResult(false);
@@ -256,9 +256,9 @@ export default function EAllQuestionView({ test, user }) {
           ))}
           <button
             onClick={handleTestOver}
-            className="relative group max-md:w-[150px] max-sm:h-12 h-14 px-5 border-red-71 bg-red-71 text-white-60 overflow-hidden"
+            className="relative group max-md:w-[150px] max-sm:h-12 h-14 px-5 border-red-70 bg-red-70 text-white-60 overflow-hidden"
           >
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#DA291C,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#BE1E2D,#231F20)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 ease-in-out"></div>
             <span className="relative text-base max-md:text-sm text-center font-light">
               ZAVRŠI TEST
             </span>
